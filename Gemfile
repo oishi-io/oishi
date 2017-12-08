@@ -8,6 +8,7 @@ gem 'pg'
 gem 'puma'
 gem 'rails', '5.0.6'
 gem 'redis'
+gem 'sprockets-rails', :require => 'sprockets/railtie'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
