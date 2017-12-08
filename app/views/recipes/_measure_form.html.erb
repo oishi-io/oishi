@@ -1,0 +1,7 @@
+<%= simple_form_for([recipe, measure], remote: true, method: 'post') do |f| %>
+  <%= f.input :quantity, label: false, placeholder: "Quantité" %>
+  <%= f.input :text_1, label: false, placeholder: "Texte" %>
+  <%= f.association :ingredient, label: false %>
+  <%= f.input :text_2, label: false, placeholder: "Texte complémentaire" %>
+  <%= f.submit "Ajouter", class: "btn btn-primary" %>
+<% end %>

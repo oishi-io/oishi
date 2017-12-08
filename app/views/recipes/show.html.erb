@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 ">
+      <div class="recipe-photo">
+        <%= cl_image_tag @recipe.photos[0].path, crop: :fit %>
+      </div>
+      <div class="recipe-title">
+        <h2><strong><%= @recipe.title %></strong></h2>
+      </div>
+      <div class="recipe-servings">
+        <p><%= @recipe.servings %> pers.</p>
+      </div>
+      <div class="recipe-tags">
+        <p><strong>Tags</strong></p>
+        <% if current_user && current_user.admin %>
+          <div class="form-inline" id="tag-form-container">
+            <%= render 'tag_form' %>
+        <% end %>
+        <ul id="tag-list">
+          <% @recipe.tags.each do |tag| %>
+            <li>
+              <p><%= tag.name %></p>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="recipe-ingredients">
+        <p><strong>Ingrédients</strong></p>
+        <% if current_user && current_user.admin %>
+          <div class="form-inline" id="measure-form-container">
+            <%= render 'measure_form', recipe: @recipe, measure: @measure %>
+          </div>
+          <div class="form-inline" id="ingredient-form-container">
+            <%= render 'ingredient_form', ingredient: @ingredient %>
+          </div>
+        <% end %>
+        <ul id="measure-list">
+          <% @recipe.measures.each do |measure| %>
+            <li><p><%= measure.quantity %><%= measure.text_1 %><%= measure.ingredient.name %><%= measure.text_2 %></p>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="recipe-instructions">
+        <p><strong>Instructions</strong></p>
+        <%= @recipe.instructions%>
+      </div>
+      <div class="recipe-tools">
+        <p><strong>Ustensiles</strong></p>
+        <% if current_user && current_user.admin %>
+          <div class="form-inline" id="tool-form-container">
+            <%= render 'tool_form' %>
+          </div>
+        <% end %>
+        <ul id="tool-list">
+          <% @recipe.tools.each do |tool| %>
+            <li>
+              <p><%= tool.name %></p>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+

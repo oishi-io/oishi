@@ -1,0 +1,18 @@
+<div class="wrapper">
+  <div class="container">
+    <div align="center">
+      <h1>Nos tools</h1>
+        <ul>
+          <% @tools.each do |tool| %>
+            <li style="list-style: none">
+              <%= link_to tool.name, tool_path(tool) %>
+                <% if policy(tool).update? %>
+                <%= link_to 'delete', tool_path(tool), method: :delete %>
+                <%= link_to 'edit', edit_tool_path(tool)%>
+                <% end %>
+            </li>
+          <% end %>
+        </ul>
+    </div>
+  </div>
+</div>

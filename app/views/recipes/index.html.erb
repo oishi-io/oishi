@@ -1,0 +1,19 @@
+
+<div class="wrapper">
+  <div class="container">
+    <div align="center">
+      <h1>Nos recettes</h1>
+        <ul>
+          <% @recipes.each do |recipe| %>
+            <li style="list-style: none">
+              <%= link_to recipe.title, recipe_path(recipe) %>
+                <% if policy(recipe).update? %>
+                <%= link_to 'delete', recipe_path(recipe), method: :delete %>
+                <%= link_to 'edit', edit_recipe_path(recipe)%>
+                <% end %>
+            </li>
+          <% end %>
+        </ul>
+    </div>
+  </div>
+</div>

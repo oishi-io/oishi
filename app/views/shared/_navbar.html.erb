@@ -1,34 +1,30 @@
-<div class="navbar-wagon">
+<div class="navbar-component">
   <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png", height: 50 %>
+  <%= link_to root_path, class: "navbar-brand" do %>
+    <%= image_tag "logo.jpg" %>
   <% end %>
 
   <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
+  <div class="navbar-right hidden-xs hidden-sm">
 
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Host", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Trips", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Accueil", root_path, class: "navbar-item navbar-link" %>
+
+      <% if current_user.admin %>
+        <%= link_to "Admin Dashboard", rails_admin_path, class: "navbar-item navbar-link" %>
+        <%= link_to "Recettes", recipes_path, class: "navbar-item navbar-link" %>
+        <%= link_to "Ingrédients", ingredients_path, class: "navbar-item navbar-link" %>
+        <%= link_to "Tools", tools_path, class: "navbar-item navbar-link" %>
+
+      <% end %>
 
       <!-- Avatar with dropdown menu -->
-      <div class="navbar-wagon-item">
+      <div class="navbar-item">
         <div class="dropdown">
-          <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
-              <% end %>
-            </li>
+          <%= image_tag "https://static.comicvine.com/uploads/square_small/0/77/602625-japan.png", class: "avatar dropdown-toggle", id: "navbar-menu", "data-toggle" => "dropdown" %>
+          <ul class="dropdown-menu dropdown-menu-right navbar-dropdown-menu">
             <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
                 <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
@@ -39,18 +35,38 @@
       </div>
     <% else %>
       <!-- Login link (when logged out) -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-item navbar-link" %>
     <% end %>
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
-  <div class="navbar-wagon-item hidden-md hidden-lg">
+  <div class="navbar-item hidden-md hidden-lg">
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
+      <ul class="dropdown-menu dropdown-menu-right navbar-dropdown-menu">
+        <% if user_signed_in? %>
+          <!-- Links when logged in -->
+          <li>
+            <%= link_to "Home", root_path, class: "navbar-item navbar-link" %>
+          </li>
+
+          <% if current_user.admin %>
+          <li>
+            <%= link_to "Admin Dashboard", rails_admin_path, class: "navbar-item navbar-link" %>
+          </li>
+          <li>
+            <%= link_to "Ajouter une recette", new_recipe_path, class: "navbar-item navbar-link" %>
+          </li>
+          <% end %>
+          <li>
+            <%= link_to "Log out", destroy_user_session_path, class: "navbar-item navbar-link", method: :delete %>
+          </li>
+        <% else %>
+          <!-- Login link (when logged out) -->
+          <li>
+            <%= link_to "Login", new_user_session_path, class: "navbar-item navbar-link" %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>

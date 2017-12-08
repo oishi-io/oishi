@@ -1,0 +1,5 @@
+<%= simple_form_for(ingredient, remote: true, method: 'post') do |f| %>
+  <%= f.input :name, label: false, placeholder: "Ingrédient" %>
+  <%= f.input :description, label: false, placeholder: "Description" %>
+  <%= f.submit "Créer", class: "btn btn-info" %>
+<% end %>

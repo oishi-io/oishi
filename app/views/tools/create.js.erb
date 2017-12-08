@@ -1,0 +1,10 @@
+<% if @tool.errors.any? %>
+  // Render new tool form with errors
+  const container = document.querySelector('#tool-form-container');
+  container.innerHTML = '<%= j render "recipes/tool_form", recipe: @recipe, tool: @tool %>'
+<% end %>
+
+<% if @update %>
+  const list = document.getElementById("tool-list");
+  list.insertAdjacentHTML("beforeend", "<li><p><%= @tool.name %></p></li>");
+<% end %>
