@@ -1,17 +1,20 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :set_recipe, only: [:show, :edit, :update, :destroy, :add_details]
 
   def index
     @recipes = policy_scope(Recipe)
-    authorize @recipes
     @recipes = Recipe.all
+    authorize @recipes
   end
 
   def show
     @measure = Measure.new
+    @measures = @recipe.measures
     @ingredient = Ingredient.new
     @tag = Tag.new
+    @tags = @recipe.tags
     @tool = Tool.new
+    @tools = @recipe.tools
   end
 
   def new
@@ -24,14 +27,16 @@ class RecipesController < ApplicationController
     @recipe.user = current_user
     authorize @recipe
     if @recipe.save
-      redirect_to recipe_path(@recipe)
+      redirect_to add_details_path(@recipe)
     else
       render 'new'
     end
   end
 
-  def edit
+  def add_details
+  end
 
+  def edit
   end
 
   def update

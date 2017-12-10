@@ -24,4 +24,8 @@ class RecipePolicy < ApplicationPolicy
   def destroy?
     user.admin? # Only an admin can delete a Recipe
   end
+
+  def add_details?
+    user.admin?
+  end
 end

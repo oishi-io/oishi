@@ -17,7 +17,7 @@
             <%= render 'tag_form' %>
         <% end %>
         <ul id="tag-list">
-          <% @recipe.tags.each do |tag| %>
+          <% @tags.each do |tag| %>
             <li>
               <p><%= tag.name %></p>
             </li>
@@ -35,7 +35,7 @@
           </div>
         <% end %>
         <ul id="measure-list">
-          <% @recipe.measures.each do |measure| %>
+          <% @measures.each do |measure| %>
             <li><p><%= measure.quantity %><%= measure.text_1 %><%= measure.ingredient.name %><%= measure.text_2 %></p>
             </li>
           <% end %>
@@ -53,7 +53,7 @@
           </div>
         <% end %>
         <ul id="tool-list">
-          <% @recipe.tools.each do |tool| %>
+          <% @tools.each do |tool| %>
             <li>
               <p><%= tool.name %></p>
             </li>
