@@ -1,7 +1,7 @@
 import Vue from 'vue/dist/vue.common';
 
 var vm = new Vue({
-   el: "#recipe",
+   el: "#recipe_add_details",
    data: {
 
    },
