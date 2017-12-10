@@ -14,6 +14,7 @@ gem "attachinary"
 gem "jquery-fileupload-rails"
 gem "coffee-rails"
 gem 'rails_admin', '>= 1.0.0.rc'
+gem 'gon'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
