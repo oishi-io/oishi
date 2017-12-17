@@ -10,7 +10,7 @@ gem 'rails', '5.0.5'
 gem 'redis'
 gem 'webpacker', '~> 3.0'
 gem 'cloudinary'
-gem "attachinary"
+gem "attachinary", github: 'assembler/attachinary'
 gem "jquery-fileupload-rails"
 gem "coffee-rails"
 gem 'rails_admin', '>= 1.0.0.rc'

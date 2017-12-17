@@ -1,2 +1,5 @@
-[0G[1] pry(main)> ©
-[1] pry(main)> klklkl
+[0G[1] pry(main)> 
+[1] pry(main)> uitr
+NameError: undefined local variable or method `uitr' for main:Object
+from (pry):1:in `<main>'
+[2] pry(main)> 
