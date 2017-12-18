@@ -4,6 +4,20 @@
     <p>Oishi desu!</p>
   </div>
 </div>
+<div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-4">
+        <div class="form-wrapper">
+          <%= simple_form_for @email do |f| %>
+            <%= f.input :email_address, label: false, placeholder: 'Your email address' %>
+            <%= f.button :submit, class: "btn btn-info"%>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- <div>
   <div class="grid">
           <li class="grid_item span__1 a"><a href="#" class="grid_link"><div class="tile">1</div></a></li>
