@@ -5,6 +5,5 @@ class PagesController < ApplicationController
   #   @recipes = Recipe.all.shuffle.take(6)
   @email = Email.new
   authorize @email
-  @email.save
   end
 end
