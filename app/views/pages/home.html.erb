@@ -1,23 +1,52 @@
-<div class="bande" style="background-image:/* linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%),*/ url(https://mycookingideas.com/wp-content/uploads/2016/05/japan10.jpg)">
+<div class="bande" style="background-image:linear-gradient(-225deg, #c21500, #ffc500 50%), url(https://mycookingideas.com/wp-content/uploads/2016/05/japan10.jpg)">
   <div class="banner-content">
-    <h1>Sumimasen</h1>
-    <p>Oishi desu!</p>
-  </div>
-</div>
-<div>
-  <div class="container">
-    <div class="row">
+    <h1>Oishi</h1>
+    <p class="progressif">La gastronomie japonaise simplifiée</p>
+    <div class="container">
+    <!-- <div class="row"> -->
       <div class="col-xs-4 col-xs-offset-4">
         <div class="form-wrapper">
           <%= simple_form_for @email do |f| %>
-            <%= f.input :email_address, label: false, placeholder: 'Your email address' %>
-            <%= f.button :submit, class: "btn btn-info"%>
+            <%= f.input :email_address, label: false, placeholder: 'Insérez votre email' %>
+            <%= f.button :submit, class: "btn btn-info", value: "Go!"%>
           <% end %>
         </div>
       </div>
+    <!-- </div> -->
     </div>
   </div>
 </div>
+  <script type="text/javascript">
+var progressif = jQuery('.progressif');
+var text = progressif.text() ; // on met le texte dans une variable
+var text_length = text.length; // on mesure la longueur du texte
+progressif.text(''); // on vide la div de son texte, pour pouvoir le remettre
+
+var new_text = ''; // on crée une variable qui contiendra le nouveau texte
+var i = 0;
+// et on lance une fonction qui se répétera automatiquement
+var timer = setInterval(function(){
+    // on modifie la nouvelle variable
+    new_text = new_text + text[i];
+    // on l'injecte dans la div
+    progressif.text(new_text);
+
+    if(i < text_length-1) {
+        // si on n'a pas fini, on incrémente i de 1
+        i++;
+    }
+    else {
+        // c'est la fin, on arrête le timer
+        clearInterval(timer);
+    }
+
+}, 500);
+
+</script>
+
+
+
+
 <!-- <div>
   <div class="grid">
           <li class="grid_item span__1 a"><a href="#" class="grid_link"><div class="tile">1</div></a></li>
