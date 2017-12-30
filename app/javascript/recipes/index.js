@@ -1,20 +1,20 @@
 import Vue from 'vue/dist/vue.common';
 
 var vm = new Vue({
-   el: "#recipe_add_details",
-   data: {
+  el: "#recipe_add_details",
+  data: {
+    tools: gon.tools,
+    tags: gon.tags,
+  },
+  mounted: function(){
 
-   },
-   mounted: function(){
+  },
+  computed: {
 
-   },
-   computed: {
+  },
+  methods: {
 
-   },
-   methods: {
-
-   },
-
+  },
 });
 
 window.vm = vm

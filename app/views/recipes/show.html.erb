@@ -10,7 +10,7 @@
       <div class="recipe-servings">
         <p><%= @recipe.servings %> pers.</p>
       </div>
-      <div class="recipe-tags">
+<!--       <div class="recipe-tags">
         <p><strong>Tags</strong></p>
         <% if current_user && current_user.admin %>
           <div class="form-inline" id="tag-form-container">
@@ -23,7 +23,7 @@
             </li>
           <% end %>
         </ul>
-      </div>
+      </div> -->
       <div class="recipe-ingredients">
         <p><strong>Ingrédients</strong></p>
         <% if current_user && current_user.admin %>
@@ -45,7 +45,7 @@
         <p><strong>Instructions</strong></p>
         <%= @recipe.instructions%>
       </div>
-      <div class="recipe-tools">
+<!--       <div class="recipe-tools">
         <p><strong>Ustensiles</strong></p>
         <% if current_user && current_user.admin %>
           <div class="form-inline" id="tool-form-container">
@@ -59,7 +59,7 @@
             </li>
           <% end %>
         </ul>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

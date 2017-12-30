@@ -34,6 +34,16 @@ class RecipesController < ApplicationController
   end
 
   def add_details
+    @measure        = Measure.new
+    @ingredient     = Ingredient.new
+    @ingredients    = Ingredient.all
+    gon.ingredients = @ingredients
+    @tag            = Tag.new
+    @tags           = Tag.all
+    gon.tags        = @tags
+    @tool           = Tool.new
+    @tools          = Tool.all
+    gon.tools       = @tools
   end
 
   def edit

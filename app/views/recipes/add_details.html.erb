@@ -1,10 +1,34 @@
-<div id="recipe_add_details">
+<div class="container">
+  <div id="recipe_add_details">
+    <h1 class="text-center"><strong><%= @recipe.title %></strong></h1>
 
+    <div class="recipe-measures">
+      <h4>Ajout des mesures</h4>
+
+      <div class="recipe-tags">
+        <h4>Tags</h4>
+        <div class="col-xs-3">
+          <ul>
+            <li v-for="tag in tags">
+              <p>{{ tag.name }}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="recipe-tools">
+      <h4>Ustensiles</h4>
+      <div class="col-xs-3">
+          <ul>
+            <li v-for="tool in tools">
+              <p>{{ tool.name }}</p>
+            </li>
+          </ul>
+        </div>
+    </div>
+  </div>
 </div>
-
-
-
-
 
 <% content_for :after_js do %>
   <%= javascript_pack_tag 'recipes' %>
