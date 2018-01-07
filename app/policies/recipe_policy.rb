@@ -28,4 +28,12 @@ class RecipePolicy < ApplicationPolicy
   def add_details?
     user.admin?
   end
+
+  def add_tags?
+    user.admin?
+  end
+
+  def add_tools?
+    user.admin?
+  end
 end

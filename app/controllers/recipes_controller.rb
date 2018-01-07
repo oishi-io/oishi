@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: [:show, :edit, :update, :destroy, :add_details]
+  before_action :set_recipe, only: [:show, :edit, :update, :destroy, :add_details, :add_tags, :add_tools]
 
   def index
     @recipes = policy_scope(Recipe)
@@ -34,16 +34,28 @@ class RecipesController < ApplicationController
   end
 
   def add_details
+    gon.recipeId = @recipe.id
     @measure = Measure.new
-
     @ingredient = Ingredient.new
     gon.ingredients = Ingredient.all
-
     @tag = Tag.new
+    gon.selectedTags = @recipe.tags.pluck(:id)
     gon.tags = Tag.all
-
     @tool = Tool.new
+    gon.selectedTools = @recipe.tools.pluck(:id)
     gon.tools = Tool.all
+  end
+
+  def add_tags
+    @recipe.tags = Tag.where(id: params[:tags])
+    @recipe.save
+    head :ok
+  end
+
+  def add_tools
+    @recipe.tools = Tool.where(id: params[:tools])
+    @recipe.save
+    head :ok
   end
 
   def edit
