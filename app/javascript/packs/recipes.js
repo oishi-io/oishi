@@ -1,4 +1,4 @@
-import Recipes from '../recipes';
+import Recipes from '../recipes/index.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   Recipes
