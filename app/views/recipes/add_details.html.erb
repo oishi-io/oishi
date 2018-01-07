@@ -1,10 +1,42 @@
-<div id="recipe_add_details">
+<link rel="stylesheet" href="//unpkg.com/iview/dist/styles/iview.css">
 
+<div class="container">
+  <div id="recipe_add_details">
+    <h1 class="text-center"><strong><%= @recipe.title %></strong></h1>
+
+    <!-- MEASURES -->
+    <div class="recipe-measures">
+      <h4>Ajout des mesures</h4>
+    </div>
+
+    <!-- TAGS -->
+    <div class="recipe-tags">
+      <h4>Tags</h4>
+      <div class="col-xs-3">
+        <template>
+          <i-select v-model="selectedTags" multiple style="width:260px">
+            <i-option v-for="tag in tags" :value="tag.id" :key="tag.name">{{ tag.name }}</i-option>
+          </i-select>
+        </template>
+        <button v-on:click="addTags(selectedTags)">Ajouter</button>
+      </div>
+    </div>
+
+    <!-- TOOLS -->
+    <div class="recipe-tools">
+      <h4>Ustensiles</h4>
+      <div class="col-xs-3">
+        <template>
+          <i-select v-model="selectedTools" multiple style="width:260px">
+            <i-option v-for="tool in tools" :value="tool.id" :key="tool.name">{{ tool.name }}</i-option>
+          </i-select>
+        </template>
+        <button v-on:click="addTools(selectedTools)">Ajouter</button>
+      </div>
+    </div>
+
+  </div>
 </div>
-
-
-
-
 
 <% content_for :after_js do %>
   <%= javascript_pack_tag 'recipes' %>
