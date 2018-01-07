@@ -1,9 +1,8 @@
 import Vue from 'vue/dist/vue.common';
 import iView from 'iview';
-import localeIview from 'iview/src/locale/lang/en-US';
-Vue.use(iView, {
-  localeIview
-});
+import locale from 'iview/src/locale/lang/en-US';
+
+Vue.use(iView, { locale });
 
 var vm = new Vue({
   el: "#recipe_add_details",
