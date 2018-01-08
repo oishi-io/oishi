@@ -10,28 +10,12 @@
       <div class="recipe-servings">
         <p><%= @recipe.servings %> pers.</p>
       </div>
-<!--       <div class="recipe-tags">
-        <p><strong>Tags</strong></p>
-        <% if current_user && current_user.admin %>
-          <div class="form-inline" id="tag-form-container">
-            <%= render 'tag_form' %>
-        <% end %>
-        <ul id="tag-list">
-          <% @tags.each do |tag| %>
-            <li>
-              <p><%= tag.name %></p>
-            </li>
-          <% end %>
-        </ul>
-      </div> -->
+
       <div class="recipe-ingredients">
         <p><strong>Ingrédients</strong></p>
         <% if current_user && current_user.admin %>
           <div class="form-inline" id="measure-form-container">
             <%= render 'measure_form', recipe: @recipe, measure: @measure %>
-          </div>
-          <div class="form-inline" id="ingredient-form-container">
-            <%= render 'ingredient_form', ingredient: @ingredient %>
           </div>
         <% end %>
         <ul id="measure-list">
@@ -41,25 +25,12 @@
           <% end %>
         </ul>
       </div>
+
+      <!-- INSTRUCTIONS -->
       <div class="recipe-instructions">
         <p><strong>Instructions</strong></p>
         <%= @recipe.instructions%>
       </div>
-<!--       <div class="recipe-tools">
-        <p><strong>Ustensiles</strong></p>
-        <% if current_user && current_user.admin %>
-          <div class="form-inline" id="tool-form-container">
-            <%= render 'tool_form' %>
-          </div>
-        <% end %>
-        <ul id="tool-list">
-          <% @tools.each do |tool| %>
-            <li>
-              <p><%= tool.name %></p>
-            </li>
-          <% end %>
-        </ul>
-      </div> -->
     </div>
   </div>
 </div>

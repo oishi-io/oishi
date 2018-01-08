@@ -1,5 +1,0 @@
-<%= simple_form_for(@tool, remote: true, method: 'post') do |f| %>
-  <%= f.input :name, label: false, placeholder: "Nom de l'ustensile" %>
-  <%= f.hidden_field :recipe_id, value: @recipe.id %>
-  <%= f.submit "Ajouter", class: "btn btn-primary" %>
-<% end %>

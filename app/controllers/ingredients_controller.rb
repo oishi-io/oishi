@@ -2,13 +2,13 @@ class IngredientsController < ApplicationController
    before_action :set_ingredient, only: [:show, :edit, :update, :destroy]
 
   def create
-    @ingredient = Ingredient.new(ingredient_params)
+    @ingredient = Ingredient.new(name: params[:name], description: params[:description])
     authorize @ingredient
     @ingredient.save
-    respond_to do |format|
-      format.html {redirect_to(root_path)}
-      format.js  # <-- will render `app/views/ingredients/create.js.erb`
-    end
+    render json: { ingredient: @ingredient }, status: 200
+    # respond_to do |format|
+    #   format.html {redirect_to(root_path)}
+    # end
   end
 
   def new
