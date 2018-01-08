@@ -1,43 +1,51 @@
 <link rel="stylesheet" href="//unpkg.com/iview/dist/styles/iview.css">
 
 <div class="container">
+  <h1 class="text-center"><strong><%= @recipe.title %></strong></h1>
   <div id="recipe_add_details">
-    <h1 class="text-center"><strong><%= @recipe.title %></strong></h1>
+    <div class="select-details">
+      <!-- MEASURES -->
+      <div class="recipe-measures">
+        <h4>Ajout des mesures</h4>
+      </div>
 
-    <!-- MEASURES -->
-    <div class="recipe-measures">
-      <h4>Ajout des mesures</h4>
+      <!-- TAGS -->
+      <div class="recipe-tags">
+        <h4>Tags</h4>
+        <template>
+          <i-select v-model="selectedTags" multiple style="width:260px">
+            <i-option v-for="tag in tags" :value="tag.id" :key="tag.name">{{ tag.name }}</i-option>
+          </i-select>
+        </template>
+        <button v-on:click="addTags(selectedTags)" class="btn btn-sm btn-info">Update</button>
+      </div>
+
+      <!-- TOOLS -->
+      <div class="recipe-tools">
+        <h4>Ustensiles</h4>
+        <template>
+          <i-select v-model="selectedTools" multiple style="width:260px">
+            <i-option v-for="tool in tools" :value="tool.id" :key="tool.name">{{ tool.name }}</i-option>
+          </i-select>
+        </template>
+        <button v-on:click="addTools(selectedTools)" class="btn btn-sm btn-info">Update</button>
+      </div>
     </div>
 
-    <!-- TAGS -->
-    <div class="recipe-tags">
-      <h4>Tags</h4>
-      <template>
-        <i-select v-model="selectedTags" multiple style="width:260px">
-          <i-option v-for="tag in tags" :value="tag.id" :key="tag.name">{{ tag.name }}</i-option>
-        </i-select>
-      </template>
-      <button v-on:click="addTags(selectedTags)" class="btn btn-sm btn-info">Update</button>
+    <div class="create-details">
       <collapse style="width:290px">
         <panel name="1">
           Ajouter un tag
-            <input v-model="tagName" type="text" slot="content" class="form-control" id="tagName" placeholder="Nom du tag" style="width:260px">
-            <button v-on:click="createTag(tagName)" class="btn btn-sm btn-success" slot="content">Ajouter</button>
+          <input v-model="tagName" type="text" slot="content" class="form-control" id="tagName" placeholder="Nom du tag" style="width:260px">
+          <button v-on:click="createTag(tagName)" class="btn btn-sm btn-success" slot="content">Ajouter</button>
         </panel>
-    </collapse>
+        <panel name="2">
+          Ajouter un ustensil
+          <input v-model="toolName" type="text" slot="content" class="form-control" id="toolName" placeholder="Nom de l'ustensil" style="width:260px">
+          <button v-on:click="createTool(toolName)" class="btn btn-sm btn-success" slot="content">Ajouter</button>
+        </panel>
+      </collapse>
     </div>
-
-    <!-- TOOLS -->
-    <div class="recipe-tools">
-      <h4>Ustensiles</h4>
-      <template>
-        <i-select v-model="selectedTools" multiple style="width:260px">
-          <i-option v-for="tool in tools" :value="tool.id" :key="tool.name">{{ tool.name }}</i-option>
-        </i-select>
-      </template>
-      <button v-on:click="addTools(selectedTools)" class="btn btn-sm btn-info">Update</button>
-    </div>
-
   </div>
 </div>
 

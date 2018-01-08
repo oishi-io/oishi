@@ -43,7 +43,31 @@ var vm = new Vue({
         data: {
           tools: tools,
         },
-        success: function(data) {
+        success: function(data){
+        }
+      })
+    },
+    createTag: function(name){
+      $.ajax({
+        method: 'POST',
+        url: '/tags',
+        data: {
+          name: name,
+        },
+        success: function(data){
+          vm.tags.push(data.tag)
+        }
+      })
+    },
+    createTool: function(name){
+      $.ajax({
+        method: 'POST',
+        url: '/tools',
+        data: {
+          name: name,
+        },
+        success: function(data){
+          vm.tools.push(data.tool)
         }
       })
     },

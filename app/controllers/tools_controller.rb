@@ -1,24 +1,12 @@
 class ToolsController < ApplicationController
   before_action :set_tool, only: [:edit, :show, :update, :destroy]
   def create
-    @tool = Tool.find_or_create_by(tool_params)
+    @tool = Tool.new(name: params[:name])
     authorize @tool
     @tool.save
-    @update = false
-    if recipe_params[:recipe_id]
-      @recipe = Recipe.find(recipe_params[:recipe_id])
-      unless @recipe.tools.include?(@tool)
-        @recipe.tools << @tool
-        authorize @recipe
-        @recipe.save
-        @update = true
-      end
-    end
-    respond_to do |format|
-      format.html {redirect_to(root_path)}
-      format.js  # <-- will render `app/views/tools/create.js.erb`
-    end
+    render json: { tool: @tool }, status: 200
   end
+
   def new
     @tool = Tool.new
     authorize @tool

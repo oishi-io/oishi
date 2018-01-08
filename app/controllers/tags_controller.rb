@@ -1,20 +1,10 @@
 class TagsController < ApplicationController
-  before_action :set_tool, only: [:destroy]
+  before_action :set_tag, only: [:destroy]
   def create
-    @tag = Tag.find_or_create_by(tag_params)
+    @tag = Tag.new(name: params[:name])
     authorize @tag
     @tag.save
-    @update = false
-    @recipe = Recipe.find(recipe_params[:recipe_id])
-    unless @recipe.tags.include?(@tag)
-      @recipe.tags << @tag
-      authorize @recipe
-      @recipe.save
-      @update = true
-    end
-    respond_to do |format|
-      format.js  # <-- will render `app/views/tags/create.js.erb`
-    end
+    render json: { tag: @tag }, status: 200
   end
 
   def destroy
@@ -31,9 +21,5 @@ class TagsController < ApplicationController
 
   def tag_params
     params.require(:tag).permit(:name)
-  end
-
-  def recipe_params
-    params.require(:tag).permit(:recipe_id)
   end
 end
