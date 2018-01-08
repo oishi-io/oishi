@@ -33,16 +33,17 @@
     </div>
 
     <div class="create-details">
+      <h4>Créer les élements manquants</h4>
       <collapse style="width:290px">
         <panel name="1">
           Ajouter un tag
-          <input v-model="tagName" type="text" slot="content" class="form-control" id="tagName" placeholder="Nom du tag" style="width:260px">
-          <button v-on:click="createTag(tagName)" class="btn btn-sm btn-success" slot="content">Ajouter</button>
+          <input v-model="newTag.name" type="text" slot="content" class="form-control" id="tagName" placeholder="Nom du tag" style="width:260px">
+          <button v-on:click="createTag(newTag)" class="btn btn-sm btn-success" slot="content">Ajouter</button>
         </panel>
         <panel name="2">
           Ajouter un ustensil
-          <input v-model="toolName" type="text" slot="content" class="form-control" id="toolName" placeholder="Nom de l'ustensil" style="width:260px">
-          <button v-on:click="createTool(toolName)" class="btn btn-sm btn-success" slot="content">Ajouter</button>
+          <input v-model="newTool.name" type="text" slot="content" class="form-control" id="toolName" placeholder="Nom de l'ustensil" style="width:260px">
+          <button v-on:click="createTool(newTool)" class="btn btn-sm btn-success" slot="content">Ajouter</button>
         </panel>
       </collapse>
     </div>

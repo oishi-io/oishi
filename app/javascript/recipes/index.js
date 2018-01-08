@@ -12,8 +12,9 @@ var vm = new Vue({
     tags: gon.tags,
     selectedTags: gon.selectedTags,
     selectedTools: gon.selectedTools,
-    tagName: '',
-    toolName: '',
+    newIngredient: {name: '', description: ''},
+    newTag: {name: ''},
+    newTool: {name: ''},
   },
   mounted: function(){
 
@@ -47,27 +48,39 @@ var vm = new Vue({
         }
       })
     },
-    createTag: function(name){
+    createTag: function(tag){
       $.ajax({
         method: 'POST',
         url: '/tags',
         data: {
-          name: name,
+          name: tag.name,
         },
         success: function(data){
           vm.tags.push(data.tag)
         }
       })
     },
-    createTool: function(name){
+    createTool: function(tool){
       $.ajax({
         method: 'POST',
         url: '/tools',
         data: {
-          name: name,
+          name: tool.name,
         },
         success: function(data){
           vm.tools.push(data.tool)
+        }
+      })
+    },
+    createIngredient: function(name){
+      $.ajax({
+        method: 'POST',
+        url: '/ingredients',
+        data: {
+          name: name,
+        },
+        success: function(data){
+          vm.ingredients.push(data.ingredient)
         }
       })
     },
