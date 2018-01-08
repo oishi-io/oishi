@@ -56,7 +56,8 @@ var vm = new Vue({
           name: tag.name,
         },
         success: function(data){
-          vm.tags.push(data.tag)
+          vm.tags.push(data.tag);
+          vm.newTag = {name: ''};
         }
       })
     },
@@ -68,19 +69,22 @@ var vm = new Vue({
           name: tool.name,
         },
         success: function(data){
-          vm.tools.push(data.tool)
+          vm.tools.push(data.tool);
+          vm.newTool = {name: ''};
         }
       })
     },
-    createIngredient: function(name){
+    createIngredient: function(ingredient){
       $.ajax({
         method: 'POST',
         url: '/ingredients',
         data: {
-          name: name,
+          name: ingredient.name,
+          description: ingredient.description,
         },
         success: function(data){
-          vm.ingredients.push(data.ingredient)
+          vm.ingredients.push(data.ingredient);
+          vm.newIngredient = {name: '', description: ''};
         }
       })
     },

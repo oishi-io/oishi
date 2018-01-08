@@ -21,6 +21,6 @@ Rails.application.routes.draw do
   # INGREDIENT
   resources :ingredients
 
-  # INGREDIENT
+  # EMAILS
   resources :emails
 end
