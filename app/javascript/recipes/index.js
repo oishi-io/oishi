@@ -12,6 +12,8 @@ var vm = new Vue({
     tags: gon.tags,
     selectedTags: gon.selectedTags,
     selectedTools: gon.selectedTools,
+    tagName: '',
+    toolName: '',
   },
   mounted: function(){
 
