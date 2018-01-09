@@ -36,12 +36,11 @@ class RecipesController < ApplicationController
   def add_details
     gon.recipeId = @recipe.id
     @measure = Measure.new
-    @ingredient = Ingredient.new
+    @measures = @recipe.measures
+    gon.measures = @measures
     gon.ingredients = Ingredient.all
-    @tag = Tag.new
     gon.selectedTags = @recipe.tags.pluck(:id)
     gon.tags = Tag.all
-    @tool = Tool.new
     gon.selectedTools = @recipe.tools.pluck(:id)
     gon.tools = Tool.all
   end

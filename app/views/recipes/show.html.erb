@@ -11,20 +11,12 @@
         <p><%= @recipe.servings %> pers.</p>
       </div>
 
-      <div class="recipe-ingredients">
-        <p><strong>Ingrédients</strong></p>
-        <% if current_user && current_user.admin %>
-          <div class="form-inline" id="measure-form-container">
-            <%= render 'measure_form', recipe: @recipe, measure: @measure %>
-          </div>
-        <% end %>
         <ul id="measure-list">
           <% @measures.each do |measure| %>
             <li><p><%= measure.quantity %><%= measure.text_1 %><%= measure.ingredient.name %><%= measure.text_2 %></p>
             </li>
           <% end %>
         </ul>
-      </div>
 
       <!-- INSTRUCTIONS -->
       <div class="recipe-instructions">

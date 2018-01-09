@@ -5,9 +5,7 @@ class MeasuresController < ApplicationController
     @measure.recipe = @recipe
     authorize @measure
     @measure.save
-    respond_to do |format|
-      format.js  # <-- will render `app/views/measures/create.js.erb`
-    end
+    render json: { measure: @measure, ingredient: @measure.ingredient }, status: 200
   end
 
   def edit

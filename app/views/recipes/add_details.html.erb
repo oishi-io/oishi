@@ -1,19 +1,34 @@
 <link rel="stylesheet" href="//unpkg.com/iview/dist/styles/iview.css">
 
 <div class="container">
-  <h1 class="text-center"><strong><%= @recipe.title %></strong></h1>
+  <h1 class="text-center"><strong><%= @recipe.title %><%= @recipe.id %></strong></h1>
   <div id="recipe_add_details">
     <div class="select-details">
       <!-- MEASURES -->
       <div class="recipe-measures">
+        <ul id="measure-list">
+          <% @measures.each do |measure| %>
+            <li><p><%= measure.quantity %><%= measure.text_1 %><%= measure.ingredient.name %><%= measure.text_2 %></p>
+            </li>
+          <% end %>
+        </ul>
         <h4>Ajout des mesures</h4>
+        <input v-model="newMeasure.quantity" type="integer" class="form-control" placeholder="Quantité" style="width:260px">
+        <input v-model="newMeasure.text1" type="text" class="form-control" placeholder="Texte 1" style="width:260px">
+        <template>
+          <i-select v-model="newMeasure.ingredientId" filterable style="width:260px">
+            <i-option v-for="ingredient in ingredients" :value="ingredient.id" :key="ingredient.name">{{ ingredient.name }}</i-option>
+          </i-select>
+        </template>
+        <input v-model="newMeasure.text2" type="text" class="form-control" placeholder="Texte 2 (optionel)" style="width:260px">
+        <button v-on:click="createMeasure(newMeasure)" class="btn btn-sm btn-success" slot="content">Ajouter</button>
       </div>
 
       <!-- TAGS -->
       <div class="recipe-tags">
         <h4>Tags</h4>
         <template>
-          <i-select v-model="selectedTags" multiple style="width:260px">
+          <i-select v-model="selectedTags" multiple filterable style="width:260px">
             <i-option v-for="tag in tags" :value="tag.id" :key="tag.name">{{ tag.name }}</i-option>
           </i-select>
         </template>
@@ -24,7 +39,7 @@
       <div class="recipe-tools">
         <h4>Ustensiles</h4>
         <template>
-          <i-select v-model="selectedTools" multiple style="width:260px">
+          <i-select v-model="selectedTools" multiple filterable style="width:260px">
             <i-option v-for="tool in tools" :value="tool.id" :key="tool.name">{{ tool.name }}</i-option>
           </i-select>
         </template>

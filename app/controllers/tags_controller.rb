@@ -1,7 +1,7 @@
 class TagsController < ApplicationController
   before_action :set_tag, only: [:destroy]
   def create
-    @tag = Tag.new(name: params[:name])
+    @tag = Tag.new(tag_params)
     authorize @tag
     @tag.save
     render json: { tag: @tag }, status: 200
