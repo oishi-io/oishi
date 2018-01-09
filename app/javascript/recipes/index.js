@@ -10,9 +10,12 @@ var vm = new Vue({
     recipeId: gon.recipeId,
     tools: gon.tools,
     tags: gon.tags,
+    measures: gon.measures,
+    ingredients: gon.ingredients,
     selectedTags: gon.selectedTags,
     selectedTools: gon.selectedTools,
     newIngredient: {name: '', description: ''},
+    newMeasure: { quantity: null, text1: '', ingredientId: null, text2: ''},
     newTag: {name: ''},
     newTool: {name: ''},
   },
@@ -53,7 +56,9 @@ var vm = new Vue({
         method: 'POST',
         url: '/tags',
         data: {
-          name: tag.name,
+          tag: {
+            name: tag.name,
+          }
         },
         success: function(data){
           vm.tags.push(data.tag);
@@ -85,6 +90,27 @@ var vm = new Vue({
         success: function(data){
           vm.ingredients.push(data.ingredient);
           vm.newIngredient = {name: '', description: ''};
+        }
+      })
+    },
+    createMeasure: function(measure){
+      let _this = this;
+      $.ajax({
+        method: 'POST',
+        url: '/recipes/' + _this.recipeId + '/measures',
+        data: {
+          measure: {
+            quantity: measure.quantity,
+            text_1: measure.text1,
+            ingredient_id: measure.ingredientId,
+            text_2: measure.text2,
+          },
+        },
+        success: function(data){
+          vm.measures.push(data.measure);
+          vm.newMeasure = { quantity: null, text1: '', ingredientId: null, text2: ''};
+          let text = '<li><p>{{data.measure.quantity}}{{data.measure.text_1}}{{data.ingredient.name}}{{data.measure.text_2}}</p></li>';
+          $('#measure-list').append(text);
         }
       })
     },
