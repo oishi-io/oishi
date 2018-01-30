@@ -2,7 +2,9 @@
   <div class="row">
     <div class="col-xs-12 ">
       <div class="recipe-photo">
-        <%= cl_image_tag @recipe.photos[0].path, crop: :fit %>
+        <% if @recipe.photos? %>
+          <%= cl_image_tag @recipe.photos[0].path, crop: :fit %>
+        <% end %>
       </div>
       <div class="recipe-title">
         <h2><strong><%= @recipe.title %></strong></h2>
