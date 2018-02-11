@@ -15,7 +15,7 @@ var vm = new Vue({
     selectedTags: gon.selectedTags,
     selectedTools: gon.selectedTools,
     newIngredient: { name: '', description: '' },
-    newMeasure: { quantity: null, text1: '', ingredientId: null, text2: ''},
+    newMeasure: { quantity: null, text1: '', ingredient: { id: null, name: null }, text2: ''},
     newTag: {name: ''},
     newTool: {name: ''},
   },
@@ -100,18 +100,23 @@ var vm = new Vue({
         url: '/recipes/' + _this.recipeId + '/measures',
         data: {
           measure: {
+            recipe_id: _this.recipeId,
             quantity: measure.quantity,
             text_1: measure.text1,
-            ingredient_id: measure.ingredientId,
+            ingredient_id: measure.ingredient.id,
             text_2: measure.text2,
           },
         },
         success: function(data){
           let id = Object.keys(data)[0];
           vm.measures[id] = data[id];
-          vm.newMeasure = { quantity: null, text1: '', ingredientId: null, text2: ''};
+          vm.newMeasure = { quantity: null, text1: '', ingredient: { id: null, name: null }, text2: ''};
         }
       })
+    },
+    editMeasure: function(measure){
+      let _this = this;
+      _this.newMeasure = measure;
     },
   },
 });

@@ -7,13 +7,16 @@
       <!-- MEASURES -->
       <div class="recipe-measures">
         <ul v-for="measure in measures" id="measure-list">
-          <li>{{ measure.quantity }}{{ measure.text1 }}{{ measure.ingredient.name }}{{ measure.text2 }}</li>
+          <div style="display: flex; justify-content: space-between;">
+            <li>{{ measure.quantity }}{{ measure.text1 }}{{ measure.ingredient.name }}{{ measure.text2 }}</li>
+            <a v-on:click="editMeasure(measure)">Edit</a>
+          </div>
         </ul>
         <h4>Ajout des mesures</h4>
         <input v-model="newMeasure.quantity" type="integer" class="form-control" placeholder="Quantité" style="width:260px">
         <input v-model="newMeasure.text1" type="text" class="form-control" placeholder="Texte 1" style="width:260px">
         <template>
-          <i-select v-model="newMeasure.ingredientId" filterable style="width:260px">
+          <i-select v-model="newMeasure.ingredient.id" filterable style="width:260px">
             <i-option v-for="ingredient in ingredients" :value="ingredient.id" :key="ingredient.name">{{ ingredient.name }}</i-option>
           </i-select>
         </template>
