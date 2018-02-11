@@ -31,14 +31,24 @@ class RecipesController < ApplicationController
 
   def add_details
     gon.recipeId = @recipe.id
-    @measure = Measure.new
-    @measures = @recipe.measures
-    gon.measures = @measures
     gon.ingredients = Ingredient.all
     gon.selectedTags = @recipe.tags.pluck(:id)
     gon.tags = Tag.all
     gon.selectedTools = @recipe.tools.pluck(:id)
     gon.tools = Tool.all
+    @measure = Measure.new
+    @measures = @recipe.measures.includes(:ingredient)
+    # serialize measures
+    serialized_measures = {}
+    @measures.each do |measure|
+      serialized_measures[measure.id] = {
+        quantity: measure.quantity,
+        text1: measure.text_1,
+        ingredient: { name: measure.ingredient.name, id: measure.ingredient.id },
+        text2: measure.text_2
+      }
+    end
+    gon.measures = serialized_measures
   end
 
   def add_tags

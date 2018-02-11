@@ -6,11 +6,8 @@
     <div class="select-details">
       <!-- MEASURES -->
       <div class="recipe-measures">
-        <ul id="measure-list">
-          <% @measures.each do |measure| %>
-            <li><p><%= measure.quantity %><%= measure.text_1 %><%= measure.ingredient.name %><%= measure.text_2 %></p>
-            </li>
-          <% end %>
+        <ul v-for="measure in measures" id="measure-list">
+          <li>{{ measure.quantity }}{{ measure.text1 }}{{ measure.ingredient.name }}{{ measure.text2 }}</li>
         </ul>
         <h4>Ajout des mesures</h4>
         <input v-model="newMeasure.quantity" type="integer" class="form-control" placeholder="Quantité" style="width:260px">

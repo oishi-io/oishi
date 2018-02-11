@@ -5,7 +5,14 @@ class MeasuresController < ApplicationController
     @measure.recipe = @recipe
     authorize @measure
     @measure.save
-    render json: { measure: @measure, ingredient: @measure.ingredient }, status: 200
+    # render json: { measure: @measure, ingredient: @measure.ingredient }, status: 200
+    render json: { @measure['id'] => {
+        quantity: @measure.quantity,
+        text1: @measure.text_1,
+        ingredient: { name: @measure.ingredient.name, id: @measure.ingredient.id },
+        text2: @measure.text_2
+      }
+    }
   end
 
   def edit
