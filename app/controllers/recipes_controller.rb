@@ -42,6 +42,7 @@ class RecipesController < ApplicationController
     serialized_measures = {}
     @measures.each do |measure|
       serialized_measures[measure.id] = {
+        measure_id: measure.id,
         quantity: measure.quantity,
         text1: measure.text_1,
         ingredient: { name: measure.ingredient.name, id: measure.ingredient.id },

@@ -6,10 +6,10 @@
     <div class="select-details">
       <!-- MEASURES -->
       <div class="recipe-measures">
-        <ul v-for="measure in measures" id="measure-list">
+        <ul v-for="(measure, index) in measures" id="measure-list">
           <div style="display: flex; justify-content: space-between;">
             <li>{{ measure.quantity }}{{ measure.text1 }}{{ measure.ingredient.name }}{{ measure.text2 }}</li>
-            <a v-on:click="editMeasure(measure)">Edit</a>
+            <a v-on:click="editMeasure(measure, index)">Edit</a>
           </div>
         </ul>
         <h4>Ajout des mesures</h4>
