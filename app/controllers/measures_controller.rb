@@ -1,7 +1,6 @@
 class MeasuresController < ApplicationController
   def create
     @measure = Measure.find_by(id: params[:measure][:measure_id])
-    binding.pry
     if @measure == nil
       @measure = Measure.new(measure_params)
     else

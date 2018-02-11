@@ -40,7 +40,6 @@ var vm = new Vue({
     },
     addTools: function(tools){
       let _this = this;
-      console.log(tools)
       $.ajax({
         method: 'POST',
         url: '/recipes/'+ _this.recipeId + '/add_tools',
