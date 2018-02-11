@@ -14,7 +14,7 @@ var vm = new Vue({
     ingredients: gon.ingredients,
     selectedTags: gon.selectedTags,
     selectedTools: gon.selectedTools,
-    newIngredient: {name: '', description: ''},
+    newIngredient: { name: '', description: '' },
     newMeasure: { quantity: null, text1: '', ingredientId: null, text2: ''},
     newTag: {name: ''},
     newTool: {name: ''},
@@ -107,13 +107,9 @@ var vm = new Vue({
           },
         },
         success: function(data){
-          console.log(data)
           let id = Object.keys(data)[0];
-          console.log(id)
-          vm.measures[id] = data.id;
+          vm.measures[id] = data[id];
           vm.newMeasure = { quantity: null, text1: '', ingredientId: null, text2: ''};
-          // let text = '<li><p>{{data.measure.quantity}}{{data.measure.text_1}}{{data.ingredient.name}}{{data.measure.text_2}}</p></li>';
-          // $('#measure-list').append(text);
         }
       })
     },
