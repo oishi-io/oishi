@@ -33,8 +33,8 @@ class MeasuresController < ApplicationController
     @id = @measure.id
     @recipe = @measure.recipe
     @measure.destroy
-    render json: { measure_id: @id }, status: 200
-    # redirect_to recipe_path(@recipe)
+    authorize @measure
+    render json: @measure
   end
 
   private

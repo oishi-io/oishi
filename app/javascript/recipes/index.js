@@ -123,7 +123,9 @@ var vm = new Vue({
       $.ajax({
         method: 'DELETE',
         url: '/recipes/' + _this.recipeId + '/measures/' + measure.measure_id,
-        success: function(){
+        success: function(data){
+          console.log(data)
+          console.log('yeah')
           Vue.delete(vm.measures, measure.measure_id)
         }
       })
