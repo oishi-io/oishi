@@ -114,7 +114,11 @@ var vm = new Vue({
         }
       })
     },
-    editMeasure: function(measure, index){
+    editMeasure: function(measure){
+      let _this = this;
+      _this.newMeasure = measure;
+    },
+    destroyMeasure(measure){
       let _this = this;
       _this.newMeasure = measure;
     },
