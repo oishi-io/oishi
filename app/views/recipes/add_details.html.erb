@@ -6,7 +6,7 @@
     <div class="select-details">
       <!-- MEASURES -->
       <div class="recipe-measures">
-        <ul v-for="measure in measures" id="measure-list">
+        <ul v-for="(measure, index) in measures" id="measure-list">
           <div style="display: flex; justify-content: flex-start;">
             <a v-on:click="editMeasure(measure)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
             <a v-on:click="destroyMeasure(measure, index)" style="margin: 0px 5px;"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
