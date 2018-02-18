@@ -30,9 +30,11 @@ class MeasuresController < ApplicationController
 
   def destroy
     @measure = Measure.find(params[:id]) #get the measure from the id
+    @id = @measure.id
     @recipe = @measure.recipe
     @measure.destroy
-    redirect_to recipe_path(@recipe)
+    render json: { measure_id: @id }, status: 200
+    # redirect_to recipe_path(@recipe)
   end
 
   private

@@ -114,13 +114,25 @@ var vm = new Vue({
         }
       })
     },
-    editMeasure: function(measure){
+    editMeasure: function(measure, index){
       let _this = this;
       _this.newMeasure = measure;
     },
     destroyMeasure(measure){
       let _this = this;
-      _this.newMeasure = measure;
+      $.ajax({
+        method: 'DELETE',
+        url: '/recipes/' + _this.recipeId + '/measures/' + measure.measure_id,
+        // data: {
+        //   name: tool.name,
+        // },
+        success: function(data){
+          console.log(data)
+        }
+      })
+          console.log(vm.measures[measure.measure_id])
+         vm.measures.delete(measure.measure_id);
+         vm.measures.splice(index, 1)
     },
   },
 });
