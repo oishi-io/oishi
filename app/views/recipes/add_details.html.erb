@@ -2,8 +2,10 @@
 
 <div class="container">
   <div class="recipe-title text-center">
-        <h2><strong><%= @recipe.title %></strong></h2>
-      </div>
+    <%= link_to recipe_path(@recipe) do %>
+      <h2><strong><%= @recipe.title %></strong></h2>
+    <% end %>
+  </div>
   <div id="recipe_add_details">
     <div class="select-details">
       <!-- MEASURES -->
