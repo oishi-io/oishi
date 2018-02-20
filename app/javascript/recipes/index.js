@@ -134,10 +134,8 @@ var vm = new Vue({
     },
     checkMove: function(evt){
       let _this = this;
-      _this.measures.forEach(function(measure){
-        console.log('avant: ', measure.order, ', après: ', _this.measures.indexOf(measure) + 1)
-        measure.order = _this.measures.indexOf(measure) + 1;
-      });
+      _this.measures[evt.draggedContext.index].order = evt.draggedContext.futureIndex;
+      _this.measures[evt.draggedContext.futureIndex].order = evt.draggedContext.index;
     },
     saveOrder: function(){
       let _this = this;
