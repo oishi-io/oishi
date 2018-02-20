@@ -6,8 +6,8 @@ class User < ApplicationRecord
 
   has_many :recipes
 
-def admin?
-  self.admin
-end
+  def admin?
+    self.admin
+  end
 
 end
