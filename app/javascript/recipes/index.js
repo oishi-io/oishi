@@ -23,12 +23,6 @@ var vm = new Vue({
   components: {
     draggable
   },
-  mounted: function(){
-
-  },
-  computed: {
-
-  },
   methods: {
     addTags: function(tags){
       let _this = this;
@@ -113,8 +107,13 @@ var vm = new Vue({
         },
         success: function(data){
           let id = Object.keys(data)[0];
-          vm.measures.push(data[id]);
-          vm.newMeasure = { quantity: null, text1: '', ingredient: { id: null, name: null }, text2: ''};
+          let index = _this.measures.indexOf(data[id]);
+          if( index == -1){
+            _this.measures[index] = data[id];
+          } else {
+            _this.measures.push(data[id]);
+          }
+          _this.newMeasure = { quantity: null, text1: '', ingredient: { id: null, name: null }, text2: ''};
         }
       })
     },
@@ -130,7 +129,7 @@ var vm = new Vue({
         success: function(data){
           console.log(data)
           console.log('yeah')
-          Vue.delete(vm.measures, index)
+          Vue.delete(_this.measures, index)
         }
       })
     },

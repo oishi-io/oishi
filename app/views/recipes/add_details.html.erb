@@ -16,7 +16,7 @@
             <div v-for="(measure, index) in measures" :options="{draggable:'.item'}" style="display: flex; justify-content: flex-start;">
               <a v-on:click="editMeasure(measure)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
               <a v-on:click="destroyMeasure(measure, index)" style="margin: 0px 5px;"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-              <p style="margin: 0px 5px;">|</p>
+              <p style="margin: 0px 5px;">{{ index + 1}}. </p>
               <li>{{ measure.quantity }}{{ measure.text1 }}{{ measure.ingredient.name }}{{ measure.text2 }}</li>
             </div>
           </draggable>
