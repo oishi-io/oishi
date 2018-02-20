@@ -16,4 +16,8 @@ class MeasurePolicy < ApplicationPolicy
   def destroy?
     user.admin? # Only an admin can delete a Recipe
   end
+
+  def save_order?
+    user.admin?
+  end
 end

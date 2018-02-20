@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
-  # RECIPE
+  # RECIPES
   resources :recipes do
     resources :measures, only: [:new, :create, :edit, :update, :destroy]
   end
@@ -12,13 +12,16 @@ Rails.application.routes.draw do
   post '/recipes/:id/add_tags', to: 'recipes#add_tags'
   post '/recipes/:id/add_tools', to: 'recipes#add_tools'
 
-  # TOOL
+  # MEASURES
+  post '/measures/save_order', to: 'measures#save_order'
+
+  # TOOLS
   resources :tools
 
-  # TAG
+  # TAGS
   resources :tags
 
-  # INGREDIENT
+  # INGREDIENTS
   resources :ingredients
 
   # EMAILS

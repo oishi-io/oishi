@@ -12,9 +12,19 @@ class MeasuresController < ApplicationController
                    quantity: @measure.quantity,
                    text1: @measure.text_1,
                    ingredient: { name: @measure.ingredient.name, id: @measure.ingredient.id },
-                   text2: @measure.text_2
-      }
-    }
+                   text2: @measure.text_2,
+                   order: @measure.order
+                  }
+  end
+
+  def save_order
+    measures = params[:measures]
+    measures.each do |k, v|
+      @measure = Measure.find_by(id: v['measure_id'])
+      @measure.update(order: v['order'])
+      authorize @measure
+      @measure.save
+    end
   end
 
   def edit
@@ -39,6 +49,6 @@ class MeasuresController < ApplicationController
   private
 
   def measure_params
-    params.require(:measure).permit(:recipe_id, :quantity, :text_1, :ingredient_id, :text_2)
+    params.require(:measure).permit(:recipe_id, :quantity, :text_1, :ingredient_id, :text_2, :order)
   end
 end

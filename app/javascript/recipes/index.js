@@ -16,7 +16,7 @@ var vm = new Vue({
     selectedTags: gon.selectedTags,
     selectedTools: gon.selectedTools,
     newIngredient: { name: '', description: '' },
-    newMeasure: { measure_id: null, quantity: null, text1: '', ingredient: { id: null, name: null }, text2: ''},
+    newMeasure: { measure_id: null, quantity: null, text1: '', ingredient: { id: null, name: null }, text2: '', order: null},
     newTag: {name: ''},
     newTool: {name: ''},
   },
@@ -103,6 +103,7 @@ var vm = new Vue({
             text_1: measure.text1,
             ingredient_id: measure.ingredient.id,
             text_2: measure.text2,
+            order: _this.measures.length + 1,
           },
         },
         success: function(data){
@@ -113,7 +114,7 @@ var vm = new Vue({
           } else {
             _this.measures.push(data[id]);
           }
-          _this.newMeasure = { quantity: null, text1: '', ingredient: { id: null, name: null }, text2: ''};
+          _this.newMeasure = { quantity: null, text1: '', ingredient: { id: null, name: null }, text2: '', order: null};
         }
       })
     },
@@ -132,7 +133,21 @@ var vm = new Vue({
       })
     },
     checkMove: function(evt){
-      console.log('index: ', evt.draggedContext.index, 'futureIndex: ', evt.draggedContext.futureIndex)
+      let _this = this;
+      _this.measures.forEach(function(measure){
+        console.log('avant: ', measure.order, ', après: ', _this.measures.indexOf(measure) + 1)
+        measure.order = _this.measures.indexOf(measure) + 1;
+      });
+    },
+    saveOrder: function(){
+      let _this = this;
+      $.ajax({
+        method: 'POST',
+        data: {
+          measures: _this.measures,
+        },
+        url: '/measures/save_order',
+      })
     },
   },
 });

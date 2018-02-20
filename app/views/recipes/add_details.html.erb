@@ -20,6 +20,7 @@
               <li>{{ measure.quantity }}{{ measure.text1 }}{{ measure.ingredient.name }}{{ measure.text2 }}</li>
             </div>
           </draggable>
+          <button v-on:click="saveOrder" class="btn btn-sm btn-success" slot="content" style="height: 32px;">Sauver Ordre</button>
         </div>
         <div>
           <h4>Ajout des mesures</h4>
