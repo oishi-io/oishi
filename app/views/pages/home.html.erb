@@ -2,13 +2,13 @@
 <div class="bande" style="background-image:linear-gradient(-225deg, #c21500, #ffc500 50%), url(https://mycookingideas.com/wp-content/uploads/2016/05/japan10.jpg)">
   <div class="banner-content">
     <h1>Oishi</h1>
-    <p class="progressif">La bite japonaise simplifiée</p>
+    <p class="progressif">La gastronomie japonaise simplifiée</p>
     <div class="container">
     <!-- <div class="row"> -->
-      <div class="col-xs-4 col-xs-offset-4">
+      <div class="col-sm-offset-4 col-sm-4 col-md-offset-4 col-md-4 col-xs-offset-2 col-xs-8">
         <div class="form-wrapper">
           <%= simple_form_for @email do |f| %>
-            <%= f.input :email_address, label: false, placeholder: 'Insérez votre email' %>
+            <%= f.input :email_address, label: false, placeholder: 'Mon email' %>
             <%= f.button :submit, class: "btn btn-info", value: "Go!"%>
           <% end %>
         </div>
