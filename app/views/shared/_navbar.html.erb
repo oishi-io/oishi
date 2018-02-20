@@ -10,9 +10,7 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Accueil", root_path, class: "navbar-item navbar-link" %>
-
-      <% if current_user.admin %>
+      <% if current_user.admin? %>
         <%= link_to "Admin Dashboard", rails_admin_path, class: "navbar-item navbar-link" %>
         <%= link_to "Recettes", recipes_path, class: "navbar-item navbar-link" %>
         <%= link_to "Ingrédients", ingredients_path, class: "navbar-item navbar-link" %>
@@ -50,7 +48,7 @@
             <%= link_to "Home", root_path, class: "navbar-item navbar-link" %>
           </li>
 
-          <% if current_user.admin %>
+          <% if current_user.admin? %>
           <li>
             <%= link_to "Admin Dashboard", rails_admin_path, class: "navbar-item navbar-link" %>
           </li>
