@@ -4,7 +4,8 @@
     "iview": "^2.8.0",
     "vue": "^2.4.3",
     "vue-loader": "^13.0.4",
-    "vue-template-compiler": "^2.4.3"
+    "vue-template-compiler": "^2.4.3",
+    "vuedraggable": "^2.16.0"
   },
   "devDependencies": {
     "webpack-dev-server": "^2.8.0"
