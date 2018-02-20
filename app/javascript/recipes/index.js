@@ -127,11 +127,12 @@ var vm = new Vue({
         method: 'DELETE',
         url: '/recipes/' + _this.recipeId + '/measures/' + measure.measure_id,
         success: function(data){
-          console.log(data)
-          console.log('yeah')
           Vue.delete(_this.measures, index)
         }
       })
+    },
+    checkMove: function(evt){
+      console.log('index: ', evt.draggedContext.index, 'futureIndex: ', evt.draggedContext.futureIndex)
     },
   },
 });
