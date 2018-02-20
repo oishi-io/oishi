@@ -39,9 +39,12 @@ class RecipesController < ApplicationController
     @measure = Measure.new
     @measures = @recipe.measures.includes(:ingredient)
     # serialize measures
-    serialized_measures = {}
+    # serialized_measures = {}
+    serialized_measures = []
+
     @measures.each do |measure|
-      serialized_measures[measure.id] = {
+      # serialized_measures[measure.id] = {
+      serialized_measures << {
         measure_id: measure.id,
         quantity: measure.quantity,
         text1: measure.text_1,

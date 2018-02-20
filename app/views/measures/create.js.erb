@@ -1,8 +1,8 @@
-<% if @measure.errors.any? %>
+<%# if @measure.errors.any? %>
   // Render new measure form with errors
-  const container = document.querySelector('#measure-form-container');
-  container.innerHTML = '<%= j render "recipes/measure_form", recipe: @recipe, measure: @measure %>'
-<% else %>
-  const list = document.getElementById("measure-list");
-  list.insertAdjacentHTML("beforeend", "<li><p><%= @measure.quantity %> <%= @measure.text_1 %> <%= @measure.ingredient.name %> <%= @measure.text_2 %></p></li>");
-<% end %>
+  // const container = document.querySelector('#measure-form-container');
+  // container.innerHTML = '<%= j render "recipes/measure_form", recipe: @recipe, measure: @measure %>'
+<%# else %>
+  // const list = document.getElementById("measure-list");
+  // list.insertAdjacentHTML("beforeend", "<li><p><%= @measure.quantity %> <%= @measure.text_1 %> <%= @measure.ingredient.name %> <%= @measure.text_2 %></p></li>");
+<%# end %>

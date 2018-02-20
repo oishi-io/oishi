@@ -1,6 +1,7 @@
 import Vue from 'vue/dist/vue.common';
 import iView from 'iview';
 import locale from 'iview/src/locale/lang/en-US';
+import draggable from 'vuedraggable';
 
 Vue.use(iView, { locale });
 
@@ -18,6 +19,9 @@ var vm = new Vue({
     newMeasure: { measure_id: null, quantity: null, text1: '', ingredient: { id: null, name: null }, text2: ''},
     newTag: {name: ''},
     newTool: {name: ''},
+  },
+  components: {
+    draggable
   },
   mounted: function(){
 
@@ -109,7 +113,7 @@ var vm = new Vue({
         },
         success: function(data){
           let id = Object.keys(data)[0];
-          vm.measures[id] = data[id];
+          vm.measures.push(data[id]);
           vm.newMeasure = { quantity: null, text1: '', ingredient: { id: null, name: null }, text2: ''};
         }
       })
@@ -126,7 +130,7 @@ var vm = new Vue({
         success: function(data){
           console.log(data)
           console.log('yeah')
-          Vue.delete(vm.measures, measure.measure_id)
+          Vue.delete(vm.measures, index)
         }
       })
     },
