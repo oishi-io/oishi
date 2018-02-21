@@ -25,7 +25,7 @@
         <div>
           <h4>Ajout des mesures</h4>
           <div style="display: flex;">
-            <input v-model="newMeasure.quantity" type="integer" class="form-control" placeholder="Quantité" style="width:200px; height: 32px;">
+            <input v-model.number="newMeasure.quantity" type="integer" class="form-control" placeholder="Quantité" style="width:200px; height: 32px;">
             <input v-model="newMeasure.text1" type="text" class="form-control" placeholder="Texte 1" style="width:200px; height: 32px;">
             <template>
               <i-select v-model="newMeasure.ingredient.id" filterable style="width:200px">

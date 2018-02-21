@@ -103,16 +103,24 @@ var vm = new Vue({
             text_1: measure.text1,
             ingredient_id: measure.ingredient.id,
             text_2: measure.text2,
-            order: _this.measures.length + 1,
+            order: _this.measures.order,
           },
         },
         success: function(data){
           let id = Object.keys(data)[0];
-          let index = _this.measures.indexOf(data[id]);
+          let index = _this.measures.indexOf(data);
+          let m = _this.measures[0]
+          console.log('data :', data)
+          console.log('m :', m)
+          console.log('data == m? ', data == m)
+          console.log('index: ', index)
+          console.log('id: ', data.measure_id, ', quantity: ', data.quantity, ', text1: ', data.text1, ', text2: ', data.text2)
+          console.log('id: ', m.measure_id, ', quantity: ', m.quantity, ', text1: ', m.text1, ', text2: ', m.text2)
+
           if( index == -1){
-            _this.measures[index] = data[id];
+            _this.measures.push(data);
           } else {
-            _this.measures.push(data[id]);
+            _this.measures[index] = data;
           }
           _this.newMeasure = { quantity: null, text1: '', ingredient: { id: null, name: null }, text2: '', order: null};
         }
