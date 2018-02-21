@@ -94,7 +94,6 @@ var vm = new Vue({
       let _this = this;
       let array = _this.measures.map(function(measure){ return measure.ingredient.name});
       let index = array.indexOf(measure.ingredient.name);
-      console.log(measure)
       let order = (measure.order != null) ? measure.order : _this.measures.length + 1;
       $.ajax({
         method: 'POST',
