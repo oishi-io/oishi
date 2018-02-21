@@ -43,7 +43,7 @@ class RecipesController < ApplicationController
     @measures.each do |measure|
       serialized_measures << {
         measure_id: measure.id,
-        quantity: measure.quantity,
+        quantity: measure.quantity.to_i,
         text1: measure.text_1,
         ingredient: { name: measure.ingredient.name, id: measure.ingredient.id },
         text2: measure.text_2,

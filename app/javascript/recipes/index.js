@@ -92,6 +92,9 @@ var vm = new Vue({
     },
     createMeasure: function(measure){
       let _this = this;
+      let array = _this.measures.map(function(measure){ return measure.ingredient.name});
+      let index = array.indexOf(measure.ingredient.name);
+      let order = (measure.order != null) ? measure.order : _this.measures.length + 1;
       $.ajax({
         method: 'POST',
         url: '/recipes/' + _this.recipeId + '/measures',
@@ -103,16 +106,14 @@ var vm = new Vue({
             text_1: measure.text1,
             ingredient_id: measure.ingredient.id,
             text_2: measure.text2,
-            order: _this.measures.length + 1,
+            order: order,
           },
         },
         success: function(data){
-          let id = Object.keys(data)[0];
-          let index = _this.measures.indexOf(data[id]);
           if( index == -1){
-            _this.measures[index] = data[id];
+            _this.measures.push(data);
           } else {
-            _this.measures.push(data[id]);
+            _this.measures[index] = data;
           }
           _this.newMeasure = { quantity: null, text1: '', ingredient: { id: null, name: null }, text2: '', order: null};
         }
