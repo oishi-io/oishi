@@ -59,6 +59,16 @@
         </template>
         <button v-on:click="addTools(selectedTools)" class="btn btn-sm btn-info" style="height: 32px;">Update</button>
       </div>
+
+      <!-- STEPS -->
+      <div class="recipe-steps">
+        <h4>Etapes</h4>
+        <div v-for="(step, index) in steps" style="display: flex; justify-content: flex-start; margin-bottom: 5px;">
+          <input class="form-control" type="integer" v-model="step.index" style="width: 40px;">
+          <input class="form-control" type="text" v-model="step.text" style="margin: 0px 5px; width: 300px;">
+          <button v-on:click="updateStep(step)" class="btn btn-sm btn-info">Update</button>
+        </div>
+      </div>
     </div>
 
     <div class="create-details">
