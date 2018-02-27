@@ -13,6 +13,7 @@ var vm = new Vue({
     tags: gon.tags,
     measures: gon.measures,
     ingredients: gon.ingredients,
+    steps: gon.steps,
     selectedTags: gon.selectedTags,
     selectedTools: gon.selectedTools,
     newIngredient: { name: '', description: '' },
@@ -146,6 +147,19 @@ var vm = new Vue({
           measures: _this.measures,
         },
         url: '/measures/save_order',
+      })
+    },
+    updateStep: function(step){
+      let _this = this;
+      $.ajax({
+        method: 'POST',
+        data: {
+          step_id: step.id,
+          text: step.text,
+          index: step.index,
+          recipe_id: step.recipe_id,
+        },
+        url: '/recipes/' + _this.recipeId + '/steps',
       })
     },
   },
