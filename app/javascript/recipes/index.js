@@ -162,6 +162,10 @@ var vm = new Vue({
         url: '/recipes/' + _this.recipeId + '/steps',
       })
     },
+    addStep: function(){
+      let _this = this;
+      _this.steps.push({ id: null, index: null, text: '', recipe_id: null });
+    },
   },
 });
 
