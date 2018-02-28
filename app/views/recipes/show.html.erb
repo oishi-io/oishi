@@ -12,7 +12,7 @@
       <!-- TITLE -->
       <div class="recipe-title" style="display: flex; align-items: center;">
         <h2><strong><%= @recipe.title %></strong></h2>
-        <% if current_user.admin?%>
+        <% if current_user.admin? %>
           <%= link_to add_details_path(@recipe) do %>
             <i class="fa fa-plus" aria-hidden="true"></i>
           <% end %>
@@ -22,6 +22,16 @@
       <!-- SERVINGS -->
       <div class="recipe-servings">
         <p><%= @recipe.servings %> pers.</p>
+      </div>
+
+      <!-- PREPARATION TIME -->
+      <div class="recipe-preparation_time">
+        <p><%= @recipe.preparation_time %> min</p>
+      </div>
+
+      <!-- COOKING TIME -->
+      <div class="recipe-cooking_time">
+        <p><%= @recipe.cooking_time %> min</p>
       </div>
 
       <!-- MEASURES -->
