@@ -20,6 +20,7 @@ var vm = new Vue({
     newMeasure: { measure_id: null, quantity: null, text1: '', ingredient: { id: null, name: null }, text2: '', order: null},
     newTag: {name: ''},
     newTool: {name: ''},
+    checkEditMeasure: false,
   },
   components: {
     draggable
@@ -117,12 +118,14 @@ var vm = new Vue({
             _this.measures[index] = data;
           }
           _this.newMeasure = { quantity: null, text1: '', ingredient: { id: null, name: null }, text2: '', order: null};
+          _this.checkEditMeasure = false;
         }
       })
     },
     editMeasure: function(measure, index){
       let _this = this;
       _this.newMeasure = measure;
+      _this.checkEditMeasure = true;
     },
     destroyMeasure(measure, index){
       let _this = this;

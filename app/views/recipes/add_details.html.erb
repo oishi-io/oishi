@@ -16,8 +16,7 @@
             <div v-for="(measure, index) in measures" :options="{draggable:'.item'}" style="display: flex; justify-content: flex-start;">
               <a v-on:click="editMeasure(measure)"><i class="fa fa-pencil-square-o" style="font-size: 20px;" aria-hidden="true"></i></a>
               <a v-on:click="destroyMeasure(measure, index)" style="margin: 0px 5px;"><i class="fa fa-times" style="color: #cf1b1b; font-size: 20px;" aria-hidden="true"></i></a>
-              <p style="margin: 0px 5px;">{{ index + 1}}. </p>
-              <li>{{ measure.quantity }}{{ measure.text1 }}{{ measure.ingredient.name }}{{ measure.text2 }}</li>
+              <li style="font-size: 18px; list-style: none;"> {{ index + 1}} | {{ measure.quantity }}{{ measure.text1 }}{{ measure.ingredient.name }}{{ measure.text2 }}</li>
             </div>
           </draggable>
           <button v-on:click="saveOrder" class="btn btn-sm btn-success" slot="content" style="height: 32px;">Sauver Ordre</button>
@@ -33,7 +32,10 @@
               </i-select>
             </template>
             <input v-model="newMeasure.text2" type="text" class="form-control" placeholder="Texte 2" style="width: 150px; height: 32px; margin-right: 5px;">
-            <a v-on:click="createMeasure(newMeasure)"><i class="fa fa-plus-square-o" style="font-size: 20px;" aria-hidden="true"></i></a>
+            <a v-on:click="createMeasure(newMeasure)">
+              <i v-if="checkEditMeasure == false" class="fa fa-plus-square-o" style="font-size: 20px;" aria-hidden="true"></i>
+              <i v-else class="fa fa-floppy-o" style="font-size: 20px;" aria-hidden="true"></i>
+            </a>
           </div>
         </div>
       </div>
