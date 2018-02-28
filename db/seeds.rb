@@ -18,7 +18,7 @@ puts "starts creating"
 
 
 
-onigiri = Recipe.new(title: "onigiri", servings: 2, instructions: "faire une belle petite boulette en triangle")
+onigiri = Recipe.new(title: "onigiri", servings: 2)
 onigiri.save
 
 rice = Ingredient.new(name: "rice")

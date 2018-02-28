@@ -7,9 +7,10 @@ class StepsController < ApplicationController
     head :ok
   end
 
-  def update
-  end
-
   def destroy
+    @step = Step.find(params[:id]) #get the step from the id
+    @step.destroy
+    authorize @step
+    render json: @step
   end
 end

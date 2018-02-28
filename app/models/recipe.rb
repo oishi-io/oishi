@@ -8,5 +8,5 @@ class Recipe < ApplicationRecord
   has_attachments :photos, maximum: 10
 
   validates :title, presence: true, uniqueness: true
-  validates :instructions, :servings, presence: true
+  validates :servings, presence: true
 end

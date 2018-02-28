@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="//unpkg.com/iview/dist/styles/iview.css">
 
-<div class="container">
+<div class="container" v-cloak>
   <div class="recipe-title text-center">
     <%= link_to recipe_path(@recipe) do %>
       <h2><strong><%= @recipe.title %></strong></h2>
@@ -11,64 +11,69 @@
       <!-- MEASURES -->
       <div class="recipe-measures">
         <div>
-          <h4>Liste des mesures</h4>
+          <h4 style="margin-top: 10px; margin-bottom: 10px;">Liste des mesures</h4>
           <draggable v-model="measures" :move="checkMove">
-            <div v-for="(measure, index) in measures" :options="{draggable:'.item'}" style="display: flex; justify-content: flex-start;">
-              <a v-on:click="editMeasure(measure)"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-              <a v-on:click="destroyMeasure(measure, index)" style="margin: 0px 5px;"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-              <p style="margin: 0px 5px;">{{ index + 1}}. </p>
-              <li>{{ measure.quantity }}{{ measure.text1 }}{{ measure.ingredient.name }}{{ measure.text2 }}</li>
+            <div v-for="(measure, index) in measures" :options="{draggable:'.item'}" style="display: flex; justify-content: space-between; width: 450px;">
+              <li style="font-size: 18px; list-style: none;"> {{ index + 1}} | {{ measure.quantity }}{{ measure.text1 }}{{ measure.ingredient.name }}{{ measure.text2 }}</li>
+              <div>
+                <a v-on:click="editMeasure(measure)"><i class="fa fa-pencil-square-o" style="font-size: 20px;" aria-hidden="true"></i></a>
+                <a v-on:click="destroyMeasure(measure, index)" style="margin: 0px 5px;"><i class="fa fa-times" style="color: #cf1b1b; font-size: 20px;" aria-hidden="true"></i></a>
+              </div>
             </div>
           </draggable>
           <button v-on:click="saveOrder" class="btn btn-sm btn-success" slot="content" style="height: 32px;">Sauver Ordre</button>
         </div>
         <div>
-          <h4>Ajout des mesures</h4>
-          <div style="display: flex;">
-            <input v-model.number="newMeasure.quantity" type="integer" class="form-control" placeholder="Quantité" style="width:200px; height: 32px;">
-            <input v-model="newMeasure.text1" type="text" class="form-control" placeholder="Texte 1" style="width:200px; height: 32px;">
+          <h4 style="margin-top: 20px; margin-bottom: 10px;">Ajout des mesures</h4>
+          <div style="display: flex; align-items: center;">
+            <input v-model.number="newMeasure.quantity" type="integer" class="form-control" placeholder="Quantité" style="width: 150px; height: 32px; margin-right: 5px;">
+            <input v-model="newMeasure.text1" type="text" class="form-control" placeholder="Texte 1" style="width: 150px; height: 32px; margin-right: 5px;">
             <template>
-              <i-select v-model="newMeasure.ingredient.id" filterable style="width:200px">
+              <i-select v-model="newMeasure.ingredient.id" filterable style="width: 150px; margin-right: 5px;">
                 <i-option v-for="ingredient in ingredients" :value="ingredient.id" :key="ingredient.name">{{ ingredient.name }}</i-option>
               </i-select>
             </template>
-            <input v-model="newMeasure.text2" type="text" class="form-control" placeholder="Texte 2 (optionel)" style="width:200px; height: 32px;">
-            <button v-on:click="createMeasure(newMeasure)" class="btn btn-sm btn-success" slot="content" style="height: 32px;">Ajouter</button>
+            <input v-model="newMeasure.text2" type="text" class="form-control" placeholder="Texte 2" style="width: 150px; height: 32px; margin-right: 5px;">
+            <a v-on:click="createMeasure(newMeasure)">
+              <i v-if="checkEditMeasure == false" class="fa fa-plus-square-o" style="font-size: 20px;" aria-hidden="true"></i>
+              <i v-else class="fa fa-floppy-o" style="font-size: 20px;" aria-hidden="true"></i>
+            </a>
           </div>
         </div>
       </div>
 
       <!-- TAGS -->
       <div class="recipe-tags">
-        <h4>Tags</h4>
+        <h4 style="margin-top: 10px; margin-bottom: 10px;">Tags</h4>
         <template>
-          <i-select v-model="selectedTags" multiple filterable style="width:300px; ">
+          <i-select v-model="selectedTags" multiple filterable style="width: 617px; ">
             <i-option v-for="tag in tags" :value="tag.id" :key="tag.name">{{ tag.name }}</i-option>
           </i-select>
         </template>
-        <button v-on:click="addTags(selectedTags)" class="btn btn-sm btn-info" style="height: 32px;">Update</button>
+        <a v-on:click="addTags(selectedTags)"><i class="fa fa-floppy-o" style="font-size: 20px;" aria-hidden="true"></i></a>
       </div>
 
       <!-- TOOLS -->
       <div class="recipe-tools">
-        <h4>Ustensiles</h4>
+        <h4 style="margin-top: 10px; margin-bottom: 10px;">Ustensiles</h4>
         <template>
-          <i-select v-model="selectedTools" multiple filterable style="width:300px; ">
+          <i-select v-model="selectedTools" multiple filterable style="width: 617px; ">
             <i-option v-for="tool in tools" :value="tool.id" :key="tool.name">{{ tool.name }}</i-option>
           </i-select>
         </template>
-        <button v-on:click="addTools(selectedTools)" class="btn btn-sm btn-info" style="height: 32px;">Update</button>
+        <a v-on:click="addTools(selectedTools)"><i class="fa fa-floppy-o" style="font-size: 20px;" aria-hidden="true"></i></a>
       </div>
 
       <!-- STEPS -->
       <div class="recipe-steps">
-        <h4>Etapes</h4>
-        <div v-for="(step, index) in steps" style="display: flex; justify-content: flex-start; margin-bottom: 5px;">
-          <input class="form-control" type="integer" v-model="step.index" style="width: 40px;">
-          <input class="form-control" type="text" v-model="step.text" style="margin: 0px 5px; width: 300px;">
-          <button v-on:click="updateStep(step)" class="btn btn-sm btn-info">Update</button>
+        <h4 style="margin-top: 10px; margin-bottom: 10px;">Etapes</h4>
+        <div v-for="(step, index) in steps" style="display: flex; justify-content: flex-start; align-items: center; margin-bottom: 5px;">
+          <input class="form-control" type="integer" v-model="step.index" placeholder="#" style="width: 40px;">
+          <textarea class="form-control" type="text" v-model="step.text" placeholder="Description de l'étape" style="margin: 0px 5px; width: 570px;"></textarea>
+          <a v-on:click="updateStep(step)"><i class="fa fa-floppy-o" style="font-size: 20px;" aria-hidden="true"></i></a>
+          <a v-on:click="destroyStep(step, index)" style="margin: 0px 5px;"><i class="fa fa-times" style="color: #cf1b1b; font-size: 20px;" aria-hidden="true"></i></a>
         </div>
-        <button v-on:click="addStep" class="btn btn-sm btn-success">Ajouter</button>
+        <button v-on:click="addStep" class="btn btn-sm btn-success" style="margin-bottom: 20px; text-align: center;">Ajouter une nouvele étape</button>
       </div>
     </div>
 
