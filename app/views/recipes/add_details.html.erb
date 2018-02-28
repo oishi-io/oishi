@@ -13,10 +13,12 @@
         <div>
           <h4 style="margin-top: 10px; margin-bottom: 10px;">Liste des mesures</h4>
           <draggable v-model="measures" :move="checkMove">
-            <div v-for="(measure, index) in measures" :options="{draggable:'.item'}" style="display: flex; justify-content: flex-start;">
-              <a v-on:click="editMeasure(measure)"><i class="fa fa-pencil-square-o" style="font-size: 20px;" aria-hidden="true"></i></a>
-              <a v-on:click="destroyMeasure(measure, index)" style="margin: 0px 5px;"><i class="fa fa-times" style="color: #cf1b1b; font-size: 20px;" aria-hidden="true"></i></a>
+            <div v-for="(measure, index) in measures" :options="{draggable:'.item'}" style="display: flex; justify-content: space-between; width: 450px;">
               <li style="font-size: 18px; list-style: none;"> {{ index + 1}} | {{ measure.quantity }}{{ measure.text1 }}{{ measure.ingredient.name }}{{ measure.text2 }}</li>
+              <div>
+                <a v-on:click="editMeasure(measure)"><i class="fa fa-pencil-square-o" style="font-size: 20px;" aria-hidden="true"></i></a>
+                <a v-on:click="destroyMeasure(measure, index)" style="margin: 0px 5px;"><i class="fa fa-times" style="color: #cf1b1b; font-size: 20px;" aria-hidden="true"></i></a>
+              </div>
             </div>
           </draggable>
           <button v-on:click="saveOrder" class="btn btn-sm btn-success" slot="content" style="height: 32px;">Sauver Ordre</button>
@@ -44,7 +46,7 @@
       <div class="recipe-tags">
         <h4 style="margin-top: 10px; margin-bottom: 10px;">Tags</h4>
         <template>
-          <i-select v-model="selectedTags" multiple filterable style="width:300px; ">
+          <i-select v-model="selectedTags" multiple filterable style="width: 617px; ">
             <i-option v-for="tag in tags" :value="tag.id" :key="tag.name">{{ tag.name }}</i-option>
           </i-select>
         </template>
@@ -55,7 +57,7 @@
       <div class="recipe-tools">
         <h4 style="margin-top: 10px; margin-bottom: 10px;">Ustensiles</h4>
         <template>
-          <i-select v-model="selectedTools" multiple filterable style="width:300px; ">
+          <i-select v-model="selectedTools" multiple filterable style="width: 617px; ">
             <i-option v-for="tool in tools" :value="tool.id" :key="tool.name">{{ tool.name }}</i-option>
           </i-select>
         </template>
@@ -67,7 +69,7 @@
         <h4 style="margin-top: 10px; margin-bottom: 10px;">Etapes</h4>
         <div v-for="(step, index) in steps" style="display: flex; justify-content: flex-start; align-items: center; margin-bottom: 5px;">
           <input class="form-control" type="integer" v-model="step.index" placeholder="#" style="width: 40px;">
-          <textarea class="form-control" type="text" v-model="step.text" placeholder="Description de l'étape" style="margin: 0px 5px; width: 300px;"></textarea>
+          <textarea class="form-control" type="text" v-model="step.text" placeholder="Description de l'étape" style="margin: 0px 5px; width: 570px;"></textarea>
           <a v-on:click="updateStep(step)"><i class="fa fa-floppy-o" style="font-size: 20px;" aria-hidden="true"></i></a>
           <a v-on:click="destroyStep(step, index)" style="margin: 0px 5px;"><i class="fa fa-times" style="color: #cf1b1b; font-size: 20px;" aria-hidden="true"></i></a>
         </div>
