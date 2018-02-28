@@ -29,7 +29,8 @@
         <h3>Mesures</h3>
         <ul>
           <% @measures.each do |measure| %>
-            <li><p><%= measure.quantity %><%= measure.text_1 %><%= measure.ingredient.name %><%= measure.text_2 %></p>
+            <li>
+              <p><%= measure.quantity %><%= measure.text_1 %><%= measure.ingredient.name %><%= measure.text_2 %></p>
             </li>
           <% end %>
         </ul>
@@ -40,7 +41,8 @@
         <h3>Ustensiles</h3>
         <ul>
           <% @tools.each do |tool| %>
-            <li><p><%= tool.name %></p>
+            <li>
+              <p><%= tool.name %></p>
             </li>
           <% end %>
         </ul>
@@ -51,16 +53,23 @@
         <h3>Tags</h3>
         <ul>
           <% @tags.each do |tag| %>
-            <li><p><%= tag.name %></p>
+            <li>
+              <p><%= tag.name %></p>
             </li>
           <% end %>
         </ul>
       </div>
 
       <!-- INSTRUCTIONS -->
-      <div class="recipe-instructions">
-        <h3>Instructions</h3>
-        <%= @recipe.instructions%>
+      <div class="recipe-steps">
+        <h3>Etapes</h3>
+        <ul>
+          <% @recipe.steps.each do |step| %>
+            <li>
+              <p><%= step.text %></p>
+            </li>
+          <% end %>
+        </ul>
       </div>
 
     </div>
