@@ -166,6 +166,16 @@ var vm = new Vue({
       let _this = this;
       _this.steps.push({ id: null, index: null, text: '', recipe_id: null });
     },
+    destroyStep: function(step, index){
+      let _this = this;
+      $.ajax({
+        method: 'DELETE',
+        url: '/recipes/' + _this.recipeId + '/steps/' + step.id,
+        success: function(data){
+          Vue.delete(_this.steps, index)
+        }
+      })
+    },
   },
 });
 
