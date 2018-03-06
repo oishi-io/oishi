@@ -51,7 +51,7 @@ class RecipesController < ApplicationController
       }
     end
     gon.measures = serialized_measures
-    gon.steps = @recipe.steps
+    gon.steps = @recipe.steps #.order(index: :ASC)
   end
 
   def add_tags

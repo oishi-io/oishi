@@ -1,7 +1,11 @@
 class StepsController < ApplicationController
   def create
-    @step = Step.find_or_create_by(id: params[:step_id], recipe_id: params[:recipe_id])
-    @step.update(text: params[:text], index: params[:index])
+    if params[:step_id] != ""
+      @step = Step.find_by(id: params[:step_id])
+      @step.update(text: params[:text], index: params[:index])
+    else
+      @step = Step.create(recipe_id: params[:recipe_id], text: params[:text], index: params[:index])
+    end
     authorize @step
     @step.save
     head :ok
