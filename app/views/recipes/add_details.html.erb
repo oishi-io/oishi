@@ -47,7 +47,7 @@
         <h4 style="margin-top: 10px; margin-bottom: 10px;">Tags</h4>
         <template>
           <i-select v-model="selectedTags" multiple filterable style="width: 617px; ">
-            <i-option v-for="tag in tags" :value="tag.id" :key="tag.name">{{ tag.name }}</i-option>
+            <i-option v-for="tag in tags" :value="tag.id" :key="tag.name" style="font-size: 14px !important">{{ tag.name }}</i-option>
           </i-select>
         </template>
         <a v-on:click="addTags(selectedTags)"><i class="fa fa-floppy-o" style="font-size: 20px;" aria-hidden="true"></i></a>
@@ -77,8 +77,8 @@
       </div>
     </div>
 
-    <div class="create-details">
-      <h4>Créer les élements manquants</h4>
+    <div class="create-details" style="font-size: 14px; font-family: 'Open Sans'; font-weight: bolder;">
+      <h4 style="margin-top: 10px; margin-bottom: 10px;">Créer les élements manquants</h4>
       <collapse style="width:290px">
         <panel name="1">
           Ajouter un ingrédient

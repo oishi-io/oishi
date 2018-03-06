@@ -167,7 +167,8 @@ var vm = new Vue({
     },
     addStep: function(){
       let _this = this;
-      _this.steps.push({ id: null, index: null, text: '', recipe_id: null });
+      let newIndex = _this.steps.length + 1;
+      _this.steps.push({ id: null, index: newIndex, text: '', recipe_id: _this.recipeId });
     },
     destroyStep: function(step, index){
       let _this = this;
