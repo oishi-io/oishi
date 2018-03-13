@@ -21,7 +21,7 @@
               </div>
             </div>
           </draggable>
-          <button v-if="hasmoved == true" v-on:click="saveOrder" class="btn btn-sm btn-success" slot="content" style="height: 32px;">Sauver Ordre</button>
+          <button v-if="hasmoved == true" v-on:click="saveOrder" class="btn btn-sm btn-success" style="height: 32px;">Sauver Ordre</button>
         </div>
         <div>
           <h4 style="margin-top: 20px; margin-bottom: 10px;">Ajout des mesures</h4>
@@ -81,22 +81,30 @@
 
     <div class="create-details" style="font-size: 14px; font-family: 'Open Sans'; font-weight: bolder;">
       <h4 style="margin-top: 10px; margin-bottom: 10px;">Créer les élements manquants</h4>
-      <collapse style="width:290px">
+      <collapse style="width:330px">
         <panel name="1">
           Ajouter un ingrédient
-          <input v-model="newIngredient.name" type="text" slot="content" class="form-control" id="ingredientName" placeholder="Nom de l'ingrédient" style="width:260px">
-          <input v-model="newIngredient.description" type="text" slot="content" class="form-control" id="ingredientDescription" placeholder="Description" style="width:260px">
-          <button v-on:click="createIngredient(newIngredient)" class="btn btn-sm btn-success" slot="content">Ajouter</button>
+          <div style="display: flex; align-items: center;" slot="content">
+            <div>
+              <input v-model="newIngredient.name" type="text" class="form-control" id="ingredientName" placeholder="Nom" style="width:275px">
+              <input v-model="newIngredient.description" type="text" class="form-control" id="ingredientDescription" placeholder="Description" style="width:275px">
+            </div>
+            <a v-on:click="createIngredient(newIngredient)"><i class="fa fa-floppy-o" style="margin-left: 5px; font-size: 20px;" aria-hidden="true"></i></a>
+          </div>
         </panel>
         <panel name="2">
           Ajouter un tag
-          <input v-model="newTag.name" type="text" slot="content" class="form-control" id="tagName" placeholder="Nom du tag" style="width:260px">
-          <button v-on:click="createTag(newTag)" class="btn btn-sm btn-success" slot="content">Ajouter</button>
+          <div style="display: flex; align-items: center;" slot="content">
+            <input v-model="newTag.name" type="text" class="form-control" id="tagName" placeholder="Nom" style="width:275px">
+            <a v-on:click="createTag(newTag)"><i class="fa fa-floppy-o" style="margin-left: 5px; font-size: 20px;" aria-hidden="true"></i></a>
+          </div>
         </panel>
         <panel name="3">
           Ajouter un ustensil
-          <input v-model="newTool.name" type="text" slot="content" class="form-control" id="toolName" placeholder="Nom de l'ustensil" style="width:260px">
-          <button v-on:click="createTool(newTool)" class="btn btn-sm btn-success" slot="content">Ajouter</button>
+          <div style="display: flex; align-items: center;" slot="content">
+            <input v-model="newTool.name" type="text" class="form-control" id="toolName" placeholder="Nom" style="width:275px">
+            <a v-on:click="createTool(newTool)"><i class="fa fa-floppy-o" style="margin-left: 5px; font-size: 20px;" aria-hidden="true"></i></a>
+          </div>
         </panel>
       </collapse>
     </div>
