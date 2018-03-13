@@ -13,14 +13,12 @@
         <div>
           <h4 style="margin-top: 10px; margin-bottom: 10px;">Liste des mesures</h4>
           <draggable v-model="measures" :move="checkMove">
-            <div v-for="(measure, index) in measures" :options="{draggable:'.item'}" style="width: 450px;">
-              <li style="font-size: 18px; list-style: none; display: flex; justify-content: space-between; cursor: move; border: 1px solid #DCDDE0; height: 35px; margin-bottom: 5px; padding: 5px 10px; border-radius: 2px;"  v-on:mouseenter="displayButtons('measure', index, 'block')" v-on:mouseleave="displayButtons('measure', index, 'none')">
-                <p><strong style="color: #338BF0;">{{ index + 1}}</strong><i class="fa fa-bars" aria-hidden="true" style="color: #338BF0; margin: 0px 10px;"></i>{{ measure.quantity }}{{ measure.text1 }}{{ measure.ingredient.name }}{{ measure.text2 }}</p>
-                <div :id="'measure_' + index" style="display: none;">
-                  <a v-on:click="editMeasure(measure)"><i class="fa fa-pencil-square-o" style="font-size: 20px;" aria-hidden="true"></i></a>
-                  <a v-on:click="destroyMeasure(measure, index)" style="margin: 0px 5px;"><i class="fa fa-times" style="color: #cf1b1b; font-size: 20px;" aria-hidden="true"></i></a>
-                </div>
-              </li>
+            <div v-for="(measure, index) in measures" :options="{draggable:'.item'}" style="width: 450px; font-size: 18px; list-style: none; display: flex; justify-content: space-between; cursor: move; border: 1px solid #DCDDE0; height: 35px; margin-bottom: 5px; padding: 5px 10px; border-radius: 2px;" v-on:mouseenter="displayButtons('measure', index, 'block')" v-on:mouseleave="displayButtons('measure', index, 'none')">
+              <p><strong style="color: #338BF0;">{{ index + 1}}</strong><i class="fa fa-bars" aria-hidden="true" style="color: #338BF0; margin: 0px 10px;"></i>{{ measure.quantity }}{{ measure.text1 }}{{ measure.ingredient.name }}{{ measure.text2 }}</p>
+              <div :id="'measure_' + index" style="display: none;">
+                <a v-on:click="editMeasure(measure)"><i class="fa fa-pencil-square-o" style="font-size: 20px;" aria-hidden="true"></i></a>
+                <a v-on:click="destroyMeasure(measure, index)" style="margin: 0px 5px;"><i class="fa fa-times" style="color: #cf1b1b; font-size: 20px;" aria-hidden="true"></i></a>
+              </div>
             </div>
           </draggable>
           <button v-if="hasmoved == true" v-on:click="saveOrder" class="btn btn-sm btn-success" slot="content" style="height: 32px;">Sauver Ordre</button>
