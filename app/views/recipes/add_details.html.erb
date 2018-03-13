@@ -87,23 +87,23 @@
           <div style="display: flex; align-items: center;" slot="content">
             <div>
               <input v-model="newIngredient.name" type="text" class="form-control" id="ingredientName" placeholder="Nom" style="width:275px">
-              <input v-model="newIngredient.description" type="text" class="form-control" id="ingredientDescription" placeholder="Description" style="width:275px">
+              <input v-model="newIngredient.description" type="text" class="form-control" id="ingredientDescription" placeholder="Description" style="width:275px; margin-top: 5px;">
             </div>
-            <a v-on:click="createIngredient(newIngredient)"><i class="fa fa-floppy-o" style="margin-left: 5px; font-size: 20px;" aria-hidden="true"></i></a>
+            <a v-if="newIngredient.name != ''" v-on:click="createIngredient(newIngredient)"><i class="fa fa-floppy-o" style="margin-left: 5px; font-size: 20px;" aria-hidden="true"></i></a>
           </div>
         </panel>
         <panel name="2">
           Ajouter un tag
           <div style="display: flex; align-items: center;" slot="content">
             <input v-model="newTag.name" type="text" class="form-control" id="tagName" placeholder="Nom" style="width:275px">
-            <a v-on:click="createTag(newTag)"><i class="fa fa-floppy-o" style="margin-left: 5px; font-size: 20px;" aria-hidden="true"></i></a>
+            <a v-if="newTag.name != ''" v-on:click="createTag(newTag)"><i class="fa fa-floppy-o" style="margin-left: 5px; font-size: 20px;" aria-hidden="true"></i></a>
           </div>
         </panel>
         <panel name="3">
           Ajouter un ustensil
           <div style="display: flex; align-items: center;" slot="content">
             <input v-model="newTool.name" type="text" class="form-control" id="toolName" placeholder="Nom" style="width:275px">
-            <a v-on:click="createTool(newTool)"><i class="fa fa-floppy-o" style="margin-left: 5px; font-size: 20px;" aria-hidden="true"></i></a>
+            <a v-if="newTool.name != ''" v-on:click="createTool(newTool)"><i class="fa fa-floppy-o" style="margin-left: 5px; font-size: 20px;" aria-hidden="true"></i></a>
           </div>
         </panel>
       </collapse>
