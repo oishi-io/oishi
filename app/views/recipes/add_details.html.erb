@@ -14,7 +14,7 @@
           <h4 style="margin-top: 10px; margin-bottom: 10px;">Liste des mesures</h4>
           <draggable v-model="measures" :move="checkMove">
             <div v-for="(measure, index) in measures" :options="{draggable:'.item'}" style="width: 450px;">
-              <li style="font-size: 18px; list-style: none; display: flex; justify-content: space-between; "  v-on:mouseenter="displayButtons('measure', index, 'block')" v-on:mouseleave="displayButtons('measure', index, 'none')">
+              <li style="font-size: 18px; list-style: none; display: flex; justify-content: space-between; cursor: pointer;"  v-on:mouseenter="displayButtons('measure', index, 'block')" v-on:mouseleave="displayButtons('measure', index, 'none')">
                 <p>{{ index + 1}} | {{ measure.quantity }}{{ measure.text1 }}{{ measure.ingredient.name }}{{ measure.text2 }}</p>
                 <div :id="'measure_' + index" style="display: none;">
                   <a v-on:click="editMeasure(measure)"><i class="fa fa-pencil-square-o" style="font-size: 20px;" aria-hidden="true"></i></a>
@@ -63,7 +63,7 @@
             <i-option v-for="tool in tools" :value="tool.id" :key="tool.name">{{ tool.name }}</i-option>
           </i-select>
         </template>
-        <a v-on:click="addTools(selectedTools)"><i class="fa fa-floppy-o" style="font-size: 20px;" aria-hidden="true"></i></a>
+        <a v-if="selectedTools.length != toolsCount" v-on:click="addTools(selectedTools)"><i class="fa fa-floppy-o" style="font-size: 20px;" aria-hidden="true"></i></a>
       </div>
 
       <!-- STEPS -->

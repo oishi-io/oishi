@@ -56,6 +56,7 @@ var vm = new Vue({
           tools: tools,
         },
         success: function(data){
+          _this.toolsCount = _this.selectedTools.length;
         }
       })
     },
