@@ -21,11 +21,19 @@ var vm = new Vue({
     newTag: {name: ''},
     newTool: {name: ''},
     checkEditMeasure: false,
+    hasmoved: false,
+    tagsCount: gon.selectedTags.length,
+    toolsCount: gon.selectedTools.length,
   },
   components: {
     draggable
   },
   methods: {
+    displayButtons: function(elt, eltId, value){
+      let _this = this;
+      let elementToDisplay = document.getElementById(elt + '_' + eltId);
+      elementToDisplay.style.display = value;
+    },
     addTags: function(tags){
       let _this = this;
       $.ajax({
@@ -35,6 +43,7 @@ var vm = new Vue({
           tags: tags,
         },
         success: function(data) {
+          _this.tagsCount = _this.selectedTags.length;
         }
       })
     },
@@ -141,6 +150,7 @@ var vm = new Vue({
       let _this = this;
       _this.measures[evt.draggedContext.index].order = evt.draggedContext.futureIndex;
       _this.measures[evt.draggedContext.futureIndex].order = evt.draggedContext.index;
+      _this.hasmoved = true;
     },
     saveOrder: function(){
       let _this = this;
@@ -150,6 +160,9 @@ var vm = new Vue({
           measures: _this.measures,
         },
         url: '/measures/save_order',
+        success: function(){
+          _this.hasmoved = false;
+        }
       })
     },
     updateStep: function(step){
