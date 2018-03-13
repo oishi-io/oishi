@@ -24,6 +24,7 @@ var vm = new Vue({
     hasmoved: false,
     tagsCount: gon.selectedTags.length,
     toolsCount: gon.selectedTools.length,
+    stepsLength: gon.stepsLength,
   },
   components: {
     draggable
@@ -166,7 +167,7 @@ var vm = new Vue({
         }
       })
     },
-    updateStep: function(step){
+    updateStep: function(step, index){
       let _this = this;
       $.ajax({
         method: 'POST',
@@ -177,12 +178,17 @@ var vm = new Vue({
           recipe_id: step.recipe_id,
         },
         url: '/recipes/' + _this.recipeId + '/steps',
+        success: function(){
+          _this.stepsLength[index] = step.text.length;
+          vm.$forceUpdate();
+        },
       })
     },
     addStep: function(){
       let _this = this;
       let newIndex = _this.steps.length + 1;
       _this.steps.push({ id: null, index: newIndex, text: '', recipe_id: _this.recipeId });
+      _this.stepsLength.push(0);
     },
     destroyStep: function(step, index){
       let _this = this;

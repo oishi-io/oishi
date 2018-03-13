@@ -70,8 +70,8 @@
         <div v-for="(step, index) in steps" style="display: flex; justify-content: flex-start; align-items: center; margin-bottom: 5px;" v-on:mouseenter="displayButtons('step', index, 'block')" v-on:mouseleave="displayButtons('step', index, 'none')">
           <input class="form-control" type="integer" v-model="step.index" placeholder="#" style="width: 40px;">
           <textarea class="form-control" type="text" v-model="step.text" placeholder="Description de l'étape" style="margin: 0px 5px; width: 570px;"></textarea>
+          <a v-if="step.text.length != stepsLength[index]" v-on:click="updateStep(step, index)"><i class="fa fa-floppy-o" style="font-size: 20px;" aria-hidden="true"></i></a>
           <div :id="'step_' + index" style="display: none;">
-            <a v-on:click="updateStep(step)"><i class="fa fa-floppy-o" style="font-size: 20px;" aria-hidden="true"></i></a>
             <a v-on:click="destroyStep(step, index)" style="margin: 0px 5px;"><i class="fa fa-times" style="color: #cf1b1b; font-size: 20px;" aria-hidden="true"></i></a>
           </div>
         </div>
