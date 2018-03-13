@@ -52,6 +52,7 @@ class RecipesController < ApplicationController
     end
     gon.measures = serialized_measures
     gon.steps = @recipe.steps #.order(index: :ASC)
+    gon.stepsLength = gon.steps.pluck(:text).map(&:length)
   end
 
   def add_tags

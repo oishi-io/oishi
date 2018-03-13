@@ -21,11 +21,29 @@ var vm = new Vue({
     newTag: {name: ''},
     newTool: {name: ''},
     checkEditMeasure: false,
+    hasmoved: false,
+    tagsCount: gon.selectedTags.length,
+    toolsCount: gon.selectedTools.length,
+    stepsLength: gon.stepsLength,
   },
   components: {
     draggable
   },
+  computed:{
+    checkNewMeasure: function(){
+      let _this = this;
+      let m = _this.newMeasure
+      console.log(m)
+      let ingredientIds = _this.measures.map(x => x.ingredient.id)
+      return m.text1 != '' && m.ingredient.id && !ingredientIds.includes(m.ingredient.id) || _this.checkEditMeasure == true
+    },
+  },
   methods: {
+    displayButtons: function(elt, eltId, value){
+      let _this = this;
+      let elementToDisplay = document.getElementById(elt + '_' + eltId);
+      elementToDisplay.style.display = value;
+    },
     addTags: function(tags){
       let _this = this;
       $.ajax({
@@ -35,6 +53,7 @@ var vm = new Vue({
           tags: tags,
         },
         success: function(data) {
+          _this.tagsCount = _this.selectedTags.length;
         }
       })
     },
@@ -47,6 +66,7 @@ var vm = new Vue({
           tools: tools,
         },
         success: function(data){
+          _this.toolsCount = _this.selectedTools.length;
         }
       })
     },
@@ -141,6 +161,7 @@ var vm = new Vue({
       let _this = this;
       _this.measures[evt.draggedContext.index].order = evt.draggedContext.futureIndex;
       _this.measures[evt.draggedContext.futureIndex].order = evt.draggedContext.index;
+      _this.hasmoved = true;
     },
     saveOrder: function(){
       let _this = this;
@@ -150,9 +171,12 @@ var vm = new Vue({
           measures: _this.measures,
         },
         url: '/measures/save_order',
+        success: function(){
+          _this.hasmoved = false;
+        }
       })
     },
-    updateStep: function(step){
+    updateStep: function(step, index){
       let _this = this;
       $.ajax({
         method: 'POST',
@@ -163,12 +187,17 @@ var vm = new Vue({
           recipe_id: step.recipe_id,
         },
         url: '/recipes/' + _this.recipeId + '/steps',
+        success: function(){
+          _this.stepsLength[index] = step.text.length;
+          vm.$forceUpdate();
+        },
       })
     },
     addStep: function(){
       let _this = this;
       let newIndex = _this.steps.length + 1;
       _this.steps.push({ id: null, index: newIndex, text: '', recipe_id: _this.recipeId });
+      _this.stepsLength.push(0);
     },
     destroyStep: function(step, index){
       let _this = this;
