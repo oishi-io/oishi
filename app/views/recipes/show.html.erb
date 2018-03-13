@@ -1,40 +1,52 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 ">
+    <div class="container">
 
-      <!-- PHOTO -->
-      <div class="recipe-photo">
+      <div class="viz-recipe">
+          <!-- PHOTO -->
+        <div class="recipe-photo">
         <% if @recipe.photos? %>
           <%= cl_image_tag @recipe.photos[0].path %>
         <% end %>
+        </div>
+
+        <div class="info-recipe">
+
+          <!-- SERVINGS -->
+          <div class="recipe-servings">
+            <p><%= @recipe.servings %> pers.</p>
+          </div>
+
+          <!-- PREPARATION TIME -->
+          <div class="recipe-preparation_time">
+            <p><%= @recipe.preparation_time %> min</p>
+          </div>
+
+          <!-- COOKING TIME -->
+          <div class="recipe-cooking_time">
+            <p><%= @recipe.cooking_time %> min</p>
+          </div>
+
+          <!-- TITLE -->
+          <div class="recipe-title">
+            <h2><%= @recipe.title %></h2>
+            <% if current_user.admin? %>
+              <%= link_to add_details_path(@recipe) do %>
+                <i class="fa fa-plus" aria-hidden="true"></i>
+              <% end %>
+            <% end %>
+          </div>
+
+        </div>
       </div>
 
-      <!-- TITLE -->
-      <div class="recipe-title" style="display: flex; align-items: center;">
-        <h2><strong><%= @recipe.title %></strong></h2>
-        <% if current_user.admin? %>
-          <%= link_to add_details_path(@recipe) do %>
-            <i class="fa fa-plus" aria-hidden="true"></i>
-          <% end %>
-        <% end %>
-      </div>
 
-      <!-- SERVINGS -->
-      <div class="recipe-servings">
-        <p><%= @recipe.servings %> pers.</p>
-      </div>
 
-      <!-- PREPARATION TIME -->
-      <div class="recipe-preparation_time">
-        <p><%= @recipe.preparation_time %> min</p>
-      </div>
 
-      <!-- COOKING TIME -->
-      <div class="recipe-cooking_time">
-        <p><%= @recipe.cooking_time %> min</p>
-      </div>
 
-      <!-- MEASURES -->
+
+
+    <div class="todo-recipe">
+
+    <!-- MEASURES -->
       <div class="measures-list">
         <h3>Mesures</h3>
         <ul>
@@ -57,20 +69,9 @@
           <% end %>
         </ul>
       </div>
+    </div>
 
-      <!-- TAGS -->
-      <div class="tags-list">
-        <h3>Tags</h3>
-        <ul>
-          <% @tags.each do |tag| %>
-            <li>
-              <p><%= tag.name %></p>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-
-      <!-- INSTRUCTIONS -->
+    <!-- INSTRUCTIONS -->
       <div class="recipe-steps">
         <h3>Etapes</h3>
         <ul>
@@ -82,6 +83,14 @@
         </ul>
       </div>
 
+      <!-- TAGS -->
+      <div class="tags-list">
+        <h3>Tags</h3>
+          <% @tags.each do |tag| %>
+           <p><%= tag.name %></p>
+          <% end %>
+      </div>
+
+
     </div>
-  </div>
-</div>
+
