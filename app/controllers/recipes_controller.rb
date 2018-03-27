@@ -31,6 +31,13 @@ class RecipesController < ApplicationController
 
   def add_details
     gon.recipeId = @recipe.id
+    gon.recipe   = { id: @recipe.id,
+                     title: @recipe.title,
+                     servings: @recipe.servings,
+                     preparation_time: @recipe.preparation_time,
+                     cooking_time: @recipe.cooking_time,
+                     url: recipe_path(@recipe),
+                   }
     gon.ingredients = Ingredient.all
     gon.selectedTags = @recipe.tags.pluck(:id)
     gon.tags = Tag.all
@@ -51,7 +58,7 @@ class RecipesController < ApplicationController
       }
     end
     gon.measures = serialized_measures
-    gon.steps = @recipe.steps #.order(index: :ASC)
+    gon.steps = @recipe.steps.order(index: :ASC)
     gon.stepsLength = gon.steps.pluck(:text).map(&:length)
   end
 
