@@ -9,6 +9,7 @@ var vm = new Vue({
   el: "#recipe_add_details",
   data: {
     recipeId: gon.recipeId,
+    recipe: gon.recipe,
     tools: gon.tools,
     tags: gon.tags,
     measures: gon.measures,
@@ -25,6 +26,7 @@ var vm = new Vue({
     tagsCount: gon.selectedTags.length,
     toolsCount: gon.selectedTools.length,
     stepsLength: gon.stepsLength,
+    editBasics: false,
   },
   components: {
     draggable
@@ -209,6 +211,19 @@ var vm = new Vue({
         }
       })
     },
+    editRecipe: function(){
+      let _this = this;
+      $.ajax({
+        method: 'PUT',
+        data: {
+          recipe: _this.recipe,
+        },
+        url: '/recipes/' + _this.recipeId,
+        success: function(){
+          _this.editBasics = false
+        },
+      })
+    }
   },
 });
 
