@@ -1,87 +1,68 @@
-    <div class="container">
-
-      <div class="viz-recipe">
-          <!-- PHOTO -->
-        <div class="recipe-photo">
-        <% if @recipe.photos? %>
-          <%= cl_image_tag @recipe.photos[0].path %>
-        <% end %>
-        </div>
-
-        <div class="info-recipe">
-
-          <!-- SERVINGS -->
-          <div class="recipe-servings">
-            <p><%= @recipe.servings %> pers.</p>
-          </div>
-
-          <!-- PREPARATION TIME -->
-          <div class="recipe-preparation_time">
-            <p><%= @recipe.preparation_time %> min</p>
-          </div>
-
-          <!-- COOKING TIME -->
-          <div class="recipe-cooking_time">
-            <p><%= @recipe.cooking_time %> min</p>
-          </div>
-
-          <!-- TITLE -->
-          <div class="recipe-title">
-            <h2><%= @recipe.title %></h2>
+   <div class="container">
+     <div class="entete">
+       <div class="recipe-title">
+        <h2><%= @recipe.title %></h2>
             <% if current_user.admin? %>
               <%= link_to add_details_path(@recipe) do %>
                 <i class="fa fa-plus" aria-hidden="true"></i>
               <% end %>
             <% end %>
-          </div>
-
+       </div>
+       <div class="servingsandtime">
+        <p><strong>Couverts: </strong><%= @recipe.servings %> pers.</p>
+        <p><strong>Préparation: </strong><%= @recipe.preparation_time %> min</p>
+        <p><strong>Cuisson: </strong><%= @recipe.cooking_time %> min</p>
+       </div>
+      </div>
+      <div class="recipe-topnotes">
+        <div class="recipe-description">
+          <p>Use this bright green, earthy mix as a dip for crudités or a dressing for heartier salad greens like radicchio, spinach, arugula, thinly sliced fennel, or a combination. It’s also terrific as a dressing, drizzled on a simple roasted or grilled chicken, meats or fish.</p>
+        </div>
+        <div class="recipe-image">
+          <% if @recipe.photos? %>
+          <%= cl_image_tag @recipe.photos[0].path %>
+          <% end %>
         </div>
       </div>
-
-
-
-
-
-
-
-    <div class="todo-recipe">
-
-    <!-- MEASURES -->
-      <div class="measures-list">
-        <h3>Mesures</h3>
-        <ul>
-          <% @measures.each do |measure| %>
-            <li>
-              <p><%= measure.quantity %><%= measure.text_1 %><%= measure.ingredient.name %><%= measure.text_2 %></p>
-            </li>
-          <% end %>
-        </ul>
+      <div class="recipe-info">
+        <div class="recipe-mesures">
+          <h3>Mesures</h3>
+          <ul>
+            <% @measures.each do |measure| %>
+              <li>
+                <p><%= measure.quantity %><%= measure.text_1 %><%= measure.ingredient.name %><%= measure.text_2 %></p>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="recipe-etapes">
+          <h3>Etapes</h3>
+          <ul>
+            <% @recipe.steps.each do |step| %>
+              <li>
+                <h5>Etape <%=step.index %></h5>
+                <p><%= step.text %></p>
+              </li>
+            <% end %>
+          </ul>
+        </div>
       </div>
-
-      <!-- TOOLS -->
-      <div class="tools-list">
-        <h3>Ustensiles</h3>
-        <ul>
-          <% @tools.each do |tool| %>
-            <li>
-              <p><%= tool.name %></p>
-            </li>
-          <% end %>
-        </ul>
+      <div class="recipe-ustensiles">
+          <h3>Ustensiles</h3>
+          <ul>
+            <% @tools.each do |tool| %>
+              <li>
+                <p><%= tool.name %></p>
+              </li>
+            <% end %>
+          </ul>
       </div>
     </div>
 
-    <!-- INSTRUCTIONS -->
-      <div class="recipe-steps">
-        <h3>Etapes</h3>
-        <ul>
-          <% @recipe.steps.each do |step| %>
-            <li>
-              <p><%= step.text %></p>
-            </li>
-          <% end %>
-        </ul>
-      </div>
+
+
+
+
 
       <!-- TAGS -->
       <div class="tags-list">

@@ -1,83 +1,89 @@
-.recipe-photo {
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-top: 5%;
-  padding: 20px;
-  justify-content: center;
-  display:flex;
-  img{
-  border-radius: 10px;
-  background-size: cover;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
-  }
-}
 
-.info-recipe {
-  display: flex;
-  // justify-content: flex-end;
-  justify-content: space-around;
-  align-items: center;
-  .recipe-title{
-  }
-  p{
-    margin: 0;
-    margin-top: 18px;
-  }
+.container {
+  margin: 2%;
 }
-
 .recipe-title {
   display: flex;
-  align-items: center;
-}
-
-.todo-recipe {
-  display: flex;
-  justify-content: space-around;
-  align-items: baseline;
-  margin-top: 5%;
-  margin-bottom: 1%;
-}
-
-.tools-list {
-  margin-left: -25%;
-  h3{
-    margin: 0px;
-    margin-bottom: 5%;
-  }
-}
-
-.measures-list{
-  h3{
-    margin: 0px;
-    margin-bottom: 5%;
-  }
-}
-
-.recipe-steps{
-  list-style: none;
-  margin-top: 5%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  h3{
-    margin-bottom: 2%;
-  }
-
-}
-
-.tags-list{
-  list-style: none;
-  display:flex;
-  align-items: center;
   justify-content: flex-start;
-  margin-left: 7%;
-    p{
-    margin: 0px;
-    margin-right: 5%;
-  }
-    h3{
-    margin:0px;
-    margin-right: 5%;
+  align-items: center;
+  border-bottom: 1px solid grey;
+}
+
+.servingsandtime{
+  margin-top: 4%;
+}
+
+.recipe-topnotes{
+  display:flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 5%;
+  border-bottom: 1px solid black;
+  padding-bottom: 40px;
+}
+
+.recipe-image{
+  flex: 0 0 60%;
+  img{
+    width: 100%;
   }
 }
+
+.recipe-description{
+  flex: 1 0 40%;
+  padding-right: 8%;
+}
+
+.recipe-info{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.recipe-mesures{
+  flex: 0 0 30%;
+  li {
+    list-style: none;
+    font-weight: bold;
+  }
+}
+
+.recipe-etapes{
+  li {
+    list-style: none;
+  }
+  h5 {
+    font-weight: bold;
+  }
+}
+
+.recipe-ustensiles{
+  li {
+    list-style: none;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
