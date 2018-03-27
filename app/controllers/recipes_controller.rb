@@ -34,8 +34,8 @@ class RecipesController < ApplicationController
     gon.recipe   = { id: @recipe.id,
                      title: @recipe.title,
                      servings: @recipe.servings,
-                     preparation_time: @recipe.preparation_time,
-                     cooking_time: @recipe.cooking_time,
+                     preparationTime: @recipe.preparation_time,
+                     cookingTime: @recipe.cooking_time,
                      url: recipe_path(@recipe),
                    }
     gon.ingredients = Ingredient.all
