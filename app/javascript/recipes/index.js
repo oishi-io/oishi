@@ -213,7 +213,16 @@ var vm = new Vue({
     },
     editRecipe: function(){
       let _this = this;
-      _this.editBasics = false
+      $.ajax({
+        method: 'PUT',
+        data: {
+          recipe: _this.recipe,
+        },
+        url: '/recipes/' + _this.recipeId,
+        success: function(){
+          _this.editBasics = false
+        },
+      })
     }
   },
 });

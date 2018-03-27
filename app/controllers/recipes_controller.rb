@@ -34,8 +34,8 @@ class RecipesController < ApplicationController
     gon.recipe   = { id: @recipe.id,
                      title: @recipe.title,
                      servings: @recipe.servings,
-                     preparationTime: @recipe.preparation_time,
-                     cookingTime: @recipe.cooking_time,
+                     preparation_time: @recipe.preparation_time,
+                     cooking_time: @recipe.cooking_time,
                      url: recipe_path(@recipe),
                    }
     gon.ingredients = Ingredient.all
@@ -79,7 +79,9 @@ class RecipesController < ApplicationController
 
   def update
     @recipe.update(recipe_params)
-    redirect_to recipe_path(@recipe)
+    authorize @recipe
+    @recipe.save
+    render json: { recipe: @recipe }, status: 200
   end
 
   def destroy

@@ -22,13 +22,13 @@
       </div>
       <div class="item-center-space-around">
         <h5>Temps de préparation</h5>
-        <h5 v-if="!editBasics">{{ recipe.preparationTime }}</h5>
-        <input v-else class="form-control" type="text" style="width: 50px;" v-model="recipe.preparationTime">
+        <h5 v-if="!editBasics">{{ recipe.preparation_time }}</h5>
+        <input v-else class="form-control" type="text" style="width: 50px;" v-model="recipe.preparation_time">
       </div>
       <div class="item-center-space-around">
         <h5>Temps de cuisson</h5>
-        <h5 v-if="!editBasics">{{ recipe.cookingTime }}</h5>
-        <input v-else class="form-control" type="text" style="width: 50px;" v-model="recipe.cookingTime">
+        <h5 v-if="!editBasics">{{ recipe.cooking_time }}</h5>
+        <input v-else class="form-control" type="text" style="width: 50px;" v-model="recipe.cooking_time">
       </div>
     </div>
   </div>
