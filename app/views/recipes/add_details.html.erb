@@ -2,31 +2,31 @@
 
 <div class="container" id="recipe_add_details" v-cloak>
   <div class="recipe-info">
-    <div v-if="!editBasics" class="item-center-space-around">
-      <a :href="recipe.url"><h2 style="font-weight: bolder">{{ recipe.title }}</h2></a>
+    <div v-if="!editBasics" style="display: flex; justify-content: flex-start; align-items: center; height: 50px;">
       <a v-on:click="editBasics = true">
-        <i class="fa fa-pencil-square-o" style="font-size: 20px;" aria-hidden="true"></i>
+        <i class="fa fa-pencil-square-o" style="font-size: 20px; margin-right: 10px;" aria-hidden="true"></i>
       </a>
+      <a :href="recipe.url"><h2 style="font-weight: bolder; text-align: center;">{{ recipe.title }}</h2></a>
     </div>
-    <div v-else>
-      <input class="form-control" style="font-size: 38px; font-family: 'Raleway', 'Helvetica', 'sans-serif'; font-weight: 700;" type="text" v-model="recipe.title"><h2 class="text-center"></h2>
+    <div v-else style="display: flex; justify-content: flex-start; align-items: center; height: 50px;">
       <a v-on:click="editRecipe">
-        <i class="fa fa-floppy-o" style="font-size: 20px;" aria-hidden="true"></i>
+        <i class="fa fa-floppy-o" style="font-size: 20px; margin-right: 10px;" aria-hidden="true"></i>
       </a>
+      <input class="form-control" style="font-size: 38px; font-family: 'Raleway', 'Helvetica', 'sans-serif'; font-weight: 700;" type="text" v-model="recipe.title"><h2 class="text-center"></h2>
     </div>
-    <div id="recipe-basics" class="item-center-space-around">
-      <div class="item-center-space-around">
-        <h5>Couverts</h5>
+    <div id="recipe-basics" style="display: flex; justify-content: space-between; align-items: center; width: 620px; height: 50px;">
+      <div style="display: flex; justify-content: flex-start; align-items: center;">
+        <h5 style="margin-right: 10px;">Couverts: </h5>
         <h5 v-if="!editBasics">{{ recipe.servings }}</h5>
         <input v-else class="form-control" type="text" style="width: 50px;" v-model="recipe.servings">
       </div>
-      <div class="item-center-space-around">
-        <h5>Temps de préparation</h5>
+      <div style="display: flex; justify-content: flex-start; align-items: center;">
+        <h5 style="margin-right: 10px;">Préparation: </h5>
         <h5 v-if="!editBasics">{{ recipe.preparation_time }}</h5>
         <input v-else class="form-control" type="text" style="width: 50px;" v-model="recipe.preparation_time">
       </div>
-      <div class="item-center-space-around">
-        <h5>Temps de cuisson</h5>
+      <div style="display: flex; justify-content: flex-start; align-items: center;">
+        <h5 style="margin-right: 10px;">Cuisson: </h5>
         <h5 v-if="!editBasics">{{ recipe.cooking_time }}</h5>
         <input v-else class="form-control" type="text" style="width: 50px;" v-model="recipe.cooking_time">
       </div>
