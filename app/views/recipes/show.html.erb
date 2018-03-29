@@ -26,7 +26,7 @@
       </div>
       <div class="recipe-info">
         <div class="recipe-mesures">
-          <h3>Mesures</h3>
+          <h3>Ingrédients</h3>
           <ul>
             <% @measures.each do |measure| %>
               <li>
@@ -34,20 +34,7 @@
               </li>
             <% end %>
           </ul>
-        </div>
-        <div class="recipe-etapes">
-          <h3>Etapes</h3>
-          <ul>
-            <% @recipe.steps.each do |step| %>
-              <li>
-                <h5>Etape <%=step.index %></h5>
-                <p><%= step.text %></p>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-      <div class="recipe-ustensiles">
+          <div class="recipe-ustensiles">
           <h3>Ustensiles</h3>
           <ul>
             <% @tools.each do |tool| %>
@@ -56,22 +43,21 @@
               </li>
             <% end %>
           </ul>
+          </div>
+        </div>
+        <div class="recipe-etapes">
+          <h3>Etapes</h3>
+          <ul>
+            <% @recipe.steps.each do |step| %>
+              <li>
+                <h5>:::::: <%=step.index %></h5>
+                <p><%= step.text %></p>
+              </li>
+            <% end %>
+          </ul>
+        </div>
       </div>
+
     </div>
 
-
-
-
-
-
-      <!-- TAGS -->
-      <div class="tags-list">
-        <h3>Tags</h3>
-          <% @tags.each do |tag| %>
-           <p><%= tag.name %></p>
-          <% end %>
-      </div>
-
-
-    </div>
 
