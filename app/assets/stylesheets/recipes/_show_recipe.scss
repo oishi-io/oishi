@@ -8,6 +8,9 @@
 
 .servingsandtime{
   margin-top: 4%;
+  p{
+    font-size: 14px;
+  }
 }
 
 .recipe-topnotes{
@@ -42,6 +45,9 @@
   li {
     list-style: none;
     font-weight: bold;
+    p {
+    font-size: 14px;
+    }
   }
 }
 
@@ -51,15 +57,58 @@
   }
   h5 {
     font-weight: bold;
+    font-size: 1.5 em;
   }
 }
 
 .recipe-ustensiles{
   li {
     list-style: none;
+    p {
+    font-size: 14px;
+    }
   }
   margin-top: 35%;
+
 }
+
+.email-ingredients-button {
+  background-color: #fff;
+  border: 1px solid #999;
+  border-radius: 3px;
+  color: #777;
+  display: inline-block;
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: .2px;
+  margin: 10px 0 0 34px;
+  padding: 14px 30px;
+}
+
+.email-ingredients-button:hover, a:hover {
+  background: #777;
+  color: white;
+  text-decoration: none;
+}
+
+#module-recipe-cooked {
+    background: #f2f3ef;
+    font-size: 1.25em;
+    margin: 40px 0 25px;
+    padding: 14px;
+    position: relative;
+}
+
+.recipe-cooked-button {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1em;
+}
+
+
+
 
 
 

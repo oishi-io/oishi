@@ -10,13 +10,13 @@
        </div>
        <div class="servingsandtime">
         <p><strong>Couverts: </strong><%= @recipe.servings %> pers.</p>
-        <p><strong>Préparation: </strong><%= @recipe.preparation_time %> min</p>
-        <p><strong>Cuisson: </strong><%= @recipe.cooking_time %> min</p>
+        <p><strong>Préparation: </strong><%= @recipe.preparation_time %> minutes</p>
+        <p><strong>Cuisson: </strong><%= @recipe.cooking_time %> minutes</p>
        </div>
       </div>
       <div class="recipe-topnotes">
         <div class="recipe-description">
-          <p>Use this bright green, earthy mix as a dip for crudités or a dressing for heartier salad greens like radicchio, spinach, arugula, thinly sliced fennel, or a combination. It’s also terrific as a dressing, drizzled on a simple roasted or grilled chicken, meats or fish.</p>
+          <p>Use this bright green, earthy mix as a dip for crudités or a dressing for heartier salad greens like radicchio, spinach, arugula, thinly sliced fennel, or a combination. It’s also terrific as a dressing, drizzled on a simple roasted or grilled chicken, meats or fish. Use this bright green, earthy mix as a dip for crudités or a dressing for heartier salad greens like radicchio, spinach, arugula, thinly sliced fennel, or a combination. It’s also terrific as a dressing, drizzled on a simple roasted or grilled chicken, meats or fish. t’s also terrific as a dressing, drizzled on a simple roasted or grilled chicken, meats or fish. Use this bright green, earthy mix as a dip for crudités or a dressing for heartier salad greens like radicchio, spinach, arugula, thinly sliced fennel, or a combination. It’s also terrific as a dressing, drizzled on a simple roasted or grilled chicken, meats or fish</p>
         </div>
         <div class="recipe-image">
           <% if @recipe.photos? %>
@@ -34,6 +34,9 @@
               </li>
             <% end %>
           </ul>
+          <a target="_blank" href="" class="email-ingredients-button">
+              Liste des courses
+            </a>
           <div class="recipe-ustensiles">
           <h3>Ustensiles</h3>
           <ul>
@@ -55,9 +58,12 @@
               </li>
             <% end %>
           </ul>
+          <div id="module-recipe-cooked">
+            <button class="recipe-cooked-button">
+            </button>
+          </div>
         </div>
       </div>
-
     </div>
 
 
