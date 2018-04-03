@@ -1,10 +1,7 @@
-#recipe-add-details{
+#recipe-add-details.container{
   .details {
     display: flex;
     justify-content: space-between;
-  }
-  p {
-    font-size: 35px;
   }
   .recipe-steps {
 
@@ -12,6 +9,11 @@
   .item-center-space-around {
     display: flex;
     justify-content: space-around;
+    align-items: center;
+  }
+  .item-center-flex-start{
+    display: flex;
+    justify-content: flex-start;
     align-items: center;
   }
   p {
