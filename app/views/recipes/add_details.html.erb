@@ -8,24 +8,24 @@
       </a>
       <a :href="recipe.url"><h2 style="font-weight: bolder; text-align: center;">{{ recipe.title }}</h2></a>
     </div>
-    <div v-else style="display: flex; justify-content: flex-start; align-items: center; height: 50px;">
+    <div v-else style="height: 50px;" class="item-center-flex-start">
       <a v-on:click="editRecipe">
         <i class="fa fa-floppy-o" style="font-size: 20px; margin-right: 10px;" aria-hidden="true"></i>
       </a>
       <input class="form-control" style="font-size: 38px; font-family: 'Raleway', 'Helvetica', 'sans-serif'; font-weight: 700;" type="text" v-model="recipe.title"><h2 class="text-center"></h2>
     </div>
     <div id="recipe-basics" style="display: flex; justify-content: space-between; align-items: center; width: 620px; height: 50px;">
-      <div style="display: flex; justify-content: flex-start; align-items: center;">
+      <div class="item-center-flex-start">
         <h5 style="margin-right: 10px;">Couverts: </h5>
         <h5 v-if="!editBasics">{{ recipe.servings }}</h5>
         <input v-else class="form-control" type="text" style="width: 50px;" v-model="recipe.servings">
       </div>
-      <div style="display: flex; justify-content: flex-start; align-items: center;">
+      <div class="item-center-flex-start">
         <h5 style="margin-right: 10px;">Préparation: </h5>
         <h5 v-if="!editBasics">{{ recipe.preparation_time }}</h5>
         <input v-else class="form-control" type="text" style="width: 50px;" v-model="recipe.preparation_time">
       </div>
-      <div style="display: flex; justify-content: flex-start; align-items: center;">
+      <div class="item-center-flex-start">
         <h5 style="margin-right: 10px;">Cuisson: </h5>
         <h5 v-if="!editBasics">{{ recipe.cooking_time }}</h5>
         <input v-else class="form-control" type="text" style="width: 50px;" v-model="recipe.cooking_time">
@@ -40,7 +40,7 @@
         <div>
           <h4 style="margin-top: 10px; margin-bottom: 10px;">Liste des mesures</h4>
           <draggable v-model="measures" :move="checkMove">
-            <div v-for="(measure, index) in measures" :options="{draggable:'.item'}" style="width: 620px; font-size: 18px; list-style: none; display: flex; justify-content: space-between; cursor: move; border: 1px solid #DCDDE0; height: 35px; margin-bottom: 5px; padding: 5px 10px; border-radius: 2px;" v-on:mouseenter="displayButtons('measure', index, 'block')" v-on:mouseleave="displayButtons('measure', index, 'none')">
+            <div v-for="(measure, index) in measures" :options="{draggable:'.item'}" class="draggable-measure" v-on:mouseenter="displayButtons('measure', index, 'block')" v-on:mouseleave="displayButtons('measure', index, 'none')">
               <p><strong style="color: #338BF0;">{{ index + 1}}</strong><i class="fa fa-bars" aria-hidden="true" style="color: #338BF0; margin: 0px 10px;"></i>{{ measure.quantity }}{{ measure.text1 }}{{ measure.ingredient.name }}{{ measure.text2 }}</p>
               <div :id="'measure_' + index" style="display: none;">
                 <a v-on:click="editMeasure(measure)"><i class="fa fa-pencil-square-o" style="font-size: 20px;" aria-hidden="true"></i></a>
@@ -52,15 +52,15 @@
         </div>
         <div>
           <h4 style="margin-top: 20px; margin-bottom: 10px;">Ajout des mesures</h4>
-          <div style="display: flex; align-items: center;">
-            <input v-model.number="newMeasure.quantity" type="integer" class="form-control" placeholder="Quantité" style="width: 150px; height: 32px; margin-right: 5px;">
-            <input v-model="newMeasure.text1" type="text" class="form-control" placeholder="Texte 1" style="width: 150px; height: 32px; margin-right: 5px;">
+          <div class="item-center-flex-start new-measure">
+            <input v-model.number="newMeasure.quantity" type="integer" class="new-input form-control" placeholder="Quantité" style="width: 150px; height: 32px; margin-right: 5px;">
+            <input v-model="newMeasure.text1" type="text" class="new-input form-control" placeholder="Texte 1" style="width: 150px; height: 32px; margin-right: 5px;">
             <template>
               <i-select v-model="newMeasure.ingredient.id" filterable style="width: 150px; margin-right: 5px;">
                 <i-option v-for="ingredient in ingredients" :value="ingredient.id" :key="ingredient.name">{{ ingredient.name }}</i-option>
               </i-select>
             </template>
-            <input v-model="newMeasure.text2" type="text" class="form-control" placeholder="Texte 2" style="width: 150px; height: 32px; margin-right: 5px;">
+            <input v-model="newMeasure.text2" type="text" class="new-input form-control" placeholder="Texte 2" style="width: 150px; height: 32px; margin-right: 5px;">
             <a v-on:click="createMeasure(newMeasure)">
               <i v-if="checkNewMeasure == true" class="fa fa-floppy-o" style="font-size: 20px;" aria-hidden="true"></i>
             </a>
@@ -93,7 +93,7 @@
       <!-- STEPS -->
       <div class="recipe-steps">
         <h4 style="margin-top: 10px; margin-bottom: 10px;">Etapes</h4>
-        <div v-for="(step, index) in steps" style="display: flex; justify-content: flex-start; align-items: center; margin-bottom: 5px;" v-on:mouseenter="displayButtons('step', index, 'block')" v-on:mouseleave="displayButtons('step', index, 'none')">
+        <div v-for="(step, index) in steps" class="item-center-flex-start" style="margin-bottom: 5px;" v-on:mouseenter="displayButtons('step', index, 'block')" v-on:mouseleave="displayButtons('step', index, 'none')">
           <input class="form-control" type="integer" v-model="step.index" placeholder="#" style="width: 40px;">
           <textarea class="form-control" type="text" v-model="step.text" placeholder="Description de l'étape" style="margin: 0px 5px; width: 570px;"></textarea>
           <a v-if="step.text.length != stepsLength[index]" v-on:click="updateStep(step, index)"><i class="fa fa-floppy-o" style="font-size: 20px;" aria-hidden="true"></i></a>
@@ -110,26 +110,26 @@
       <collapse style="width:330px">
         <panel name="1">
           Ajouter un ingrédient
-          <div style="display: flex; align-items: center;" slot="content">
+          <div class="item-center-flex-start" slot="content">
             <div>
               <input v-model="newIngredient.name" type="text" class="form-control" id="ingredientName" placeholder="Nom" style="width:275px">
               <input v-model="newIngredient.description" type="text" class="form-control" id="ingredientDescription" placeholder="Description" style="width:275px; margin-top: 5px;">
             </div>
-            <a v-if="newIngredient.name != ''" v-on:click="createIngredient(newIngredient)"><i class="fa fa-floppy-o" style="margin-left: 5px; font-size: 20px;" aria-hidden="true"></i></a>
+            <a v-if="newIngredient.name != ''" v-on:click="createIngredient(newIngredient)" class="save-icon"><i class="fa fa-floppy-o"  aria-hidden="true"></i></a>
           </div>
         </panel>
         <panel name="2">
           Ajouter un tag
-          <div style="display: flex; align-items: center;" slot="content">
+          <div class="item-center-flex-start" slot="content">
             <input v-model="newTag.name" type="text" class="form-control" id="tagName" placeholder="Nom" style="width:275px">
-            <a v-if="newTag.name != ''" v-on:click="createTag(newTag)"><i class="fa fa-floppy-o" style="margin-left: 5px; font-size: 20px;" aria-hidden="true"></i></a>
+            <a v-if="newTag.name != ''" v-on:click="createTag(newTag)" class="save-icon"><i class="fa fa-floppy-o" aria-hidden="true"></i></a>
           </div>
         </panel>
         <panel name="3">
           Ajouter un ustensil
-          <div style="display: flex; align-items: center;" slot="content">
+          <div class="item-center-flex-start" slot="content">
             <input v-model="newTool.name" type="text" class="form-control" id="toolName" placeholder="Nom" style="width:275px">
-            <a v-if="newTool.name != ''" v-on:click="createTool(newTool)"><i class="fa fa-floppy-o" style="margin-left: 5px; font-size: 20px;" aria-hidden="true"></i></a>
+            <a v-if="newTool.name != ''" v-on:click="createTool(newTool)" class="save-icon"><i class="fa fa-floppy-o" aria-hidden="true"></i></a>
           </div>
         </panel>
       </collapse>

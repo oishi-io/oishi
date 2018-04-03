@@ -3,8 +3,30 @@
     display: flex;
     justify-content: space-between;
   }
-  .recipe-steps {
+  .recipe-measures {
+    .draggable-measure{
+      width: 620px;
+      font-size: 18px;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      cursor: move;
+      border: 1px solid #DCDDE0;
+      height: 35px;
+      margin-bottom: 5px;
+      padding: 5px 10px;
+      border-radius: 2px;
+    }
 
+    .new-input {
+      width: 150px !important;
+      height: 32px;
+      margin-right: 5px;
+    }
+  }
+  .save-icon{
+    margin-left: 5px;
+    font-size: 20px;
   }
   .item-center-space-around {
     display: flex;
