@@ -51,7 +51,7 @@
     <div class="recipe-etapes">
       <h3>Etapes</h3>
       <ul>
-        <% @recipe.steps.each do |step| %>
+        <% @steps.each do |step| %>
           <li>
             <h5>:::::: <%=step.index %></h5>
             <p><%= step.text %></p>

@@ -9,6 +9,7 @@ class RecipesController < ApplicationController
 
   def show
     @measures = @recipe.measures.order(order: :ASC)
+    @steps = @recipe.steps.order(index: :ASC)
     @tags = @recipe.tags
     @tools = @recipe.tools
   end
