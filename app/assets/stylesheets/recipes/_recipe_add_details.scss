@@ -1,7 +1,10 @@
-#recipe_add_details{
+#recipe-add-details{
   .details {
     display: flex;
     justify-content: space-between;
+  }
+  p {
+    font-size: 35px;
   }
   .recipe-steps {
 

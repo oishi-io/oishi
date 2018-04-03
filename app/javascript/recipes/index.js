@@ -6,7 +6,7 @@ import draggable from 'vuedraggable';
 Vue.use(iView, { locale });
 
 var vm = new Vue({
-  el: "#recipe_add_details",
+  el: "#recipe-add-details",
   data: {
     recipeId: gon.recipeId,
     recipe: gon.recipe,
