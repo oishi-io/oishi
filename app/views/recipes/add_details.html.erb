@@ -94,7 +94,7 @@
       <div class="recipe-steps">
         <h4 style="margin-top: 10px; margin-bottom: 10px;">Etapes</h4>
         <div v-for="(step, index) in steps" class="item-center-flex-start" style="margin-bottom: 5px;" v-on:mouseenter="displayButtons('step', index, 'block')" v-on:mouseleave="displayButtons('step', index, 'none')">
-          <input class="form-control" type="integer" v-model="step.index" placeholder="#" style="width: 40px;">
+          <input class="form-control" type="integer" v-model="step.order" placeholder="#" style="width: 40px;">
           <textarea class="form-control" type="text" v-model="step.text" placeholder="Description de l'étape" style="margin: 0px 5px; width: 570px;"></textarea>
           <a v-if="step.text.length != stepsLength[index]" v-on:click="updateStep(step, index)"><i class="fa fa-floppy-o" style="font-size: 20px;" aria-hidden="true"></i></a>
           <div :id="'step_' + index" style="display: none;">

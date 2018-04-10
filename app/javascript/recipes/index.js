@@ -185,7 +185,7 @@ var vm = new Vue({
         data: {
           step_id: step.id,
           text: step.text,
-          index: step.index,
+          order: step.order,
           recipe_id: step.recipe_id,
         },
         url: '/recipes/' + _this.recipeId + '/steps',
@@ -198,7 +198,7 @@ var vm = new Vue({
     addStep: function(){
       let _this = this;
       let newIndex = _this.steps.length + 1;
-      _this.steps.push({ id: null, index: newIndex, text: '', recipe_id: _this.recipeId });
+      _this.steps.push({ id: null, order: newIndex, text: '', recipe_id: _this.recipeId });
       _this.stepsLength.push(0);
     },
     destroyStep: function(step, index){

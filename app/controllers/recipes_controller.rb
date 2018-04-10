@@ -9,7 +9,7 @@ class RecipesController < ApplicationController
 
   def show
     @measures = @recipe.measures.order(order: :ASC)
-    @steps = @recipe.steps.order(index: :ASC)
+    @steps = @recipe.steps.order(order: :ASC)
     @tags = @recipe.tags
     @tools = @recipe.tools
   end
@@ -59,7 +59,7 @@ class RecipesController < ApplicationController
       }
     end
     gon.measures = serialized_measures
-    gon.steps = @recipe.steps.order(index: :ASC)
+    gon.steps = @recipe.steps.order(order: :ASC)
     gon.stepsLength = gon.steps.pluck(:text).map(&:length)
   end
 
