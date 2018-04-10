@@ -65,7 +65,6 @@ ActiveRecord::Schema.define(version: 20180410171639) do
     t.integer  "preparation_time"
     t.string   "difficulty"
     t.integer  "servings"
-    t.string   "photo"
     t.text     "description"
     t.index ["user_id"], name: "index_recipes_on_user_id", using: :btree
   end
