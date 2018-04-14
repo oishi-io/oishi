@@ -6,17 +6,20 @@
   }
   .recipe-measures {
     .draggable-measure{
-      width: 620px;
+      width: 680px;
       font-size: 18px;
       list-style: none;
       display: flex;
       justify-content: space-between;
       cursor: move;
-      border: 1px solid #DCDDE0;
       height: 35px;
+
+    }
+    .border {
       margin-bottom: 5px;
       padding: 5px 10px;
       border-radius: 2px;
+      border: 1px solid #DCDDE0;
     }
 
     .new-input {

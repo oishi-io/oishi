@@ -41,7 +41,7 @@
           <h4 style="margin-top: 10px; margin-bottom: 10px;">Liste des mesures</h4>
           <draggable v-model="measures" :move="checkMove">
             <div v-for="(measure, index) in measures" :options="{draggable:'.item'}" class="draggable-measure" v-on:mouseenter="displayButtons('measure', index, 'block')" v-on:mouseleave="displayButtons('measure', index, 'none')">
-              <div class="item-center-space-between" style="width: 530px;">
+              <div class="item-center-space-between border" style="width: 620px;">
                 <p><strong style="color: #338BF0;">{{ index + 1}}</strong><i class="fa fa-bars" aria-hidden="true" style="color: #338BF0; margin: 0px 10px;"></i>{{ measure.ingredient.name }}{{ measure.text2 }}</p>
                 <p>{{ measure.quantity }}{{ measure.text1 }}</p>
               </div>
