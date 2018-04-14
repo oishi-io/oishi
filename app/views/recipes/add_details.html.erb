@@ -56,14 +56,14 @@
         <div>
           <h4 style="margin-top: 20px; margin-bottom: 10px;">Ajout des mesures</h4>
           <div class="item-center-flex-start new-measure">
-            <input v-model.number="newMeasure.quantity" type="integer" class="new-input form-control" placeholder="Quantité" style="width: 150px; height: 32px; margin-right: 5px;">
-            <input v-model="newMeasure.text1" type="text" class="new-input form-control" placeholder="Texte 1" style="width: 150px; height: 32px; margin-right: 5px;">
             <template>
-              <i-select v-model="newMeasure.ingredient.id" filterable style="width: 150px; margin-right: 5px;">
+              <i-select v-model="newMeasure.ingredient.id" filterable style="width: 150px; margin-right: 5px;" placeholder="Ingrédient" >
                 <i-option v-for="ingredient in ingredients" :value="ingredient.id" :key="ingredient.name">{{ ingredient.name }}</i-option>
               </i-select>
             </template>
             <input v-model="newMeasure.text2" type="text" class="new-input form-control" placeholder="Texte 2" style="width: 150px; height: 32px; margin-right: 5px;">
+            <input v-model.number="newMeasure.quantity" type="integer" class="new-input form-control" placeholder="Quantité" style="width: 150px; height: 32px; margin-right: 5px;">
+            <input v-model="newMeasure.text1" type="text" class="new-input form-control" placeholder="Texte 1" style="width: 150px; height: 32px; margin-right: 5px;">
             <a v-on:click="createMeasure(newMeasure)">
               <i v-if="checkNewMeasure == true" class="fa fa-floppy-o" style="font-size: 20px;" aria-hidden="true"></i>
             </a>
