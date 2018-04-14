@@ -43,8 +43,8 @@
         <ul>
           <% @measures.each do |measure| %>
             <li>
-              <p><%= measure.ingredient.name %><%= measure.text_2 %></p>
-              <p><strong><%= measure.quantity %><%= measure.text_1 %></strong></p>
+              <p><strong><%= measure.ingredient.name %><%= measure.text_2 %></strong></p>
+              <p><%= measure.quantity %><%= measure.text_1 %></p>
             </li>
           <% end %>
         </ul>

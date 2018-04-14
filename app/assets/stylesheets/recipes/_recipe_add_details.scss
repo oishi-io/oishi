@@ -1,4 +1,5 @@
-#recipe-add-details.container{
+#recipe-add-details{
+  margin: 1% 15%;
   .details {
     display: flex;
     justify-content: space-between;
@@ -33,7 +34,12 @@
     justify-content: space-around;
     align-items: center;
   }
-  .item-center-flex-start{
+  .item-center-space-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .item-center-flex-start {
     display: flex;
     justify-content: flex-start;
     align-items: center;
