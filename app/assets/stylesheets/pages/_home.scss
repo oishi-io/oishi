@@ -8,9 +8,9 @@
       background-color: white;
     }
 
-// .structure{
-//   height:80%;
-// }
+.structure{
+  height:100%;
+}
 
 .banner-content{
   position: relative;
@@ -32,8 +32,15 @@
 .incipit{
   background-color: pink;
   color: white;
-  // height: 100%;
+  height:100%;
   // text-align: center;
+  padding: 20%;
+}
+
+.cardholder{
+  background-color: #FEDB32;
+  color: white;
+  height: 100%;
   padding: 20%;
 }
 
