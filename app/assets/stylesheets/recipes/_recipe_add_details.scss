@@ -1,21 +1,25 @@
-#recipe-add-details.container{
+#recipe-add-details{
+  margin: 1% 15%;
   .details {
     display: flex;
     justify-content: space-between;
   }
   .recipe-measures {
     .draggable-measure{
-      width: 620px;
+      width: 680px;
       font-size: 18px;
       list-style: none;
       display: flex;
       justify-content: space-between;
       cursor: move;
-      border: 1px solid #DCDDE0;
       height: 35px;
+
+    }
+    .border {
       margin-bottom: 5px;
       padding: 5px 10px;
       border-radius: 2px;
+      border: 1px solid #DCDDE0;
     }
 
     .new-input {
@@ -33,7 +37,12 @@
     justify-content: space-around;
     align-items: center;
   }
-  .item-center-flex-start{
+  .item-center-space-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .item-center-flex-start {
     display: flex;
     justify-content: flex-start;
     align-items: center;
