@@ -21,7 +21,24 @@
   <div><h2>/ La Gastronomie Japonaise Simplifiée /</h2></div>
 </div>
 <div class="cardholder">
-  <div><h2>/ Les cards/</h2></div>
+  <div class="row">
+  <% @recipes.each do |recipe| %>
+    <div class="col-xs-12 col-sm-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),  url('<%= cl_image_path recipe.photos[0].path, crop: :fill %>');">
+      <div class="card-category">Popular</div>
+        <img class="card-user" src="https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/zhlzy0vbq5fxiytqg6p3.jpg">
+        <a class="card-link" href="#" ></a>
+        </div>
+      <div class="card-info">
+        <h2><%= recipe.title %></h2>
+        <p>Un classique rapide et facile!</p>
+      <div class="prep_time">
+        <p><%= recipe.preparation_time%> minutes</p>
+      </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
 </div>
 
 <!-- <script type="text/javascript">

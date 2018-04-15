@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy, :add_details, :add_tags, :add_tools]
 
+
   def index
     @recipes = policy_scope(Recipe)
     @recipes = Recipe.all
