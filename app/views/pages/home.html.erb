@@ -1,15 +1,4 @@
 
-
-<!-- div class="big">
-  <div class="page">
-    <div class="bottom-right message">
-      <h1>OISHI</h1>
-    </div>
-  </div>
-
-</div> -->
-
-
 <div class="structure">
   <div class="bande">
     <div class="banner-content">
@@ -21,48 +10,23 @@
   <div><h2>/ La Gastronomie Japonaise Simplifiée /</h2></div>
 </div>
 <div class="cardholder">
-  <div><h2>/ Les cards/</h2></div>
-</div>
-
-<!-- <script type="text/javascript">
-var progressif = jQuery('.progressif');
-var text = progressif.text() ; // on met le texte dans une variable
-var text_length = text.length; // on mesure la longueur du texte
-progressif.text(''); // on vide la div de son texte, pour pouvoir le remettre
-
-var new_text = ''; // on crée une variable qui contiendra le nouveau texte
-var i = 0;
-// et on lance une fonction qui se répétera automatiquement
-var timer = setInterval(function(){
-    // on modifie la nouvelle variable
-    new_text = new_text + text[i];
-    // on l'injecte dans la div
-    progressif.text(new_text);
-
-    if(i < text_length-1) {
-        // si on n'a pas fini, on incrémente i de 1
-        i++;
-    }
-    else {
-        // c'est la fin, on arrête le timer
-        clearInterval(timer);
-    }
-
-}, 100);
-
-</script> -->
-
-
-
-<!-- <div>
-  <div class="grid">
-          <li class="grid_item span__1 a"><a href="#" class="grid_link"><div class="tile">1</div></a></li>
-          <li class="grid_item span__2 b"><%#link_to recipe_path(@recipes[]), %><div class="tile">2</div></li>
-          <li class="grid_item span__1 c"><a href="#" class="grid_link"><div class="tile">3</div></a></li>
-          <li class="grid_item span__2 d"><a href="#" class="grid_link"><div class="tile">4</div></a></li>
-          <li class="grid_item span__1 e"><a href="#" class="grid_link"><div class="tile">5</div></a></li>
-          <li class="grid_item span__1 f"><a href="#" class="grid_link"><div class="tile">6</div></a></li>
-          <li class="grid_item span__5 g"><a href="#" class="grid_link"><div class="tile">7</div></a></li>
+  <div class="container">
+    <div class="row">
+      <% @recipe.each do |r| %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+          <div class="card-category">Popular</div>
+          <div class="card-description">
+            <h2><% @r.title %></h2>
+            <p>Very cool city, the best</p>
+          </div>
+          <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+          <a class="card-link" href="#" ></a>
+        </div>
+      </div>
+      <% end %>
+    </div>
   </div>
 </div>
- -->
+
+

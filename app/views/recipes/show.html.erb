@@ -3,7 +3,7 @@
   <div class="row entete">
     <div class="col-xs-12 recipe-title">
       <h2><%= @recipe.title %></h2>
-      <% if current_user.admin? %>
+      <% if current_user.present? && current_user.admin? %>
         <%= link_to add_details_path(@recipe) do %>
           <i class="fa fa-plus" aria-hidden="true"></i>
         <% end %>
@@ -43,8 +43,8 @@
         <ul>
           <% @measures.each do |measure| %>
             <li>
-              <p><%= measure.ingredient.name %><%= measure.text_2 %></p>
-              <p><strong><%= measure.quantity %><%= measure.text_1 %></strong></p>
+              <p><strong><%= measure.ingredient.name %><%= measure.text_2 %></strong></p>
+              <p><%= measure.quantity %><%= measure.text_1 %></p>
             </li>
           <% end %>
         </ul>

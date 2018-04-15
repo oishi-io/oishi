@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="//unpkg.com/iview/dist/styles/iview.css">
 
-<div class="container" id="recipe-add-details" v-cloak>
+<div id="recipe-add-details" v-cloak>
   <div class="recipe-info">
     <div v-if="!editBasics" class="item-center-flex-start" style="height: 50px;">
       <a v-on:click="editBasics = true">
@@ -41,7 +41,10 @@
           <h4 style="margin-top: 10px; margin-bottom: 10px;">Liste des mesures</h4>
           <draggable v-model="measures" :move="checkMove">
             <div v-for="(measure, index) in measures" :options="{draggable:'.item'}" class="draggable-measure" v-on:mouseenter="displayButtons('measure', index, 'block')" v-on:mouseleave="displayButtons('measure', index, 'none')">
-              <p><strong style="color: #338BF0;">{{ index + 1}}</strong><i class="fa fa-bars" aria-hidden="true" style="color: #338BF0; margin: 0px 10px;"></i>{{ measure.quantity }}{{ measure.text1 }}{{ measure.ingredient.name }}{{ measure.text2 }}</p>
+              <div class="item-center-space-between border" style="width: 620px;">
+                <p><strong style="color: #338BF0;">{{ index + 1}}</strong><i class="fa fa-bars" aria-hidden="true" style="color: #338BF0; margin: 0px 10px;"></i>{{ measure.ingredient.name }}{{ measure.text2 }}</p>
+                <p>{{ measure.quantity }}{{ measure.text1 }}</p>
+              </div>
               <div :id="'measure_' + index" style="display: none;">
                 <a v-on:click="editMeasure(measure)"><i class="fa fa-pencil-square-o" style="font-size: 20px;" aria-hidden="true"></i></a>
                 <a v-on:click="destroyMeasure(measure, index)" style="margin: 0px 5px;"><i class="fa fa-times" style="color: #cf1b1b; font-size: 20px;" aria-hidden="true"></i></a>
@@ -53,14 +56,14 @@
         <div>
           <h4 style="margin-top: 20px; margin-bottom: 10px;">Ajout des mesures</h4>
           <div class="item-center-flex-start new-measure">
-            <input v-model.number="newMeasure.quantity" type="integer" class="new-input form-control" placeholder="Quantité" style="width: 150px; height: 32px; margin-right: 5px;">
-            <input v-model="newMeasure.text1" type="text" class="new-input form-control" placeholder="Texte 1" style="width: 150px; height: 32px; margin-right: 5px;">
             <template>
-              <i-select v-model="newMeasure.ingredient.id" filterable style="width: 150px; margin-right: 5px;">
+              <i-select v-model="newMeasure.ingredient.id" filterable style="width: 150px; margin-right: 5px;" placeholder="Ingrédient" >
                 <i-option v-for="ingredient in ingredients" :value="ingredient.id" :key="ingredient.name">{{ ingredient.name }}</i-option>
               </i-select>
             </template>
             <input v-model="newMeasure.text2" type="text" class="new-input form-control" placeholder="Texte 2" style="width: 150px; height: 32px; margin-right: 5px;">
+            <input v-model.number="newMeasure.quantity" type="integer" class="new-input form-control" placeholder="Quantité" style="width: 150px; height: 32px; margin-right: 5px;">
+            <input v-model="newMeasure.text1" type="text" class="new-input form-control" placeholder="Texte 1" style="width: 150px; height: 32px; margin-right: 5px;">
             <a v-on:click="createMeasure(newMeasure)">
               <i v-if="checkNewMeasure == true" class="fa fa-floppy-o" style="font-size: 20px;" aria-hidden="true"></i>
             </a>
