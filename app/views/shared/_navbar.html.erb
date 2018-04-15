@@ -40,13 +40,6 @@
       <% end %>
     </div>
 
-<<<<<<< HEAD
-      <!-- Avatar with dropdown menu -->
-      <div class="navbar-item">
-        <div class="dropdown">
-          <%= image_tag "https://cdnimg.techneb.com/shop/17597-thickbox/plateau-de-table-flora-rond-en-bois-stratifie-noir.jpg", class: "avatar dropdown-toggle", id: "navbar-menu", "data-toggle" => "dropdown" %>
-          <ul class="dropdown-menu dropdown-menu-right navbar-dropdown-menu">
-=======
     <!-- Dropdown list appearing on mobile only -->
     <div class="navbar-item hidden-md hidden-lg">
       <div class="dropdown">
@@ -54,7 +47,6 @@
         <ul class="dropdown-menu dropdown-menu-right navbar-dropdown-menu">
           <% if user_signed_in? %>
             <!-- Links when logged in -->
->>>>>>> 6e98bddfd396d8496f79f89cb803c13f44f82604
             <li>
               <%= link_to "Home", root_path, class: "navbar-item navbar-link" %>
             </li>
