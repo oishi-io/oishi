@@ -2,7 +2,6 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy, :add_details, :add_tags, :add_tools]
   skip_before_action :authenticate_user!, only: [:show]
 
-
   def index
     @recipes = policy_scope(Recipe)
     @recipes = Recipe.all
