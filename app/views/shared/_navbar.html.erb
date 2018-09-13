@@ -7,9 +7,6 @@
 
     <!-- Right Navigation -->
     <div class="navbar-right hidden-xs hidden-sm">
-
-
-
       <% if user_signed_in? %>
 
         <!-- Links when logged in -->
@@ -47,26 +44,19 @@
         <ul class="dropdown-menu dropdown-menu-right navbar-dropdown-menu">
           <% if user_signed_in? %>
             <!-- Links when logged in -->
-            <li>
-              <%= link_to "Home", root_path, class: "navbar-item navbar-link" %>
-            </li>
-
+            <li><%= link_to "Home", root_path, class: "navbar-item navbar-link" %></li>
+            <li><%= link_to "Recettes", recipes_path, class: "navbar-item navbar-link" %></li>
             <% if current_user.admin? %>
-            <li>
-              <%= link_to "Admin Dashboard", rails_admin_path, class: "navbar-item navbar-link" %>
-            </li>
-            <li>
-              <%= link_to "Ajouter une recette", new_recipe_path, class: "navbar-item navbar-link" %>
-            </li>
+              <li><%= link_to "Admin Dashboard", rails_admin_path, class: "navbar-item navbar-link" %></li>
+              <li><%= link_to "Ajouter une recette", new_recipe_path, class: "navbar-item navbar-link" %></li>
+              <li><%= link_to "Ingrédients", ingredients_path, class: "navbar-item navbar-link" %></li>
+              <li><%= link_to "Tools", tools_path, class: "navbar-item navbar-link" %></li>
+              <li><%= link_to "Tags", tags_path, class: "navbar-item navbar-link" %></li>
             <% end %>
-            <li>
-              <%= link_to "Log out", destroy_user_session_path, class: "navbar-item navbar-link", method: :delete %>
-            </li>
+            <li><%= link_to "Log out", destroy_user_session_path, class: "navbar-item navbar-link", method: :delete %></li>
           <% else %>
             <!-- Login link (when logged out) -->
-            <li>
-              <%= link_to "Login", new_user_session_path, class: "navbar-item navbar-link" %>
-            </li>
+            <li><%= link_to "Login", new_user_session_path, class: "navbar-item navbar-link" %></li>
           <% end %>
         </ul>
       </div>
