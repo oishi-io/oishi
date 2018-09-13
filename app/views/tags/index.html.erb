@@ -1,0 +1,18 @@
+<div class="wrapper">
+  <div class="container">
+    <div align="center">
+      <h1>Liste des Tags</h1>
+        <ul>
+          <% @tags.each do |tag| %>
+            <li style="list-style: none">
+              <%= tag.name %>
+                <% if policy(tag).update? %>
+                <%= link_to 'delete', tag_path(tag), method: :delete %>
+                <%= link_to 'edit', edit_tag_path(tag)%>
+                <% end %>
+            </li>
+          <% end %>
+        </ul>
+    </div>
+  </div>
+</div>

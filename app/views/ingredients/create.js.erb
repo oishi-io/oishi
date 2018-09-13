@@ -1,5 +1,0 @@
-<% if @ingredient.errors.any? %>
-  // Render new ingredient form with errors
-  const container = document.querySelector('#ingredient-form-container');
-  container.innerHTML = '<%= j render "recipes/ingredient_form", recipe: @recipe, ingredient: @ingredient %>'
-<% end %>
