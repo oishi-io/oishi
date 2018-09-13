@@ -32,8 +32,8 @@ class IngredientsController < ApplicationController
 
   def update
     @ingredient.update(ingredient_params)
-    if ingredient.save
-      redirect_to root_path
+    if @ingredient.save
+      redirect_to ingredients_path
     else
       render 'edit'
     end
