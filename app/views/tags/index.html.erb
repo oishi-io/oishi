@@ -2,6 +2,7 @@
   <div class="container">
     <div align="center">
       <h1>Liste des Tags</h1>
+        <%= link_to 'Ajouter un tag', new_tag_path %>
         <ul>
           <% @tags.each do |tag| %>
             <li style="list-style: none">
