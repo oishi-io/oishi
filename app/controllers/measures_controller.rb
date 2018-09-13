@@ -1,7 +1,7 @@
 class MeasuresController < ApplicationController
   def create
     @measure = Measure.find_by(id: params[:measure][:measure_id])
-    if @measure == nil
+    if @measure.nil?
       @measure = Measure.new(measure_params)
     else
       @measure.update(measure_params)
@@ -13,13 +13,12 @@ class MeasuresController < ApplicationController
                    text1: @measure.text_1,
                    ingredient: { name: @measure.ingredient.name, id: @measure.ingredient.id },
                    text2: @measure.text_2,
-                   order: @measure.order
-                  }
+                   order: @measure.order }
   end
 
   def save_order
     measures = params[:measures]
-    measures.each do |k, v|
+    measures.each do |_k, v|
       @measure = Measure.find_by(id: v['measure_id'])
       @measure.update(order: v['order'])
       authorize @measure
@@ -33,12 +32,12 @@ class MeasuresController < ApplicationController
   end
 
   def update
-    @measure= Measure.update(measure_params)
+    @measure = Measure.update(measure_params)
     redirect_to recipe_path(@recipe)
   end
 
   def destroy
-    @measure = Measure.find(params[:id]) #get the measure from the id
+    @measure = Measure.find(params[:id]) # get the measure from the id
     @measure.destroy
     authorize @measure
     render json: @measure
