@@ -4,7 +4,7 @@
     "eslint": "^5.5.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
-    "iview": "^2.8.0",
+    "iview": "^3.1.1-rc.1",
     "vue": "^2.4.3",
     "vue-loader": "^13.0.4",
     "vue-template-compiler": "^2.4.3",
