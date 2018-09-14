@@ -227,4 +227,6 @@ var vm = new Vue({
   },
 });
 
+export default
+
 window.vm = vm
