@@ -1,20 +1,17 @@
- html {
+// REMOVING ALL STANDARD HTML BEHAVIOURS
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+// Set 1rem = 10px, whatever the users font size
+html {
   font-size: 62.5%;
 }
 
 body {
-  font-size: 1.4rem;
+  box-sizing: border-box;
 }
-
-h1 {
-  font-size: 2.4rem;
-}
-
-h2 {
-  font-size: 1.8rem;
-}
-
-h4 {
-  font-size: 1.6rem;
-}
-
