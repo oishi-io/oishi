@@ -35,7 +35,6 @@ var vm = new Vue({
     checkNewMeasure: function(){
       let _this = this;
       let m = _this.newMeasure
-      console.log(m)
       let ingredientIds = _this.measures.map(x => x.ingredient.id)
       return m.text1 != '' && m.ingredient.id && !ingredientIds.includes(m.ingredient.id) || _this.checkEditMeasure == true
     },

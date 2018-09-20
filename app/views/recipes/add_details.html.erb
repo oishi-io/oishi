@@ -31,6 +31,11 @@
         <input v-else class="form-control" type="text" style="width: 50px;" v-model="recipe.cooking_time">
       </div>
     </div>
+    <div class="edit-recipe-description">
+      <h5 style="margin-right: 10px;">Description: </h5>
+      <p v-if="!editBasics">{{ recipe.description }}</p>
+      <textarea v-else class="form-control" type="text" placeholder="Description de l'étape" style="margin: 0px 5px; width: 570px;">{{ recipe.description }}</textarea>
+    </div>
   </div>
 
   <div class="details">

@@ -38,6 +38,7 @@ class RecipesController < ApplicationController
                      servings: @recipe.servings,
                      preparation_time: @recipe.preparation_time,
                      cooking_time: @recipe.cooking_time,
+                     description: @recipe.description,
                      url: recipe_path(@recipe) }
     gon.ingredients = Ingredient.all
     gon.selectedTags = @recipe.tags.pluck(:id)
@@ -97,6 +98,6 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:title, :preparation_time, :cooking_time, :servings, photos: [])
+    params.require(:recipe).permit(:title, :preparation_time, :cooking_time, :description, :servings, photos: [])
   end
 end
