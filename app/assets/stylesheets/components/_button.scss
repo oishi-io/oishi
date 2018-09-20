@@ -25,7 +25,7 @@
     box-shadow: 0 .5rem 1rem rgba($color-black, .2);
   }
 
-  &--white {
+  &--red {
     background-image: linear-gradient(to right bottom, rgba($color-primary-light, .8), rgba($color-primary-dark, .8));
     color: $color-white;
     &::after {
@@ -50,7 +50,7 @@
   }
 
   &--animated {
-    animation: moveInBottom .5s ease-out .75s;
+    animation: moveInBottom .5s ease-out;
     animation-fill-mode: backwards;
   }
 }
