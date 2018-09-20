@@ -79,6 +79,7 @@ class RecipesController < ApplicationController
   end
 
   def update
+    binding.pry
     @recipe.update(recipe_params)
     authorize @recipe
     @recipe.save
