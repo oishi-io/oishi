@@ -1,32 +1,17 @@
-<div class="structure">
-  <div class="bande">
-    <div class="banner-content">
-      <h2 class="bottom-right">OISHI</h2>
-    </div>
+<header class="header">
+  <div class="header__logo-box">
+    <p class="header__logo">oishi.io</p>
+    <!-- <img src="img/logo-white.png" alt="Logo" class="header__logo"> -->
   </div>
-</div>
-<div class="incipit">
-  <div><h2>/ La Gastronomie Japonaise Simplifiée /</h2></div>
-</div>
-<div class="cardholder">
-  <div class="row">
-  <% @recipes.each do |recipe| %>
-    <% if recipe.photos.any? %>
-      <div class="col-xs-12 col-sm-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),  url('<%= cl_image_path recipe.photos[0].path, crop: :fill %>');">
-        <div class="card-category">Popular</div>
-          <img class="card-user" src="https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/zhlzy0vbq5fxiytqg6p3.jpg">
-          <a class="card-link" href="#" ></a>
-          </div>
-        <div class="card-info">
-          <h2><%= recipe.title %></h2>
-          <p>Un classique rapide et facile!</p>
-        <div class="prep_time">
-          <p><%= recipe.preparation_time%> minutes</p>
-        </div>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
+
+  <div class="header__button">
+    <a href="#"class="btn btn--white btn--animated">Entrer</a>
   </div>
-</div>
+
+  <div class="header__text-box">
+    <h1 class="heading-primary">
+      <span class="heading-primary--main">Découvrez</span>
+      <span class="heading-primary--sub">la gastronomie japonaise</span>
+    </h1>
+  </div>
+</header>
