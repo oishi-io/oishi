@@ -26,7 +26,7 @@
   }
 
   &--white {
-    background-color: $color-white;
+    background-color: linear-gradient(to right bottom, rgba($color-primary-light, .8), rgba($color-primary-dark, .8));
     color: $color-grey-dark;
     &::after {
       background-color: $color-white;

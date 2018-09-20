@@ -10,8 +10,8 @@
 
   &__logo-box {
     position: absolute;
-    top: 4rem;
-    left: 4rem;
+    top: 1rem;
+    left: 1rem;
   }
 
   &__logo {
@@ -20,19 +20,20 @@
     text-transform: uppercase;
     color: $color-white;
     background-color: $color-black;
-    padding: 0 1.5rem;
+    padding: 0 .5rem 0 2rem;
     border-radius: 3px;
+    letter-spacing: 1.5rem;
   }
 
   &__text-box {
     position: absolute;
     bottom: 1rem;
-    right: 2rem;
-    font-size: 2rem;
+    right: 1rem;
+    font-size: 1.6rem;
     font-weight: 100;
     color: $color-white;
     background-color: $color-black;
-    padding: 1rem 1.5rem;
+    padding: 1rem .5rem 1rem 2rem;
     border-radius: 3px;
     h1 {
       margin: 0;
@@ -45,5 +46,32 @@
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+  }
+}
+
+.heading-primary {
+  color: $color-white;
+  text-transform: uppercase;
+  border-radius: 3px;
+
+  backface-visibility: hidden;
+
+  &--main {
+    display: block;
+    font-size: 3rem;
+    font-weight: 300;
+    letter-spacing: 1.5rem;
+
+    animation: moveInLeft 1s ease-out;
+  }
+
+  &--sub {
+    display: block;
+    font-size: 3rem;
+    font-weight: 300;
+
+    letter-spacing: 1.5rem;
+
+    animation: moveInRight 1s ease-out;
   }
 }
