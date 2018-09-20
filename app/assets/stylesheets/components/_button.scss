@@ -7,8 +7,8 @@
     border-radius: 10rem;
     transition: all .2s;
     position: relative;
-    font-size: 2rem;
-    font-weight: 700;
+    font-size: 3rem;
+    color: $color-white;
   }
 
   &:hover {
@@ -26,10 +26,13 @@
   }
 
   &--white {
-    background-color: linear-gradient(to right bottom, rgba($color-primary-light, .8), rgba($color-primary-dark, .8));
-    color: $color-grey-dark;
+    background-image: linear-gradient(to right bottom, rgba($color-primary-light, .8), rgba($color-primary-dark, .8));
+    color: $color-white;
     &::after {
-      background-color: $color-white;
+      background-image: linear-gradient(to right bottom, rgba($color-primary-light, .8), rgba($color-primary-dark, .8));
+    }
+    &:active {
+      background-image: linear-gradient(to right bottom, rgba($color-primary-light, .8), rgba($color-primary-dark, .8));
     }
   }
 
