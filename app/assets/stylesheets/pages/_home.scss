@@ -10,25 +10,26 @@
 
   &__logo-box {
     position: absolute;
-    top: 1rem;
-    left: 1rem;
+    top: 3rem;
+    left: 3rem;
   }
 
   &__logo {
+    margin: 0;
     font-size: 6rem;
-    font-weight: 100;
+    font-weight: 300;
     text-transform: uppercase;
     color: $color-white;
     background-color: $color-black;
-    padding: 0 .5rem 0 2rem;
+    padding: .7rem .5rem 0.7rem 2rem;
     border-radius: 3px;
     letter-spacing: 1.5rem;
   }
 
   &__text-box {
     position: absolute;
-    bottom: 1rem;
-    right: 1rem;
+    bottom: 3rem;
+    right: 3rem;
     font-size: 1.6rem;
     font-weight: 100;
     color: $color-white;
@@ -53,25 +54,73 @@
   color: $color-white;
   text-transform: uppercase;
   border-radius: 3px;
+  font-size: 3rem;
+  font-weight: 300;
+  letter-spacing: 1.5rem;
 
   backface-visibility: hidden;
 
   &--main {
     display: block;
-    font-size: 3rem;
-    font-weight: 300;
-    letter-spacing: 1.5rem;
-
     animation: moveInLeft 1s ease-out;
   }
 
   &--sub {
     display: block;
-    font-size: 3rem;
-    font-weight: 300;
-
-    letter-spacing: 1.5rem;
-
     animation: moveInLeft 1.2s ease-out;
+  }
+}
+
+@media screen and (max-width: 50rem) {
+  .header {
+    &__logo-box {
+      top: 1rem;
+      left: 1rem;
+    }
+
+    .btn {
+      &:link, &:visited {
+        font-size: 2rem;
+      }
+    }
+    &__logo {
+      font-size: 3rem;
+    }
+
+    &__text-box {
+      bottom: 1rem;
+      right: 1rem;
+    }
+  }
+
+  .heading-primary {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 100rem) and (min-width: 501px) {
+  .header {
+    &__logo-box {
+      top: 2rem;
+      left: 2rem;
+    }
+
+    .btn {
+      &:link, &:visited {
+        font-size: 2.5rem;
+      }
+    }
+    &__logo {
+      font-size: 5rem;
+    }
+
+    &__text-box {
+      bottom: 2rem;
+      right: 2rem;
+    }
+  }
+
+  .heading-primary {
+    font-size: 2.5rem;
   }
 }
