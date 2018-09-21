@@ -1,0 +1,14 @@
+<div class="hamburger-menu">
+  <div class="dropdown">
+    <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+    <ul class="dropdown-menu dropdown-menu-right menu__dropdown">
+      <li><%= link_to "Home", root_path, class: "menu__item menu__link" %></li>
+      <li><%= link_to "Admin Dashboard", rails_admin_path, class: "menu__item menu__link" %></li>
+      <li><%= link_to "Recettes", recipes_path, class: "menu__item menu__link" %></li>
+      <li><%= link_to "Ingrédients", ingredients_path, class: "menu__item menu__link" %></li>
+      <li><%= link_to "Ustensiles", tools_path, class: "menu__item menu__link" %></li>
+      <li><%= link_to "Tags", tags_path, class: "menu__item menu__link" %></li>
+      <li><%= link_to "Log out", destroy_user_session_path, class: "menu__item menu__link", method: :delete %></li>
+    </ul>
+  </div>
+</div>

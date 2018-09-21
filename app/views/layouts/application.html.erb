@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Oishi.io | Gastronomie Japonaise</title>
+    <title>Oishi.io | Recettes Japonaises</title>
     <%= Gon::Base.render_data %>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
@@ -14,6 +14,7 @@
   <body>
     <%# render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
+    <%= render 'shared/menu' %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= cloudinary_js_config %>
