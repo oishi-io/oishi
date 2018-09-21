@@ -13,8 +13,10 @@
   </head>
   <body>
     <%# render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
-    <%= render 'shared/menu' %>
+    <%# render 'shared/flashes' %>
+    <% if current_user.present? && current_user.admin? %>
+      <%= render 'shared/menu' %>
+    <% end %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= cloudinary_js_config %>
