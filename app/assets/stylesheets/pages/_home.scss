@@ -71,8 +71,37 @@
   }
 }
 
-@media screen and (max-width: 50rem) {
+@media screen and (max-width: 32rem) {
   .header {
+    margin: 3px;
+    &__logo-box {
+      top: 1rem;
+      left: 1rem;
+    }
+
+    .btn {
+      &:link, &:visited {
+        font-size: 1.6rem;
+      }
+    }
+    &__logo {
+      font-size: 2rem;
+    }
+
+    &__text-box {
+      bottom: .5rem;
+      right: .5rem;
+    }
+  }
+
+  .heading-primary {
+    font-size: 1.6rem;
+  }
+}
+
+@media screen and (max-width: 50rem) and (min-width: 32.1rem) {
+  .header {
+    margin: .5rem;
     &__logo-box {
       top: 1rem;
       left: 1rem;
@@ -98,7 +127,7 @@
   }
 }
 
-@media screen and (max-width: 100rem) and (min-width: 501px) {
+@media screen and (max-width: 100rem) and (min-width: 50.1rem) {
   .header {
     &__logo-box {
       top: 2rem;
