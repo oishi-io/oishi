@@ -7,6 +7,7 @@
         <Icon type="md-create" size="20" style="margin-right: 10px;" />
       </a>
       <a :href="recipe.url"><h2 style="font-weight: bolder; text-align: center;">{{ recipe.title }}</h2></a>
+      <%= link_to "Supprimer", recipe_path, method: "delete", class: "btn-sm btn-danger", style: 'margin-left: 20px;'%>
     </div>
     <div v-else style="height: 50px;" class="item-center-flex-start">
       <a v-on:click="editRecipe">
