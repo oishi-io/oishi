@@ -7,11 +7,6 @@
           <% @recipes.each do |recipe| %>
             <li style="list-style: none">
               <%= link_to recipe.title, recipe_path(recipe) %>
-                <% if recipe && policy(recipe).update? %>
-                <%= link_to recipe_path(recipe), method: :delete do %>
-                  <i class="fa fa-times" style="color: #cf1b1b; font-size: 20px;" aria-hidden="true"></i>
-                <% end %>
-              <% end %>
             </li>
           <% end %>
         </ul>
