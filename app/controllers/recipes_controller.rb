@@ -81,8 +81,7 @@ class RecipesController < ApplicationController
   def update
     @recipe.update(recipe_params)
     authorize @recipe
-    @recipe.save
-    render json: { recipe: @recipe }, status: 200
+    redirect_to add_details_path(@recipe) if @recipe.save
   end
 
   def destroy

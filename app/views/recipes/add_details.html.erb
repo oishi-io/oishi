@@ -78,6 +78,15 @@
         </div>
       </div>
 
+      <!-- PHOTOS -->
+      <div class="recipe-tags">
+        <h4 style="margin-top: 10px; margin-bottom: 10px;">Photos</h4>
+        <%= simple_form_for @recipe do |f| %>
+          <%= f.input :photos, as: :attachinary %>
+          <%= f.button :submit, class: "btn btn-info"%>
+        <% end %>
+      </div>
+
       <!-- TAGS -->
       <div class="recipe-tags">
         <h4 style="margin-top: 10px; margin-bottom: 10px;">Tags</h4>
