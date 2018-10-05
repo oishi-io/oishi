@@ -1,11 +1,16 @@
 .header {
   height: calc(100vh - 1rem);
-  // linear-gradient(to right bottom, rgba($color-primary-light, .8), rgba($color-primary-dark, .8)),
   background-color: $color-white;
   margin: .5rem;
   position: relative;
   border: 1px solid $color-black;
-  // clip-path: polygon(0 0, 100% 0, 100% 90vh, 50% 100vh, 0 90vh);
+
+  .search {
+    position:absolute;
+    top: 50%;
+    left:50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
 
   &__title{
     position: absolute;
