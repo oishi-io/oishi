@@ -7,27 +7,28 @@
   border: 1px solid $color-black;
   // clip-path: polygon(0 0, 100% 0, 100% 90vh, 50% 100vh, 0 90vh);
 
-  &__logo-box {
+  &__title{
     position: absolute;
-    top: 3rem;
-    left: 3rem;
-  }
+    bottom: 3rem;
+    right: 3rem;
 
-  &__logo {
-    margin: 0;
-    font-size: 6rem;
-    font-weight: 300;
-    text-transform: uppercase;
-    color: $color-white;
-    background-color: $color-black;
-    padding: .7rem .5rem 0.7rem 2rem;
-    border-radius: 3px;
-    letter-spacing: 1.5rem;
+    &--text {
+      margin: 0;
+      font-size: 6rem;
+      font-weight: 300;
+      text-transform: uppercase;
+      color: $color-white;
+      background-color: $color-black;
+      padding: .7rem .5rem 0.7rem 2rem;
+      border-radius: 3px;
+      letter-spacing: 1.5rem;
+      font-family: $headers-font;
+    }
   }
 
   &__text-box {
     position: absolute;
-    bottom: 3rem;
+    bottom: 6rem;
     right: 3rem;
     font-size: 1.6rem;
     font-weight: 100;
@@ -40,13 +41,6 @@
     }
   }
 
-  &__button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-  }
 }
 
 .heading-primary {
@@ -73,22 +67,17 @@
 @media screen and (max-width: 32rem) {
   .header {
     margin: 3px;
-    &__logo-box {
-      top: 1rem;
-      left: 1rem;
+    &__title {
+      bottom: 1rem;
+      right: 1rem;
     }
 
-    .btn {
-      &:link, &:visited {
-        font-size: 1.6rem;
-      }
-    }
-    &__logo {
+    &__title--text {
       font-size: 2rem;
     }
 
     &__text-box {
-      bottom: .5rem;
+      bottom: 10rem;
       right: .5rem;
     }
   }
@@ -101,22 +90,17 @@
 @media screen and (max-width: 50rem) and (min-width: 32.1rem) {
   .header {
     margin: .5rem;
-    &__logo-box {
-      top: 1rem;
-      left: 1rem;
+    &__title {
+      bottom: 1rem;
+      right: 1rem;
     }
 
-    .btn {
-      &:link, &:visited {
-        font-size: 2rem;
-      }
-    }
-    &__logo {
+    &__title--text {
       font-size: 3rem;
     }
 
     &__text-box {
-      bottom: 1rem;
+      bottom: 10rem;
       right: 1rem;
     }
   }
@@ -128,22 +112,17 @@
 
 @media screen and (max-width: 100rem) and (min-width: 50.1rem) {
   .header {
-    &__logo-box {
-      top: 2rem;
-      left: 2rem;
+    &__title {
+      bottom: 2rem;
+      right: 2rem;
     }
 
-    .btn {
-      &:link, &:visited {
-        font-size: 2.5rem;
-      }
-    }
-    &__logo {
+    &__title--text {
       font-size: 5rem;
     }
 
     &__text-box {
-      bottom: 2rem;
+      bottom: 10rem;
       right: 2rem;
     }
   }

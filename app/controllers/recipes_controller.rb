@@ -81,7 +81,7 @@ class RecipesController < ApplicationController
   def update
     @recipe.update(recipe_params)
     authorize @recipe
-    redirect_to add_details_path(@recipe) if @recipe.save
+    head :ok
   end
 
   def destroy

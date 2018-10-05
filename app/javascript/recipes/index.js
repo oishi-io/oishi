@@ -214,10 +214,10 @@ var vm = new Vue({
       let _this = this;
       $.ajax({
         method: 'PUT',
+        url: '/recipes/' + _this.recipeId,
         data: {
           recipe: _this.recipe,
         },
-        url: '/recipes/' + _this.recipeId,
         success: function(){
           _this.editBasics = false
         },
