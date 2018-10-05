@@ -1,11 +1,10 @@
 .header {
-  height: 98vh;
+  height: calc(100vh - 1rem);
   // linear-gradient(to right bottom, rgba($color-primary-light, .8), rgba($color-primary-dark, .8)),
-  background-image: url(https://images.unsplash.com/photo-1496116218417-1a781b1c416c?ixlib=rb-0.3.5&s=aa5f954f8c3de6f8427e6f8ad35c0085&auto=format&fit=crop&w=2550&q=80);
-  background-size: cover;
-  background-position: center;
-  margin: 1rem;
+  background-color: $color-white;
+  margin: .5rem;
   position: relative;
+  border: 1px solid $color-black;
   // clip-path: polygon(0 0, 100% 0, 100% 90vh, 50% 100vh, 0 90vh);
 
   &__logo-box {
