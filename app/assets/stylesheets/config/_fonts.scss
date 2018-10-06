@@ -1,12 +1,9 @@
 // Import Google fonts
-// @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
-@import url("https://fonts.googleapis.com/css?family=Muli:300,400,700|Jura");
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700|Work+Sans:300");
 
 // Define fonts for body and headers
-// $body-font: "Open Sans", "Helvetica", "sans-serif";
-// $headers-font: "Raleway", "Helvetica", "sans-serif";
-$body-font: "Muli","Courier", "sans-serif";
-$headers-font: "Jura", "Helvetica", "sans-serif";
+$body-font: "Lato","Arial", "sans-serif";
+$headers-font: "Work Sans", "Helvetica", "sans-serif";
 
 // Set all fonts to 16px;
 body {

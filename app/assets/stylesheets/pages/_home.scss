@@ -18,16 +18,20 @@
     right: 3rem;
 
     &--text {
-      margin: 0;
+      margin: 0 auto;
       font-size: 6rem;
       font-weight: 300;
       text-transform: uppercase;
       color: $color-white;
       background-color: $color-black;
-      padding: .7rem .5rem 0.7rem 2rem;
+      // padding: .7rem .5rem 0.7rem 2rem;
       border-radius: 3px;
       letter-spacing: 1.5rem;
       font-family: $headers-font;
+
+      &:last-letter {
+        margin-right: -1.5rem;
+      }
     }
   }
 

@@ -38,10 +38,10 @@
 
 
   p{
-      font-size: 14px;
-      color: grey;
+      font-size: 16px;
+      color: $color-black;
     strong{
-      color: black;
+      color: $color-black;
     }
     }
 
@@ -52,7 +52,6 @@
   }
 
   .recipe-mesures{
-    // flex: 0 0 30%;
     padding: 0px;
     ul{
       padding-left: 0px;
@@ -141,33 +140,3 @@
       font-size: 1em;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
