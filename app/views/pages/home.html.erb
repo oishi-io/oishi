@@ -1,16 +1,25 @@
-<header class="header">
+<div class="landing">
 
-  <div class="search">
-    <input type="text">
+  <div class="section-search">
+    <div class="search">
+      <input type="text">
+    </div>
+    <div class="recipe__box">
+      <% @recipes.each do |recipe| %>
+      <div class="recipe__box__card">
+        <h2><%= recipe.title %></h2>
+      </div>
+      <% end %>
+    </div>
   </div>
-  <div class="header__text-box">
+  <div class="text-box">
     <h1 class="heading-primary">
       <span class="heading-primary--sub">Recettes</span>
       <span class="heading-primary--main">Japonaises</span>
     </h1>
   </div>
 
-  <div class="header__title">
-    <h1 class="header__title--text">oishi.io</h1>
+  <div class="title">
+    <h1 class="title--text">oishi.io</h1>
   </div>
-</header>
+</div>

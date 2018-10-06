@@ -1,18 +1,44 @@
-.header {
+.landing {
   height: calc(100vh - 1rem);
   background-color: $color-white;
   margin: .5rem;
   position: relative;
   border: 1px solid $color-black;
 
-  .search {
-    position:absolute;
-    top: 50%;
+  .section-search {
+    width: 90vw;
+    position: absolute;
+    top: 40%;
     left:50%;
     transform: translateX(-50%) translateY(-50%);
+    .search {
+      text-align: center;
+      margin-bottom: 1rem;
+      input {
+        border: 1px solid $color-black;
+      }
+    }
+    .recipe__box {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      &__card {
+        border: 1px solid $color-black;
+        height: 25rem;
+        width: 25rem;
+        flex: 0 0 auto;
+        &:not(:last-child) {
+          margin-right: 2rem;
+        }
+      }
+    }
   }
 
-  &__title{
+  .title{
     position: absolute;
     bottom: 3rem;
     right: 3rem;
@@ -31,7 +57,7 @@
     }
   }
 
-  &__text-box {
+  .text-box {
     position: absolute;
     bottom: 6rem;
     right: 3rem;
@@ -54,9 +80,7 @@
   border-radius: 3px;
   font-size: 3rem;
   font-weight: 300;
-  letter-spacing: 1.5rem;
-
-  backface-visibility: hidden;
+  letter-spacing: 1rem;
 
   &--main {
     display: block;
@@ -70,18 +94,18 @@
 }
 
 @media screen and (max-width: 32rem) {
-  .header {
+  .landing {
     margin: 3px;
-    &__title {
+    .title {
       bottom: 1rem;
       right: 1rem;
     }
 
-    &__title--text {
+    .title--text {
       font-size: 2rem;
     }
 
-    &__text-box {
+    .text-box {
       bottom: 10rem;
       right: .5rem;
     }
@@ -93,18 +117,18 @@
 }
 
 @media screen and (max-width: 50rem) and (min-width: 32.1rem) {
-  .header {
+  .landing {
     margin: .5rem;
-    &__title {
+    .title {
       bottom: 1rem;
       right: 1rem;
     }
 
-    &__title--text {
+    .title--text {
       font-size: 3rem;
     }
 
-    &__text-box {
+    .text-box {
       bottom: 10rem;
       right: 1rem;
     }
@@ -116,17 +140,17 @@
 }
 
 @media screen and (max-width: 100rem) and (min-width: 50.1rem) {
-  .header {
-    &__title {
+  .landing {
+    .title {
       bottom: 2rem;
       right: 2rem;
     }
 
-    &__title--text {
+    .title--text {
       font-size: 5rem;
     }
 
-    &__text-box {
+    .text-box {
       bottom: 10rem;
       right: 2rem;
     }
