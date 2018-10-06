@@ -6,7 +6,7 @@
   border: 1px solid $color-black;
 
   .section-search {
-    width: 90vw;
+    width: 95%;
     position: absolute;
     top: 40%;
     left:50%;
@@ -18,13 +18,16 @@
         border: 1px solid $color-black;
       }
     }
+
     .recipe__box {
-      display: flex;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      &::-webkit-scrollbar {
-        display: none;
+      &--scroll-wrapper {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        &::-webkit-scrollbar {
+          display: none;
+        }
       }
       &__card {
         border: 1px solid $color-black;
