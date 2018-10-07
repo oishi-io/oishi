@@ -1,17 +1,15 @@
-<div class="landing">
+<div class="landing" id="home">
 
   <div class="section-search">
     <div class="search">
-      <input type="text" placeholder="Essayez: 'Udon'">
+      <input v-model="query" type="text" class="search__input" placeholder="Essayez: 'Udon'">
+      <a v-on:click="searchRecipes" href="#" class="search__button">Rechercher</a>
     </div>
     <div class="recipe__box">
       <div class="recipe__box--scroll-wrapper">
-        <% @recipes.each do |recipe| %>
-        <div class="recipe__box__card">
-          <h2><%= recipe.title %></h2>
+        <div v-for="recipe in recipes" class="recipe__box__card">
+          <h2>{{ recipe.title }}</h2>
         </div>
-        <% end %>
-        <div class="recipe__box__card"></div>
       </div>
     </div>
   </div>
@@ -26,3 +24,7 @@
     <h1 class="title--text">oishi.io</h1>
   </div>
 </div>
+
+<% content_for :after_js do %>
+  <%= javascript_pack_tag 'home' %>
+<% end %>
