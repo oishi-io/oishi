@@ -5,7 +5,13 @@
       <input v-model="query" type="text" class="search__input" placeholder="Essayez: 'Udon'">
     </div>
     <div class="recipe__box">
-      <div class="recipe__box--scroll-wrapper">
+      <div class="sk-folding-cube" v-show="isLoading">
+        <div class="sk-cube1 sk-cube"></div>
+        <div class="sk-cube2 sk-cube"></div>
+        <div class="sk-cube4 sk-cube"></div>
+        <div class="sk-cube3 sk-cube"></div>
+      </div>
+      <div class="recipe__box--scroll-wrapper" v-show="!isLoading">
         <div v-for="recipe in recipes" class="recipe__box__card">
           <h2>{{ recipe.title }}</h2>
         </div>

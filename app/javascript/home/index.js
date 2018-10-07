@@ -7,14 +7,12 @@ const vm = new Vue({
     query: '',
     typingTimer: 0,
     typingInterval: 500,
+    isLoading: false,
   },
   watch: {
     query() {
-      // const _this = this;
-      // if (_this.query.length > 2) {
-        clearTimeout(this.typingTimer);
-        this.typingTimer = setTimeout(() => this.searchRecipes(), this.typingInterval);
-      // }
+      clearTimeout(this.typingTimer);
+      this.typingTimer = setTimeout(() => this.searchRecipes(), this.typingInterval);
     },
   },
   components: {
@@ -24,6 +22,7 @@ const vm = new Vue({
   methods: {
     searchRecipes() {
       const _this = this;
+      _this.isLoading = true;
       $.ajax({
         method: 'GET',
         url: `/`,
@@ -31,6 +30,7 @@ const vm = new Vue({
           query: _this.query,
         },
         success: function(data) {
+          _this.isLoading = false;
           _this.recipes = data.recipes;
         }
       })
