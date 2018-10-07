@@ -9,19 +9,17 @@ const vm = new Vue({
   components: {
   },
   computed:{
-
   },
   methods: {
     searchRecipes() {
       const _this = this;
       $.ajax({
         method: 'GET',
-        url: `/?query=${_this.query}`,
+        url: `/`,
         data: {
           query: _this.query,
         },
         success: function(data) {
-          console.log('return')
           _this.recipes = data.recipes;
         }
       })
