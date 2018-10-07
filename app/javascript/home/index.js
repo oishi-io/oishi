@@ -16,11 +16,12 @@ const vm = new Vue({
       const _this = this;
       $.ajax({
         method: 'GET',
-        url: '/',
+        url: `/?query=${_this.query}`,
         data: {
           query: _this.query,
         },
         success: function(data) {
+          console.log('return')
           _this.recipes = data.recipes;
         }
       })
