@@ -34,7 +34,10 @@ const vm = new Vue({
           _this.recipes = data.recipes;
         }
       })
-    }
+    },
+    getScreenHeight() {
+      return `${screen.availHeight - 10}px`;
+    },
   },
 });
 
