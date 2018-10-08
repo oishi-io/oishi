@@ -30,6 +30,11 @@
           display: none;
         }
       }
+      &--no-result {
+        text-align: center;
+        line-height: 30px;
+        margin: 115px 0;
+      }
       &__card {
         border: 1px solid $color-black;
         height: 25rem;
