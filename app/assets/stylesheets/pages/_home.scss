@@ -1,16 +1,15 @@
 .landing {
-  // height: calc(100vh - 1rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: $color-white;
-  margin: .5rem;
   position: relative;
+  // margin: .5rem;
   border: 1px solid $color-black;
 
   .section-search {
-    width: 90vw;
-    position: absolute;
-    top: 40%;
-    left:50%;
-    transform: translateX(-50%) translateY(-50%);
+    width: 100%;
+    padding: 0 5px;
     .search {
       text-align: center;
       margin-bottom: 1rem;
@@ -22,7 +21,7 @@
     .recipe__box {
       &--scroll-wrapper {
         display: flex;
-        justify-content: space-between;
+        // justify-content: center;
         flex-wrap: nowrap;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
@@ -105,7 +104,6 @@
 
 @media screen and (max-width: 32rem) {
   .landing {
-    margin: 3px;
     .title {
       bottom: 1rem;
       right: 1rem;
@@ -128,7 +126,6 @@
 
 @media screen and (max-width: 50rem) and (min-width: 32.1rem) {
   .landing {
-    margin: .5rem;
     .title {
       bottom: 1rem;
       right: 1rem;

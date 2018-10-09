@@ -1,8 +1,11 @@
-<div class="landing" id="home" v-bind:style="{ height: getScreenHeight()}">
+<div class="landing" id="home"
+     v-bind:style="{ height: getScreenHeight() }">
 
   <div class="section-search">
     <div class="search">
-      <input v-on:input="query = $event.target.value" type="text" class="search__input" placeholder="Essayez: 'Udon'">
+      <input v-on:input="query = $event.target.value"
+             type="text" class="search__input"
+             placeholder="Essayez: 'Udon'">
     </div>
     <div class="recipe__box">
       <div class="sk-folding-cube" v-show="isLoading">
@@ -14,7 +17,9 @@
       <div class="recipe__box--no-result" v-show="recipes.length === 0">
         Aucune recette trouvée.
       </div>
-      <div class="recipe__box--scroll-wrapper" v-show="!isLoading">
+      <div class="recipe__box--scroll-wrapper"
+          v-show="!isLoading"
+          v-bind:style="{ marginLeft: leftMargin }">
         <div v-for="recipe in recipes" class="recipe__box__card">
           <h2>{{ recipe.title }}</h2>
         </div>
