@@ -4,11 +4,10 @@
   align-items: center;
   background-color: $color-white;
   position: relative;
-  // margin: .5rem;
-  border: 1px solid $color-black;
 
   .section-search {
     width: 100%;
+    margin-top: -20rem;
     padding: 0 5px;
     .search {
       text-align: center;
@@ -21,12 +20,11 @@
     .recipe__box {
       &--scroll-wrapper {
         display: flex;
-        // justify-content: center;
         flex-wrap: nowrap;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         &::-webkit-scrollbar {
-          display: none;
+          // display: none;
         }
       }
       &--no-result {

@@ -45,9 +45,10 @@ const vm = new Vue({
           query: _this.query,
         },
         success: function(data) {
+          console.log(data)
           _this.isLoading = false;
           _this.recipes = data.recipes;
-          _this.recipesCount = _this.recipes.length;
+          _this.recipesCount = data.recipes.length;
           _this.getLeftMargin();
         }
       })
