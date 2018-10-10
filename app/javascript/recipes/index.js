@@ -2,6 +2,8 @@ import Vue from 'vue/dist/vue.common';
 import iView from 'iview';
 import locale from 'iview/src/locale/lang/en-US';
 import draggable from 'vuedraggable';
+import swal from 'sweetalert2';
+
 
 Vue.use(iView, { locale });
 
