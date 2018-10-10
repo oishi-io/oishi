@@ -48,7 +48,6 @@ const vm = new Vue({
     searchRecipes() {
       const _this = this;
       _this.isLoading = true;
-      _this.recipes = []
       $.ajax({
         method: 'GET',
         url: `/`,
@@ -70,7 +69,7 @@ const vm = new Vue({
       const scrollContainerWidth = (this.recipesCount * 250) + ((this.recipesCount - 1) * 20);
       const margin = this.windowWidth - scrollContainerWidth;
 
-      this.leftMargin = margin > 0 ? `${(margin/2)}px` : 0;
+      this.leftMargin = margin > 0 ? `${(margin/2) - 5}px` : 0;
       console.log(this.leftMargin)
     },
   },

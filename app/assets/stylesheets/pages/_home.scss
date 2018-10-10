@@ -19,12 +19,32 @@
 
     .recipe__box {
       &--scroll-wrapper {
+        height: 26rem;
         display: flex;
         flex-wrap: nowrap;
         overflow-x: auto;
         transition: margin-left 0.5s ease;
         &::-webkit-scrollbar {
           // display: none;
+        }
+        & > .recipe__box__card {
+          animation: bouncing-card .3s ease-in-out;
+          animation-fill-mode: forwards;
+        }
+        & > .recipe__box__card:nth-child(2) {
+          animation-delay: .1s;
+        }
+        & > .recipe__box__card:nth-child(3) {
+          animation-delay: .2s;
+        }
+        & > .recipe__box__card:nth-child(4) {
+          animation-delay: .3s;
+        }
+        & > .recipe__box__card:nth-child(5) {
+          animation-delay: .4s;
+        }
+        & > .recipe__box__card:nth-child(6) {
+          animation-delay: .5s;
         }
       }
       &--no-result {
@@ -37,11 +57,24 @@
         height: 25rem;
         width: 25rem;
         flex: 0 0 auto;
+        opacity: 0;
+        transform: scale(0.5, 0.5);
 
         &:not(:last-child) {
           margin-right: 2rem;
         }
       }
+    }
+  }
+
+  @keyframes bouncing-card {
+    0% {
+      opacity: 0;
+      transform: scale(0.5, 0.5) translateY(4rem);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1, 1) translateY(0);
     }
   }
 
