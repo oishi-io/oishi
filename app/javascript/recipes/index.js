@@ -269,6 +269,9 @@ var vm = new Vue({
           $.ajax({
             method: 'DELETE',
             url: '/recipes/' + _this.recipeId,
+            success() {
+              window.location = '/recipes/'
+            },
           })
         }
       })
