@@ -239,7 +239,6 @@ var vm = new Vue({
           })
         }
       })
-
     },
     editRecipe: function(){
       let _this = this;
@@ -253,7 +252,27 @@ var vm = new Vue({
           _this.editBasics = false
         },
       })
-    }
+    },
+    destroyRecipe() {
+      let _this = this;
+      swal({
+        title: 'T\'es sûr?',
+        text: "La suppression est définitive",
+        type: 'error',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Supprimer',
+        cancelButtonText: 'Annuler',
+      }).then((result) => {
+        if (result.value) {
+          $.ajax({
+            method: 'DELETE',
+            url: '/recipes/' + _this.recipeId,
+          })
+        }
+      })
+    },
   },
 });
 
