@@ -152,11 +152,25 @@ var vm = new Vue({
     },
     destroyMeasure(measure, index){
       let _this = this;
-      $.ajax({
-        method: 'DELETE',
-        url: '/recipes/' + _this.recipeId + '/measures/' + measure.measure_id,
-        success: function(data){
-          Vue.delete(_this.measures, index)
+      swal({
+        title: 'T\'es sûr?',
+        text: "La suppression est définitive",
+        type: 'error',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Supprimer',
+        cancelButtonText: 'Annuler',
+      }).then((result) => {
+        if (result.value) {
+          $.ajax({
+            method: 'DELETE',
+            url: '/recipes/' + _this.recipeId + '/measures/' + measure.measure_id,
+            success: function(data){
+              Vue.delete(_this.measures, index);
+              console.log('Mesure supprimée')
+            }
+          })
         }
       })
     },
@@ -204,13 +218,28 @@ var vm = new Vue({
     },
     destroyStep: function(step, index){
       let _this = this;
-      $.ajax({
-        method: 'DELETE',
-        url: '/recipes/' + _this.recipeId + '/steps/' + step.id,
-        success: function(data){
-          Vue.delete(_this.steps, index)
+      swal({
+        title: 'T\'es sûr?',
+        text: "La suppression est définitive",
+        type: 'error',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Supprimer',
+        cancelButtonText: 'Annuler',
+      }).then((result) => {
+        if (result.value) {
+          $.ajax({
+            method: 'DELETE',
+            url: '/recipes/' + _this.recipeId + '/steps/' + step.id,
+            success: function(data){
+              Vue.delete(_this.steps, index);
+              console.log('Etape supprimée')
+            }
+          })
         }
       })
+
     },
     editRecipe: function(){
       let _this = this;
