@@ -58,11 +58,9 @@ const vm = new Vue({
     },
     getLeftMargin() {
       const scrollContainerWidth = (this.recipesCount * 250) + ((this.recipesCount - 1) * 20);
-      console.log('container: ', scrollContainerWidth)
       const margin = this.windowWidth - scrollContainerWidth;
-      console.log('rawMargin: ', margin)
 
-      this.leftMargin = margin > 0 ? `${(margin/2) - 5}px` : 0;
+      this.leftMargin = margin > 0 ? `${(margin/2)}px` : 0;
       console.log(this.leftMargin)
     },
   },
