@@ -6,8 +6,11 @@ const vm = new Vue({
     recipes: gon.recipes,
     query: '',
     typingTimer: 0,
+    resizingTimer: 0,
     typingInterval: 500,
+    resizingInterval: 200,
     isLoading: false,
+    firstRender: true,
     windowWidth: 0,
     leftMargin: 0,
     recipesCount: 0,
@@ -18,7 +21,14 @@ const vm = new Vue({
       this.typingTimer = setTimeout(() => this.searchRecipes(), this.typingInterval);
     },
     windowWidth() {
-      this.getLeftMargin();
+      if(this.firstRender){
+        this.getLeftMargin()
+        this.firstRender = false;
+      } else {
+        clearTimeout(this.resizingTimer);
+        this.resizingTimer = setTimeout(() => this.getLeftMargin(), this.resizingInterval);
+      }
+
     },
   },
   mounted() {
@@ -38,6 +48,7 @@ const vm = new Vue({
     searchRecipes() {
       const _this = this;
       _this.isLoading = true;
+      _this.recipes = []
       $.ajax({
         method: 'GET',
         url: `/`,
@@ -45,7 +56,6 @@ const vm = new Vue({
           query: _this.query,
         },
         success: function(data) {
-          console.log(data)
           _this.isLoading = false;
           _this.recipes = data.recipes;
           _this.recipesCount = data.recipes.length;
