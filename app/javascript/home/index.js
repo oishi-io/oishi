@@ -47,18 +47,22 @@ const vm = new Vue({
   methods: {
     searchRecipes() {
       const _this = this;
+      const recipesIds = _this.recipes.map(x => x.id)
       _this.isLoading = true;
       $.ajax({
         method: 'GET',
         url: `/`,
         data: {
           query: _this.query,
+          recipesIds: recipesIds,
         },
         success: function(data) {
           _this.isLoading = false;
-          _this.recipes = data.recipes;
-          _this.recipesCount = data.recipes.length;
-          _this.getLeftMargin();
+          if(data.text === 'update') {
+            _this.recipes = data.recipes;
+            _this.recipesCount = data.recipes.length;
+            _this.getLeftMargin();
+          }
         }
       })
     },
