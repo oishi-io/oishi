@@ -7,12 +7,10 @@
     <%= Gon::Base.render_data %>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
   <body>
-    <%# render 'shared/navbar' %>
     <%# render 'shared/flashes' %>
     <% if current_user.present? && current_user.admin? %>
       <%= render 'shared/menu' %>

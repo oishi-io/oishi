@@ -1,7 +1,7 @@
 .hamburger-menu {
   position: absolute;
-  top: 4rem;
-  right: 4rem;
+  top: 3rem;
+  right: 2rem;
   z-index: 1;
 
   &__item {
@@ -9,8 +9,15 @@
     padding: 0 2rem 0 0;
   }
 
-  i {
-    font-size: 3rem;
+  .dropdown__button {
+    text-decoration: none;
+    cursor: pointer;
+    color: $color-black;
+    font-size: 2rem;
+    text-transform: uppercase;
+    padding: 1rem;
+    border: 1px solid $color-black;
+    border-radius: 3px;
   }
 
   /* Dropdown menu */
