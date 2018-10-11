@@ -6,14 +6,14 @@
       <a v-on:click="editBasics = true">
         <Icon type="md-create" size="20" style="margin-right: 10px;" />
       </a>
-      <a :href="recipe.url"><h2 style="font-weight: bolder; text-align: center;">{{ recipe.title }}</h2></a>
+      <a :href="recipe.url"><h2 style="font-weight: bolder; text-align: center;">{{ recipe.name }}</h2></a>
       <a class="btn-sm btn-danger" style='margin-left: 20px;' v-on:click="destroyRecipe">Supprimer</a>
     </div>
     <div v-else style="height: 50px;" class="item-center-flex-start">
       <a v-on:click="editRecipe">
         <Icon type="md-checkmark" size="20" style="margin-right: 10px;" />
       </a>
-      <input class="form-control" style="font-size: 38px; font-family: 'Raleway', 'Helvetica', 'sans-serif'; font-weight: 700;" type="text" v-model="recipe.title"><h2 class="text-center"></h2>
+      <input class="form-control" style="font-size: 38px; font-family: 'Raleway', 'Helvetica', 'sans-serif'; font-weight: 700;" type="text" v-model="recipe.name"><h2 class="text-center"></h2>
     </div>
     <div id="recipe-basics" style="display: flex; justify-content: space-between; align-items: center; width: 620px; height: 50px;">
       <div class="item-center-flex-start">

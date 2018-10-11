@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def home
     if params[:query] && params[:query] != ''
-      sql_query = 'lower(title) ILIKE :query'
+      sql_query = 'lower(name) ILIKE :query'
       recipes = Recipe.where(sql_query, query: "%#{params[:query].downcase}%")
       text = recipes.ids == params[:recipesIds]&.map(&:to_i) ? 'same' : 'update'
       render json: { recipes: recipes, text: text }, status: 200

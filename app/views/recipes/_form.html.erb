@@ -3,7 +3,7 @@
     <div class="col-xs-4 col-xs-offset-4">
       <div class="form-wrapper">
         <%= simple_form_for @recipe do |f| %>
-          <%= f.input :title, label: false, placeholder: 'Recipe Title' %>
+          <%= f.input :name, label: false, placeholder: 'Nom de la recette' %>
           <%= f.input :servings, label: false, placeholder: 'Nombre de personnes' %>
           <%= f.input :preparation_time, label: false, placeholder: 'Temps de préparation (min)' %>
           <%= f.input :cooking_time, label: false, placeholder: 'Temps de cuisson (min)' %>

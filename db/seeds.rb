@@ -17,13 +17,11 @@ Recipe.destroy_all
 puts "starts creating"
 
 
-
-onigiri = Recipe.new(title: "onigiri", servings: 2)
+onigiri = Recipe.new(name: "onigiri", servings: 2)
 onigiri.save
 
 rice = Ingredient.new(name: "rice")
 rice.save
-
 
 umeboshi = Ingredient.new(name: "umeboshi")
 umeboshi.save

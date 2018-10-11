@@ -34,7 +34,7 @@ class RecipesController < ApplicationController
   def add_details
     gon.recipeId = @recipe.id
     gon.recipe   = { id: @recipe.id,
-                     title: @recipe.title,
+                     name: @recipe.name,
                      servings: @recipe.servings,
                      preparation_time: @recipe.preparation_time,
                      cooking_time: @recipe.cooking_time,
@@ -97,6 +97,6 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:title, :preparation_time, :cooking_time, :description, :servings, photos: [])
+    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :servings, photos: [])
   end
 end

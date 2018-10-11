@@ -2,7 +2,7 @@
 
   <div class="row entete">
     <div class="col-xs-12 recipe-title">
-      <h2><%= @recipe.title %></h2>
+      <h2><%= @recipe.name %></h2>
       <% if current_user.present? && current_user.admin? %>
         <%= link_to add_details_path(@recipe) do %>
           <sup><h4>+</h4></sup>
