@@ -10,23 +10,23 @@ class RecipePolicy < ApplicationPolicy
   end
 
   def show?
-    true # Anyone can view a restaurant
+    true # Anyone can view a Recipe
   end
 
   def create?
-    user.admin? # Only an admin can create a new Recipe
+    user.admin? # Only an admin can create a Recipe
+  end
+
+  def edit?
+    user.admin? # Only an admin can edit a Recipe
   end
 
   def update?
-    user.admin? # Only an admin can update a Recipe
+    user.admin? # Only an admin can edit a Recipe
   end
 
   def destroy?
     user.admin? # Only an admin can delete a Recipe
-  end
-
-  def add_details?
-    user.admin?
   end
 
   def add_tags?

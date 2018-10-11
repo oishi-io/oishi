@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: [:show, :edit, :update, :destroy, :add_details, :add_tags, :add_tools]
+  before_action :set_recipe, only: [:show, :edit, :update, :destroy, :add_tags, :add_tools]
   skip_before_action :authenticate_user!, only: [:show]
 
   def index
@@ -25,13 +25,13 @@ class RecipesController < ApplicationController
     @recipe.user = current_user
     authorize @recipe
     if @recipe.save
-      redirect_to add_details_path(@recipe)
+      redirect_to edit_recipe_path(@recipe)
     else
       render 'new'
     end
   end
 
-  def add_details
+  def edit
     gon.recipeId = @recipe.id
     gon.recipe   = { id: @recipe.id,
                      name: @recipe.name,
@@ -73,9 +73,6 @@ class RecipesController < ApplicationController
     @recipe.tools = Tool.where(id: params[:tools])
     @recipe.save
     head :ok
-  end
-
-  def edit
   end
 
   def update
