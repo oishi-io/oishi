@@ -48,7 +48,7 @@ const vm = new Vue({
     searchRecipes() {
       const _this = this;
       const recipesIds = _this.recipes.map(x => x.id)
-      _this.isLoading = true;
+      // _this.isLoading = true;
       $.ajax({
         method: 'GET',
         url: `/`,

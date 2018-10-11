@@ -14,11 +14,11 @@
         <div class="sk-cube4 sk-cube"></div>
         <div class="sk-cube3 sk-cube"></div>
       </div>
-      <div class="recipe__box--no-result" v-show="recipes.length === 0 && !isLoading">
+      <div class="recipe__box--no-result" v-if="recipesCount === 0 && !isLoading">
         Aucune recette trouvée
       </div>
       <div class="recipe__box--scroll-wrapper"
-          v-if="!isLoading && recipesCount > 0"
+          v-else
           v-bind:style="{ marginLeft: leftMargin }">
         <div v-for="recipe in recipes" class="recipe__box__card">
           <h2>{{ recipe.title }}</h2>
