@@ -2,10 +2,13 @@ class IngredientsController < ApplicationController
   before_action :set_ingredient, only: [:show, :edit, :update, :destroy]
 
   def create
-    @ingredient = Ingredient.new(name: params[:name], description: params[:description])
+    @ingredient = Ingredient.new(ingredient_params)
     authorize @ingredient
     @ingredient.save
-    render json: { ingredient: @ingredient }, status: 200
+    respond_to do |format|
+      format.html { redirect_to ingredients_path }
+      format.js { render json: { ingredient: @ingredient }, status: 200 }
+    end
   end
 
   def new
@@ -20,6 +23,7 @@ class IngredientsController < ApplicationController
     @ingredients = policy_scope(Ingredient)
     @ingredients = Ingredient.all
     authorize @ingredients
+    gon.ingredients = @ingredients
   end
 
   def show
@@ -36,7 +40,7 @@ class IngredientsController < ApplicationController
 
   def destroy
     @ingredient.destroy
-    redirect_to ingredients_path
+    head :ok
   end
 
   private
