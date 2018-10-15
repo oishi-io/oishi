@@ -2,10 +2,13 @@ class ToolsController < ApplicationController
   before_action :set_tool, only: [:edit, :show, :update, :destroy]
 
   def create
-    @tool = Tool.new(name: params[:name])
+    @tool = Tool.new(tool_params)
     authorize @tool
     @tool.save
-    render json: { tool: @tool }, status: 200
+    respond_to do |format|
+      format.html { redirect_to tools_path }
+      format.js { render json: { tool: @tool }, status: 200 }
+    end
   end
 
   def new
@@ -20,6 +23,7 @@ class ToolsController < ApplicationController
     @tools = policy_scope(Tool)
     @tools = Tool.all
     authorize @tools
+    gon.tools = @tools
   end
 
   def show
@@ -36,7 +40,7 @@ class ToolsController < ApplicationController
 
   def destroy
     @tool.destroy
-    redirect_to tools_path
+    head :ok
   end
 
   private

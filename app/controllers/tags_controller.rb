@@ -5,13 +5,17 @@ class TagsController < ApplicationController
     @tags = policy_scope(Tag)
     @tags = Tag.all
     authorize @tags
+    gon.tags = @tags
   end
 
   def create
     @tag = Tag.new(tag_params)
     authorize @tag
     @tag.save
-    render json: { tag: @tag }, status: 200
+    respond_to do |format|
+      format.html { redirect_to tags_path }
+      format.js { render json: { tag: @tag }, status: 200 }
+    end
   end
 
   def new
@@ -21,7 +25,7 @@ class TagsController < ApplicationController
 
   def destroy
     @tag.destroy
-    redirect_to tags_path
+    head :ok
   end
 
   def update

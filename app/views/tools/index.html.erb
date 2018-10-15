@@ -1,18 +1,14 @@
-<div class="wrapper">
+<div class="wrapper" id="tools-index">
   <div class="container">
     <div align="center">
-      <h1>Liste des Ustensiles</h1>
-        <%= link_to 'Ajouter un ustensile', new_tool_path %>
+      <h1>Liste des Tags</h1>
+        <%= link_to 'Ajouter un Ustensile', new_tool_path %>
         <ul>
-          <% @tools.each do |tool| %>
-            <li style="list-style: none">
-              <%= link_to tool.name, tool_path(tool) %>
-                <% if policy(tool).update? %>
-                <%= link_to 'delete', tool_path(tool), method: :delete %>
-                <%= link_to 'edit', edit_tool_path(tool)%>
-                <% end %>
-            </li>
-          <% end %>
+          <li v-for="tool in tools" style="list-style: none">
+            <a :href=`/tools/${tool.id}`>{{ tool.name }}</a>
+            <a :href=`/tools/${tool.id}/edit`>Edit</a>
+            <a v-on:click="destroyTool(tool.id)">X</a>
+          </li>
         </ul>
     </div>
   </div>

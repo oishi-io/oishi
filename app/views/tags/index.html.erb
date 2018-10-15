@@ -1,18 +1,14 @@
-<div class="wrapper">
+<div class="wrapper" id="tags-index">
   <div class="container">
     <div align="center">
       <h1>Liste des Tags</h1>
         <%= link_to 'Ajouter un tag', new_tag_path %>
         <ul>
-          <% @tags.each do |tag| %>
-            <li style="list-style: none">
-              <%= tag.name %>
-                <% if policy(tag).update? %>
-                <%= link_to 'delete', tag_path(tag), method: :delete %>
-                <%= link_to 'edit', edit_tag_path(tag)%>
-                <% end %>
-            </li>
-          <% end %>
+          <li v-for="tag in tags" style="list-style: none">
+            <a :href=`/tags/${tag.id}`>{{ tag.name }}</a>
+            <a :href=`/tags/${tag.id}/edit`>Edit</a>
+            <a v-on:click="destroyTag(tag.id)">X</a>
+          </li>
         </ul>
     </div>
   </div>
