@@ -1,10 +1,5 @@
 class MeasuresController < ApplicationController
   def create
-    # @measure = Measure.find_by(id: params[:measure][:measure_id])
-    # if @measure.nil?
-    # else
-    #   @measure.update(measure_params)
-    # end
     @measure = Measure.new(measure_params)
     authorize @measure
     @measure.save
