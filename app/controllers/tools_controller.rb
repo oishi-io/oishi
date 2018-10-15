@@ -6,8 +6,8 @@ class ToolsController < ApplicationController
     authorize @tool
     @tool.save
     respond_to do |format|
+      format.json { render json: { tool: @tool }, status: 200 }
       format.html { redirect_to tools_path }
-      format.js { render json: { tool: @tool }, status: 200 }
     end
   end
 

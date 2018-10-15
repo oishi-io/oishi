@@ -6,8 +6,8 @@ class IngredientsController < ApplicationController
     authorize @ingredient
     @ingredient.save
     respond_to do |format|
+      format.json { render json: { ingredient: @ingredient }, status: 200 }
       format.html { redirect_to ingredients_path }
-      format.js { render json: { ingredient: @ingredient }, status: 200 }
     end
   end
 

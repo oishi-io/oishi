@@ -93,7 +93,9 @@ var vm = new Vue({
         method: 'POST',
         url: '/tools',
         data: {
-          name: tool.name,
+          tool: {
+            name: tool.name,
+          },
         },
         success: function(data){
           vm.tools.push(data.tool);
@@ -106,10 +108,13 @@ var vm = new Vue({
         method: 'POST',
         url: '/ingredients',
         data: {
-          name: ingredient.name,
-          description: ingredient.description,
+          ingredient: {
+            name: ingredient.name,
+            description: ingredient.description,
+          },
         },
         success: function(data){
+          console.log(data)
           vm.ingredients.push(data.ingredient);
           vm.newIngredient = {name: '', description: ''};
         }

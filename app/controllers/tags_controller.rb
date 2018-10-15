@@ -13,8 +13,8 @@ class TagsController < ApplicationController
     authorize @tag
     @tag.save
     respond_to do |format|
+      format.json { render json: { tag: @tag }, status: 200 }
       format.html { redirect_to tags_path }
-      format.js { render json: { tag: @tag }, status: 200 }
     end
   end
 
