@@ -1,17 +1,20 @@
 class MeasuresController < ApplicationController
   def create
-    @measure = Measure.find_by(id: params[:measure][:measure_id])
-    if @measure.nil?
-      @measure = Measure.new(measure_params)
-    else
-      @measure.update(measure_params)
-    end
+    # @measure = Measure.find_by(id: params[:measure][:measure_id])
+    # if @measure.nil?
+    # else
+    #   @measure.update(measure_params)
+    # end
+    @measure = Measure.new(measure_params)
     authorize @measure
     @measure.save
     render json: { measure_id: @measure.id,
                    quantity: @measure.quantity.to_i,
                    text1: @measure.text_1,
-                   ingredient: { name: @measure.ingredient.name, id: @measure.ingredient.id },
+                   ingredient: {
+                     name: @measure.ingredient.name,
+                     id: @measure.ingredient.id
+                   },
                    text2: @measure.text_2,
                    order: @measure.order }
   end

@@ -37,8 +37,8 @@ var vm = new Vue({
     checkNewMeasure: function(){
       let _this = this;
       let m = _this.newMeasure
-      let ingredientIds = _this.measures.map(x => x.ingredient.id)
-      return m.text1 != '' && m.ingredient.id && !ingredientIds.includes(m.ingredient.id) || _this.checkEditMeasure == true
+      console.log(m.text1 != '' && m.ingredient.id)
+      return m.text1 !== '' && m.ingredient.id !== null || _this.checkEditMeasure == true
     },
   },
   methods: {
@@ -122,8 +122,6 @@ var vm = new Vue({
     },
     createMeasure: function(measure){
       let _this = this;
-      let array = _this.measures.map(function(measure){ return measure.ingredient.name});
-      let index = array.indexOf(measure.ingredient.name);
       let order = (measure.order != null) ? measure.order : _this.measures.length + 1;
       $.ajax({
         method: 'POST',
@@ -140,11 +138,7 @@ var vm = new Vue({
           },
         },
         success: function(data){
-          if( index == -1){
-            _this.measures.push(data);
-          } else {
-            _this.measures[index] = data;
-          }
+          _this.measures.push(data);
           _this.newMeasure = { quantity: null, text1: '', ingredient: { id: null, name: null }, text2: '', order: null};
           _this.checkEditMeasure = false;
         }
@@ -173,7 +167,6 @@ var vm = new Vue({
             url: '/recipes/' + _this.recipeId + '/measures/' + measure.measure_id,
             success: function(data){
               Vue.delete(_this.measures, index);
-              console.log('Mesure supprimée')
             }
           })
         }
