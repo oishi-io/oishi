@@ -8,4 +8,26 @@ class Recipe < ApplicationRecord
   has_attachments :photos, maximum: 10
 
   validates :name, presence: true, uniqueness: true
+
+  def visible?
+    visible
+  end
+
+  def recommended?
+    recommended
+  end
+
+  def self.are_visible
+    where(visible: true)
+  end
+
+  def self.are_recommended
+    where(visible: true, recommended: true)
+  end
+
+  def self.search(query)
+    sql_query = 'lower(name) ILIKE :query'
+
+    where(sql_query, query: "%#{query.downcase}%")
+  end
 end

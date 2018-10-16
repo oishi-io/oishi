@@ -57,6 +57,7 @@ const vm = new Vue({
           recipesIds: recipesIds,
         },
         success: function(data) {
+          console.log(data)
           _this.isLoading = false;
           if(data.text === 'update') {
             _this.recipes = data.recipes;

@@ -33,13 +33,17 @@ class RecipesController < ApplicationController
 
   def edit
     gon.recipeId = @recipe.id
-    gon.recipe   = { id: @recipe.id,
-                     name: @recipe.name,
-                     servings: @recipe.servings,
-                     preparation_time: @recipe.preparation_time,
-                     cooking_time: @recipe.cooking_time,
-                     description: @recipe.description,
-                     url: recipe_path(@recipe) }
+
+    gon.recipe = {
+      id: @recipe.id,
+      name: @recipe.name,
+      servings: @recipe.servings,
+      preparation_time: @recipe.preparation_time,
+      cooking_time: @recipe.cooking_time,
+      description: @recipe.description,
+      url: recipe_path(@recipe)
+    }
+
     gon.ingredients = Ingredient.all
     gon.selectedTags = @recipe.tags.pluck(:id)
     gon.tags = Tag.all
@@ -54,10 +58,15 @@ class RecipesController < ApplicationController
         measure_id: measure.id,
         quantity: measure.quantity.to_i,
         text1: measure.text_1,
-        ingredient: { name: measure.ingredient.name, id: measure.ingredient.id },
+        ingredient: {
+          name: measure.ingredient.name,
+          id: measure.ingredient.id
+        },
         text2: measure.text_2,
-        order: measure.order }
+        order: measure.order
+      }
     end
+
     gon.measures = serialized_measures
     gon.steps = @recipe.steps.order(order: :ASC)
     gon.stepsLength = gon.steps.pluck(:text).map(&:length)
@@ -94,6 +103,15 @@ class RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :servings, photos: [])
+    params
+      .require(:recipe)
+      .permit(
+        :name,
+        :preparation_time,
+        :cooking_time,
+        :description,
+        :servings,
+        photos: []
+      )
   end
 end
