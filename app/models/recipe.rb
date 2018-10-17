@@ -26,8 +26,9 @@ class Recipe < ApplicationRecord
   end
 
   def self.search(query)
-    sql_query = 'lower(name) ILIKE :query'
+    return are_recommended if query == ''
 
+    sql_query = 'lower(name) ILIKE :query'
     where(sql_query, query: "%#{query.downcase}%")
   end
 end

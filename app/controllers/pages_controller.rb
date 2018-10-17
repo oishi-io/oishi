@@ -2,8 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
 
   def home
-    text = 'update'
-    if params[:query] && params[:query] != ''
+    if params[:query]
       recipes = Recipe.search(params[:query])
       text = recipes.ids == params[:recipesIds]&.map(&:to_i) ? 'same' : 'update'
     else
