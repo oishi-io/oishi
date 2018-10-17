@@ -87,7 +87,10 @@ class RecipesController < ApplicationController
   def update
     @recipe.update(recipe_params)
     authorize @recipe
-    head :ok
+    respond_to do |format|
+      format.js { head :ok }
+      format.html { redirect_to edit_recipe_path(@recipe) }
+    end
   end
 
   def destroy
