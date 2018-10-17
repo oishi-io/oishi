@@ -1,4 +1,5 @@
 import Vue from 'vue/dist/vue.common';
+import Velocity from 'velocity-animate'
 
 const vm = new Vue({
   el: "#home",
@@ -14,6 +15,11 @@ const vm = new Vue({
     windowWidth: 0,
     leftMargin: 0,
     recipesCount: 0,
+    show: true,
+    fadeInDuration: 1000,
+    fadeOutDuration: 1000,
+    maxFadeDuration: 1500,
+    stop: true,
   },
   watch: {
     query() {
@@ -72,7 +78,7 @@ const vm = new Vue({
           }
 
           _this.recipesCount = _this.recipes.length;
-          _this.getLeftMargin();
+          setTimeout(() => _this.getLeftMargin(), 501)
         }
       })
     },
@@ -85,6 +91,30 @@ const vm = new Vue({
 
       this.leftMargin = margin > 0 ? `${(margin/2) - 5}px` : 0;
       console.log(this.leftMargin)
+    },
+    beforeEnter: function (el) {
+      el.style.opacity = 0
+      el.style.height = 0
+    },
+    enter: function (el, done) {
+      var delay = el.dataset.index * 150
+      setTimeout(function () {
+        Velocity(
+          el,
+          { opacity: 1, height: '1.6em' },
+          { complete: done }
+        )
+      }, delay)
+    },
+    leave: function (el, done) {
+      var delay = el.dataset.index * 150
+      setTimeout(function () {
+        Velocity(
+          el,
+          { opacity: 0, height: 0 },
+          { complete: done }
+        )
+      }, delay)
     },
   },
 });
