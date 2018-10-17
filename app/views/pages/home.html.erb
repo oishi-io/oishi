@@ -17,13 +17,23 @@
       <div class="recipe__box--no-result" v-if="recipesCount === 0 && !isLoading">
         Aucune recette trouvée
       </div>
-      <div class="recipe__box--scroll-wrapper"
+      <!-- <div class="recipe__box--scroll-wrapper"
           v-else
           v-bind:style="{ marginLeft: leftMargin }">
         <div v-for="recipe in recipes" class="recipe__box__card">
           <h2><a :href=`/recipes/${recipe.id}`>{{ recipe.name }}</a></h2>
         </div>
-      </div>
+      </div> -->
+      <transition-group name="recipe-cards" tag="div" class="recipe__box--scroll-wrapper" v-else
+      v-bind:style="{ marginLeft: leftMargin }">
+        <div
+          v-for="recipe in recipes"
+          v-bind:key="recipe.id"
+          class="recipe__box__card"
+        >
+          <h2><a :href=`/recipes/${recipe.id}`>{{ recipe.name }}</a></h2>
+        </div>
+      </transition-group>
     </div>
   </div>
   <div class="text-box">
