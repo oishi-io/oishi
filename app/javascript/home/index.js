@@ -85,10 +85,13 @@ const vm = new Vue({
       return `${screen.availHeight}px`;
     },
     getLeftMargin() {
-      const scrollContainerWidth = (this.recipesCount * 250) + ((this.recipesCount - 1) * 20);
+      const scrollContainerWidth = (this.recipesCount * 250) + ((this.recipesCount - 1) * 5);
       const margin = this.windowWidth - scrollContainerWidth;
 
       this.leftMargin = margin > 0 ? `${(margin/2) - 5}px` : 0;
+    },
+    goToRecipe(id) {
+      window.location = `/recipes/${id}`
     },
   },
 });

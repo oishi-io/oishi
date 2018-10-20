@@ -3,6 +3,17 @@
   id="home"
   v-bind:style="{ height: getScreenHeight() }"
 >
+  <div class="title">
+    <h1 class="title--text">oishi.</h1>
+  </div>
+
+  <!-- <div class="text-box">
+    <h1 class="heading-primary">
+      <span class="heading-primary--main">Cuisine</span>
+      <span class="heading-primary--sub">Japonaise</span>
+    </h1>
+  </div> -->
+
   <div class="section-search">
     <div class="search">
       <input
@@ -23,7 +34,7 @@
         v-if="recipesCount === 0 && !isLoading"
         class="recipe__box--no-result"
       >
-        Aucune recette trouvée
+        <p>Aucune recette trouvée</p>
       </div>
       <transition-group
         v-else
@@ -38,22 +49,13 @@
           v-for="recipe in recipes"
           v-bind:key="recipe.id"
           class="recipe__box__card"
+          v-on:click="goToRecipe(recipe.id)"
         >
-          <h2><a :href=`/recipes/${recipe.id}`>{{ recipe.name }}</a></h2>
+          <h2>{{ recipe.name }}</h2>
         </div>
       </transition-group>
 
     </div>
-  </div>
-  <div class="text-box">
-    <h1 class="heading-primary">
-      <span class="heading-primary--sub">Recettes</span>
-      <span class="heading-primary--main">Japonaises</span>
-    </h1>
-  </div>
-
-  <div class="title">
-    <h1 class="title--text">oishi.io</h1>
   </div>
 </div>
 
