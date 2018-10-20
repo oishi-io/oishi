@@ -39,7 +39,7 @@
         height: 25rem;
         width: 25rem;
         flex: 0 0 auto;
-        transition: all .3s ease;
+        transition: all .4s ease;
 
         &:not(:last-child) {
           margin-right: 2rem;
@@ -60,7 +60,7 @@
 
   .recipe-cards-enter, .recipe-cards-leave-to {
     opacity: 0;
-    transform: scale(.5);
+    transform: translateY(40px) scale(.5);
   }
 
   .title{

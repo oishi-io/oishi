@@ -37,7 +37,7 @@ class PagesController < ApplicationController
     recipe_to_add = []
 
     search_results.each do |result|
-      next if previous_ids && previous_ids.include?(result.id)
+      next if previous_ids&.include?(result.id)
 
       recipe_to_add << result
     end

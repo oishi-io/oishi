@@ -1,28 +1,38 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
-
-<div class="landing" id="home"
-     v-bind:style="{ height: getScreenHeight() }">
-
+<div
+  class="landing"
+  id="home"
+  v-bind:style="{ height: getScreenHeight() }"
+>
   <div class="section-search">
     <div class="search">
-      <input v-on:input="query = $event.target.value"
-             type="text" class="search__input"
-             placeholder="Essayez: 'Udon'">
+      <input
+        v-on:input="query = $event.target.value"
+        type="text"
+        class="search__input"
+        placeholder="Recherche"
+      >
     </div>
     <div class="recipe__box">
-      <div class="sk-folding-cube" v-show="isLoading">
+      <!-- <div class="sk-folding-cube">
         <div class="sk-cube1 sk-cube"></div>
         <div class="sk-cube2 sk-cube"></div>
         <div class="sk-cube4 sk-cube"></div>
         <div class="sk-cube3 sk-cube"></div>
-      </div>
-      <div class="recipe__box--no-result" v-if="recipesCount === 0 && !isLoading">
+      </div> -->
+      <div
+        v-if="recipesCount === 0 && !isLoading"
+        class="recipe__box--no-result"
+      >
         Aucune recette trouvée
       </div>
-      <transition-group name="recipe-cards" tag="div" class="recipe__box--scroll-wrapper" v-else
-      v-bind:style="{ marginLeft: leftMargin }"
-      v-on:before-enter="getLeftMargin"
-      v-on:after-leave="getLeftMargin"
+      <transition-group
+        v-else
+        name="recipe-cards"
+        tag="div"
+        class="recipe__box--scroll-wrapper"
+        v-bind:style="{ marginLeft: leftMargin }"
+        v-on:before-enter="getLeftMargin"
+        v-on:after-leave="getLeftMargin"
       >
         <div
           v-for="recipe in recipes"

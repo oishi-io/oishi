@@ -1,5 +1,4 @@
 import Vue from 'vue/dist/vue.common';
-import Velocity from 'velocity-animate'
 
 const vm = new Vue({
   el: "#home",
@@ -53,7 +52,7 @@ const vm = new Vue({
     searchRecipes() {
       const _this = this;
       const recipeIds = _this.recipes.map(x => x.id)
-      // _this.isLoading = true;
+      _this.isLoading = true;
       $.ajax({
         method: 'GET',
         url: `/`,
@@ -63,21 +62,24 @@ const vm = new Vue({
         },
         success(data) {
           _this.isLoading = false;
-
-          if (data.to_remove.length > 0) {
-            data.to_remove.forEach( (id) => {
-              const index = _this.recipes.map(x => x.id).indexOf(id)
-              _this.recipes.splice(index, 1)
-            })
-          }
-
-          if (data.to_add.length > 0) {
-            _this.recipes = _this.recipes.concat(data.to_add)
-          }
-
           _this.recipesCount = data.recipes_count
+          _this.addRecipesFromData(data.to_add)
+          _this.removeRecipesFromData(data.to_remove)
         }
       })
+    },
+    addRecipesFromData(recipeToAdd) {
+      if (recipeToAdd.length > 0) {
+        this.recipes = this.recipes.concat(recipeToAdd)
+      }
+    },
+    removeRecipesFromData(recipeToRemove) {
+      if (recipeToRemove.length > 0) {
+        recipeToRemove.forEach((id) => {
+          const index = this.recipes.map(x => x.id).indexOf(id)
+          this.recipes.splice(index, 1)
+        })
+      }
     },
     getScreenHeight() {
       return `${screen.availHeight}px`;
@@ -87,7 +89,6 @@ const vm = new Vue({
       const margin = this.windowWidth - scrollContainerWidth;
 
       this.leftMargin = margin > 0 ? `${(margin/2) - 5}px` : 0;
-      console.log(this.leftMargin)
     },
   },
 });
