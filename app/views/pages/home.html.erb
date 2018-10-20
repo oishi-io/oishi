@@ -19,15 +19,11 @@
       <div class="recipe__box--no-result" v-if="recipesCount === 0 && !isLoading">
         Aucune recette trouvée
       </div>
-      <!-- <div class="recipe__box--scroll-wrapper"
-          v-else
-          v-bind:style="{ marginLeft: leftMargin }">
-        <div v-for="recipe in recipes" class="recipe__box__card">
-          <h2><a :href=`/recipes/${recipe.id}`>{{ recipe.name }}</a></h2>
-        </div>
-      </div> -->
-      <!-- <transition-group name="recipe-cards" tag="div" class="recipe__box--scroll-wrapper" v-else
-      v-bind:style="{ marginLeft: leftMargin }">
+      <transition-group name="recipe-cards" tag="div" class="recipe__box--scroll-wrapper" v-else
+      v-bind:style="{ marginLeft: leftMargin }"
+      v-on:after-enter="getLeftMargin"
+      v-on:after-leave="getLeftMargin"
+      >
         <div
           v-for="recipe in recipes"
           v-bind:key="recipe.id"
@@ -35,21 +31,8 @@
         >
           <h2><a :href=`/recipes/${recipe.id}`>{{ recipe.name }}</a></h2>
         </div>
-      </transition-group> -->
-      <transition-group name="recipe-cards" tag="div" class="recipe__box--scroll-wrapper" v-else
-      v-bind:style="{ marginLeft: leftMargin }" v-bind:css="false"
-    v-on:before-enter="beforeEnter"
-    v-on:enter="enter"
-    v-on:leave="leave">
-        <div
-          v-for="recipe in recipes"
-          v-bind:key="recipe.name"
-          v-bind:data-index="recipe.index"
-          class="recipe__box__card"
-        >
-          <h2><a :href=`/recipes/${recipe.id}`>{{ recipe.name }}</a></h2>
-        </div>
       </transition-group>
+
     </div>
   </div>
   <div class="text-box">

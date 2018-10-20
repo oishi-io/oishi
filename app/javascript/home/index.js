@@ -34,7 +34,6 @@ const vm = new Vue({
         clearTimeout(this.resizingTimer);
         this.resizingTimer = setTimeout(() => this.getLeftMargin(), this.resizingInterval);
       }
-
     },
   },
   mounted() {
@@ -62,9 +61,12 @@ const vm = new Vue({
           query: _this.query,
           recipeIds: recipeIds,
         },
-        success: function(data) {
-          console.log(data)
+        success(data) {
           _this.isLoading = false;
+
+          // if () {
+          //
+          // }
 
           if (data.to_remove && data.to_remove.length > 0) {
             data.to_remove.forEach( (id) => {
@@ -77,8 +79,7 @@ const vm = new Vue({
             _this.recipes = _this.recipes.concat(data.to_add)
           }
 
-          _this.recipesCount = _this.recipes.length;
-          setTimeout(() => _this.getLeftMargin(), 501)
+          _this.recipesCount = data.count;
         }
       })
     },
@@ -91,30 +92,6 @@ const vm = new Vue({
 
       this.leftMargin = margin > 0 ? `${(margin/2) - 5}px` : 0;
       console.log(this.leftMargin)
-    },
-    beforeEnter: function (el) {
-      el.style.opacity = 0
-      el.style.height = 0
-    },
-    enter: function (el, done) {
-      var delay = el.dataset.index * 150
-      setTimeout(function () {
-        Velocity(
-          el,
-          { opacity: 1, height: '1.6em' },
-          { complete: done }
-        )
-      }, delay)
-    },
-    leave: function (el, done) {
-      var delay = el.dataset.index * 150
-      setTimeout(function () {
-        Velocity(
-          el,
-          { opacity: 0, height: 0 },
-          { complete: done }
-        )
-      }, delay)
     },
   },
 });

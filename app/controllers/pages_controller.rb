@@ -15,8 +15,9 @@ class PagesController < ApplicationController
     respond_to do |format|
       format.json {
         render json: {
+          count: recipes.count,
           to_add: recipes_to_add,
-          to_remove: recipes_to_remove
+          to_remove: recipes_to_remove,
         },
         status: 200
       }
@@ -42,21 +43,4 @@ class PagesController < ApplicationController
 
     recipe_to_add
   end
-
-  # def organize_search_results(search_results, previous_ids)
-  #   organized_results = {
-  #     remove: [],
-  #     add: []
-  #   }
-  #
-  #   organized_results[:remove] =
-  #
-  #   search_results.each do |result|
-  #     next if previous_ids.include?(result.id)
-  #
-  #     organized_results[:add] << result
-  #   end
-  #
-  #   organized_results
-  # end
 end
