@@ -64,22 +64,18 @@ const vm = new Vue({
         success(data) {
           _this.isLoading = false;
 
-          // if () {
-          //
-          // }
-
-          if (data.to_remove && data.to_remove.length > 0) {
+          if (data.to_remove.length > 0) {
             data.to_remove.forEach( (id) => {
               const index = _this.recipes.map(x => x.id).indexOf(id)
               _this.recipes.splice(index, 1)
             })
           }
 
-          if (data.to_add && data.to_add.length > 0) {
+          if (data.to_add.length > 0) {
             _this.recipes = _this.recipes.concat(data.to_add)
           }
 
-          _this.recipesCount = data.count;
+          _this.recipesCount = data.recipes_count
         }
       })
     },

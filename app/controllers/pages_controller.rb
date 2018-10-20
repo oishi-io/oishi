@@ -15,9 +15,9 @@ class PagesController < ApplicationController
     respond_to do |format|
       format.json {
         render json: {
-          count: recipes.count,
+          recipes_count: recipes.count,
           to_add: recipes_to_add,
-          to_remove: recipes_to_remove,
+          to_remove: recipes_to_remove
         },
         status: 200
       }
@@ -28,7 +28,8 @@ class PagesController < ApplicationController
   private
 
   def to_remove(search_results, previous_ids)
-    return if previous_ids.nil?
+    return [] if previous_ids.nil?
+
     previous_ids - search_results.pluck(:id)
   end
 

@@ -21,7 +21,7 @@
       </div>
       <transition-group name="recipe-cards" tag="div" class="recipe__box--scroll-wrapper" v-else
       v-bind:style="{ marginLeft: leftMargin }"
-      v-on:after-enter="getLeftMargin"
+      v-on:before-enter="getLeftMargin"
       v-on:after-leave="getLeftMargin"
       >
         <div
