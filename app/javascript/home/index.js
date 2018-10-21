@@ -65,7 +65,7 @@ const vm = new Vue({
           _this.recipesCount = data.recipes_count
           _this.addRecipesFromData(data.to_add)
           _this.removeRecipesFromData(data.to_remove)
-        }
+          window.history.pushState("object or string", "Title", `/?query=${_this.query}`);        }
       })
     },
     addRecipesFromData(recipeToAdd) {

@@ -14,6 +14,7 @@ gem "attachinary", github: 'assembler/attachinary'
 gem "jquery-fileupload-rails"
 gem "coffee-rails"
 gem 'gon'
+gem 'pg_search'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'

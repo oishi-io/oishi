@@ -9,7 +9,17 @@ class Recipe < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
-  include ::ApplicationHelper
+  include PgSearch
+
+  pg_search_scope :pg_search,
+    against: :name,
+    associated_against: {
+      ingredients: :name,
+      tags: :name
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
 
   def visible?
     visible
@@ -31,8 +41,6 @@ class Recipe < ApplicationRecord
     return are_recommended if query == ''
 
     safe_query = ActionController::Base.helpers.sanitize(query).strip
-    sql_query = 'lower(name) ILIKE :query'
-
-    where(sql_query, query: "%#{safe_query.downcase}%")
+    pg_search(safe_query)
   end
 end
