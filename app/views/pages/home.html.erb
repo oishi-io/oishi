@@ -16,12 +16,16 @@
 
   <div class="section-search" v-cloak>
     <div class="search">
+      <a><%= svg 'search' %></a>
       <input
         v-on:input="query = $event.target.value"
-        type="text"
+        type="search"
+        name="search"
+        v-model="query"
         class="search__input"
         placeholder="Recherche"
       >
+      <a v-if='query != ""' v-on:click='clearQuery'><%= svg 'delete' %></a>
     </div>
     <div class="recipe__box">
       <!-- <div class="sk-folding-cube">

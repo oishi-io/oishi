@@ -8,15 +8,34 @@
   .section-search {
     width: 100%;
     padding: 0 5px;
+
     .search {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       text-align: center;
+      margin: auto;
       margin-bottom: 5rem;
+      width: 32rem;
+      height: 4.5rem;
+      border-bottom: 2px solid $color-black;
+      a {
+        cursor: pointer;
+        margin-bottom: -.7rem;
+        #icon-search {
+          height: 2.4rem;
+        }
+        #icon-clear {
+          height: 1.5rem;
+        }
+      }
+
       input {
         border: none;
-        border-bottom: 1px solid $color-black;
-        text-transform: uppercase;
-        text-align: center;
-        width: 25rem;
+        text-align: left;
+        width: 100%;
+        margin: 0 .5rem;
+        font-size: 24px;
         &:focus, &:active, &:visited {
           outline: none;
         }

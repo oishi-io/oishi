@@ -93,6 +93,9 @@ const vm = new Vue({
     goToRecipe(id) {
       window.location = `/recipes/${id}`
     },
+    clearQuery() {
+      this.query = ''
+    },
   },
 });
 
