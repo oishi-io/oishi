@@ -13,7 +13,7 @@
     <meta property="og:image:type" content="image/jpeg"/>
     <meta name="twitter:card" content="summary"/>
     <link rel="canonical" href="http://www.oishi.io"/>
-    
+
     <%= favicon_link_tag 'favicon.png' %>
     <%= Gon::Base.render_data %>
     <%= csrf_meta_tags %>
@@ -25,6 +25,19 @@
       <%= render 'shared/menu' %>
     <% end %>
     <%= yield %>
+
+    <% if Rails.env.production? %>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127845622-1"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-127845622-1');
+      </script>
+    <% end %>
+
     <%= javascript_include_tag 'application' %>
     <%= cloudinary_js_config %>
     <%= yield :after_js %>
