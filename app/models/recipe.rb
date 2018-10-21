@@ -9,6 +9,8 @@ class Recipe < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
+  include ::ApplicationHelper
+
   def visible?
     visible
   end
@@ -28,7 +30,9 @@ class Recipe < ApplicationRecord
   def self.search(query)
     return are_recommended if query == ''
 
+    safe_query = ActionController::Base.helpers.sanitize(query).strip
     sql_query = 'lower(name) ILIKE :query'
-    where(sql_query, query: "%#{query.downcase}%")
+    binding.pry
+    where(sql_query, query: "%#{safe_query.downcase}%")
   end
 end

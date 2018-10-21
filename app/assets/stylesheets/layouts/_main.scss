@@ -19,3 +19,5 @@ body {
     display: none;/*width:0em is better*/
   }
 }
+
+[v-cloak] { display: none; }
