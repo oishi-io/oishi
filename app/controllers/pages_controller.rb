@@ -9,7 +9,7 @@ class PagesController < ApplicationController
       recipes_to_add = to_add(recipes, previous_ids)
       recipes_to_remove = to_remove(recipes, previous_ids)
     else
-      recipes = Recipe.are_recommended
+      recipes = Recipe.are_recommended.map(&:serialize)
     end
 
     respond_to do |format|
@@ -39,7 +39,7 @@ class PagesController < ApplicationController
     search_results.each do |result|
       next if previous_ids&.include?(result.id)
 
-      recipe_to_add << result
+      recipe_to_add << result.serialize
     end
 
     recipe_to_add

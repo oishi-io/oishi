@@ -43,4 +43,18 @@ class Recipe < ApplicationRecord
     safe_query = ActionController::Base.helpers.sanitize(query).strip
     pg_search(safe_query)
   end
+
+  def serialize
+    photo_path = photos.first.path
+    photo_url = "https://res.cloudinary.com/dgv0y9kj7/image/upload/#{photo_path}"
+    {
+      id: id,
+      cooking_time: cooking_time,
+      preparation_time: preparation_time,
+      difficulty: difficulty,
+      servings: servings,
+      name: name,
+      photo_url: photo_url
+    }
+  end
 end

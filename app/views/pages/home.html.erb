@@ -56,6 +56,13 @@
           v-on:click="goToRecipe(recipe.id)"
         >
           <h2>{{ recipe.name }}</h2>
+          <div
+            class="recipe-image"
+            :style='{ backgroundImage: `url("${recipe.photo_url}")` }'
+          >
+          </div>
+          <p><strong>Couverts: </strong>{{ recipe.servings }} pers.</p>
+          <p><strong>Préparation: </strong>{{ recipe.preparation_time }} min</p>
         </div>
       </transition-group>
 

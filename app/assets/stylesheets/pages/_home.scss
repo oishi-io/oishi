@@ -46,8 +46,9 @@
 
     .recipe__box {
       &--scroll-wrapper {
-        height: 25rem;
+        height: 26rem;
         display: flex;
+        align-items: center;
         flex-wrap: nowrap;
         overflow-x: auto;
         // transition: margin-left 0.3s ease;
@@ -62,23 +63,36 @@
         }
       }
       &__card {
-        border: 1px solid $color-black;
+        // border: 1px solid $color-black;
         background-color: $color-white;
         height: 25rem;
         width: 25rem;
         flex: 0 0 auto;
         cursor: pointer;
         transition: all .4s ease;
+        // box-shadow: 0 0.5px 0 0 #ffffff inset, 0 1px 2px 0 #B3B3B3;
 
         &:not(:last-child) {
-          margin-right: .5rem;
+          margin-right: 1rem;
         }
 
         h2 {
           color: $color-black;
+          text-transform: uppercase;
           margin: 0;
+          font-size: 2.8rem;
           font-family: $headers-font;
           font-weight: 400;
+          line-height: 3.8rem;
+        }
+        .recipe-image {
+          background-size: cover;
+          background-position: center;
+          width: 100%;
+          height: 60%;
+        }
+        p {
+          margin: .5rem 0;
         }
       }
     }
@@ -93,9 +107,6 @@
     position: absolute;
     top: 3rem;
     right: 3rem;
-    // background-color: $color-black;
-    // border-radius: 3px;
-    // padding: .5rem 0.5rem .5rem 1.5rem;
 
     &--text {
       margin: 0;
@@ -103,7 +114,6 @@
       font-weight: 700;
       text-transform: capitalize;
       color: $color-black;
-      // letter-spacing: .3rem;
       font-family: $headers-font;
     }
   }
