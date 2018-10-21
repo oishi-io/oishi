@@ -32,7 +32,7 @@ class Recipe < ApplicationRecord
 
     safe_query = ActionController::Base.helpers.sanitize(query).strip
     sql_query = 'lower(name) ILIKE :query'
-    binding.pry
+
     where(sql_query, query: "%#{safe_query.downcase}%")
   end
 end
