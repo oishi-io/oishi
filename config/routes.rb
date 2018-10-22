@@ -4,12 +4,12 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   # RECIPES
-  resources :recipes do
+  resources :recipes, param: :slug do
     resources :measures, only: [:new, :create, :edit, :update, :destroy]
     resources :steps, only: [:create, :destroy]
   end
-  post '/recipes/:id/add_tags', to: 'recipes#add_tags'
-  post '/recipes/:id/add_tools', to: 'recipes#add_tools'
+  post '/recipes/:slug/add_tags', to: 'recipes#add_tags'
+  post '/recipes/:slug/add_tools', to: 'recipes#add_tools'
 
   # MEASURES
   post '/measures/save_order', to: 'measures#save_order'

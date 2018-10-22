@@ -51,7 +51,7 @@ var vm = new Vue({
       let _this = this;
       $.ajax({
         method: 'POST',
-        url: '/recipes/'+ _this.recipeId + '/add_tags',
+        url: '/recipes/'+ _this.recipe.slug + '/add_tags',
         data: {
           tags: tags,
         },
@@ -64,7 +64,7 @@ var vm = new Vue({
       let _this = this;
       $.ajax({
         method: 'POST',
-        url: '/recipes/'+ _this.recipeId + '/add_tools',
+        url: '/recipes/'+ _this.recipe.slug + '/add_tools',
         data: {
           tools: tools,
         },
@@ -125,7 +125,7 @@ var vm = new Vue({
       let order = (measure.order != null) ? measure.order : _this.measures.length + 1;
       $.ajax({
         method: 'POST',
-        url: '/recipes/' + _this.recipeId + '/measures',
+        url: '/recipes/' + _this.recipe.slug + '/measures',
         data: {
           measure: {
             measure_id: measure.measure_id,
@@ -164,7 +164,7 @@ var vm = new Vue({
         if (result.value) {
           $.ajax({
             method: 'DELETE',
-            url: '/recipes/' + _this.recipeId + '/measures/' + measure.measure_id,
+            url: '/recipes/' + _this.recipe.slug + '/measures/' + measure.measure_id,
             success: function(data){
               Vue.delete(_this.measures, index);
             }
@@ -201,7 +201,7 @@ var vm = new Vue({
           order: step.order,
           recipe_id: step.recipe_id,
         },
-        url: '/recipes/' + _this.recipeId + '/steps',
+        url: '/recipes/' + _this.recipe.slug + '/steps',
         success: function(){
           _this.stepsLength[index] = step.text.length;
           vm.$forceUpdate();
@@ -229,7 +229,7 @@ var vm = new Vue({
         if (result.value) {
           $.ajax({
             method: 'DELETE',
-            url: '/recipes/' + _this.recipeId + '/steps/' + step.id,
+            url: '/recipes/' + _this.recipe.slug + '/steps/' + step.id,
             success: function(data){
               Vue.delete(_this.steps, index);
               console.log('Etape supprimée')
@@ -242,7 +242,7 @@ var vm = new Vue({
       let _this = this;
       $.ajax({
         method: 'PUT',
-        url: '/recipes/' + _this.recipeId,
+        url: '/recipes/' + _this.recipe.slug,
         data: {
           recipe: _this.recipe,
         },
@@ -266,7 +266,7 @@ var vm = new Vue({
         if (result.value) {
           $.ajax({
             method: 'DELETE',
-            url: '/recipes/' + _this.recipeId,
+            url: '/recipes/' + _this.recipe.slug,
             success() {
               window.location = '/recipes/'
             },

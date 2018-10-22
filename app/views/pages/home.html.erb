@@ -53,7 +53,7 @@
           v-for="recipe in recipes"
           v-bind:key="recipe.id"
           class="recipe__box__card"
-          v-on:click="goToRecipe(recipe.id)"
+          v-on:click="goToRecipe(recipe.slug)"
         >
           <h2>{{ recipe.name }}</h2>
           <div

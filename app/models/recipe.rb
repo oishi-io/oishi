@@ -21,6 +21,8 @@ class Recipe < ApplicationRecord
       tsearch: { prefix: true }
     }
 
+  before_save :update_slug
+
   def visible?
     visible
   end
@@ -54,7 +56,16 @@ class Recipe < ApplicationRecord
       difficulty: difficulty,
       servings: servings,
       name: name,
-      photo_url: photo_url
+      photo_url: photo_url,
+      slug: slug,
     }
+  end
+
+  private
+
+  def update_slug
+    return unless name_changed?
+
+    self.slug = I18n.transliterate(name).downcase.split.join('-')
   end
 end

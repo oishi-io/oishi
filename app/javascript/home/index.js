@@ -91,8 +91,8 @@ const vm = new Vue({
 
       this.leftMargin = margin > 0 ? `${(margin/2) - 5}px` : 0;
     },
-    goToRecipe(id) {
-      window.location = `/recipes/${id}`
+    goToRecipe(slug) {
+      window.location = `/recipes/${slug}`
     },
     clearQuery() {
       this.query = ''

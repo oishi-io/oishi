@@ -1,6 +1,10 @@
 class MeasuresController < ApplicationController
   def create
-    @measure = Measure.new(measure_params)
+    if Measure.exists?(params[:measure_id])
+      @measure = Measure.update(measure_params)
+    else
+      @measure = Measure.new(measure_params)
+    end
     authorize @measure
     @measure.save
     render json: { measure_id: @measure.id,
@@ -31,7 +35,7 @@ class MeasuresController < ApplicationController
 
   def update
     @measure = Measure.update(measure_params)
-    redirect_to recipe_path(@recipe)
+    redirect_to recipe_path(@recipe.slug)
   end
 
   def destroy

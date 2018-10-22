@@ -25,7 +25,7 @@ class RecipesController < ApplicationController
     @recipe.user = current_user
     authorize @recipe
     if @recipe.save
-      redirect_to edit_recipe_path(@recipe)
+      redirect_to edit_recipe_path(@recipe.slug)
     else
       render 'new'
     end
@@ -36,12 +36,13 @@ class RecipesController < ApplicationController
 
     gon.recipe = {
       id: @recipe.id,
+      slug: @recipe.slug,
       name: @recipe.name,
       servings: @recipe.servings,
       preparation_time: @recipe.preparation_time,
       cooking_time: @recipe.cooking_time,
       description: @recipe.description,
-      url: recipe_path(@recipe)
+      url: recipe_path(@recipe.slug)
     }
 
     gon.ingredients = Ingredient.all
@@ -89,7 +90,7 @@ class RecipesController < ApplicationController
     authorize @recipe
     respond_to do |format|
       format.js { head :ok }
-      format.html { redirect_to edit_recipe_path(@recipe) }
+      format.html { redirect_to edit_recipe_path(@recipe.slug) }
     end
   end
 
@@ -101,7 +102,8 @@ class RecipesController < ApplicationController
   private
 
   def set_recipe
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.find_by(slug: params[:slug])
+    @recipe = Recipe.find(params[:slug]) if @recipe.nil?
     authorize @recipe
   end
 
@@ -110,6 +112,7 @@ class RecipesController < ApplicationController
       .require(:recipe)
       .permit(
         :name,
+        :slug,
         :preparation_time,
         :cooking_time,
         :description,
