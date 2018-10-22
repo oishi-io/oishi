@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   def home
     if params[:query]
       previous_ids = params[:recipeIds]&.map(&:to_i)
-      recipes = Recipe.search(params[:query])
+      recipes = Recipe.search(params[:query]).map(&:serialize)
 
       recipes_to_add = to_add(recipes, previous_ids)
       recipes_to_remove = to_remove(recipes, previous_ids)
@@ -37,9 +37,9 @@ class PagesController < ApplicationController
     recipe_to_add = []
 
     search_results.each do |result|
-      next if previous_ids&.include?(result.id)
+      next if previous_ids&.include?(result[:id])
 
-      recipe_to_add << result.serialize
+      recipe_to_add << result
     end
 
     recipe_to_add

@@ -61,6 +61,7 @@ const vm = new Vue({
           recipeIds: recipeIds,
         },
         success(data) {
+          console.log(data)
           _this.isLoading = false;
           _this.recipesCount = data.recipes_count
           _this.addRecipesFromData(data.to_add)
@@ -98,6 +99,11 @@ const vm = new Vue({
     },
   },
 });
+
+window.onpopstate = () => {
+  // const query = new URLSearchParams(window.location.search).get('query')
+  window.location.reload()
+}
 
 export default
 
