@@ -55,14 +55,24 @@
           class="recipe__box__card"
           v-on:click="goToRecipe(recipe.slug)"
         >
-          <h2>{{ recipe.name }}</h2>
-          <div
-            class="recipe-image"
-            :style='{ backgroundImage: `url("${recipe.photo_url}")` }'
-          >
+          <div class="flex-div">
+            <h2>{{ recipe.name }}</h2>
+            <div
+              class="recipe-image"
+              :style='{ backgroundImage: `url("${recipe.photo_url}")` }'
+              >
+            </div>
+            <div class="recipe__card__info">
+              <span>
+                <%= svg 'time' %>
+                <p>{{ recipe.preparation_time }}min</p>
+              </span>
+              <span>
+                <%= svg 'chef_hat' %>
+                <p>{{ recipe.difficulty }}</p>
+              </span>
+            </div>
           </div>
-          <p><strong>Couverts: </strong>{{ recipe.servings }} pers.</p>
-          <p><strong>Préparation: </strong>{{ recipe.preparation_time }} min</p>
         </div>
       </transition-group>
 
