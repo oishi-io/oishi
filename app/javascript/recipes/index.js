@@ -144,10 +144,34 @@ var vm = new Vue({
         }
       })
     },
-    editMeasure: function(measure, index){
+    setEditMeasure: function(measure, index){
       let _this = this;
       _this.newMeasure = measure;
       _this.checkEditMeasure = true;
+    },
+    editMeasure(measure) {
+      let _this = this;
+      $.ajax({
+        method: 'PUT',
+        url: '/recipes/' + _this.recipe.slug + '/measures/' + measure.measure_id,
+        data: {
+          measure: {
+            measure_id: measure.measure_id,
+            recipe_id: _this.recipeId,
+            quantity: measure.quantity,
+            text_1: measure.text1,
+            ingredient_id: measure.ingredient.id,
+            text_2: measure.text2,
+            order: measure.order,
+          },
+        },
+        success: function(data){
+          const index = _this.measures.map(x => x.id).indexOf(data.measure_id)
+          _this.measures.splice(index, 1, data)
+          _this.newMeasure = { quantity: null, text1: '', ingredient: { id: null, name: null }, text2: '', order: null};
+          _this.checkEditMeasure = false;
+        }
+      })
     },
     destroyMeasure(measure, index){
       let _this = this;

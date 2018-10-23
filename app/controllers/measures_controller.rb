@@ -1,10 +1,6 @@
 class MeasuresController < ApplicationController
   def create
-    if Measure.exists?(params[:measure_id])
-      @measure = Measure.update(measure_params)
-    else
-      @measure = Measure.new(measure_params)
-    end
+    @measure = Measure.new(measure_params)
     authorize @measure
     @measure.save
     render json: { measure_id: @measure.id,
@@ -34,8 +30,18 @@ class MeasuresController < ApplicationController
   end
 
   def update
-    @measure = Measure.update(measure_params)
-    redirect_to recipe_path(@recipe.slug)
+    @measure = Measure.find(params[:id])
+    @measure.update(measure_params)
+    authorize @measure
+    render json: { measure_id: @measure.id,
+                   quantity: @measure.quantity.to_i,
+                   text1: @measure.text_1,
+                   ingredient: {
+                     name: @measure.ingredient.name,
+                     id: @measure.ingredient.id
+                   },
+                   text2: @measure.text_2,
+                   order: @measure.order }
   end
 
   def destroy

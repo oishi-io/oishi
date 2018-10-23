@@ -55,7 +55,7 @@
                 <p>{{ measure.quantity }}{{ measure.text1 }}</p>
               </div>
               <div :id="'measure_' + index" style="display: none;">
-                <a v-on:click="editMeasure(measure)"><Icon type="md-create" size="18" /></a>
+                <a v-on:click="setEditMeasure(measure)"><Icon type="md-create" size="18" /></a>
                 <a v-on:click="destroyMeasure(measure, index)" style="margin: 0px 5px;"><Icon type="md-close" size="18" color="#cf1b1b"/></a>
               </div>
             </div>
@@ -71,7 +71,10 @@
             <input v-model="newMeasure.text2" type="text" class="new-input form-control" placeholder="Texte 2" style="width: 150px; height: 32px; margin-right: 5px;">
             <input v-model.number="newMeasure.quantity" type="integer" class="new-input form-control" placeholder="Quantité" style="width: 150px; height: 32px; margin-right: 5px;">
             <input v-model="newMeasure.text1" type="text" class="new-input form-control" placeholder="Texte 1" style="width: 150px; height: 32px; margin-right: 5px;">
-            <a v-if="checkNewMeasure == true" v-on:click="createMeasure(newMeasure)">
+            <a v-if="checkNewMeasure && !checkEditMeasure" v-on:click="createMeasure(newMeasure)">
+              <Icon  type="md-checkmark" size="20"/>
+            </a>
+            <a v-if="checkEditMeasure" v-on:click="editMeasure(newMeasure)">
               <Icon  type="md-checkmark" size="20"/>
             </a>
           </div>
