@@ -166,8 +166,13 @@ var vm = new Vue({
           },
         },
         success: function(data){
-          const index = _this.measures.map(x => x.id).indexOf(data.measure_id)
+          console.log('data: ', data)
+          const index = _this.measures.map(x => x.measure_id).indexOf(data.measure_id)
+          console.log('index: ', index)
+          console.log('before: ', _this.measures)
           _this.measures.splice(index, 1, data)
+          console.log('after: ', _this.measures)
+
           _this.newMeasure = { quantity: null, text1: '', ingredient: { id: null, name: null }, text2: '', order: null};
           _this.checkEditMeasure = false;
         }
