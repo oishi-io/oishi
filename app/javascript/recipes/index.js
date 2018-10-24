@@ -254,7 +254,6 @@ var vm = new Vue({
             url: '/recipes/' + _this.recipe.slug + '/steps/' + step.id,
             success: function(data){
               Vue.delete(_this.steps, index);
-              console.log('Etape supprimée')
             }
           })
         }
