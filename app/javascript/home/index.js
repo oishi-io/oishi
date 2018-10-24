@@ -43,6 +43,7 @@ const vm = new Vue({
         this.windowWidth = window.innerWidth;
       });
     })
+    // this.getQueryFromParams();
   },
   components: {
   },
@@ -96,6 +97,14 @@ const vm = new Vue({
     },
     clearQuery() {
       this.query = ''
+    },
+    getQueryFromParams() {
+      const _this = this
+      const query = new URLSearchParams(window.location.search).get('query')
+      console.log(query)
+      if (query && query.length > 0) {
+        _this.query = query
+      }
     },
   },
 });
