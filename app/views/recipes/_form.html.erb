@@ -7,6 +7,7 @@
           <%= f.input :servings, label: false, placeholder: 'Nombre de personnes' %>
           <%= f.input :preparation_time, label: false, placeholder: 'Temps de préparation (min)' %>
           <%= f.input :cooking_time, label: false, placeholder: 'Temps de cuisson (min)' %>
+          <%= f.input :difficulty, label: false, placeholder: 'Difficulté', collection: ['Facile', 'Moyen', 'Difficile'] %>
           <%= f.input :photos, as: :attachinary %>
           <%= f.button :submit, class: "btn btn-info"%>
         <% end %>

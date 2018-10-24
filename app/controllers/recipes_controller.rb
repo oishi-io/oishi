@@ -39,6 +39,7 @@ class RecipesController < ApplicationController
       slug: @recipe.slug,
       name: @recipe.name,
       servings: @recipe.servings,
+      difficulty: @recipe.difficulty,
       preparation_time: @recipe.preparation_time,
       cooking_time: @recipe.cooking_time,
       description: @recipe.description,
@@ -116,6 +117,7 @@ class RecipesController < ApplicationController
         :preparation_time,
         :cooking_time,
         :description,
+        :difficulty,
         :servings,
         photos: []
       )
