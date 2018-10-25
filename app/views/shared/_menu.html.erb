@@ -2,8 +2,9 @@
   <div class="dropdown">
     <a class="dropdown__button" data-toggle="dropdown">Menu</a>
     <ul class="dropdown-menu dropdown-menu-left menu__dropdown">
-      <li><%= link_to "Home", root_path, class: "menu__item menu__link" %></li>
+      <li><%= link_to "Acceuil", root_path, class: "menu__item menu__link" %></li>
       <li><%= link_to "Recettes", recipes_path, class: "menu__item menu__link" %></li>
+      <li><%= link_to "Editeur", edit_recipe_path(Recipe.first.slug), class: "menu__item menu__link" %></li>
       <li><%= link_to "Ingrédients", ingredients_path, class: "menu__item menu__link" %></li>
       <li><%= link_to "Ustensiles", tools_path, class: "menu__item menu__link" %></li>
       <li><%= link_to "Tags", tags_path, class: "menu__item menu__link" %></li>
