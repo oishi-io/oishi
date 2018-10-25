@@ -8,6 +8,9 @@ class Recipe < ApplicationRecord
   has_attachments :photos, maximum: 10
 
   validates :name, presence: true, uniqueness: true
+  validates :preparation_time, presence: true
+  validates :difficulty, presence: true, inclusion: { in: %w(Facile Moyen Difficile),
+    message: "%{value} is not a valid difficulty" }
 
   include PgSearch
 
