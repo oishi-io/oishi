@@ -8,6 +8,12 @@
       </a>
       <a :href="recipe.url"><h2 style="font-weight: bolder; text-align: center;">{{ recipe.name }}</h2></a>
       <a class="btn-sm btn-danger" style='margin-left: 20px;' v-on:click="destroyRecipe">Supprimer</a>
+      <a class="btn-sm btn-success" style='margin-left: 20px;' v-on:click="addRecipe">Nouvelle</a>
+      <select class="form-control" v-model="selectedRecipeSlug" style="margin-left: 20px; width: 250px;">
+        <option v-for="recipe in recipes" v-bind:value="recipe.slug">
+          {{ recipe.name }}
+        </option>
+      </select>
     </div>
     <div v-else style="height: 50px;" class="item-center-flex-start">
       <a v-on:click="editRecipe">
@@ -126,8 +132,8 @@
       <div class="recipe-steps">
         <h4 style="margin-top: 10px; margin-bottom: 10px;">Etapes</h4>
         <div v-for="(step, index) in steps" class="item-center-flex-start" style="margin-bottom: 5px;" v-on:mouseenter="displayButtons('step', index, 'block')" v-on:mouseleave="displayButtons('step', index, 'none')">
-          <input class="form-control" type="integer" v-model="step.order" placeholder="#" style="width: 40px;">
-          <textarea class="form-control" type="text" v-model="step.text" placeholder="Description de l'étape" style="margin: 0px 5px; width: 570px;"></textarea>
+          <input class="form-control text-center" type="integer" v-model="step.order" placeholder="#" style="width: 50px;">
+          <textarea class="form-control" type="text" v-model="step.text" placeholder="Description de l'étape" style="margin: 0px 5px; width: 570px; height: 100px"></textarea>
           <a v-if="step.text.length != stepsLength[index]" v-on:click="updateStep(step, index)"><Icon  type="md-checkmark" size="20"/></a>
           <div :id="'step_' + index" style="display: none;">
             <a v-on:click="destroyStep(step, index)" style="margin: 0px 5px;"><Icon type="md-close" size="18" color="#cf1b1b"/></a>

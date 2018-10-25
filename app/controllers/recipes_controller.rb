@@ -72,6 +72,11 @@ class RecipesController < ApplicationController
     gon.measures = serialized_measures
     gon.steps = @recipe.steps.order(order: :ASC)
     gon.stepsLength = gon.steps.pluck(:text).map(&:length)
+
+    keys_to_extract = %w[name slug]
+    gon.recipes = Recipe.all.map { |recipe|
+      recipe.attributes.select { |key, _| keys_to_extract.include? key }
+    }
   end
 
   def add_tags

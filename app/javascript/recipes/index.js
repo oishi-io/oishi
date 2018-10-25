@@ -29,9 +29,16 @@ var vm = new Vue({
     toolsCount: gon.selectedTools.length,
     stepsLength: gon.stepsLength,
     editBasics: false,
+    selectedRecipeSlug: gon.recipe.slug,
+    recipes: gon.recipes,
   },
   components: {
     draggable
+  },
+  watch: {
+    selectedRecipeSlug() {
+      this.changeRecipe();
+    }
   },
   computed:{
     checkNewMeasure: function(){
@@ -294,6 +301,12 @@ var vm = new Vue({
           })
         }
       })
+    },
+    addRecipe() {
+      window.location = '/recipes/new'
+    },
+    changeRecipe() {
+      window.location = `/recipes/${this.selectedRecipeSlug}/edit`
     },
   },
 });
