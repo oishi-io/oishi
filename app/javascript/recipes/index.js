@@ -42,19 +42,19 @@ var vm = new Vue({
   },
   computed:{
     checkNewMeasure: function(){
-      let _this = this;
-      let m = _this.newMeasure
+      const _this = this;
+      const m = _this.newMeasure
       return m.text1 !== '' && m.ingredient.id !== null || _this.checkEditMeasure == true
     },
   },
   methods: {
     displayButtons: function(elt, eltId, value){
-      let _this = this;
-      let elementToDisplay = document.getElementById(elt + '_' + eltId);
+      const _this = this;
+      const elementToDisplay = document.getElementById(elt + '_' + eltId);
       elementToDisplay.style.display = value;
     },
     addTags: function(tags){
-      let _this = this;
+      const _this = this;
       $.ajax({
         method: 'POST',
         url: '/recipes/'+ _this.recipe.slug + '/add_tags',
@@ -63,11 +63,12 @@ var vm = new Vue({
         },
         success: function(data) {
           _this.tagsCount = _this.selectedTags.length;
+          _this.successMessage()
         }
       })
     },
     addTools: function(tools){
-      let _this = this;
+      const _this = this;
       $.ajax({
         method: 'POST',
         url: '/recipes/'+ _this.recipe.slug + '/add_tools',
@@ -76,10 +77,13 @@ var vm = new Vue({
         },
         success: function(data){
           _this.toolsCount = _this.selectedTools.length;
+          _this.successMessage()
         }
       })
     },
     createTag: function(tag){
+      const _this = this;
+
       $.ajax({
         method: 'POST',
         url: '/tags',
@@ -91,10 +95,13 @@ var vm = new Vue({
         success: function(data){
           vm.tags.push(data.tag);
           vm.newTag = {name: ''};
+          _this.successMessage()
         }
       })
     },
     createTool: function(tool){
+      const _this = this;
+
       $.ajax({
         method: 'POST',
         url: '/tools',
@@ -106,10 +113,13 @@ var vm = new Vue({
         success: function(data){
           vm.tools.push(data.tool);
           vm.newTool = {name: ''};
+          _this.successMessage()
         }
       })
     },
     createIngredient: function(ingredient){
+      const _this = this;
+
       $.ajax({
         method: 'POST',
         url: '/ingredients',
@@ -122,12 +132,13 @@ var vm = new Vue({
         success: function(data){
           vm.ingredients.push(data.ingredient);
           vm.newIngredient = {name: '', description: ''};
+          _this.successMessage()
         }
       })
     },
     createMeasure: function(measure){
-      let _this = this;
-      let order = (measure.order != null) ? measure.order : _this.measures.length + 1;
+      const _this = this;
+      const order = (measure.order != null) ? measure.order : _this.measures.length + 1;
       $.ajax({
         method: 'POST',
         url: '/recipes/' + _this.recipe.slug + '/measures',
@@ -146,16 +157,17 @@ var vm = new Vue({
           _this.measures.push(data);
           _this.newMeasure = { quantity: null, text1: '', ingredient: { id: null, name: null }, text2: '', order: null};
           _this.checkEditMeasure = false;
+          _this.successMessage()
         }
       })
     },
     setEditMeasure: function(measure, index){
-      let _this = this;
+      const _this = this;
       _this.newMeasure = measure;
       _this.checkEditMeasure = true;
     },
     editMeasure(measure) {
-      let _this = this;
+      const _this = this;
       $.ajax({
         method: 'PUT',
         url: '/recipes/' + _this.recipe.slug + '/measures/' + measure.measure_id,
@@ -175,11 +187,12 @@ var vm = new Vue({
           _this.measures.splice(index, 1, data)
           _this.newMeasure = { quantity: null, text1: '', ingredient: { id: null, name: null }, text2: '', order: null};
           _this.checkEditMeasure = false;
+          _this.successMessage()
         }
       })
     },
     destroyMeasure(measure, index){
-      let _this = this;
+      const _this = this;
       swal({
         title: 'T\'es sûr?',
         text: "La suppression est définitive",
@@ -195,20 +208,21 @@ var vm = new Vue({
             method: 'DELETE',
             url: '/recipes/' + _this.recipe.slug + '/measures/' + measure.measure_id,
             success: function(data){
-              Vue.delete(_this.measures, index);
+              Vue.deconste(_this.measures, index);
+              _this.successMessage()
             }
           })
         }
       })
     },
     checkMove: function(evt){
-      let _this = this;
+      const _this = this;
       _this.measures[evt.draggedContext.index].order = evt.draggedContext.futureIndex;
       _this.measures[evt.draggedContext.futureIndex].order = evt.draggedContext.index;
       _this.hasmoved = true;
     },
     saveOrder: function(){
-      let _this = this;
+      const _this = this;
       $.ajax({
         method: 'POST',
         data: {
@@ -217,11 +231,12 @@ var vm = new Vue({
         url: '/measures/save_order',
         success: function(){
           _this.hasmoved = false;
+          _this.successMessage()
         }
       })
     },
     updateStep: function(step, index){
-      let _this = this;
+      const _this = this;
       $.ajax({
         method: 'POST',
         data: {
@@ -234,17 +249,18 @@ var vm = new Vue({
         success: function(){
           _this.stepsLength[index] = step.text.length;
           vm.$forceUpdate();
+          _this.successMessage()
         },
       })
     },
     addStep: function(){
-      let _this = this;
-      let newIndex = _this.steps.length + 1;
+      const _this = this;
+      const newIndex = _this.steps.length + 1;
       _this.steps.push({ id: null, order: newIndex, text: '', recipe_id: _this.recipeId });
       _this.stepsLength.push(0);
     },
     destroyStep: function(step, index){
-      let _this = this;
+      const _this = this;
       swal({
         title: 'T\'es sûr?',
         text: "La suppression est définitive",
@@ -261,13 +277,14 @@ var vm = new Vue({
             url: '/recipes/' + _this.recipe.slug + '/steps/' + step.id,
             success: function(data){
               Vue.delete(_this.steps, index);
+              _this.successMessage()
             }
           })
         }
       })
     },
     editRecipe: function(){
-      let _this = this;
+      const _this = this;
       $.ajax({
         method: 'PUT',
         url: '/recipes/' + _this.recipe.slug,
@@ -276,11 +293,12 @@ var vm = new Vue({
         },
         success: function(){
           _this.editBasics = false
+          _this.successMessage()
         },
       })
     },
     destroyRecipe() {
-      let _this = this;
+      const _this = this;
       swal({
         title: 'T\'es sûr?',
         text: "La suppression est définitive",
@@ -307,6 +325,9 @@ var vm = new Vue({
     },
     changeRecipe() {
       window.location = `/recipes/${this.selectedRecipeSlug}/edit`
+    },
+    successMessage() {
+      this.$Message.success('Sauvegardé!');
     },
   },
 });
