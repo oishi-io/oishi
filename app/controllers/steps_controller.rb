@@ -9,7 +9,7 @@ class StepsController < ApplicationController
     end
     authorize @step
     @step.save
-    head :ok
+    render json: { step: @step, status: 200 }
   end
 
   def destroy

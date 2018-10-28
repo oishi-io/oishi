@@ -237,6 +237,7 @@ var vm = new Vue({
     },
     updateStep: function(step, index){
       const _this = this;
+      console.log('before: ', _this.steps)
       $.ajax({
         method: 'POST',
         data: {
@@ -246,9 +247,12 @@ var vm = new Vue({
           recipe_id: step.recipe_id,
         },
         url: '/recipes/' + _this.recipe.slug + '/steps',
-        success: function(){
-          _this.stepsLength[index] = step.text.length;
-          vm.$forceUpdate();
+        success: function(data){
+          console.log(data)
+          _this.stepsLength[index] = data.step.text.length;
+          _this.steps.splice(index, 1, data.step)
+          console.log('after: ', _this.steps)
+          // vm.$forceUpdate();
           _this.successMessage()
         },
       })

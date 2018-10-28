@@ -134,7 +134,7 @@
         <div v-for="(step, index) in steps" class="item-center-flex-start" style="margin-bottom: 5px;" v-on:mouseenter="displayButtons('step', index, 'block')" v-on:mouseleave="displayButtons('step', index, 'none')">
           <input class="form-control text-center" type="integer" v-model="step.order" placeholder="#" style="width: 50px;">
           <textarea class="form-control" type="text" v-model="step.text" placeholder="Description de l'étape" style="margin: 0px 5px; width: 570px; height: 100px"></textarea>
-          <a v-if="step.text.length != stepsLength[index]" v-on:click="updateStep(step, index)"><Icon  type="md-checkmark" size="20"/></a>
+          <a v-if="step.text.length != stepsLength[index]" v-on:click="updateStep(step, index)"><Icon type="md-checkmark" size="20"/></a>
           <div :id="'step_' + index" style="display: none;">
             <a v-on:click="destroyStep(step, index)" style="margin: 0px 5px;"><Icon type="md-close" size="18" color="#cf1b1b"/></a>
           </div>
