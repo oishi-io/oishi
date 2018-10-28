@@ -19,7 +19,9 @@ body {
     &::-webkit-scrollbar{
     display: none;/*width:0em is better*/
   }
-
+  li {
+    list-style: none;
+  }
 }
 
 [v-cloak] { display: none; }

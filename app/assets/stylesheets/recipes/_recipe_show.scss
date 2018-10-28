@@ -3,13 +3,14 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    text-transform: uppercase;
   }
 
   .servingsandtime{
 
   }
 
-  .recipe-topnotes{
+  .recipe-topnotes {
     // display:flex;
     // justify-content: space-between;
     // align-items: flex-start;
@@ -17,7 +18,7 @@
 
   }
 
-  .line{
+  .line {
     border-bottom: 1px solid black;
     margin-bottom: 15px;
     // padding-bottom: 40px;
@@ -37,13 +38,13 @@
   }
 
 
-  p{
-      font-size: 16px;
-      color: $color-black;
+  p {
+    font-size: 16px;
+    color: $color-black;
     strong{
       color: $color-black;
     }
-    }
+  }
 
   .recipe-info{
     // display: flex;
@@ -58,7 +59,6 @@
       li {
       display: flex;
       justify-content: space-between;
-      list-style: none;
       padding-left: 0px;
       }
     }
@@ -76,7 +76,6 @@
       padding: 0px;
     }
     li {
-      list-style: none;
       p{
       margin-bottom: 10px;
     }
@@ -93,7 +92,6 @@
     ul{
       padding-left: 0px;
       li {
-      list-style: none;
       padding-left: 0px;
       // p {
       // font-size: 14px;
