@@ -87,10 +87,10 @@
             <input v-model.number="newMeasure.quantity" type="integer" class="new-input form-control" placeholder="Quantité" style="width: 150px; height: 32px; margin-right: 5px;">
             <input v-model="newMeasure.text1" type="text" class="new-input form-control" placeholder="Texte 1" style="width: 150px; height: 32px; margin-right: 5px;">
             <a v-if="checkNewMeasure && !checkEditMeasure" v-on:click="createMeasure(newMeasure)">
-              <Icon  type="md-checkmark" size="20"/>
+              <Icon type="md-checkmark" size="20"/>
             </a>
             <a v-if="checkEditMeasure" v-on:click="editMeasure(newMeasure)">
-              <Icon  type="md-checkmark" size="20"/>
+              <Icon type="md-checkmark" size="20"/>
             </a>
           </div>
         </div>
@@ -114,7 +114,7 @@
             <i-option v-for="tag in tags" :value="tag.id" :key="tag.name" style="font-size: 14px !important">{{ tag.name }}</i-option>
           </i-select>
         </template>
-        <a v-if="selectedTags.length != tagsCount" v-on:click="addTags(selectedTags)"><Icon  type="md-checkmark" size="20"/></a>
+        <a v-if="selectedTags.length != tagsCount" v-on:click="addTags(selectedTags)"><Icon type="md-checkmark" size="20"/></a>
       </div>
 
       <!-- TOOLS -->
@@ -125,7 +125,7 @@
             <i-option v-for="tool in tools" :value="tool.id" :key="tool.name">{{ tool.name }}</i-option>
           </i-select>
         </template>
-        <a v-if="selectedTools.length != toolsCount" v-on:click="addTools(selectedTools)"><Icon  type="md-checkmark" size="20"/></a>
+        <a v-if="selectedTools.length != toolsCount" v-on:click="addTools(selectedTools)"><Icon type="md-checkmark" size="20"/></a>
       </div>
 
       <!-- STEPS -->
@@ -153,21 +153,21 @@
               <input v-model="newIngredient.name" type="text" class="form-control" id="ingredientName" placeholder="Nom" style="width:275px">
               <input v-model="newIngredient.description" type="text" class="form-control" id="ingredientDescription" placeholder="Description" style="width:275px; margin-top: 5px;">
             </div>
-            <a v-if="newIngredient.name != ''" v-on:click="createIngredient(newIngredient)" class="save-icon"><Icon  type="md-checkmark" size="20"/></a>
+            <a v-if="newIngredient.name != ''" v-on:click="createIngredient(newIngredient)" class="save-icon"><Icon type="md-checkmark" size="20"/></a>
           </div>
         </panel>
         <panel name="2">
           Ajouter un tag
           <div class="item-center-flex-start" slot="content">
             <input v-model="newTag.name" type="text" class="form-control" id="tagName" placeholder="Nom" style="width:275px">
-            <a v-if="newTag.name != ''" v-on:click="createTag(newTag)" class="save-icon"><Icon  type="md-checkmark" size="20"/></a>
+            <a v-if="newTag.name != ''" v-on:click="createTag(newTag)" class="save-icon"><Icon type="md-checkmark" size="20"/></a>
           </div>
         </panel>
         <panel name="3">
           Ajouter un ustensil
           <div class="item-center-flex-start" slot="content">
             <input v-model="newTool.name" type="text" class="form-control" id="toolName" placeholder="Nom" style="width:275px">
-            <a v-if="newTool.name != ''" v-on:click="createTool(newTool)" class="save-icon"><Icon  type="md-checkmark" size="20"/></a>
+            <a v-if="newTool.name != ''" v-on:click="createTool(newTool)" class="save-icon"><Icon type="md-checkmark" size="20"/></a>
           </div>
         </panel>
       </collapse>

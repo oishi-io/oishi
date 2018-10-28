@@ -93,8 +93,8 @@ var vm = new Vue({
           }
         },
         success: function(data){
-          vm.tags.push(data.tag);
-          vm.newTag = {name: ''};
+          _this.tags.push(data.tag);
+          _this.newTag = {name: ''};
           _this.successMessage()
         }
       })
@@ -111,8 +111,8 @@ var vm = new Vue({
           },
         },
         success: function(data){
-          vm.tools.push(data.tool);
-          vm.newTool = {name: ''};
+          _this.tools.push(data.tool);
+          _this.newTool = {name: ''};
           _this.successMessage()
         }
       })
@@ -130,8 +130,8 @@ var vm = new Vue({
           },
         },
         success: function(data){
-          vm.ingredients.push(data.ingredient);
-          vm.newIngredient = {name: '', description: ''};
+          _this.ingredients.push(data.ingredient);
+          _this.newIngredient = {name: '', description: ''};
           _this.successMessage()
         }
       })
@@ -248,11 +248,8 @@ var vm = new Vue({
         },
         url: '/recipes/' + _this.recipe.slug + '/steps',
         success: function(data){
-          console.log(data)
           _this.stepsLength[index] = data.step.text.length;
           _this.steps.splice(index, 1, data.step)
-          console.log('after: ', _this.steps)
-          // vm.$forceUpdate();
           _this.successMessage()
         },
       })
