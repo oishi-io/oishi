@@ -1,7 +1,9 @@
 .hamburger-menu {
-  position: absolute;
-  top: 3rem;
-  left: 2rem;
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  margin-top: 1rem;
+  transform: translateX(-50%);
   z-index: 1;
 
   &__item {
@@ -22,9 +24,9 @@
 
   /* Dropdown menu */
   .menu__dropdown {
-    margin-top: 15px;
     box-shadow: 1px 1px 4px #E6E6E6;
     border-color: #E6E6E6;
+    background-color: $color-white;
 
     & li > a {
       transition: all .3s ease;
@@ -39,18 +41,6 @@
         font-weight: bolder;
         color: $color-primary-dark;
       }
-    }
-    &::before {
-      content: ' ';
-      height: 1rem;
-      width: 1rem;
-      position: absolute;
-      right: 1rem;
-      top: -6px;
-      background-color: $color-white;
-      transform: rotate(45deg);
-      border-left: 1px solid #E6E6E6;
-      border-top: 1px solid #E6E6E6;
     }
   }
 }
