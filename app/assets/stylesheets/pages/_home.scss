@@ -4,6 +4,7 @@
   align-items: center;
   background-color: $color-white;
   position: relative;
+  min-height: 50rem;
 
   .section-search {
     width: 100%;
@@ -46,7 +47,6 @@
 
     .recipe__box {
       &--scroll-wrapper {
-        height: 31rem;
         display: flex;
         align-items: flex-end;
         flex-wrap: nowrap;
@@ -54,7 +54,7 @@
         // transition: margin-left 0.3s ease;
       }
       &--no-result {
-        height: 25rem;
+        height: 27rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -65,6 +65,7 @@
       &__card {
         background-color: $color-white;
         width: 25rem;
+        height: 27rem;
         flex: 0 0 auto;
         cursor: pointer;
         transition: all .4s ease;
