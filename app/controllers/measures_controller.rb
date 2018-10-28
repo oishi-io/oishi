@@ -20,7 +20,6 @@ class MeasuresController < ApplicationController
       @measure = Measure.find_by(id: v['measure_id'])
       @measure.update(order: v['order'])
       authorize @measure
-      @measure.save
     end
   end
 

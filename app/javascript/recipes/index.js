@@ -24,7 +24,7 @@ var vm = new Vue({
     newTag: {name: ''},
     newTool: {name: ''},
     checkEditMeasure: false,
-    hasmoved: false,
+    hasMoved: false,
     tagsCount: gon.selectedTags.length,
     toolsCount: gon.selectedTools.length,
     stepsLength: gon.stepsLength,
@@ -44,7 +44,7 @@ var vm = new Vue({
     checkNewMeasure: function(){
       const _this = this;
       const m = _this.newMeasure
-      return m.text1 !== '' && m.ingredient.id !== null || _this.checkEditMeasure == true
+      return m.text1 !== '' && m.ingredient.id !== null || _this.checkEditMeasure
     },
   },
   methods: {
@@ -217,9 +217,10 @@ var vm = new Vue({
     },
     checkMove: function(evt){
       const _this = this;
+      
       _this.measures[evt.draggedContext.index].order = evt.draggedContext.futureIndex;
       _this.measures[evt.draggedContext.futureIndex].order = evt.draggedContext.index;
-      _this.hasmoved = true;
+      _this.hasMoved = true;
     },
     saveOrder: function(){
       const _this = this;
@@ -230,7 +231,7 @@ var vm = new Vue({
         },
         url: '/measures/save_order',
         success: function(){
-          _this.hasmoved = false;
+          _this.hasMoved = false;
           _this.successMessage()
         }
       })
