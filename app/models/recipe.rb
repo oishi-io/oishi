@@ -64,6 +64,18 @@ class Recipe < ApplicationRecord
     }
   end
 
+  def serialize_no_photos
+    {
+      id: id,
+      cooking_time: cooking_time,
+      preparation_time: preparation_time,
+      difficulty: difficulty,
+      servings: servings,
+      name: name,
+      slug: slug,
+    }
+  end
+
   private
 
   def update_slug

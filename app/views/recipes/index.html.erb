@@ -1,14 +1,15 @@
-<div class="wrapper">
-  <div class="container">
-    <div align="center">
-      <h1>Nos recettes</h1>
+<div class="container">
+  <h1>INDEX DES RECETTES</h1>
+    <ul>
+      <% @recipe_index.each do |letter, recipes| %>
+        <h1><%= letter.upcase %></h1>
         <ul>
-          <% @recipes.each do |recipe| %>
+          <% recipes.each do |recipe| %>
             <li style="list-style: none">
-              <%= link_to recipe.name, recipe_path(recipe.slug) %>
+              <%= link_to recipe[:name], recipe_path(recipe[:slug]) %>
             </li>
           <% end %>
         </ul>
-    </div>
-  </div>
+      <% end %>
+    </ul>
 </div>
