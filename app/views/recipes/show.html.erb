@@ -12,18 +12,19 @@
       <span class="icon__container"><%= svg 'chef-hat' %><p><%= @recipe.difficulty %></p></span>
     </div>
   </div>
+
   <div class="row" >
-   <div class="col-sm-8 col-xs-12 recipe-image">
+   <div class="col-xs-12 recipe-image">
       <% if @recipe.photos? %>
       <%= cl_image_tag @recipe.photos[0].path %>
       <% end %>
     </div>
+  </div>
 
-  <div class="col-sm-4 col-xs-12 recipe-topnotes">
+  <div class="recipe-topnotes">
     <div class="recipe-description">
       <p><%= @recipe.description %></p>
     </div>
-  </div>
   </div>
 
   <div class="row">
@@ -42,15 +43,23 @@
     </div>
 
     <div class="col-sm-8 col-xs-12 recipe-etapes">
-      <h3>Etapes</h3>
-      <ul>
-        <% @steps.each do |step| %>
-          <li>
-            <h5><%=step.order %></h5>
+      <h3>étapes</h3>
+
+      <% @steps.each_with_index do |step, index| %>
+        <% if index.even? %>
+          <div class="step__container step__container--left">
+            <h5><%= step.order %></h5>
             <p><%= step.text %></p>
-          </li>
+          </div>
+          <div class="short-line"></div>
+        <% else %>
+          <div class="step__container step__container--right">
+            <h5><%= step.order %></h5>
+            <p><%= step.text %></p>
+          </div>
+          <div class="short-line"></div>
         <% end %>
-      </ul>
+      <% end %>
     </div>
   </div>
 </div>

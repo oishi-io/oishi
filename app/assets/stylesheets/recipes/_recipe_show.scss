@@ -5,6 +5,10 @@
     text-transform: uppercase;
   }
 
+  .line {
+    border-bottom: 1px solid black;
+    margin: 1.5rem 0;
+  }
 
   .servingsandtime{
     display: flex;
@@ -23,37 +27,17 @@
   .recipe-topnotes {
   }
 
-  .line {
-    border-bottom: 1px solid black;
-    margin: 1.5rem 0;
-  }
 
   .recipe-image{
     img{
       width: 100%;
-      margin-bottom: 15px;
+      margin-bottom: 1.5rem;
     }
-  }
-
-  .recipe-description{
-    margin-bottom: 20px;
-  }
-
-
-  p {
-    font-size: 16px;
-    color: $color-black;
-    strong{
-      color: $color-black;
-    }
-  }
-
-  .recipe-info{
   }
 
   .recipe-mesures{
-    padding: 0px;
-    ul{
+    margin: 5rem 0;
+    ul {
       padding-left: 0px;
       li {
       display: flex;
@@ -64,38 +48,41 @@
   }
 
   h3 {
-      margin-top: 0px;
-      font-size: 25px;
-    }
+    margin-bottom: 2rem;
+    font-size: 2.4rem;
+    text-transform: uppercase;
+  }
 
-  .recipe-etapes{
+  .recipe-etapes {
     margin-bottom: 40px;
 
-    ul{
-      padding: 0px;
-    }
-    li {
-      p{
-      margin-bottom: 10px;
-    }
-    }
-    h5 {
-      font-weight: bold;
-      font-size: 20px;
-      color: rgb(45, 140, 240)
+    .step__container {
+      margin-bottom: 2rem;
+      h5 {
+        line-height: 6.5rem;
+        font-size: 8rem;
+        font-weight: 700;
+      }
+      &--left {
+        h5 { float: left; margin-right: 1.5rem; }
+      }
+      &--right {
+        h5 { float: right; text-align: right; margin-left: 1.5rem; }
+      }
+      p {
+        margin-bottom: 2rem;
+        text-align: justify;
+        text-justify: inter-word;
+      }
     }
   }
 
-  .recipe-ustensiles{
-    padding: 0px;
-    ul{
-      padding-left: 0px;
-      li {
-      padding-left: 0px;
-      }
-    }
-    h3 {
-      margin-top: 0px;
+  .short-line {
+    &:not(:last-child) {
+      width: 2rem;
+      height: 1px;
+      border: 1px solid black;
+      margin: 4rem auto;
     }
   }
 
@@ -107,5 +94,7 @@
         }
       }
     }
+
+    .short-line { &:not(:last-child) { margin: 2rem auto; } }
   }
 }
