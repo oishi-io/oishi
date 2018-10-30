@@ -1,23 +1,15 @@
-<div class="container" id="recipe-show">
+<div id="recipe-show" class="container" >
 
-  <div class="row entete">
-    <div class="col-xs-12 recipe-title">
-      <h2><%= @recipe.name %></h2>
-      <% if current_user.present? && current_user.admin? %>
-        <%= link_to edit_recipe_path(@recipe.slug) do %>
-          <sup><h4>+</h4></sup>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
+  <h1 class="header"><%= @recipe.name %></h1>
 
-  <div class="col-xs-12 line"></div>
+  <div class="line"></div>
 
   <div class="row">
-    <div class="col-xs-12 servingsandtime">
-      <p><strong>Couverts: </strong><%= @recipe.servings %> pers.</p>
-      <p><strong>Préparation: </strong><%= @recipe.preparation_time %> minutes</p>
-      <p><strong>Cuisson: </strong><%= @recipe.cooking_time %> minutes</p>
+    <div class="col-xs-12 col-sm-7 servingsandtime">
+      <span class="icon__container"><%= svg 'chopsticks' %><p><%= @recipe.servings %> pers.</p></span>
+      <span class="icon__container"><%= svg 'whisk' %><p><%= @recipe.preparation_time %> min</p></span>
+      <span class="icon__container"><%= svg 'cooking' %><p><%= @recipe.cooking_time %> min</p></span>
+      <span class="icon__container"><%= svg 'chef-hat' %><p><%= @recipe.difficulty %></p></span>
     </div>
   </div>
   <div class="row" >
@@ -46,9 +38,6 @@
             </li>
           <% end %>
         </ul>
-        <!-- <a target="_blank" href="" class="email-ingredients-button">
-          Liste des courses
-        </a> -->
       </div>
     </div>
 
@@ -62,10 +51,6 @@
           </li>
         <% end %>
       </ul>
-      <!-- <div id="module-recipe-cooked">
-        <button class="recipe-cooked-button">
-        </button>
-      </div> -->
     </div>
   </div>
 </div>

@@ -1,31 +1,34 @@
 #recipe-show{
-  .recipe-title {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+  .header {
+    margin-top: 4rem;
+    font-size: 3.8rem;
     text-transform: uppercase;
   }
 
-  .servingsandtime{
 
+  .servingsandtime{
+    display: flex;
+    margin-bottom: 2rem;
+    justify-content: space-between;
+    .icon__container {
+      display: flex;
+      align-items: center;
+      svg {
+        height: 2.5rem;
+        margin-right: 5px;
+      }
+    }
   }
 
   .recipe-topnotes {
-    // display:flex;
-    // justify-content: space-between;
-    // align-items: flex-start;
-    // margin-top: 5%;
-
   }
 
   .line {
     border-bottom: 1px solid black;
-    margin-bottom: 15px;
-    // padding-bottom: 40px;
+    margin: 1.5rem 0;
   }
 
   .recipe-image{
-    // flex: 0 0 60%;
     img{
       width: 100%;
       margin-bottom: 15px;
@@ -33,7 +36,6 @@
   }
 
   .recipe-description{
-    // flex: 1 0 40%;
     margin-bottom: 20px;
   }
 
@@ -47,9 +49,6 @@
   }
 
   .recipe-info{
-    // display: flex;
-    // justify-content: space-between;
-    // align-items: flex-start;
   }
 
   .recipe-mesures{
@@ -93,48 +92,20 @@
       padding-left: 0px;
       li {
       padding-left: 0px;
-      // p {
-      // font-size: 14px;
       }
     }
     h3 {
       margin-top: 0px;
     }
-
   }
 
-  .email-ingredients-button {
-    background-color: #fff;
-    border: 1px solid #999;
-    border-radius: 3px;
-    color: #777;
-    display: inline-block;
-    font-size: 1.5rem;
-    font-weight: 300;
-    letter-spacing: .2px;
-    margin: 10px 0 0 34px;
-    padding: 14px 30px;
-  }
-
-  .email-ingredients-button:hover {
-    background: #777;
-    color: white;
-    text-decoration: none;
-  }
-
-  #module-recipe-cooked {
-      background: #f2f3ef;
-      font-size: 1.25em;
-      margin: 40px 0 25px;
-      padding: 14px;
-      position: relative;
-  }
-
-  .recipe-cooked-button {
-      background-color: transparent;
-      border: 0;
-      cursor: pointer;
-      font-family: inherit;
-      font-size: 1em;
+  @media screen and (max-width: $screen-s) {
+    .servingsandtime {
+      .icon__container {
+        svg {
+          height: 2rem;
+        }
+      }
+    }
   }
 }
