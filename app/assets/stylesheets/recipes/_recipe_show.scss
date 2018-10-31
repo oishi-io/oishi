@@ -14,10 +14,11 @@
     margin-bottom: 2rem;
     .recipe__info__container {
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-around;
-      margin-bottom: 2.5rem;
       .icon__container {
-        width: 6rem;
+        margin-bottom: 2.5rem;
+        flex: 0 0 50%;
         text-align: center;
         svg {
           height: 3rem;
@@ -31,7 +32,8 @@
     text-align: justify;
     text-justify: inter-word;
     .recipe-description {
-      margin-top: 4rem;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
       .recipe-description-svg {
         width: fit-content;
         margin: 0 auto;
@@ -73,7 +75,6 @@
     margin-bottom: 40px;
 
     .step__container {
-      margin-bottom: 2rem;
       display: flex;
       h5 {
         text-align: center;
@@ -96,7 +97,6 @@
         }
       }
       p {
-        margin-bottom: 2rem;
         text-align: justify;
         text-justify: inter-word;
       }
@@ -113,10 +113,61 @@
   }
 
   @media screen and (max-width: $screen-s) {
+    .line {
+      margin: 0.5rem 0 2rem 0;
+    }
+
     .servingsandtime {
-      .icon__container {
-        svg {
-          height: 2rem;
+      .recipe__info__container {
+        justify-content: space-between;
+        .icon__container {
+          flex: 1 0 20%;
+          svg {
+            height: 2rem;
+          }
+        }
+      }
+    }
+
+    .recipe-topnotes {
+      .recipe-description {
+        margin: 2rem 0;
+        .recipe-description-svg {
+          margin: 0;
+          line-height: 1.6rem;
+          margin-top: 0.2rem;
+          margin-right: 1rem;
+          float: left;
+          svg {
+            height: 2rem;
+          }
+        }
+      }
+    }
+
+    .recipe-mesures{ margin-top: 2rem; }
+
+    .recipe-etapes {
+      margin-top: 2rem;
+
+      .step__container {
+        h5 {
+          text-align: center;
+          line-height: 5.5rem;
+          font-size: 7rem;
+          font-weight: 700;
+        }
+        &--left {
+          p {
+            flex-grow: 1;
+            // flex: 0 0 82%;
+          }
+        }
+        &--right {
+          p {
+            flex-grow: 1;
+            // flex: 0 0 82%;
+          }
         }
       }
     }
