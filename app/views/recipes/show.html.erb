@@ -1,6 +1,6 @@
 <div id="recipe-show" class="container" >
   <div class="row">
-    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+    <div class="col-xs-12 col-md-10 col-md-offset-1">
 
       <h1 class="header"><%= @recipe.name %></h1>
 
@@ -16,7 +16,14 @@
               <span class="icon__container"><%= svg 'chopsticks' %><p><%= @recipe.servings %> pers.</p></span>
               <span class="icon__container"><%= svg 'chef-hat' %><p><%= @recipe.difficulty %></p></span>
               <span class="icon__container"><%= svg 'whisk' %><p><%= @recipe.preparation_time %> min</p></span>
-              <span class="icon__container"><%= svg 'cooking' %><p><%= @recipe.cooking_time %> min</p></span>
+              <span class="icon__container">
+                <%= svg 'cooking' %>
+                <% if @recipe.cooking_time > 0 %>
+                  <p><%= @recipe.cooking_time %> min</p>
+                <% else %>
+                <p>-</p>
+                <% end %>
+              </span>
             </div>
           </div>
 
@@ -42,8 +49,12 @@
             <ul>
               <% @measures.each do |measure| %>
               <li>
-                <p><strong><%= measure.ingredient.name %><%= measure.text_2 %></strong></p>
-                <p><%= measure.quantity %><%= measure.text_1 %></p>
+                <p class="measure__quantity"><%= measure.quantity %></p>
+                <p>
+                  <%= measure.text_1 %>
+                  <%= measure.ingredient.name %>
+                  <%= measure.text_2 %>
+                </p>
               </li>
               <% end %>
             </ul>
@@ -54,19 +65,19 @@
           <h3>étapes</h3>
 
           <% @steps.each_with_index do |step, index| %>
-          <% if index.even? %>
-          <div class="step__container step__container--left">
-            <h5><%= step.order %></h5>
-            <p><%= step.text %></p>
-          </div>
-          <div class="short-line"></div>
-          <% else %>
-          <div class="step__container step__container--right">
-            <p><%= step.text %></p>
-            <h5><%= step.order %></h5>
-          </div>
-          <div class="short-line"></div>
-          <% end %>
+            <% if index.even? %>
+            <div class="step__container step__container--left">
+              <h5><%= step.order %></h5>
+              <p><%= step.text %></p>
+            </div>
+            <div class="short-line"></div>
+            <% else %>
+            <div class="step__container step__container--right">
+              <p><%= step.text %></p>
+              <h5><%= step.order %></h5>
+            </div>
+            <div class="short-line"></div>
+            <% end %>
           <% end %>
         </div>
       </div>
