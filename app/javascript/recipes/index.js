@@ -44,7 +44,7 @@ var vm = new Vue({
     checkNewMeasure: function(){
       const _this = this;
       const m = _this.newMeasure
-      return m.text1 !== '' && m.ingredient.id !== null || _this.checkEditMeasure
+      return m.ingredient.id !== null || _this.checkEditMeasure
     },
   },
   methods: {
@@ -173,7 +173,6 @@ var vm = new Vue({
         url: '/recipes/' + _this.recipe.slug + '/measures/' + measure.measure_id,
         data: {
           measure: {
-            measure_id: measure.measure_id,
             recipe_id: _this.recipeId,
             quantity: measure.quantity,
             text_1: measure.text1,
@@ -217,7 +216,7 @@ var vm = new Vue({
     },
     checkMove: function(evt){
       const _this = this;
-      
+
       _this.measures[evt.draggedContext.index].order = evt.draggedContext.futureIndex;
       _this.measures[evt.draggedContext.futureIndex].order = evt.draggedContext.index;
       _this.hasMoved = true;

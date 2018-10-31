@@ -55,11 +55,18 @@
   .recipe-mesures{
     margin-top: 5rem;
     ul {
-      padding-left: 0px;
       li {
       display: flex;
-      justify-content: space-around;
+      justify-content: flex-start;
       line-height: 2.6rem;
+      margin-bottom: 1rem;
+        .measure__quantity {
+          font-weight: 700;
+          margin-right: 1rem;
+          width: 4rem;
+          text-align: right;
+          flex-shrink: 0;
+        }
       }
     }
   }
