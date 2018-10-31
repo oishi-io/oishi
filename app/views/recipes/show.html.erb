@@ -42,8 +42,8 @@
             <ul>
               <% @measures.each do |measure| %>
               <li>
-                <p><strong><%= measure.ingredient.name %><%= measure.text_2 %></strong></p>
                 <p><%= measure.quantity %><%= measure.text_1 %></p>
+                <p><strong><%= measure.ingredient.name %></strong><%= measure.text_2 %></p>
               </li>
               <% end %>
             </ul>
@@ -54,19 +54,19 @@
           <h3>étapes</h3>
 
           <% @steps.each_with_index do |step, index| %>
-          <% if index.even? %>
-          <div class="step__container step__container--left">
-            <h5><%= step.order %></h5>
-            <p><%= step.text %></p>
-          </div>
-          <div class="short-line"></div>
-          <% else %>
-          <div class="step__container step__container--right">
-            <p><%= step.text %></p>
-            <h5><%= step.order %></h5>
-          </div>
-          <div class="short-line"></div>
-          <% end %>
+            <% if index.even? %>
+            <div class="step__container step__container--left">
+              <h5><%= step.order %></h5>
+              <p><%= step.text %></p>
+            </div>
+            <div class="short-line"></div>
+            <% else %>
+            <div class="step__container step__container--right">
+              <p><%= step.text %></p>
+              <h5><%= step.order %></h5>
+            </div>
+            <div class="short-line"></div>
+            <% end %>
           <% end %>
         </div>
       </div>
