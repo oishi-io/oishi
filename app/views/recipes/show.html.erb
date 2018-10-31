@@ -1,65 +1,77 @@
 <div id="recipe-show" class="container" >
-
-  <h1 class="header"><%= @recipe.name %></h1>
-
-  <div class="line"></div>
-
   <div class="row">
-    <div class="col-xs-12 col-sm-7 servingsandtime">
-      <span class="icon__container"><%= svg 'chopsticks' %><p><%= @recipe.servings %> pers.</p></span>
-      <span class="icon__container"><%= svg 'whisk' %><p><%= @recipe.preparation_time %> min</p></span>
-      <span class="icon__container"><%= svg 'cooking' %><p><%= @recipe.cooking_time %> min</p></span>
-      <span class="icon__container"><%= svg 'chef-hat' %><p><%= @recipe.difficulty %></p></span>
-    </div>
-  </div>
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
 
-  <div class="row" >
-   <div class="col-xs-12 recipe-image">
-      <% if @recipe.photos? %>
-      <%= cl_image_tag @recipe.photos[0].path %>
-      <% end %>
-    </div>
-  </div>
+      <h1 class="header"><%= @recipe.name %></h1>
 
-  <div class="recipe-topnotes">
-    <div class="recipe-description">
-      <p><%= @recipe.description %></p>
-    </div>
-  </div>
+      <div class="line"></div>
 
-  <div class="row">
-    <div class="col-sm-4 col-xs-12 recipe-info">
-      <div class="recipe-mesures">
-        <h3>Ingrédients</h3>
-        <ul>
-          <% @measures.each do |measure| %>
-            <li>
-              <p><strong><%= measure.ingredient.name %><%= measure.text_2 %></strong></p>
-              <p><%= measure.quantity %><%= measure.text_1 %></p>
-            </li>
+
+
+      <div class="row" >
+
+        <div class="col-xs-12 col-sm-4 recipe-topnotes">
+          <div class="servingsandtime">
+            <div class="recipe__info__container">
+              <span class="icon__container"><%= svg 'chopsticks' %><p><%= @recipe.servings %> pers.</p></span>
+              <span class="icon__container"><%= svg 'chef-hat' %><p><%= @recipe.difficulty %></p></span>
+            </div>
+            <div class="recipe__info__container">
+              <span class="icon__container"><%= svg 'whisk' %><p><%= @recipe.preparation_time %> min</p></span>
+              <span class="icon__container"><%= svg 'cooking' %><p><%= @recipe.cooking_time %> min</p></span>
+            </div>
+          </div>
+
+          <div class="recipe-description">
+            <div class="recipe-description-svg">
+              <%= svg 'book' %>
+            </div>
+            <p><%= @recipe.description %></p>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-8 recipe-image">
+          <% if @recipe.photos? %>
+          <%= cl_image_tag @recipe.photos[0].path %>
           <% end %>
-        </ul>
+        </div>
       </div>
-    </div>
 
-    <div class="col-sm-8 col-xs-12 recipe-etapes">
-      <h3>étapes</h3>
+      <div class="row">
+        <div class="col-sm-4 col-xs-12 recipe-info">
+          <div class="recipe-mesures">
+            <h3>Ingrédients</h3>
+            <ul>
+              <% @measures.each do |measure| %>
+              <li>
+                <p><strong><%= measure.ingredient.name %><%= measure.text_2 %></strong></p>
+                <p><%= measure.quantity %><%= measure.text_1 %></p>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
 
-      <% @steps.each_with_index do |step, index| %>
-        <% if index.even? %>
+        <div class="col-sm-8 col-xs-12 recipe-etapes">
+          <h3>étapes</h3>
+
+          <% @steps.each_with_index do |step, index| %>
+          <% if index.even? %>
           <div class="step__container step__container--left">
             <h5><%= step.order %></h5>
             <p><%= step.text %></p>
           </div>
           <div class="short-line"></div>
-        <% else %>
+          <% else %>
           <div class="step__container step__container--right">
-            <h5><%= step.order %></h5>
             <p><%= step.text %></p>
+            <h5><%= step.order %></h5>
           </div>
           <div class="short-line"></div>
-        <% end %>
-      <% end %>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
