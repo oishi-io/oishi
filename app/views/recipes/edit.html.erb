@@ -64,10 +64,12 @@
             <div v-for="(measure, index) in measures" :options="{draggable:'.item'}" class="draggable-measure" v-on:mouseenter="displayButtons('measure', index, 'block')" v-on:mouseleave="displayButtons('measure', index, 'none')">
               <div class="item-center-space-between border" style="width: 620px;">
                 <span style="display: flex;">
-                  <p><strong style="color: #338BF0;">{{ index + 1}}</strong><Icon type="md-reorder" color="#338BF0" style="margin: 0px 10px;"/></p>
-                  <p>{{ measure.ingredient.name }}{{ measure.text2 }}</p>
+                  <p style="width: 60px; text-align: right;"><strong style="color: #338BF0;">{{ index + 1}}</strong><Icon type="md-reorder" color="#338BF0" style="margin: 0px 10px;"/></p>
                 </span>
-                <p>{{ measure.quantity }}{{ measure.text1 }}</p>
+                <span style="display: flex; flex-grow: 1;">
+                  <p style="width: 60px; margin-right: 1rem; text-align: right;">{{ measure.quantity }}</p>
+                  <p>{{ measure.text1 }}{{ measure.ingredient.name }}{{ measure.text2 }}</p>
+                </span>
               </div>
               <div :id="'measure_' + index" style="display: none;">
                 <a v-on:click="setEditMeasure(measure)"><Icon type="md-create" size="18" /></a>
@@ -80,12 +82,12 @@
         <div>
           <h4 style="margin-top: 20px; margin-bottom: 10px;">Ajout des mesures</h4>
           <div class="item-center-flex-start new-measure">
-              <i-select v-model="newMeasure.ingredient.id" filterable style="width: 150px; margin-right: 5px;" placeholder="Ingrédient" >
-                <i-option v-for="ingredient in ingredients" :value="ingredient.id" :key="ingredient.name">{{ ingredient.name }}</i-option>
-              </i-select>
-            <input v-model="newMeasure.text2" type="text" class="new-input form-control" placeholder="Texte 2" style="width: 150px; height: 32px; margin-right: 5px;">
             <input v-model.number="newMeasure.quantity" type="integer" class="new-input form-control" placeholder="Quantité" style="width: 150px; height: 32px; margin-right: 5px;">
             <input v-model="newMeasure.text1" type="text" class="new-input form-control" placeholder="Texte 1" style="width: 150px; height: 32px; margin-right: 5px;">
+            <i-select v-model="newMeasure.ingredient.id" filterable style="width: 150px; margin-right: 5px;" placeholder="Ingrédient" >
+              <i-option v-for="ingredient in ingredients" :value="ingredient.id" :key="ingredient.name">{{ ingredient.name }}</i-option>
+            </i-select>
+            <input v-model="newMeasure.text2" type="text" class="new-input form-control" placeholder="Texte 2" style="width: 150px; height: 32px; margin-right: 5px;">
             <a v-if="checkNewMeasure && !checkEditMeasure" v-on:click="createMeasure(newMeasure)">
               <Icon type="md-checkmark" size="20"/>
             </a>
