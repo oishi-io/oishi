@@ -1,16 +1,12 @@
 <div id="recipe-show" class="container" >
   <div class="row">
     <div class="col-xs-12 col-md-10 col-md-offset-1">
-
       <h1 class="header"><%= @recipe.name %></h1>
-
       <div class="line"></div>
 
-
-
       <div class="row" >
-
         <div class="col-xs-12 col-sm-4 recipe-topnotes">
+          
           <div class="servingsandtime">
             <div class="recipe__info__container">
               <span class="icon__container"><%= svg 'chopsticks' %><p><%= @recipe.servings %> pers.</p></span>
@@ -67,14 +63,14 @@
           <% @steps.each_with_index do |step, index| %>
             <% if index.even? %>
             <div class="step__container step__container--left">
-              <h5><%= step.order %></h5>
+              <h1><%= step.order %></h1>
               <p><%= step.text %></p>
             </div>
             <div class="short-line"></div>
             <% else %>
             <div class="step__container step__container--right">
               <p><%= step.text %></p>
-              <h5><%= step.order %></h5>
+              <h1><%= step.order %></h1>
             </div>
             <div class="short-line"></div>
             <% end %>

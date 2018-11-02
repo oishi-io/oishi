@@ -78,7 +78,6 @@
 
         .flex-div {
           width: 100%;
-          height: fit-content;
         }
 
         h2 {
@@ -131,7 +130,7 @@
 
     &--text {
       font-size: 6rem;
-      font-weight: 700;
+      font-weight: 600;
       text-transform: capitalize;
       color: $color-black;
       font-family: $headers-font;
@@ -173,28 +172,24 @@
   }
 }
 
-@media screen and (max-width: 50rem) {
+@media screen and (max-width: $screen-s) {
   .landing {
     .title {
       top: 2rem;
       right: 2rem;
+    }
+    .recipe__box--scroll-wrapper {
+
+      .recipe__box__card {
+        width: 20rem;
+        h2 {
+          font-size: 2.4rem;
+        }
+      }
     }
 
     .title--text {
       font-size: 4rem;
-    }
-  }
-}
-
-@media screen and (max-width: 100rem) and (min-width: 50.1rem) {
-  .landing {
-    .title {
-      top: 2rem;
-      right: 2rem;
-    }
-
-    .title--text {
-      font-size: 5rem;
     }
   }
 }
