@@ -14,6 +14,8 @@
   .bar__link {
     color: $color-black;
     font-size: 1.8rem;
+    font-weight: 600;
+    margin-right: 5px;
   }
 
   .searchbox {
@@ -51,7 +53,7 @@
         background: $color-white url("search.svg") no-repeat 0px center;
         &:focus {
           padding-left: 2.6rem;
-          width: 20rem;
+          width: 18rem;
           color: $color-black;
           cursor: auto;
           outline: none;
