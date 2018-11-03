@@ -85,6 +85,11 @@
     width: 90%
   }
 }
+@media screen and (max-width: $screen-sm) {
+  #topbar {
+    display: none;
+  }
+}
 
 .agent-1, .agent-3 {
   opacity: 0;
