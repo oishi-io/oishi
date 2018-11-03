@@ -22,8 +22,7 @@
       align-items: center;
       justify-content: space-between;
       text-align: center;
-      width: 32rem;
-      height: 4.5rem;
+
       .button_svg {
         border: none;
         background-color: $color-white;
@@ -35,16 +34,26 @@
         #icon-clear {
           height: 1.5rem;
         }
+        &__reset {
+          display: none;
+        }
       }
 
       input {
         border: none;
         text-align: left;
-        width: 100%;
-        margin: 0 .5rem;
         font-size: 2.4rem;
         line-height: 2.4rem;
+        transition: all .4s;
+        cursor: pointer;
+        width: 2.4rem;
+        color: transparent;
+        background: $color-white url("search.svg") no-repeat 0px center;
         &:focus {
+          padding-left: 35px;
+          width: 24rem;
+          color: $color-black;
+          cursor: auto;
           outline: none;
           &::-webkit-input-placeholder { opacity: 0; }
         }

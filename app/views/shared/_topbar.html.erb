@@ -4,11 +4,8 @@
   <% unless request.path == '/' %>
     <form novalidate="novalidate" onsubmit="return searchQuery()" class="searchbox">
       <div role="search" class="search">
-        <button type="submit" title="Rechercher une recette" class="button_svg">
-          <%= svg 'search' %>
-        </button>
-        <input name="query" placeholder="Rechercher" required="required" class="search__input">
-        <button type="reset" title="Annuler" class="button_svg">
+        <input type="search" name="query" required="required" class="search__input">
+        <button type="reset" title="Annuler" class="button_svg button_svg__reset">
           <%= svg 'delete' %>
         </button>
       </div>
@@ -26,9 +23,11 @@
   if (reset) {
     reset.addEventListener('click', function() {  this.parentNode.querySelector('input').focus();})
   }
+  document.querySelector('input').addEventListener('focus', function() { reset.style.display = 'block'; })
+  document.querySelector('input').addEventListener('blur', function() { reset.style.display = 'none'; })
+
   function searchQuery() {
     const query = document.querySelector('.searchbox input').value
-    console.log(`${window.location.origin}/?query=${query}`)
     window.location = `${window.location.origin}/?query=${query}`
     return false
   }
