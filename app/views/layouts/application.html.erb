@@ -23,8 +23,9 @@
   <body>
     <%# render 'shared/flashes' %>
     <%= render 'shared/topbar' %>
-    
+
     <%= yield %>
+    <%= render 'shared/bottombar' %>
 
     <% if Rails.env.production? %>
       <!-- Global site tag (gtag.js) - Google Analytics -->

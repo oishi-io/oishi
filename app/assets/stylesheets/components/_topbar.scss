@@ -4,7 +4,11 @@
   align-items: center;
   justify-content: flex-end;
   width: 80%;
-  margin: 0 auto;
+  margin: 0 10%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  background-color: $color-white;
 
   .bar__link {
     color: $color-black;
