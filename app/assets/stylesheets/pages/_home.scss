@@ -123,20 +123,6 @@
     transform: translateY(40px) scale(.5);
   }
 
-  .title{
-    position: absolute;
-    top: 3rem;
-    right: 3rem;
-
-    &--text {
-      font-size: 6rem;
-      font-weight: 600;
-      text-transform: capitalize;
-      color: $color-black;
-      font-family: $headers-font;
-    }
-  }
-
   .text-box {
     position: absolute;
     top: 6rem;

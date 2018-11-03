@@ -1,0 +1,37 @@
+.topbar {
+  height: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 80%;
+  margin: 0 auto;
+
+  .bar__link {
+    color: $color-black;
+    font-size: 2.4rem;
+
+    &:not(:first-child){
+      margin-left: 5%;
+    }
+  }
+
+  .bar__line {
+    border: 1.5px solid $color-black;
+    flex-grow: 1;
+    margin: 0 5%;
+  }
+
+  .bar__title {
+    .bar__title--text {
+      font-size: 6rem;
+      font-weight: 600;
+      text-transform: capitalize;
+      color: $color-black;
+      font-family: $headers-font;
+    }
+  }
+
+  @media screen and (max-width: $screen-l) {
+    width: 90%
+  }
+}
