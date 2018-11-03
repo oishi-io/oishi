@@ -80,3 +80,9 @@
     display: none;
   }
 }
+
+@media screen and (min-width: $screen-sm) {
+  #bottombar {
+    display: none;
+  }
+}
