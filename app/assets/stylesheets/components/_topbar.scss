@@ -13,6 +13,10 @@
     &:not(:first-child){
       margin-left: 5%;
     }
+
+  }
+  #home_link{
+    text-decoration: underline;
   }
 
   .searchbox {
