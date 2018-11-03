@@ -11,6 +11,7 @@ class PagesController < ApplicationController
     else
       recipes = Recipe.are_recommended.map(&:serialize)
     end
+    query = ActionController::Base.helpers.sanitize(params[:query])&.strip
 
     respond_to do |format|
       format.json {
@@ -21,7 +22,10 @@ class PagesController < ApplicationController
         },
         status: 200
       }
-      format.html { gon.recipes = recipes }
+      format.html {
+        gon.recipes = recipes
+        gon.query = query
+      }
     end
   end
 

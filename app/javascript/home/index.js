@@ -4,7 +4,7 @@ const vm = new Vue({
   el: "#home",
   data: {
     recipes: gon.recipes,
-    query: '',
+    query: gon.query,
     typingTimer: 0,
     resizingTimer: 0,
     typingInterval: 500,
@@ -82,9 +82,6 @@ const vm = new Vue({
           this.recipes.splice(index, 1)
         })
       }
-    },
-    getScreenHeight() {
-      return `${screen.availHeight}px`;
     },
     getLeftMargin() {
       const cardLength = (this.windowWidth > 480) ? 250 : 200
