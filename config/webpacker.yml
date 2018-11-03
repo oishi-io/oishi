@@ -26,6 +26,7 @@ default: &default
     - .gif
     - .jpeg
     - .jpg
+    - .vue
 
 development:
   <<: *default

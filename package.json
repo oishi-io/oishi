@@ -6,9 +6,9 @@
     "eslint-plugin-import": "^2.14.0",
     "iview": "^3.1.1-rc.1",
     "sweetalert2": "^7.28.4",
-    "vue": "^2.4.3",
-    "vue-loader": "^13.0.4",
-    "vue-template-compiler": "^2.4.3",
+    "vue": "^2.5.17",
+    "vue-loader": "14.2.2",
+    "vue-template-compiler": "^2.5.17",
     "vuedraggable": "^2.16.0"
   },
   "devDependencies": {

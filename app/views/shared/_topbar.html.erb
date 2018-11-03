@@ -1,20 +1,35 @@
-<div class="topbar">
+<div class="topbar" id="topbar">
   <a class="bar__link" href="/">Acceuil</a>
   <a class="bar__link" href="/recipes">Recettes</a>
-  <div class="search">
-    <a><%= svg 'search' %></a>
-    <input
-      v-on:input="query = $event.target.value"
-      type="search"
-      name="search"
-      v-model="query"
-      class="search__input"
-      placeholder="Recherche"
-    >
-    <a v-if='query != ""' v-on:click='clearQuery'><%= svg 'delete' %></a>
-  </div>
+  <% unless request.path == '/' %>
+    <form novalidate="novalidate" onsubmit="return searchQuery()" class="searchbox">
+      <div role="search" class="search">
+        <button type="submit" title="Rechercher une recette" class="button_svg">
+          <%= svg 'search' %>
+        </button>
+        <input name="query" placeholder="Rechercher" required="required" class="search__input">
+        <button type="reset" title="Annuler" class="button_svg">
+          <%= svg 'delete' %>
+        </button>
+      </div>
+    </form>
+  <% end %>
+
   <div class="bar__line"></div>
   <div class="bar__title">
     <h1 class="bar__title--text">oishi.</h1>
   </div>
 </div>
+
+<script type="text/javascript">
+  const reset = document.querySelector('.searchbox [type="reset"]');
+  if (reset) {
+    reset.addEventListener('click', function() {  this.parentNode.querySelector('input').focus();})
+  }
+  function searchQuery() {
+    const query = document.querySelector('.searchbox input').value
+    console.log(`${window.location.origin}/?query=${query}`)
+    window.location = `${window.location.origin}/?query=${query}`
+    return false
+  }
+</script>
