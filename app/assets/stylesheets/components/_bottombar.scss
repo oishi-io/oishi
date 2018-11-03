@@ -9,10 +9,11 @@
   z-index: 1;
   bottom: 0;
   background-color: $color-white;
+  border-top: 1px solid $color-black;
 
   .bar__link {
     color: $color-black;
-    font-size: 2.4rem;
+    font-size: 1.8rem;
   }
 
   .searchbox {
@@ -41,7 +42,7 @@
       input {
         border: none;
         text-align: left;
-        font-size: 2.4rem;
+        font-size: 1.8rem;
         line-height: 2.4rem;
         transition: all .4s;
         cursor: pointer;
@@ -62,7 +63,7 @@
 
   .bar__title {
     .bar__title--text {
-      font-size: 4rem;
+      font-size: 3rem;
       font-weight: 600;
       text-transform: capitalize;
       color: $color-black;
@@ -70,7 +71,11 @@
     }
   }
 }
+
 @media screen and (max-width: $screen-sm) {
+  body {
+    padding-top: 2rem;
+  }
   #topbar {
     display: none;
   }
