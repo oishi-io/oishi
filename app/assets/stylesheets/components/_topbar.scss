@@ -86,7 +86,8 @@
   }
 
   @media screen and (max-width: $screen-l) {
-    width: 90%
+    width: 90%;
+    margin: 0 5%;
   }
   .agent-1, .agent-3 {
     opacity: 0;
