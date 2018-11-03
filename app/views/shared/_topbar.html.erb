@@ -1,6 +1,18 @@
 <div class="topbar">
   <a class="bar__link" href="/">Acceuil</a>
-  <a class="bar__link" href="/recipes">Index</a>
+  <a class="bar__link" href="/recipes">Recettes</a>
+  <div class="search">
+    <a><%= svg 'search' %></a>
+    <input
+      v-on:input="query = $event.target.value"
+      type="search"
+      name="search"
+      v-model="query"
+      class="search__input"
+      placeholder="Recherche"
+    >
+    <a v-if='query != ""' v-on:click='clearQuery'><%= svg 'delete' %></a>
+  </div>
   <div class="bar__line"></div>
   <div class="bar__title">
     <h1 class="bar__title--text">oishi.</h1>
