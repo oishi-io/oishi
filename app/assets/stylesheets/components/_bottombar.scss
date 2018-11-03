@@ -3,8 +3,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 96%;
-  margin: 0 2%;
+  width: 100%;
+  padding: 0 2%;
   position: fixed;
   z-index: 1;
   bottom: 0;
@@ -13,8 +13,8 @@
 
   .bar__link {
     color: $color-black;
-    font-size: 1.8rem;
-    font-weight: 600;
+    font-size: 1.6rem;
+    text-transform: uppercase;
     margin-right: 5px;
   }
 
@@ -44,7 +44,7 @@
       input {
         border: none;
         text-align: left;
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         line-height: 2.4rem;
         transition: all .4s;
         cursor: pointer;
