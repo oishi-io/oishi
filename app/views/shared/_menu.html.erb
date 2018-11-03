@@ -1,14 +1,12 @@
-<div class="hamburger-menu">
-  <div class="dropup">
-    <a class="dropdown__button" data-toggle="dropdown">Menu</a>
+<div class="hamburger-menu agent-3">
+  <div class="dropdown">
+    <a class="dropdown__button" data-toggle="dropdown"><%= svg 'menu' %></a>
     <ul class="dropdown-menu dropdown-menu-left menu__dropdown">
-      <li><%= link_to "Acceuil", root_path, class: "menu__item menu__link" %></li>
-      <li><%= link_to "Recettes", recipes_path, class: "menu__item menu__link" %></li>
       <li><%= link_to "Editeur", edit_recipe_path(Recipe.first.slug), class: "menu__item menu__link" %></li>
       <li><%= link_to "Ingrédients", ingredients_path, class: "menu__item menu__link" %></li>
       <li><%= link_to "Ustensiles", tools_path, class: "menu__item menu__link" %></li>
       <li><%= link_to "Tags", tags_path, class: "menu__item menu__link" %></li>
-      <li><%= link_to "Log out", destroy_user_session_path, class: "menu__item menu__link", method: :delete %></li>
+      <li><%= link_to "Se déconnecter", destroy_user_session_path, class: "menu__item menu__link", method: :delete %></li>
     </ul>
   </div>
 </div>

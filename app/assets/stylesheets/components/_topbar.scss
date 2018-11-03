@@ -81,3 +81,39 @@
     width: 90%
   }
 }
+
+.agent-1, .agent-3 {
+  opacity: 0;
+  animation: fade-in-left ease 0.4s forwards;
+}
+
+.agent-2 {
+  transform: scaleX(0);
+  transform-origin: right;
+  animation: grow-left cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.5s forwards;
+  animation-delay: 0.2s;
+}
+
+.agent-3 {
+  animation-delay: 0.6s;
+}
+
+@keyframes fade-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(3rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes grow-left {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}

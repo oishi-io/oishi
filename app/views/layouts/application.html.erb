@@ -23,9 +23,7 @@
   <body>
     <%# render 'shared/flashes' %>
     <%= render 'shared/topbar' %>
-    <% if current_user.present? && current_user.admin? %>
-      <%= render 'shared/menu' %>
-    <% end %>
+    
     <%= yield %>
 
     <% if Rails.env.production? %>

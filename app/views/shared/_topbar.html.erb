@@ -1,8 +1,8 @@
 <div class="topbar" id="topbar">
-  <a class="bar__link" href="/">Acceuil</a>
-  <a class="bar__link" href="/recipes">Recettes</a>
+  <a class="bar__link agent-3" href="/">Acceuil</a>
+  <a class="bar__link agent-3" href="/recipes">Recettes</a>
   <% unless request.path == '/' %>
-    <form novalidate="novalidate" onsubmit="return searchQuery()" class="searchbox">
+    <form novalidate="novalidate" onsubmit="return searchQuery()" class="searchbox agent-3">
       <div role="search" class="search">
         <input type="search" name="query" required="required" class="search__input">
         <button type="reset" title="Annuler" class="button_svg button_svg__reset">
@@ -12,8 +12,12 @@
     </form>
   <% end %>
 
-  <div class="bar__line"></div>
-  <div class="bar__title">
+  <% if current_user.present? && current_user.admin? %>
+    <%= render 'shared/menu' %>
+  <% end %>
+
+  <div class="bar__line agent-2"></div>
+  <div class="bar__title agent-1">
     <h1 class="bar__title--text">oishi.</h1>
   </div>
 </div>

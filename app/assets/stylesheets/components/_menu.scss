@@ -1,11 +1,6 @@
 .hamburger-menu {
-  position: fixed;
-  bottom: 2rem;
-  left: 50%;
-  margin-top: 1rem;
-  transform: translateX(-50%);
+  margin-left: 5%;
   z-index: 1;
-
   &__item {
     cursor: pointer;
     padding: 0 2rem 0 0;
@@ -15,11 +10,7 @@
     text-decoration: none;
     cursor: pointer;
     color: $color-black;
-    font-size: 2rem;
-    text-transform: uppercase;
-    padding: 1rem;
-    border: 1px solid $color-black;
-    border-radius: 3px;
+    padding: 0 2.8rem 0 0;
   }
 
   /* Dropdown menu */
