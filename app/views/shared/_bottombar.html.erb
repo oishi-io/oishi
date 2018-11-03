@@ -1,0 +1,22 @@
+<div class="bottombar" id="bottombar">
+  <form novalidate="novalidate" onsubmit="return searchQuery()" class="searchbox">
+    <div role="search" class="search">
+      <input type="search" name="query" required="required" class="search__input">
+      <button type="reset" title="Annuler" class="button_svg button_svg__reset">
+        <%= svg 'delete' %>
+      </button>
+    </div>
+  </form>
+  
+  <a id="recipes_index_link" class="bar__link" href="/recipes">Recettes</a>
+
+  <% if current_user.present? && current_user.admin? %>
+    <%= render 'shared/menu' %>
+  <% end %>
+
+  <div class="bar__title">
+    <a id="home_link" class="bar__link" href="/">
+      <h1 class="bar__title--text">oishi.</h1>
+    </a>
+  </div>
+</div>
