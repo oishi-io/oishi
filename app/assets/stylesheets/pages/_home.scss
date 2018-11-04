@@ -3,8 +3,7 @@
   justify-content: center;
   align-items: center;
   background-color: $color-white;
-  position: relative;
-  margin-top: 15rem;
+  height: calc(100vh - 150px); /* Fallback for browsers that do not support Custom Properties */
 
   .section-search {
     width: 100%;
@@ -121,40 +120,6 @@
   .recipe-cards-enter, .recipe-cards-leave-to {
     opacity: 0;
     transform: translateY(40px) scale(.5);
-  }
-
-  .text-box {
-    position: absolute;
-    top: 6rem;
-    right: 3rem;
-    font-size: 1.6rem;
-    font-weight: 100;
-    padding: 1rem .5rem 1rem 2rem;
-    border-radius: 3px;
-    h1 {
-      margin: 0;
-    }
-  }
-
-}
-
-.heading-primary {
-  color: $color-black;
-  text-transform: uppercase;
-  border-radius: 3px;
-  font-size: 3rem;
-  font-weight: 300;
-  letter-spacing: 1rem;
-  text-align: right;
-
-  &--main {
-    display: block;
-    animation: moveInLeft 1s ease-out;
-  }
-
-  &--sub {
-    display: block;
-    animation: moveInLeft 1.2s ease-out;
   }
 }
 
