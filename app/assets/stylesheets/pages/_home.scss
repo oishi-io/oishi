@@ -1,10 +1,8 @@
 .landing {
   background-color: $color-white;
-  height: calc(100vh - 150px); /* Fallback for browsers that do not support Custom Properties */
+  // height: calc(100vh - 150px); /* Fallback for browsers that do not support Custom Properties */
 
   .headline {
-    margin: 4%;
-    margin-bottom: 10rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,6 +10,8 @@
     font-family: $headers-font;
     font-size: 4rem;
     font-weight: 600;
+    width: 100%;
+    padding: 0 1rem;
     &__main{
 
     }
@@ -26,6 +26,7 @@
   .section-search {
     width: 100%;
     padding: 0 .5rem;
+    margin-top: 10rem;
 
     .search {
       display: flex;
@@ -144,10 +145,7 @@
 @media screen and (max-width: $screen-s) {
   .landing {
     .headline {
-      margin: 4%;
-      margin-bottom: 10rem;
       justify-content: flex-start;
-      align-items: center;
       font-size: 4rem;
       &__main{
         margin-left: .5rem;

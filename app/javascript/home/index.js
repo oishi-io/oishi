@@ -19,7 +19,7 @@ const vm = new Vue({
     fadeOutDuration: 1000,
     maxFadeDuration: 1500,
     stop: true,
-    windowHeight: 0,
+    screenHeight: 0,
   },
   watch: {
     query() {
@@ -38,12 +38,12 @@ const vm = new Vue({
   },
   mounted() {
     this.windowWidth = window.innerWidth;
-    this.windowHeight = window.innerHeight;
+    this.screenHeight = screen.height;
     this.recipesCount = this.recipes.length;
     this.$nextTick(() => {
       window.addEventListener('resize', () => {
         this.windowWidth = window.innerWidth;
-        this.windowHeight = window.innerHeight;
+        this.screenHeight = screen.height;
       });
     })
   },
@@ -52,8 +52,10 @@ const vm = new Vue({
   computed:{
     calcHeight() {
       const padding = this.windowWidth < 768 ? 70 : 150
-      const height = `${this.windowHeight - padding}px`
-      return height
+      const height = `${this.screenHeight - padding}px`
+      if (this.screenHeight - padding > 0) {
+        return height
+      }
     },
   },
   methods: {
@@ -96,9 +98,6 @@ const vm = new Vue({
       const margin = this.windowWidth - scrollContainerWidth;
 
       this.leftMargin = margin > 0 ? `${(margin/2) - 5}px` : 0;
-    },
-    getHeight() {
-
     },
     goToRecipe(slug) {
       window.location = `/recipes/${slug}`
