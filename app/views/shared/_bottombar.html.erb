@@ -1,5 +1,5 @@
 <div class="bottombar" id="bottombar">
-  <form novalidate="novalidate" onsubmit="return searchQuery()" class="searchbox_bottom">
+  <form novalidate="novalidate" onsubmit="return bottomSearchQuery()" class="searchbox_bottom">
     <div role="search" class="search">
       <input type="search" name="query" required="required" class="search__input">
     </div>
@@ -29,7 +29,7 @@
     document.getElementById('bottom_recipes_index_link').style.textDecoration = 'underline'
   }
 
-  function searchQuery() {
+  function bottomSearchQuery() {
     const query = document.querySelector('.searchbox_bottom input').value
     window.location = `${window.location.origin}/?query=${query}`
     return false

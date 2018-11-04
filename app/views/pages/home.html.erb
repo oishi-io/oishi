@@ -16,12 +16,6 @@
       <a v-if='query && query.length > 0 ' v-on:click='clearQuery'><%= svg 'delete' %></a>
     </div>
     <div class="recipe__box">
-      <!-- <div class="sk-folding-cube">
-        <div class="sk-cube1 sk-cube"></div>
-        <div class="sk-cube2 sk-cube"></div>
-        <div class="sk-cube4 sk-cube"></div>
-        <div class="sk-cube3 sk-cube"></div>
-      </div> -->
       <div
         v-if="recipesCount === 0 && !isLoading"
         class="recipe__box--no-result"
