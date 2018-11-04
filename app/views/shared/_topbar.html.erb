@@ -13,7 +13,11 @@
   <% end %>
 
   <% if current_user.present? && current_user.admin? %>
-    <%= render 'shared/menu' %>
+    <div class="hamburger-menu agent-3">
+      <div class="dropdown">
+        <%= render 'shared/menu' %>
+      </div>
+    </div>
   <% end %>
 
   <div class="bar__line agent-2"></div>
