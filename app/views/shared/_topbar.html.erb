@@ -39,6 +39,12 @@
     input.addEventListener('blur', function() { reset.style.display = 'none'; })
   }
 
+  if (location.pathname === '/') {
+    document.getElementById('home_link').style.textDecoration = 'underline'
+  } else if (location.pathname === '/recipes') {
+    document.getElementById('recipes_index_link').style.textDecoration = 'underline'
+  }
+
   function searchQuery() {
     const query = document.querySelector('.searchbox input').value
     window.location = `${window.location.origin}/?query=${query}`
