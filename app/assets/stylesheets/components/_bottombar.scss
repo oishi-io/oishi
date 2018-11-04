@@ -74,7 +74,7 @@
   }
 }
 
-@media screen and (max-width: $screen-sm) {
+@media screen and (max-width: $screen-m) {
   body {
     padding-top: 2rem;
   }
@@ -83,7 +83,7 @@
   }
 }
 
-@media screen and (min-width: $screen-sm) {
+@media screen and (min-width: $screen-m) {
   #bottombar {
     display: none;
   }

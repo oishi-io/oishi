@@ -1,21 +1,23 @@
 .landing {
   background-color: $color-white;
   // height: calc(100vh - 150px); /* Fallback for browsers that do not support Custom Properties */
-
+  width: 100%;
   .headline {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     font-family: $headers-font;
-    font-size: 4rem;
     font-weight: 600;
     width: 100%;
     padding: 0 1rem;
-    &__main{
+    margin-top: 5rem;
 
+    &__main{
+      font-size: 4rem;
     }
     &__sub {
+      font-size: 4rem;
       background-color: black;
       color: white;
       padding: 0 8px;
@@ -146,16 +148,22 @@
   .landing {
     .headline {
       justify-content: flex-start;
-      font-size: 4rem;
+      margin-top: 0;
       &__main{
+        font-size: 3.6rem;
         margin-left: .5rem;
       }
       &__sub {
+        font-size: 3.6rem;
         margin-left: 0;
-        padding: 0 8px;
       }
     }
-
+    .section-search {
+      margin-top: 7rem;
+      .search {
+        width: 28rem;
+      }
+    }
     .recipe__box--scroll-wrapper {
       .recipe__box__card {
         width: 20rem;
