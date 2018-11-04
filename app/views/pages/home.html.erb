@@ -3,6 +3,11 @@
   id="home"
   v-bind:style="{ height: calcHeight }"
 >
+  <section class="headline agent-1">
+    <h1 class="headline__main">Cuisine japonaise.</h1>
+    <h1 class="headline__sub">Simple</h1>
+  </section>
+
   <div class="section-search" v-cloak>
     <div class="search">
       <a><%= svg 'search' %></a>
@@ -61,20 +66,6 @@
     </div>
   </div>
 </div>
-
-<script>
-  // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
-  let vh = window.innerHeight * 0.01;
-  // Then we set the value in the --vh custom property to the root of the document
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
-
-  // We listen to the resize event
-  window.addEventListener('resize', () => {
-    // We execute the same script as before
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-  });
-</script>
 
 <% content_for :after_js do %>
   <%= javascript_pack_tag 'home' %>

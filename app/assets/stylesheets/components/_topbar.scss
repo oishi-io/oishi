@@ -18,7 +18,7 @@
       margin-left: 5%;
     }
   }
-  
+
   .searchbox_top {
     margin-left: 5%;
     .search {
@@ -84,22 +84,24 @@
   @media screen and (max-width: $screen-l) {
     padding: 0 5%;
   }
-  .agent-1, .agent-3 {
-    opacity: 0;
-    animation: fade-in-left ease 0.4s forwards;
-  }
-
-  .agent-2 {
-    transform: scaleX(0);
-    transform-origin: right;
-    animation: grow-left cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.5s forwards;
-    animation-delay: 0.2s;
-  }
-
-  .agent-3 {
-    animation-delay: 0.6s;
-  }
 }
+
+.agent-1, .agent-3 {
+  opacity: 0;
+  animation: fade-in-left ease 0.4s forwards;
+}
+
+.agent-2 {
+  transform: scaleX(0);
+  transform-origin: right;
+  animation: grow-left cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.5s forwards;
+  animation-delay: 0.2s;
+}
+
+.agent-3 {
+  animation-delay: 0.6s;
+}
+
 @media screen and (max-width: $screen-sm) {
   #topbar {
     display: none;
