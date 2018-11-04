@@ -1,9 +1,11 @@
 <div class="bottombar" id="bottombar">
-  <form novalidate="novalidate" onsubmit="return bottomSearchQuery()" class="searchbox_bottom">
-    <div role="search" class="search">
-      <input type="search" name="query" required="required" class="search__input">
-    </div>
-  </form>
+  <% unless request.path == '/' %>
+    <form novalidate="novalidate" onsubmit="return bottomSearchQuery()" class="searchbox_bottom">
+      <div role="search" class="search">
+        <input type="search" name="query" required="required" class="search__input">
+      </div>
+    </form>
+  <% end %>
 
   <a id="bottom_recipes_index_link" class="bar__link" href="/recipes">Recettes</a>
 
@@ -16,7 +18,7 @@
   <% end %>
 
   <div class="bar__title">
-    <a id="home_link" class="bar__link" href="/">
+    <a id="home_link" href="/">
       <h1 class="bar__title--text">oishi.</h1>
     </a>
   </div>

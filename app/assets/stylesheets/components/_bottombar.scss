@@ -53,7 +53,7 @@
         background: $color-white url("search.svg") no-repeat 0px center;
         &:focus {
           padding-left: 2.6rem;
-          width: 18rem;
+          width: 16rem;
           color: $color-black;
           cursor: auto;
           outline: none;
@@ -64,6 +64,9 @@
   }
 
   .bar__title {
+    #home_link {
+      color: $color-black;
+    }
     .bar__title--text {
       font-size: 3rem;
       font-weight: 600;

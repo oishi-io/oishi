@@ -1,7 +1,7 @@
 .landing {
   background-color: $color-white;
-  // height: calc(100vh - 150px); /* Fallback for browsers that do not support Custom Properties */
   width: 100%;
+
   .headline {
     display: flex;
     justify-content: center;
@@ -10,7 +10,7 @@
     font-family: $headers-font;
     font-weight: 600;
     width: 100%;
-    padding: 0 1rem;
+    padding: 0 7%;
     margin-top: 5rem;
 
     &__main{
@@ -18,9 +18,10 @@
     }
     &__sub {
       font-size: 4rem;
+      line-height: 4rem;
       background-color: black;
       color: white;
-      padding: 0 8px;
+      padding: 5px 8px 5px 8px;
       margin-left: .5rem;
     }
   }
@@ -151,10 +152,13 @@
       margin-top: 0;
       &__main{
         font-size: 3.6rem;
-        margin-left: .5rem;
+        line-height: 3.6rem;
+        margin-left: .7rem;
+        margin-bottom: .5rem;
       }
       &__sub {
         font-size: 3.6rem;
+        line-height: 3.6rem;
         margin-left: 0;
       }
     }
