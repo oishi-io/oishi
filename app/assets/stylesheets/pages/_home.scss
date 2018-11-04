@@ -34,7 +34,7 @@
     .search {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
       text-align: center;
       margin: auto;
       margin-bottom: 2rem;
@@ -166,6 +166,9 @@
       margin-top: 7rem;
       .search {
         width: 28rem;
+        input {
+          width: 23rem;
+        }
       }
     }
     .recipe__box--scroll-wrapper {
