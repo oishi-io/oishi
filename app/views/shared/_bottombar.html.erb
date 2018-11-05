@@ -1,4 +1,6 @@
 <div class="bottombar" id="bottombar">
+  <a id="bottom_recipes_index_link" class="bar__link" href="/recipes">Recettes</a>
+
   <% unless request.path == '/' %>
     <form novalidate="novalidate" onsubmit="return bottomSearchQuery()" class="searchbox_bottom">
       <div role="search" class="search">
@@ -7,10 +9,8 @@
     </form>
   <% end %>
 
-  <a id="bottom_recipes_index_link" class="bar__link" href="/recipes">Recettes</a>
-
   <% if current_user.present? && current_user.admin? %>
-    <div class="hamburger-menu agent-3">
+    <div class="hamburger-menu">
       <div class="dropup">
         <%= render 'shared/menu' %>
       </div>
