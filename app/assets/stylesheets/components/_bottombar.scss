@@ -15,6 +15,28 @@
     color: $color-black;
     font-size: 2rem;
     margin-right: 5px;
+
+    &:after {
+      content: '';
+      display: block;
+      height: 2px;
+      background: black;
+      width: 0;
+    }
+
+    &.active:after {
+      width: 100%;
+    }
+
+    &:hover, &:focus { text-decoration: none; }
+
+    &:hover:after,
+    &:focus:after {
+      width: 100%;
+      transform: scaleX(0);
+      transform-origin: right;
+      animation: grow-left cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s forwards;
+    }
   }
 
   .searchbox_bottom {
@@ -65,7 +87,9 @@
   .bar__title {
     #home_link {
       color: $color-black;
+      &:hover, &:focus { text-decoration: none; }
     }
+    
     .bar__title--text {
       font-size: 3rem;
       font-weight: 600;
