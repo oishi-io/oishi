@@ -1,5 +1,6 @@
 #recipe-show{
   color: black;
+  
   .header {
     margin-top: 3rem;
     font-size: 4.8rem;
@@ -7,7 +8,7 @@
   }
 
   .line {
-    border-bottom: 2px solid $color-black;
+    border-bottom: 3px solid $color-black;
     margin: 1rem 0 6rem 0;
   }
 
@@ -35,13 +36,6 @@
     .recipe-description {
       margin-top: 2rem;
       margin-bottom: 2rem;
-      .recipe-description-svg {
-        width: fit-content;
-        margin: 0 auto;
-        svg {
-          height: 3rem;
-        }
-      }
     }
   }
 
@@ -50,6 +44,7 @@
     img{
       width: 100%;
       margin-bottom: 1.5rem;
+      box-shadow: 6px 6px rgba(0,0, 0, 0.9);
     }
   }
 
@@ -148,16 +143,6 @@
     .recipe-topnotes {
       .recipe-description {
         margin: 2rem 0;
-        .recipe-description-svg {
-          margin: 0;
-          line-height: 1.6rem;
-          margin-top: 0.2rem;
-          margin-right: 1rem;
-          float: left;
-          svg {
-            height: 2rem;
-          }
-        }
       }
     }
 

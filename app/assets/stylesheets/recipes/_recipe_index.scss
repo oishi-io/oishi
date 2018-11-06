@@ -5,6 +5,7 @@
 
   .letter {
     display: flex;
+    align-items: center;
 
     &--left {
       justify-content: flex-start;
