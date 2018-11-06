@@ -17,6 +17,28 @@
     &:not(:first-child){
       margin-left: 5%;
     }
+
+    &:after {
+      content: '';
+      display: block;
+      height: 2px;
+      background: black;
+      width: 0;
+    }
+
+    &.active:after {
+      width: 100%;
+    }
+
+    &:hover, &:focus { text-decoration: none; }
+
+    &:hover:after,
+    &:focus:after {
+      width: 100%;
+      transform: scaleX(0);
+      transform-origin: right;
+      animation: grow-left cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s forwards;
+    }
   }
 
   .searchbox_top {
