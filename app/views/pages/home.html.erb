@@ -40,9 +40,8 @@
           v-for="recipe in recipes"
           v-bind:key="recipe.id"
           class="recipe__box__card"
-          v-on:click="goToRecipe(recipe.slug)"
         >
-          <div class="flex-div">
+          <a :href="recipeUrl(recipe.slug)" class="recipe__box__card__link">
             <h2>{{ recipe.name }}</h2>
             <div
               class="recipe-image"
@@ -59,7 +58,7 @@
                 <p>{{ recipe.difficulty }}</p>
               </span>
             </div>
-          </div>
+          </a>
         </div>
       </transition-group>
     </div>
