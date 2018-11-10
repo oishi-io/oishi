@@ -7,6 +7,7 @@ class RecipesController < ApplicationController
     @recipe_index = Recipe.all.order(name: :ASC)
       .map(&:serialize_no_photos)
       .group_by { |recipe| recipe[:name].first }
+    gon.recipes = @recipe_index
   end
 
   def show

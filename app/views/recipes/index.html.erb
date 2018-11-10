@@ -1,10 +1,13 @@
-<div id="recipe-index" class="container">
+<div id="recipes-index" class="container" v-cloak>
   <div class="row">
     <div class="col-xs-12 col-md-8 col-md-offset-2">
       <div class="row">
         <div class="col-xs-12 col-sm-10 col-sm-offset-1">
           <section class="section-filter">
             <ul class="recipes__types">
+              <li class="recipes__types__item">
+                <p>Toutes</p>
+              </li>
               <li class="recipes__types__item">
                 <p>Végétariennes</p>
               </li>
@@ -15,37 +18,31 @@
           </section>
           <section class="section-list">
             <ul class="letters">
-              <% @recipe_index.each_with_index do |(letter, recipes), index| %>
-              <% if index.even? %>
-              <div class="letter letter--left">
-                <div class="letter__box">
-                  <h1><%= letter.upcase %></h1>
+              <li class="letter__container" v-for="(recipes, letter, index) in recipesIndex" :key="letter">
+
+                <div v-if="index%2 === 0" class="letter letter--left">
+                  <div class="letter__box">
+                    <h1>{{ letter }}</h1>
+                  </div>
+                  <ul class="recipes__list">
+                    <li class="recipe" v-for="recipe in recipes" :key="recipe.slug">
+                      <a :href=`/recipes/${recipe.slug}`>{{ recipe.name }}</a>
+                    </li>
+                  </ul>
                 </div>
-                <ul class="recipes__list">
-                  <% recipes.each do |recipe| %>
-                  <li class="recipe">
-                    <%= link_to recipe[:name], recipe_path(recipe[:slug]) %>
-                  </li>
-                  <% end %>
-                </ul>
-              </div>
-              <div class="short-line"></div>
-              <% else %>
-              <div class="letter letter--right">
-                <ul class="recipes__list">
-                  <% recipes.each do |recipe| %>
-                  <li class="recipe">
-                    <%= link_to recipe[:name], recipe_path(recipe[:slug]) %>
-                  </li>
-                  <% end %>
-                </ul>
-                <div class="letter__box">
-                  <h1><%= letter.upcase %></h1>
+
+                <div v-else class="letter letter--right">
+                  <ul class="recipes__list">
+                    <li class="recipe" v-for="recipe in recipes" :key="recipe.slug">
+                      <a :href=`/recipes/${recipe.slug}`>{{ recipe.name }}</a>
+                    </li>
+                  </ul>
+                  <div class="letter__box">
+                    <h1>{{ letter }}</h1>
+                  </div>
                 </div>
-              </div>
-              <div class="short-line"></div>
-              <% end %>
-              <% end %>
+                <div v-if="index + 1 !== lettersNumber()" class="short-line"></div>
+              </li>
             </ul>
           </section>
         </div>
@@ -53,3 +50,7 @@
     </div>
   </div>
 </div>
+
+<% content_for :after_js do %>
+  <%= javascript_pack_tag 'recipes_index' %>
+<% end %>
