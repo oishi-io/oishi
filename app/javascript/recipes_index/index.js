@@ -6,13 +6,20 @@ const vm = new Vue({
     cachedRecipes: gon.recipes,
     displayedRecipes: gon.recipes,
     filters: [
-      { name: 'Toutes',
+      {
+        name: 'Toutes',
         state: true,
       },
-      { name: 'Végétariennes',
+      {
+        name: 'Végétariennes',
         state: false,
       },
-      { name: 'En moins de 30min',
+      {
+        name: 'En moins de 30min',
+        state: false,
+      },
+      {
+        name: 'Faciles',
         state: false,
       },
     ],
