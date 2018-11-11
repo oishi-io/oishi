@@ -1,9 +1,12 @@
-import Vue from 'vue/dist/vue.common';
+import Vue from 'vue/dist/vue.common'
 
 const vm = new Vue({
   el: "#recipes-index",
   data: {
-    recipesIndex: gon.recipes,
+    recipesCache: gon.recipes,
+    displayedRecipes: gon.recipes,
+    filters: ['Toutes', 'Végétariennes', 'En moins de 30min'],
+    currentFilter: [],
   },
   components: {
   },
@@ -13,7 +16,17 @@ const vm = new Vue({
   },
   methods: {
     lettersNumber() {
-      return Object.keys(this.recipesIndex).length
+      return Object.keys(this.displayedRecipes).length
+    },
+    addFilter(filterName) {
+      const filterIndex = this.currentFilter.indexOf(filterName)
+      if (filterIndex === -1) {
+        this.currentFilter.push(filterName)
+      }
+      else {
+        this.currentFilter.splice(filterIndex, 1)
+      }
+      console.log(this.currentFilter)
     },
   },
 });

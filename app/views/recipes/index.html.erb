@@ -5,20 +5,18 @@
         <div class="col-xs-12 col-sm-10 col-sm-offset-1">
           <section class="section-filter">
             <ul class="recipes__types">
-              <li class="recipes__types__item">
-                <p>Toutes</p>
-              </li>
-              <li class="recipes__types__item">
-                <p>Végétariennes</p>
-              </li>
-              <li class="recipes__types__item">
-                <p>En moins de 30min</p>
+              <li
+                v-for="filter in filters"
+                class="recipes__types__item"
+                v-on:click="addFilter(filter)"
+              >
+                <p>{{ filter }}</p>
               </li>
             </ul>
           </section>
           <section class="section-list">
             <ul class="letters">
-              <li class="letter__container" v-for="(recipes, letter, index) in recipesIndex" :key="letter">
+              <li class="letter__container" v-for="(recipes, letter, index) in displayedRecipes" :key="letter">
 
                 <div v-if="index%2 === 0" class="letter letter--left">
                   <div class="letter__box">
