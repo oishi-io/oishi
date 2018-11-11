@@ -32,10 +32,8 @@
 
       &:hover, &:focus { text-decoration: none; cursor: pointer; }
 
-      &:hover:after,
-      &:focus:after,
-      &:hover:before,
-      &:focus:before {
+      &.active:after,
+      &.active:before {
         width: 100%;
       }
 
@@ -62,7 +60,7 @@
         margin-left: 1rem;
       }
     }
-    
+
     .letter__box {
       h1 {
         font-size: 10rem;

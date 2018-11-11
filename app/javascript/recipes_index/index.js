@@ -5,12 +5,55 @@ const vm = new Vue({
   data: {
     recipesCache: gon.recipes,
     displayedRecipes: gon.recipes,
-    filters: ['Toutes', 'Végétariennes', 'En moins de 30min'],
+    filters: [
+      { name: 'Toutes',
+        state: true,
+      },
+      { name: 'Végétariennes',
+        state: false,
+      },
+      { name: 'En moins de 30min',
+        state: false,
+      },
+    ],
+    filtersCache: [
+      { name: 'Toutes',
+        state: true,
+      },
+      { name: 'Végétariennes',
+        state: false,
+      },
+      { name: 'En moins de 30min',
+        state: false,
+      },
+    ],
     currentFilter: [],
   },
   components: {
   },
   watch: {
+    currentFilter() {
+      const _this = this
+      if (this.currentFilter.length > 0) {
+        let filteredRecipes = {}
+        Object.keys(this.displayedRecipes).forEach(letter => {
+          _this.displayedRecipes[letter].forEach( recipe => {
+            console.log('Tags: ', recipe.tags)
+            console.log('Filters: ', _this.currentFilter)
+            if (recipe.tags.some(tag => _this.currentFilter.indexOf(tag) >= 0)) {
+              if (filteredRecipes[letter]) {
+                filteredRecipes[letter].push(recipe)
+              } else {
+                filteredRecipes[letter] = [recipe]
+              }
+            }
+          })
+        });
+        _this.displayedRecipes = filteredRecipes
+      } else {
+        _this.displayedRecipes = _this.recipesCache
+      }
+    },
   },
   computed:{
   },
@@ -18,15 +61,23 @@ const vm = new Vue({
     lettersNumber() {
       return Object.keys(this.displayedRecipes).length
     },
-    addFilter(filterName) {
+    toggleFilter(filterName) {
       const filterIndex = this.currentFilter.indexOf(filterName)
-      if (filterIndex === -1) {
+      if (filterName === 'Toutes') {
+        this.currentFilter = []
+        this.filters = this.filtersCache
+      } else if (filterIndex === -1) {
         this.currentFilter.push(filterName)
+        this.filters.find(x => x.name === 'Toutes').state = false
+        this.filters.find(x => x.name === filterName).state = true
       }
       else {
         this.currentFilter.splice(filterIndex, 1)
+        this.filters.find(x => x.name === filterName).state = false
+        if (this.currentFilter.length === 0){
+          this.filters.find(x => x.name === 'Toutes').state = true
+        }
       }
-      console.log(this.currentFilter)
     },
   },
 });

@@ -5,7 +5,7 @@
         <%= link_to 'Ajouter un tag', new_tag_path %>
         <ul>
           <li v-for="tag in tags">
-            <a :href=`/tags/${tag.id}`>{{ tag.name }}</a>
+            <a style="color: black; text-decoration: none;">{{ tag.name }}</a>
             <a :href=`/tags/${tag.id}/edit`>Edit</a>
             <a v-on:click="destroyTag(tag.id)">X</a>
           </li>

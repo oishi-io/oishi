@@ -8,9 +8,10 @@
               <li
                 v-for="filter in filters"
                 class="recipes__types__item"
-                v-on:click="addFilter(filter)"
+                v-on:click="toggleFilter(filter.name)"
+                v-bind:class=" filter.state ? 'active' : '' "
               >
-                <p>{{ filter }}</p>
+                <p>{{ filter.name }}</p>
               </li>
             </ul>
           </section>

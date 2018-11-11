@@ -60,19 +60,20 @@ class Recipe < ApplicationRecord
       servings: servings,
       name: name,
       photo_url: photo_url,
-      slug: slug,
+      slug: slug
     }
   end
 
-  def serialize_no_photos
+  def serialize_recipes_index
     {
       id: id,
       cooking_time: cooking_time,
       preparation_time: preparation_time,
       difficulty: difficulty,
       servings: servings,
+      tags: tags.pluck(:name),
       name: name,
-      slug: slug,
+      slug: slug
     }
   end
 
