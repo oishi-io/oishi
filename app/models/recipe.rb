@@ -12,6 +12,9 @@ class Recipe < ApplicationRecord
   validates :difficulty, presence: true, inclusion: { in: %w(Facile Moyen Difficile),
     message: "%{value} is not a valid difficulty" }
 
+  scope :visible, -> { where(visible: true) }
+  scope :recommended, -> { where(recommended: true) }
+
   include PgSearch
 
   pg_search_scope :pg_search,
@@ -34,19 +37,11 @@ class Recipe < ApplicationRecord
     recommended
   end
 
-  def self.are_visible
-    where(visible: true)
-  end
-
-  def self.are_recommended
-    where(visible: true, recommended: true)
-  end
-
   def self.search(query)
     return are_recommended if query == ''
 
     safe_query = ActionController::Base.helpers.sanitize(query).strip
-    pg_search(safe_query)
+    pg_search(safe_query).visible
   end
 
   def serialize

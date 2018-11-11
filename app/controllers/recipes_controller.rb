@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
 
   def index
     policy_scope(Recipe)
-    recipes_index = Recipe.all.order(name: :ASC)
+    recipes_index = Recipe.visible.order(name: :ASC)
       .map(&:serialize_recipes_index)
       .group_by { |recipe| recipe[:name].first }
     gon.recipes = recipes_index
