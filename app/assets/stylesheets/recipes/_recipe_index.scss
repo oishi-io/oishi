@@ -13,6 +13,7 @@
       p {
         flex-shrink: 0;
         margin: 0 2rem;
+        color: $color-grey-dark;
       }
 
       &:before {
@@ -25,17 +26,30 @@
         content: '';
         display: block;
         height: 2px;
-        background: black;
+        background: $color-black;
         width: 0;
         transition: all ease 0.4s;
       }
 
-      &:hover, &:focus { text-decoration: none; cursor: pointer; }
-
-      &.active:after,
-      &.active:before {
-        width: 100%;
+      &:hover {
+        text-decoration: none;
+        cursor: pointer;
+        p {
+          color: $color-black;
+        }
       }
+
+      &.active {
+        p {
+          color: $color-black;
+          font-weight: 600;
+        }
+        &:after,
+        &:before {
+          width: 100%;
+        }
+      }
+
 
     }
   }
