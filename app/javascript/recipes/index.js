@@ -8,7 +8,7 @@ import swal from 'sweetalert2';
 Vue.use(iView, { locale });
 
 var vm = new Vue({
-  el: "#recipe-add-details",
+  el: "#recipes-edit",
   data: {
     recipeId: gon.recipeId,
     recipe: gon.recipe,
@@ -41,19 +41,19 @@ var vm = new Vue({
     }
   },
   computed:{
-    checkNewMeasure: function(){
+    checkNewMeasure(){
       const _this = this;
       const m = _this.newMeasure
       return m.ingredient.id !== null || _this.checkEditMeasure
     },
   },
   methods: {
-    displayButtons: function(elt, eltId, value){
+    displayButtons(elt, eltId, value){
       const _this = this;
       const elementToDisplay = document.getElementById(elt + '_' + eltId);
       elementToDisplay.style.display = value;
     },
-    addTags: function(tags){
+    addTags(tags){
       const _this = this;
       $.ajax({
         method: 'POST',
@@ -61,13 +61,13 @@ var vm = new Vue({
         data: {
           tags: tags,
         },
-        success: function(data) {
+        success(data) {
           _this.tagsCount = _this.selectedTags.length;
           _this.successMessage()
         }
       })
     },
-    addTools: function(tools){
+    addTools(tools){
       const _this = this;
       $.ajax({
         method: 'POST',
@@ -75,13 +75,13 @@ var vm = new Vue({
         data: {
           tools: tools,
         },
-        success: function(data){
+        success(data){
           _this.toolsCount = _this.selectedTools.length;
           _this.successMessage()
         }
       })
     },
-    createTag: function(tag){
+    createTag(tag){
       const _this = this;
 
       $.ajax({
@@ -92,14 +92,14 @@ var vm = new Vue({
             name: tag.name,
           }
         },
-        success: function(data){
+        success(data){
           _this.tags.push(data.tag);
           _this.newTag = {name: ''};
           _this.successMessage()
         }
       })
     },
-    createTool: function(tool){
+    createTool(tool){
       const _this = this;
 
       $.ajax({
@@ -110,14 +110,14 @@ var vm = new Vue({
             name: tool.name,
           },
         },
-        success: function(data){
+        success(data){
           _this.tools.push(data.tool);
           _this.newTool = {name: ''};
           _this.successMessage()
         }
       })
     },
-    createIngredient: function(ingredient){
+    createIngredient(ingredient){
       const _this = this;
 
       $.ajax({
@@ -129,14 +129,14 @@ var vm = new Vue({
             description: ingredient.description,
           },
         },
-        success: function(data){
+        success(data){
           _this.ingredients.push(data.ingredient);
           _this.newIngredient = {name: '', description: ''};
           _this.successMessage()
         }
       })
     },
-    createMeasure: function(measure){
+    createMeasure(measure){
       const _this = this;
       const order = (measure.order != null) ? measure.order : _this.measures.length + 1;
       $.ajax({
@@ -153,7 +153,7 @@ var vm = new Vue({
             order: order,
           },
         },
-        success: function(data){
+        success(data){
           _this.measures.push(data);
           _this.newMeasure = { quantity: null, text1: '', ingredient: { id: null, name: null }, text2: '', order: null};
           _this.checkEditMeasure = false;
@@ -161,7 +161,7 @@ var vm = new Vue({
         }
       })
     },
-    setEditMeasure: function(measure, index){
+    setEditMeasure(measure, index){
       const _this = this;
       _this.newMeasure = measure;
       _this.checkEditMeasure = true;
@@ -181,7 +181,7 @@ var vm = new Vue({
             order: measure.order,
           },
         },
-        success: function(data){
+        success(data){
           const index = _this.measures.map(x => x.measure_id).indexOf(data.measure_id)
           _this.measures.splice(index, 1, data)
           _this.newMeasure = { quantity: null, text1: '', ingredient: { id: null, name: null }, text2: '', order: null};
@@ -206,7 +206,7 @@ var vm = new Vue({
           $.ajax({
             method: 'DELETE',
             url: '/recipes/' + _this.recipe.slug + '/measures/' + measure.measure_id,
-            success: function(data){
+            success(data){
               Vue.deconste(_this.measures, index);
               _this.successMessage()
             }
@@ -214,14 +214,14 @@ var vm = new Vue({
         }
       })
     },
-    checkMove: function(evt){
+    checkMove(evt){
       const _this = this;
 
       _this.measures[evt.draggedContext.index].order = evt.draggedContext.futureIndex;
       _this.measures[evt.draggedContext.futureIndex].order = evt.draggedContext.index;
       _this.hasMoved = true;
     },
-    saveOrder: function(){
+    saveOrder(){
       const _this = this;
       $.ajax({
         method: 'POST',
@@ -229,13 +229,13 @@ var vm = new Vue({
           measures: _this.measures,
         },
         url: '/measures/save_order',
-        success: function(){
+        success(){
           _this.hasMoved = false;
           _this.successMessage()
         }
       })
     },
-    updateStep: function(step, index){
+    updateStep(step, index){
       const _this = this;
       console.log('before: ', _this.steps)
       $.ajax({
@@ -247,20 +247,20 @@ var vm = new Vue({
           recipe_id: step.recipe_id,
         },
         url: '/recipes/' + _this.recipe.slug + '/steps',
-        success: function(data){
+        success(data){
           _this.stepsLength[index] = data.step.text.length;
           _this.steps.splice(index, 1, data.step)
           _this.successMessage()
         },
       })
     },
-    addStep: function(){
+    addStep(){
       const _this = this;
       const newIndex = _this.steps.length + 1;
       _this.steps.push({ id: null, order: newIndex, text: '', recipe_id: _this.recipeId });
       _this.stepsLength.push(0);
     },
-    destroyStep: function(step, index){
+    destroyStep(step, index){
       const _this = this;
       swal({
         title: 'T\'es sûr?',
@@ -276,7 +276,7 @@ var vm = new Vue({
           $.ajax({
             method: 'DELETE',
             url: '/recipes/' + _this.recipe.slug + '/steps/' + step.id,
-            success: function(data){
+            success(data){
               Vue.delete(_this.steps, index);
               _this.successMessage()
             }
@@ -284,7 +284,7 @@ var vm = new Vue({
         }
       })
     },
-    editRecipe: function(){
+    editRecipe(){
       const _this = this;
       $.ajax({
         method: 'PUT',
@@ -292,7 +292,7 @@ var vm = new Vue({
         data: {
           recipe: _this.recipe,
         },
-        success: function(){
+        success(){
           _this.editBasics = false
           _this.successMessage()
         },

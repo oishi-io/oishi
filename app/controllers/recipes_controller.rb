@@ -45,7 +45,9 @@ class RecipesController < ApplicationController
       preparation_time: @recipe.preparation_time,
       cooking_time: @recipe.cooking_time,
       description: @recipe.description,
-      url: recipe_path(@recipe.slug)
+      url: recipe_path(@recipe.slug),
+      visible: @recipe.visible,
+      recommended: @recipe.recommended
     }
 
     gon.ingredients = Ingredient.all
@@ -126,6 +128,8 @@ class RecipesController < ApplicationController
         :description,
         :difficulty,
         :servings,
+        :visible,
+        :recommended,
         photos: []
       )
   end

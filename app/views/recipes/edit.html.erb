@@ -1,12 +1,26 @@
 <link rel="stylesheet" href="//unpkg.com/iview/dist/styles/iview.css">
 
-<div id="recipe-add-details" v-cloak>
+<div id="recipes-edit" v-cloak>
   <div class="recipe-info">
     <div v-if="!editBasics" class="item-center-flex-start" style="height: 50px;">
       <a v-on:click="editBasics = true">
         <Icon type="md-create" size="20" style="margin-right: 10px;" />
       </a>
       <a :href="recipe.url"><h2 style="font-weight: bolder; text-align: center;">{{ recipe.name }}</h2></a>
+      <div style='display: flex; margin-left: 20px;'>
+        <p style="margin-right: 5px;">Visible</p>
+        <i-Switch v-model="recipe.visible" size="large" @on-change="editRecipe()">
+          <span slot="open">Oui</span>
+          <span slot="close">Non</span>
+        </i-Switch>
+      </div>
+      <div style='display: flex; margin-left: 20px;'>
+        <p style="margin-right: 5px;">Reco.</p>
+        <i-Switch v-model="recipe.recommended" size="large" @on-change="editRecipe()">
+          <span slot="open">Oui</span>
+          <span slot="close">Non</span>
+        </i-Switch>
+      </div>
       <a class="btn-sm btn-danger" style='margin-left: 20px;' v-on:click="destroyRecipe">Supprimer</a>
       <a class="btn-sm btn-success" style='margin-left: 20px;' v-on:click="addRecipe">Nouvelle</a>
       <select class="form-control" v-model="selectedRecipeSlug" style="margin-left: 20px; width: 250px;">
