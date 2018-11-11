@@ -50,13 +50,6 @@ const vm = new Vue({
   components: {
   },
   computed:{
-    calcHeight() {
-      const padding = this.windowWidth < 768 ? 70 : 150
-      const height = `${this.screenHeight - padding}px`
-      if (this.screenHeight - padding > 0) {
-        return height
-      }
-    },
   },
   methods: {
     searchRecipes() {
