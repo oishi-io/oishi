@@ -3,11 +3,11 @@ class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @recipe_index = policy_scope(Recipe)
-    @recipe_index = Recipe.all.order(name: :ASC)
+    policy_scope(Recipe)
+    recipes_index = Recipe.all.order(name: :ASC)
       .map(&:serialize_recipes_index)
       .group_by { |recipe| recipe[:name].first }
-    gon.recipes = @recipe_index
+    gon.recipes = recipes_index
   end
 
   def show
