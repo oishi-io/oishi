@@ -1,12 +1,10 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-4 col-xs-offset-4">
-      <div class="form-wrapper">
-        <%= simple_form_for @tag do |f| %>
-          <%= f.input :name, label: false, placeholder: 'Tag Name' %>
-          <%= f.button :submit, class: "btn btn-info"%>
-        <% end %>
-      </div>
+    <div class="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-4">
+      <%= simple_form_for @tag do |f| %>
+        <%= f.input :name, label: false, placeholder: 'Nom' %>
+        <%= f.button :submit, class: "btn btn-info"%>
+      <% end %>
     </div>
   </div>
 </div>

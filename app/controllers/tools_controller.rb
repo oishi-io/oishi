@@ -1,5 +1,5 @@
 class ToolsController < ApplicationController
-  before_action :set_tool, only: [:edit, :show, :update, :destroy]
+  before_action :set_tool, only: [:edit, :update, :destroy]
 
   def create
     @tool = Tool.new(tool_params)
@@ -16,17 +16,13 @@ class ToolsController < ApplicationController
     authorize @tool
   end
 
-  def edit
-  end
+  def edit; end
 
   def index
-    @tools = policy_scope(Tool)
-    @tools = Tool.all
-    authorize @tools
-    gon.tools = @tools
-  end
-
-  def show
+    policy_scope(Tool)
+    tools = Tool.all.order(:name)
+    authorize tools
+    gon.tools = tools
   end
 
   def update
@@ -52,9 +48,5 @@ class ToolsController < ApplicationController
 
   def tool_params
     params.require(:tool).permit(:name, :description)
-  end
-
-  def recipe_params
-    params.require(:tool).permit(:recipe_id)
   end
 end

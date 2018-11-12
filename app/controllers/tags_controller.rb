@@ -2,10 +2,15 @@ class TagsController < ApplicationController
   before_action :set_tag, only: [:edit, :update, :destroy]
 
   def index
-    @tags = policy_scope(Tag)
-    @tags = Tag.all
-    authorize @tags
-    gon.tags = @tags
+    policy_scope(Tag)
+    tags = Tag.all.order(:name)
+    authorize tags
+    gon.tags = tags
+  end
+
+  def new
+    @tag = Tag.new
+    authorize @tag
   end
 
   def create
@@ -18,15 +23,7 @@ class TagsController < ApplicationController
     end
   end
 
-  def new
-    @tag = Tag.new
-    authorize @tag
-  end
-
-  def destroy
-    @tag.destroy
-    head :ok
-  end
+  def edit; end
 
   def update
     @tag.update(tag_params)
@@ -35,6 +32,11 @@ class TagsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @tag.destroy
+    head :ok
   end
 
   private

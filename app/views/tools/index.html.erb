@@ -5,7 +5,7 @@
         <%= link_to 'Ajouter un Ustensile', new_tool_path %>
         <ul>
           <li v-for="tool in tools">
-            <a :href=`/tools/${tool.id}`>{{ tool.name }}</a>
+            <a style="color: black; text-decoration: none;">{{ tool.name }}</a>
             <a :href=`/tools/${tool.id}/edit`>Edit</a>
             <a v-on:click="destroyTool(tool.id)">X</a>
           </li>

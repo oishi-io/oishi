@@ -15,10 +15,10 @@ Rails.application.routes.draw do
   post '/measures/save_order', to: 'measures#save_order'
 
   # TOOLS
-  resources :tools
+  resources :tools, except: [:show]
 
   # TAGS
-  resources :tags
+  resources :tags, except: [:show]
 
   # INGREDIENTS
   resources :ingredients

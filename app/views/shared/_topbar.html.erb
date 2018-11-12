@@ -26,28 +26,30 @@
   </div>
 </div>
 
-<script type="text/javascript">
-  const reset = document.querySelector('.searchbox_top [type="reset"]');
-  const input = document.querySelector('.searchbox_top input');
+<% content_for :after_js do %>
+  <script type="text/javascript">
+    const reset = document.querySelector('.searchbox_top [type="reset"]');
+    const input = document.querySelector('.searchbox_top input');
 
-  if (reset) {
-    reset.addEventListener('click', function() {  this.parentNode.querySelector('input').focus();})
-  }
+    if (reset) {
+      reset.addEventListener('click', function() {  this.parentNode.querySelector('input').focus();})
+    }
 
-  if (input) {
-    input.addEventListener('focus', function() { reset.style.display = 'block'; })
-    input.addEventListener('blur', function() { reset.style.display = 'none'; })
-  }
+    if (input) {
+      input.addEventListener('focus', function() { reset.style.display = 'block'; })
+      input.addEventListener('blur', function() { reset.style.display = 'none'; })
+    }
 
-  if (location.pathname === '/') {
-    document.getElementById('home_link').classList.add('active')
-  } else if (location.pathname === '/recipes') {
-    document.getElementById('recipes_index_link').classList.add('active')
-  }
+    if (location.pathname === '/') {
+      document.getElementById('home_link').classList.add('active')
+    } else if (location.pathname === '/recipes') {
+      document.getElementById('recipes_index_link').classList.add('active')
+    }
 
-  function searchQuery() {
-    const query = input.value
-    window.location = `${window.location.origin}/?query=${query}`
-    return false
-  }
-</script>
+    function searchQuery() {
+      const query = input.value
+      window.location = `${window.location.origin}/?query=${query}`
+      return false
+    }
+  </script>
+<% end %>

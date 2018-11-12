@@ -1,1 +1,15 @@
-<%= render 'form' %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-4">
+      <%= simple_form_for @recipe do |f| %>
+        <%= f.input :name, label: false, placeholder: 'Nom de la recette' %>
+        <%= f.input :servings, label: false, placeholder: 'Nombre de personnes' %>
+        <%= f.input :preparation_time, label: false, placeholder: 'Temps de préparation (min)' %>
+        <%= f.input :cooking_time, label: false, placeholder: 'Temps de cuisson (min)' %>
+        <%= f.input :difficulty, label: false, placeholder: 'Difficulté', collection: ['Facile', 'Moyen', 'Difficile'], selected: 'Facile' %>
+        <%= f.input :photos, as: :attachinary %>
+        <%= f.button :submit, class: "btn btn-info"%>
+      <% end %>
+    </div>
+  </div>
+</div>

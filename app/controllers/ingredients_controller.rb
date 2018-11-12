@@ -1,6 +1,20 @@
 class IngredientsController < ApplicationController
   before_action :set_ingredient, only: [:show, :edit, :update, :destroy]
 
+  def index
+    policy_scope(Ingredient)
+    ingredients = Ingredient.all.order(:name)
+    authorize ingredients
+    gon.ingredients = ingredients
+  end
+
+  def show; end
+
+  def new
+    @ingredient = Ingredient.new
+    authorize @ingredient
+  end
+
   def create
     @ingredient = Ingredient.new(ingredient_params)
     authorize @ingredient
@@ -11,23 +25,7 @@ class IngredientsController < ApplicationController
     end
   end
 
-  def new
-    @ingredient = Ingredient.new
-    authorize @ingredient
-  end
-
-  def edit
-  end
-
-  def index
-    @ingredients = policy_scope(Ingredient)
-    @ingredients = Ingredient.all
-    authorize @ingredients
-    gon.ingredients = @ingredients
-  end
-
-  def show
-  end
+  def edit; end
 
   def update
     @ingredient.update(ingredient_params)
