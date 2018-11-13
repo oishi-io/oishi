@@ -38,7 +38,7 @@ class Recipe < ApplicationRecord
   end
 
   def self.search(query)
-    return are_recommended if query == ''
+    return recommended if query == ''
 
     safe_query = ActionController::Base.helpers.sanitize(query).strip
     pg_search(safe_query).visible

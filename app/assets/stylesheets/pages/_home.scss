@@ -79,13 +79,42 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        span {
+          text-align: center;
+        }
         p {
-          font-size: 2rem;
+          font-size: 2.4rem;
+          margin-bottom: 2rem;
+          color: $color-grey-dark;
+        }
+        a {
+          font-size: 2.4rem;
+          color: $color-black;
+          text-decoration: none;
+
+          &:after {
+            content: '';
+            display: block;
+            height: 2px;
+            background: $color-black;
+            width: 0;
+          }
+
+          &:hover, &:focus { text-decoration: none; }
+
+          &:hover:after,
+          &:focus:after {
+            width: 100%;
+            transform: scaleX(0);
+            transform-origin: right;
+            animation: grow-left cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s forwards;
+          }
         }
       }
+
       &__card {
         background-color: $color-white;
-        width: 25rem;
+        width: 27rem;
         height: 27rem;
         flex: 0 0 auto;
         cursor: pointer;
@@ -152,6 +181,15 @@
 
 @media screen and (max-width: $screen-s) {
   .landing {
+    .section-search .recipe__box--no-result {
+      p {
+        font-size: 2rem;
+      }
+      a {
+        font-size: 2rem;
+      }
+    }
+
     .headline {
       justify-content: flex-start;
       margin-top: 0;
@@ -167,18 +205,21 @@
         margin-left: 0;
       }
     }
+
     .section-search {
       margin-top: 5rem;
       .search {
         width: 28rem;
         input {
           width: 23rem;
+          font-size: 2rem;
         }
       }
     }
+
     .recipe__box--scroll-wrapper {
       .recipe__box__card {
-        width: 20rem;
+        width: 23rem;
         h2 {
           font-size: 2.4rem;
         }

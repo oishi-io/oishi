@@ -25,7 +25,10 @@
         v-if="recipesCount === 0 && !isLoading"
         class="recipe__box--no-result"
       >
-        <p>Aucune recette trouvée</p>
+        <span>
+          <p>Aucune recette trouvée</p>
+          <a href="/recipes">Voir toutes les recettes</a>
+        </span>
       </div>
       <transition-group
         v-else
