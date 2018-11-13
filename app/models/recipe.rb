@@ -46,7 +46,7 @@ class Recipe < ApplicationRecord
 
   def serialize
     photo_path = photos.first.path
-    photo_url = "https://res.cloudinary.com/dgv0y9kj7/image/upload/#{photo_path}"
+    photo_url = "https://res.cloudinary.com/dgv0y9kj7/image/upload/c_scale,w_400/#{photo_path}"
     {
       id: id,
       cooking_time: cooking_time,

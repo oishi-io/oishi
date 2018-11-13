@@ -9,7 +9,7 @@ class PagesController < ApplicationController
       recipes_to_add = to_add(recipes, previous_ids)
       recipes_to_remove = to_remove(recipes, previous_ids)
     else
-      recipes = Recipe.recommended.map(&:serialize)
+      recipes = Recipe.visible.recommended.map(&:serialize)
     end
     query = ActionController::Base.helpers.sanitize(params[:query])&.strip
 
