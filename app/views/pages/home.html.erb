@@ -50,16 +50,9 @@
               class="recipe-image"
               :style='{ backgroundImage: `url("${recipe.photo_url}")` }'
               >
-            </div>
-            <div class="recipe__card__info">
-              <span>
-                <%# svg 'time' %>
+              <div class="recipe__card__info">
                 <p>{{ recipe.preparation_time }}min</p>
-              </span>
-              <span>
-                <%# svg 'chef-hat' %>
-                <p>{{ recipe.difficulty }}</p>
-              </span>
+              </div>
             </div>
           </a>
         </div>
