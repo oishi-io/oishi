@@ -15,6 +15,7 @@ gem "jquery-fileupload-rails"
 gem "coffee-rails"
 gem 'gon'
 gem 'pg_search'
+gem "mini_magick"
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'

@@ -5,7 +5,8 @@ class Recipe < ApplicationRecord
   has_and_belongs_to_many :tags
   has_and_belongs_to_many :tools
   belongs_to :user
-  has_attachments :photos, maximum: 10
+  # has_attachments :photos, maximum: 10
+  has_one_attached :image
 
   validates :name, presence: true, uniqueness: true
   validates :preparation_time, presence: true

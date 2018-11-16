@@ -130,6 +130,7 @@ class RecipesController < ApplicationController
         :servings,
         :visible,
         :recommended,
+        :image,
         photos: []
       )
   end
