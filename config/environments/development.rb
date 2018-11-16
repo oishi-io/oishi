@@ -58,4 +58,5 @@ config.webpacker.check_yarn_integrity = false
 
   # active_storage
   config.active_storage.service = :local
+  Rails.application.routes.default_url_options[:host] = 'localhost:3000'
 end

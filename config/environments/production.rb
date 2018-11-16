@@ -88,4 +88,8 @@ config.webpacker.check_yarn_integrity = false
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Active Storage
+  config.active_storage.service = :local
+  Rails.application.routes.default_url_options[:host] = '/'
 end

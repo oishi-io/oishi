@@ -112,8 +112,8 @@ class RecipesController < ApplicationController
   private
 
   def set_recipe
-    @recipe = Recipe.find_by(slug: params[:slug])
-    @recipe = Recipe.find(params[:slug]) if @recipe.nil?
+    @recipe = Recipe.with_attached_image.find_by(slug: params[:slug])
+    @recipe = Recipe.with_attached_image.find(params[:slug]) if @recipe.nil?
     authorize @recipe
   end
 

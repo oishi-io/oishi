@@ -1,11 +1,12 @@
 class Recipe < ApplicationRecord
+  include Rails.application.routes.url_helpers
+
   has_many :measures, dependent: :destroy
   has_many :steps, dependent: :destroy
   has_many :ingredients, through: :measures
   has_and_belongs_to_many :tags
   has_and_belongs_to_many :tools
   belongs_to :user
-  # has_attachments :photos, maximum: 10
   has_one_attached :image
 
   validates :name, presence: true, uniqueness: true
@@ -46,8 +47,7 @@ class Recipe < ApplicationRecord
   end
 
   def serialize
-    photo_path = photos.first.path
-    photo_url = "https://res.cloudinary.com/dgv0y9kj7/image/upload/c_scale,w_400/#{photo_path}"
+    image_url = rails_blob_url(self.image) if self.image.attached?
     {
       id: id,
       cooking_time: cooking_time,
@@ -55,7 +55,7 @@ class Recipe < ApplicationRecord
       difficulty: difficulty,
       servings: servings,
       name: name,
-      photo_url: photo_url,
+      image_url: image_url,
       slug: slug
     }
   end

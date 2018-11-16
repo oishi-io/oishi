@@ -29,8 +29,8 @@
         </div>
 
         <div class="col-xs-12 col-sm-8 recipe-image">
-          <% if @recipe.photos? %>
-            <%= cl_image_tag @recipe.photos[0].path %>
+          <% if @recipe.image.attachment.present? %>
+            <%= image_tag @recipe.image %>
           <% end %>
         </div>
       </div>
