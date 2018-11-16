@@ -56,7 +56,7 @@ config.webpacker.check_yarn_integrity = false
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  # active_storage
-  config.active_storage.service = :local
+  # Active Storage
+  config.active_storage.service = :amazon
   Rails.application.routes.default_url_options[:host] = 'localhost:3000'
 end

@@ -14,6 +14,7 @@ gem "coffee-rails"
 gem 'gon'
 gem 'pg_search'
 gem "mini_magick"
+gem "aws-sdk-s3"
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
