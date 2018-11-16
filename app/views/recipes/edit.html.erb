@@ -116,7 +116,7 @@
       <div class="recipe-tags">
         <h4 style="margin-top: 10px; margin-bottom: 10px;">Photos</h4>
         <% unless @recipe.image.attachment.nil? %>
-          <%= image_tag @recipe.image %>
+          <%= image_tag @recipe.image, :style => "width: 400px; height: 250px;" %>
         <% end %>
         <%= simple_form_for @recipe do |f| %>
           <%= f.file_field :image %>
