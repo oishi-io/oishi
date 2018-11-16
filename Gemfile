@@ -9,7 +9,6 @@ gem 'puma'
 gem 'rails', '5.2.1'
 gem 'redis'
 gem 'webpacker', '~> 3.5.5'
-gem 'cloudinary', '1.1.7'
 gem "coffee-rails"
 gem 'gon'
 gem 'pg_search'
