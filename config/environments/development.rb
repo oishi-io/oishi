@@ -57,6 +57,6 @@ config.webpacker.check_yarn_integrity = false
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # Active Storage
-  config.active_storage.service = :amazon
+  config.active_storage.service = :local
   Rails.application.routes.default_url_options[:host] = 'localhost:3000'
 end
