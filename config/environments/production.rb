@@ -92,4 +92,5 @@ config.webpacker.check_yarn_integrity = false
   # Active Storage
   config.active_storage.service = :amazon
   Rails.application.routes.default_url_options[:host] = 'http://www.oishi.io'
+  config.require_master_key = true
 end
