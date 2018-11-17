@@ -184,12 +184,13 @@
     }
 
     .headline {
-      justify-content: flex-start;
+      justify-content: flex-end;
+      text-align: right;
       margin-top: 0;
       &__main{
         font-size: 3.6rem;
         line-height: 3.6rem;
-        margin-left: .7rem;
+        margin-right: 0.7rem;
         margin-bottom: .5rem;
       }
       &__sub {
@@ -203,6 +204,7 @@
       margin-top: 5rem;
       .search {
         width: 28rem;
+        border-bottom: 2px solid $color-black;
         input {
           width: 23rem;
           font-size: 2rem;
