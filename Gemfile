@@ -13,7 +13,7 @@ gem "coffee-rails"
 gem 'gon'
 gem 'pg_search'
 gem "mini_magick"
-gem "aws-sdk-s3"
+gem "aws-sdk-s3", require: false
 gem 'image_processing', '~> 1.2'
 
 gem 'autoprefixer-rails'
