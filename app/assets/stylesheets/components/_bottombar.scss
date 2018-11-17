@@ -12,7 +12,7 @@
   border-top: 1px solid $color-black;
 
   .bar__link {
-    color: $color-black;
+    color: $color-grey-dark;
     font-size: 2rem;
     margin-right: 5px;
     font-weight: 600;
@@ -25,14 +25,21 @@
       width: 0;
     }
 
+    &.active {
+      color: $color-black;
+    }
+
     &.active:after {
       width: 100%;
     }
 
-    &:hover, &:focus { text-decoration: none; }
+    &:hover, &:focus {
+      text-decoration: none;
+      color: $color-black;
+    }
 
-    &:hover:after,
-    &:focus:after {
+    &:not(.active):hover:after,
+    &:not(.active):focus:after {
       width: 100%;
       transform: scaleX(0);
       transform-origin: right;
@@ -101,7 +108,7 @@
   }
 }
 
-@media screen and (max-width: $screen-m) {
+@media screen and (max-width: 767px) {
   body {
     padding-top: 2rem;
   }
@@ -110,7 +117,7 @@
   }
 }
 
-@media screen and (min-width: $screen-m) {
+@media screen and (min-width: 768px) {
   #bottombar {
     display: none;
   }
