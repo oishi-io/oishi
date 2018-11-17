@@ -25,6 +25,14 @@
         svg {
           height: 3rem;
         }
+        h4 {
+          font-size: 1.8rem;
+          padding: 0.1rem 0.3rem;
+          background-color: $color-black;
+          color: $color-white;
+          width: fit-content;
+          margin-left: auto;
+        }
       }
 
     }
@@ -146,12 +154,16 @@
         justify-content: space-between;
         .icon__container {
           margin-bottom: 0;
-          flex: 1 0 20%;
+          flex: 0 0 20%;
           svg {
             height: 2rem;
           }
         }
       }
+    }
+
+    h3 {
+      font-size: 2rem;
     }
 
     .recipe-topnotes {
@@ -160,7 +172,9 @@
       }
     }
 
-    .recipe-mesures{ margin-top: 2rem; }
+    .recipe-info {
+      .recipe-mesures{ margin-top: 2rem; }
+    }
 
     .recipe-etapes {
       margin-top: 2rem;
