@@ -28,9 +28,9 @@
         v-model="query"
         class="search__input"
         v-on:focus="searchFocus()"
-        v-on:blur="searchBlur()"
+        v-bind:class="searchIsFocused ? 'active' : ''"
       >
-      <a v-if='query && query.length > 0 && searchIsFocused' v-on:click='clearQuery'><%= svg 'delete' %></a>
+      <a v-if='searchIsFocused' v-on:click='clearQuery'><%= svg 'delete' %></a>
     </div>
     <div class="recipe__box">
       <div

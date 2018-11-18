@@ -57,12 +57,6 @@ const vm = new Vue({
     searchFocus() {
       this.searchIsFocused = true
     },
-    searchBlur() {
-      this.searchIsFocused = false
-      if(this.query.length > 0) {
-        this.query = ''
-      }
-    },
     searchRecipes() {
       const _this = this;
       const recipeIds = _this.recipes.map(x => x.id)
@@ -108,6 +102,7 @@ const vm = new Vue({
     },
     clearQuery() {
       this.query = ''
+      this.searchIsFocused = false
     },
     getQueryFromParams() {
       const _this = this
