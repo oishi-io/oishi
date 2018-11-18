@@ -42,9 +42,9 @@
       text-align: center;
       margin: auto;
       margin-bottom: 2rem;
-      width: 32rem;
+      width: 33rem;
       height: 4.5rem;
-      border-bottom: 2px solid $color-black;
+
       a {
         cursor: pointer;
         margin-bottom: -.7rem;
@@ -60,37 +60,36 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        width: 100%;
+        width: auto;
         transition: all .4s ease;
         text-align: left;
         h3 {
           font-size: 3rem;
           font-weight: 400;
+          // margin-right: 1rem;
+          // padding-right: 1rem;
+          // border-right: 2px solid black;
         }
       }
 
-      // input {
-      //   border: none;
-      //   text-align: left;
-      //   width: 100%;
-      //   margin: 0 .5rem;
-      //   font-size: 2.4rem;
-      //   line-height: 2.4rem;
-      //   &:focus {
-      //     outline: none;
-      //     &::-webkit-input-placeholder { opacity: 0; }
-      //   }
-      // }
+
+      .vertical-line {
+        height: 3rem;
+        width: 2px;
+        background-color: $color-black;
+      }
+
       input {
         border: none;
         text-align: left;
-        font-size: 2.4rem;
+        font-size: 3rem;
         line-height: 2.4rem;
         transition: all .4s ease;
         cursor: pointer;
         width: 2.4rem;
         color: transparent;
         background: $color-white url("search.svg") no-repeat 0px center;
+
         &:focus {
           padding-left: 35px;
           width: 100%;
@@ -239,8 +238,18 @@
       margin-top: 5rem;
       .search {
         width: 28rem;
+
+        &__text {
+          width: 100%;
+          h3 {
+            font-size: 2.4rem;
+            // margin-right: 1rem;
+            // padding-right: 1rem;
+            // border-right: 2px solid black;
+          }
+        }
+
         input {
-          width: 23rem;
           font-size: 2rem;
         }
       }

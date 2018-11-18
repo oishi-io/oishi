@@ -58,6 +58,9 @@ const vm = new Vue({
     },
     searchBlur() {
       this.searchIsFocused = false
+      if(this.query.length > 0) {
+        this.query = ''
+      }
     },
     searchRecipes() {
       const _this = this;
