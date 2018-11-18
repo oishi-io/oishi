@@ -86,7 +86,6 @@
         color: transparent;
         background: $color-white url("search.svg") no-repeat 0px center;
 
-
         &:focus {
           padding-left: 35px;
           width: 100%;
@@ -96,6 +95,7 @@
           &::-webkit-input-placeholder { opacity: 0; }
         }
       }
+
       .active {
         padding-left: 35px;
         width: 100%;
