@@ -10,7 +10,7 @@
       justify-content: flex-end;
       align-items: center;
 
-      p {
+      a {
         flex-shrink: 0;
         margin: 0 2rem;
         color: $color-grey-dark;
@@ -32,15 +32,15 @@
       }
 
       &:hover {
-        text-decoration: none;
-        cursor: pointer;
-        p {
+        a {
+          text-decoration: none;
+          cursor: pointer;
           color: $color-black;
         }
       }
 
       &.active {
-        p {
+        a {
           color: $color-black;
           font-weight: 600;
         }
@@ -118,8 +118,8 @@
 
   .short-line {
     width: 2rem;
-    height: 1px;
-    border: 2px solid black;
+    height: 3px;
+    background-color: $color-black;
     margin: 3rem auto;
   }
 

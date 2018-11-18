@@ -11,7 +11,7 @@
                 v-on:click="toggleFilter(filter.name)"
                 v-bind:class=" filter.state ? 'active' : '' "
               >
-                <p>{{ filter.name }}</p>
+                <a>{{ filter.name }}</a>
               </li>
             </ul>
           </section>
@@ -41,7 +41,7 @@
                   </div>
                 </div>
                 <div v-if="index + 1 !== lettersNumber()" class="short-line"></div>
-                
+
               </li>
             </ul>
           </section>
