@@ -10,7 +10,10 @@
 
   <div class="section-search">
     <div class="search">
-      <div class="search__text">
+      <div
+        class="search__text"
+        v-bind:style="[searchIsFocused ? { width: 0 } : { width: '100%' }]"
+      >
         <h3 >Recettes du moment</h3>
       </div>
 
@@ -23,7 +26,7 @@
         v-on:focus="searchFocus()"
         v-on:blur="searchBlur()"
       >
-      <a v-if='query && query.length > 0 ' v-on:click='clearQuery'><%= svg 'delete' %></a>
+      <a v-if='query && query.length > 0 && searchIsFocused' v-on:click='clearQuery'><%= svg 'delete' %></a>
     </div>
     <div class="recipe__box">
       <div
