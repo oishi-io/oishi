@@ -10,14 +10,18 @@
 
   <div class="section-search">
     <div class="search">
-      <a><%= svg 'search' %></a>
+      <div class="search__text">
+        <h3 >Recettes du moment</h3>
+      </div>
+
       <input
         v-on:input="query = $event.target.value"
         type="search"
         name="search"
         v-model="query"
         class="search__input"
-        placeholder="Recherche"
+        v-on:focus="searchFocus()"
+        v-on:blur="searchBlur()"
       >
       <a v-if='query && query.length > 0 ' v-on:click='clearQuery'><%= svg 'delete' %></a>
     </div>

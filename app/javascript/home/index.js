@@ -20,6 +20,7 @@ const vm = new Vue({
     maxFadeDuration: 1500,
     stop: true,
     screenHeight: 0,
+    searchIsFocused: false,
   },
   watch: {
     query() {
@@ -52,6 +53,12 @@ const vm = new Vue({
   computed:{
   },
   methods: {
+    searchFocus() {
+      this.searchIsFocused = true
+    },
+    searchBlur() {
+      this.searchIsFocused = false
+    },
     searchRecipes() {
       const _this = this;
       const recipeIds = _this.recipes.map(x => x.id)

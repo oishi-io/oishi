@@ -38,7 +38,7 @@
     .search {
       display: flex;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: space-between;
       text-align: center;
       margin: auto;
       margin-bottom: 2rem;
@@ -56,14 +56,43 @@
         }
       }
 
+      &__text {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        h3 {
+          font-size: 3rem;
+          font-weight: 400;
+        }
+      }
+
+      // input {
+      //   border: none;
+      //   text-align: left;
+      //   width: 100%;
+      //   margin: 0 .5rem;
+      //   font-size: 2.4rem;
+      //   line-height: 2.4rem;
+      //   &:focus {
+      //     outline: none;
+      //     &::-webkit-input-placeholder { opacity: 0; }
+      //   }
+      // }
       input {
         border: none;
         text-align: left;
-        width: 100%;
-        margin: 0 .5rem;
         font-size: 2.4rem;
         line-height: 2.4rem;
+        transition: all .4s;
+        cursor: pointer;
+        width: 2.4rem;
+        color: transparent;
+        background: $color-white url("search.svg") no-repeat 0px center;
         &:focus {
+          padding-left: 35px;
+          width: 32rem;
+          color: $color-black;
+          cursor: auto;
           outline: none;
           &::-webkit-input-placeholder { opacity: 0; }
         }
