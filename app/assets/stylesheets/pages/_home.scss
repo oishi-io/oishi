@@ -66,12 +66,8 @@
         h3 {
           font-size: 3rem;
           font-weight: 400;
-          // margin-right: 1rem;
-          // padding-right: 1rem;
-          // border-right: 2px solid black;
         }
       }
-
 
       .vertical-line {
         height: 3rem;
@@ -176,7 +172,6 @@
           font-size: 3.2rem;
           font-family: $headers-font;
           font-weight: 200;
-          letter-spacing: .1rem;
           margin-bottom: 0.5rem;
         }
         .recipe-image {
@@ -238,14 +233,10 @@
       margin-top: 5rem;
       .search {
         width: 28rem;
-
         &__text {
           width: 100%;
           h3 {
             font-size: 2.4rem;
-            // margin-right: 1rem;
-            // padding-right: 1rem;
-            // border-right: 2px solid black;
           }
         }
 
