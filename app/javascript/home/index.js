@@ -21,6 +21,7 @@ const vm = new Vue({
     stop: true,
     screenHeight: 0,
     searchIsFocused: false,
+    searchText: 'Recettes du moment',
   },
   watch: {
     query() {
