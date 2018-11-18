@@ -3,16 +3,25 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, shrink-to-fit=no">
-    <title>Oishi.io - Cuisine japonaise. Simple</title>
-    <meta name="description" content="Découvrez les meilleures recettes de cuisine japonaise<br>
-      Apprenez à cuisiner des recettes simples et délicieuses. Oishi desu!"/>
-    <meta property="og:url" content="http://www.oishi.io"/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:title" content="Cuisine. Japonaise. Simple."/>
-    <meta property="og:description" content="Découvrez vite nos recettes inédites et faciles!"/>
-    <meta property="og:image:secure_url" content=""/>
-    <meta property="og:image:type" content="image/jpeg"/>
-    <meta name="twitter:card" content="summary"/>
+    <!-- Meta data -->
+    <title><%= meta_title %></title>
+    <meta name="description" content="<%= meta_description %>">
+
+    <!-- Facebook Open Graph data -->
+    <meta property="og:title" content="<%= meta_title %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= request.original_url %>" />
+    <meta property="og:image" content="<%= meta_image %>" />
+    <meta property="og:description" content="<%= meta_description %>" />
+    <meta property="og:site_name" content="<%= meta_title %>" />
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <!-- <meta name="twitter:site" content="<%= DEFAULT_META["twitter_account"] %>">  -->
+    <meta name="twitter:title" content="<%= meta_title %>">
+    <meta name="twitter:description" content="<%= meta_description %>">
+    <!-- <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">  -->
+    <meta name="twitter:image:src" content="<%= meta_image %>">
     <link rel="canonical" href="http://www.oishi.io"/>
 
     <%= favicon_link_tag 'favicon.png' %>

@@ -1,0 +1,8 @@
+# config/meta.yml
+
+meta_product_name: "Oishi.io"
+meta_title: "Oishi.io - Cuisine Japonaise Simple"
+meta_description: "Découvrez le meilleur de la gastronomie japonaise.
+                   Apprenez à cuisiner des recettes simples et délicieuses. Oishi desu!"
+meta_image: "meta-image.png"                           # Une image dans votre dossier app/assets/images/
+# twitter_account: "@nomdevotrecompte"              # indispensable pour les Twitter Cards
