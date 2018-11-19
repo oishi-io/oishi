@@ -42,6 +42,7 @@ const vm = new Vue({
     this.windowWidth = window.innerWidth;
     this.screenHeight = screen.height;
     this.recipesCount = this.recipes.length;
+    if (this.query.length > 0) { this.searchIsFocused = true }
     this.$nextTick(() => {
       window.addEventListener('resize', () => {
         this.windowWidth = window.innerWidth;
