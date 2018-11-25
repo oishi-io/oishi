@@ -96,7 +96,7 @@ const vm = new Vue({
       const scrollContainerWidth = (this.recipesCount * cardLength) + ((this.recipesCount - 1) * 10);
       const margin = this.windowWidth - scrollContainerWidth;
 
-      this.leftMargin = margin > 0 ? `${(margin/2) - 5}px` : 0;
+      this.leftMargin = margin > 0 ? `${(margin/2) - 10}px` : 0;
     },
     recipeUrl(slug) {
       return `/recipes/${slug}`
