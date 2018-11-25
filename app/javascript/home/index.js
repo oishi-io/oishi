@@ -92,7 +92,7 @@ const vm = new Vue({
       }
     },
     getLeftMargin() {
-      const cardLength = (this.windowWidth > 480) ? 270 : 230
+      const cardLength = (this.windowWidth > 480) ? 280 : 230
       const scrollContainerWidth = (this.recipesCount * cardLength) + ((this.recipesCount - 1) * 10);
       const margin = this.windowWidth - scrollContainerWidth;
 
