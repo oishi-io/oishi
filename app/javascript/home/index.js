@@ -4,7 +4,7 @@ const vm = new Vue({
   el: "#home",
   data: {
     recipes: gon.recipes,
-    query: 'Recettes du moment',
+    query: gon.query,
     queryCached: gon.query,
     typingTimer: 0,
     resizingTimer: 0,
