@@ -4,7 +4,8 @@ const vm = new Vue({
   el: "#home",
   data: {
     recipes: gon.recipes,
-    query: gon.query,
+    query: 'Recettes du moment',
+    queryCached: gon.query,
     typingTimer: 0,
     resizingTimer: 0,
     typingInterval: 500,
@@ -18,15 +19,14 @@ const vm = new Vue({
     fadeInDuration: 1000,
     fadeOutDuration: 1000,
     maxFadeDuration: 1500,
-    stop: true,
     screenHeight: 0,
-    searchIsFocused: false,
-    searchText: 'Recettes du moment',
   },
   watch: {
     query() {
-      clearTimeout(this.typingTimer);
-      this.typingTimer = setTimeout(() => this.searchRecipes(), this.typingInterval);
+      if (this.query && this.query !== this.queryCached) {
+        clearTimeout(this.typingTimer);
+        this.typingTimer = setTimeout(() => this.searchRecipes(), this.typingInterval);
+      }
     },
     windowWidth() {
       if(this.firstRender){
@@ -42,7 +42,6 @@ const vm = new Vue({
     this.windowWidth = window.innerWidth;
     this.screenHeight = screen.height;
     this.recipesCount = this.recipes.length;
-    if (this.query && this.query.length > 0) { this.searchIsFocused = true }
     this.$nextTick(() => {
       window.addEventListener('resize', () => {
         this.windowWidth = window.innerWidth;
@@ -55,11 +54,11 @@ const vm = new Vue({
   computed:{
   },
   methods: {
-    searchFocus() {
-      this.searchIsFocused = true
-    },
     searchRecipes() {
       const _this = this;
+      if(_this.query.length === 0) {
+        return;
+      }
       const recipeIds = _this.recipes.map(x => x.id)
       _this.isLoading = true;
       $.ajax({
@@ -73,23 +72,13 @@ const vm = new Vue({
           console.log(data)
           _this.isLoading = false;
           _this.recipesCount = data.recipes_count
-          _this.addRecipesFromData(data.to_add)
-          _this.removeRecipesFromData(data.to_remove)
-          window.history.pushState("object or string", "Title", `/?query=${_this.query}`);        }
+          _this.recipes = data.recipes
+          _this.queryCached = data.query
+          _this.query = data.query
+          _this.getLeftMargin()
+          window.history.pushState("object or string", "Title", `/?query=${_this.query}`)
+        }
       })
-    },
-    addRecipesFromData(recipeToAdd) {
-      if (recipeToAdd.length > 0) {
-        this.recipes = this.recipes.concat(recipeToAdd)
-      }
-    },
-    removeRecipesFromData(recipeToRemove) {
-      if (recipeToRemove.length > 0) {
-        recipeToRemove.forEach((id) => {
-          const index = this.recipes.map(x => x.id).indexOf(id)
-          this.recipes.splice(index, 1)
-        })
-      }
     },
     getLeftMargin() {
       const cardLength = (this.windowWidth > 480) ? 280 : 230
@@ -103,7 +92,7 @@ const vm = new Vue({
     },
     clearQuery() {
       this.query = ''
-      this.searchIsFocused = false
+      document.getElementById('landing-search').focus()
     },
     getQueryFromParams() {
       const _this = this
