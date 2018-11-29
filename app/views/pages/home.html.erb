@@ -7,14 +7,14 @@
     <h1 class="headline__main">Cuisine japonaise </h1>
     <h1 class="headline__sub">Simple</h1>
   </section>
-
+  
   <div class="section-search">
-      <form novalidate="novalidate" v-on:submit.prevent="searchRecipes">
+      <form novalidate="novalidate" >
         <div role="search" class="search">
           <input
             v-on:input="query = $event.target.value"
             type="search"
-            name="search"
+            name="query"
             v-model="query"
             id="landing-search"
           >

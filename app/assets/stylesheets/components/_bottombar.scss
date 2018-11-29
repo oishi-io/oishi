@@ -72,7 +72,7 @@
       input {
         border: none;
         text-align: left;
-        font-size: 1.6rem;
+        font-size: 2rem;
         line-height: 2.4rem;
         transition: all .4s;
         cursor: pointer;
@@ -81,7 +81,7 @@
         background: $color-white url("search.svg") no-repeat 0px center;
         &:focus {
           padding-left: 2.6rem;
-          width: 16rem;
+          width: 14rem;
           color: $color-black;
           cursor: auto;
           outline: none;
