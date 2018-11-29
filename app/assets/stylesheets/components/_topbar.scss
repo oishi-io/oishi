@@ -95,7 +95,8 @@
   }
 
   .bar__line {
-    border: 1.5px solid $color-black;
+    height: 3px;
+    background-color: $color-black;
     flex-grow: 1;
     margin: 0 5%;
   }

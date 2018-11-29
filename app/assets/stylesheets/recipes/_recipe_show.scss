@@ -10,7 +10,8 @@
   }
 
   .line {
-    border-bottom: 2px solid $color-black;
+    height: 1px;
+    background-color: $color-black;
     margin: 1rem 0 6rem 0;
 
     &__small {
@@ -130,7 +131,7 @@
     &:not(:last-child) {
       width: 2rem;
       height: 1px;
-      border: 1px solid $color-black;
+      background-color: $color-black;
       margin: 4rem auto;
     }
   }
@@ -144,7 +145,6 @@
     }
 
     .line {
-      border-bottom: 1px solid $color-black;
       margin: 0.5rem 0 2rem 0;
     }
 
