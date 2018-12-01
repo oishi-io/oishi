@@ -11,7 +11,7 @@
   background-color: $color-white;
 
   .bar__link {
-    color: $color-grey-dark;
+    color: $color-black;
     font-size: 2.4rem;
 
     &:not(:first-child){
@@ -26,16 +26,11 @@
       width: 0;
     }
 
-    &.active {
-      color: $color-black;
-    }
-
     &.active:after {
       width: 100%;
     }
 
     &:hover, &:focus {
-      color: $color-black;
       text-decoration: none;
     }
 
@@ -112,7 +107,7 @@
   }
 
   @media screen and (max-width: $screen-l) {
-    padding: 0 5%;
+    padding: 0 2%;
   }
 }
 

@@ -3,16 +3,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: calc(100% - 1rem);
-  margin-left: .5rem;
+  width: 100%;
+  padding: 0 .5rem;
   position: fixed;
   z-index: 1;
   bottom: 0;
-  background-color: $color-white;
-  border-top: 1px solid $color-black;
+  background-color: $color-black;
+  // border-top: 1px solid $color-black;
 
   .bar__link {
-    color: $color-grey-dark;
+    color: $color-white;
     font-size: 2rem;
     margin-right: 5px;
 
@@ -20,12 +20,8 @@
       content: '';
       display: block;
       height: 2px;
-      background: black;
+      background: $color-white;
       width: 0;
-    }
-
-    &.active {
-      color: $color-black;
     }
 
     &.active:after {
@@ -34,7 +30,6 @@
 
     &:hover, &:focus {
       text-decoration: none;
-      color: $color-black;
     }
 
     &:not(.active):hover:after,
@@ -77,12 +72,12 @@
         transition: all .4s;
         cursor: pointer;
         width: 2.4rem;
-        color: transparent;
-        background: $color-white url("search.svg") no-repeat 0px center;
+        color: $color-white;
+        background: $color-black url("search-white.svg") no-repeat 0px center;
         &:focus {
           padding-left: 2.6rem;
           width: 14rem;
-          color: $color-black;
+          color: $color-white;
           cursor: auto;
           outline: none;
           &::-webkit-input-placeholder { opacity: 0; }
@@ -93,7 +88,7 @@
 
   .bar__title {
     #home_link {
-      color: $color-black;
+      color: $color-white;
       &:hover, &:focus { text-decoration: none; }
     }
 
@@ -101,7 +96,7 @@
       font-size: 3rem;
       font-weight: 600;
       text-transform: capitalize;
-      color: $color-black;
+      color: $color-white;
       font-family: $headers-font;
     }
   }
