@@ -4,47 +4,55 @@
   v-cloak
 >
   <section class="headline">
-    <h1 class="headline__main">Cuisine japonaise </h1>
-    <h1 class="headline__sub">Simple</h1>
+    <p class="headline__text">Cuisine japonaise </p>
+    <p class="headline__text headline__text--white">Simple</p>
   </section>
-  
-  <div class="section-search">
-      <form novalidate="novalidate" >
-        <div role="search" class="search">
-          <input
-            v-on:input="query = $event.target.value"
-            type="search"
-            name="query"
-            v-model="query"
-            id="landing-search"
-          >
-          <button type="reset" title="Annuler" v-on:click="clearQuery">
-            <%= svg 'delete' %>
-          </button>
-        </div>
-      </form>
-    <div class="recipe__box">
+
+  <section class="search">
+    <!-- RECIPE SEARCH FORM -->
+    <form novalidate="novalidate" role="search" class="search__form">
+      <input
+        v-on:input="query = $event.target.value"
+        type="search"
+        name="query"
+        v-model="query"
+        id="landing-search"
+        class="search__form__input"
+      >
+      <button
+        type="reset"
+        title="Annuler"
+        class="search__form__reset"
+        v-on:click="clearQuery"
+      >
+        <%= svg 'delete' %>
+      </button>
+    </form>
+
+    <!-- RECIPE SEARCH RESULTS -->
+    <div class="recipes__container">
+      <!-- No Results -->
       <div
         v-if="recipesCount === 0 && !isLoading"
-        class="recipe__box--no-result"
+        class="recipes__container--no-result"
       >
-        <span>
-          <p>Aucune recette trouvée</p>
-          <a href="/recipes">Voir toutes les recettes</a>
-        </span>
+        <p>Aucune recette trouvée</p>
+        <a href="/recipes">Voir toutes les recettes</a>
       </div>
+
+      <!-- Results -->
       <div
         v-else
         name="recipe-cards"
-        class="recipe__box--scroll-wrapper"
+        class="recipes__container--scroll-wrapper"
         v-bind:style="{ marginLeft: leftMargin }"
       >
         <div
           v-for="recipe in recipes"
           v-bind:key="recipe.id"
-          class="recipe__box__card"
+          class="recipes__container__card"
         >
-          <a :href="recipeUrl(recipe.slug)" class="recipe__box__card__link">
+          <a :href="recipeUrl(recipe.slug)" class="recipes__container__card__link">
             <h2>{{ recipe.name }}</h2>
             <div
               class="recipe-image"
@@ -58,7 +66,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </div>
 
 <% content_for :after_js do %>

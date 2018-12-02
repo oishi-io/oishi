@@ -1,4 +1,4 @@
-.landing {
+#home {
   background-color: $color-white;
   width: 100%;
 
@@ -12,30 +12,26 @@
     padding: 0 7%;
     margin-top: 5rem;
 
-    &__main{
+    .headline__text {
       font-size: 4rem;
       font-weight: 400;
       line-height: 4rem;
-      // border: 2px solid $color-black;
       padding: .5rem 1rem;
+      // border: 2px solid $color-black;
     }
-    &__sub {
-      font-size: 4rem;
-      font-weight: 400;
-      line-height: 4rem;
+
+    .headline__text--white {
       background-color: $color-black;
       color: $color-white;
-      // border: 2px solid $color-black;
-      padding: .5rem 1rem;
     }
   }
 
-  .section-search {
+  .search {
     width: 100%;
     padding: 0 .5rem;
     margin-top: 10rem;
 
-    .search {
+    .search__form {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -45,38 +41,7 @@
       width: 35rem;
       height: 4.5rem;
 
-      a {
-        cursor: pointer;
-        margin-bottom: -.7rem;
-        #icon-search {
-          height: 2.4rem;
-        }
-        #icon-clear {
-          height: 1.5rem;
-        }
-      }
-
-      &__text {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        width: auto;
-        transition: all .4s ease;
-        text-align: left;
-        h3 {
-          font-size: 3rem;
-          font-weight: 400;
-        }
-      }
-
-      .vertical-line {
-        height: 4px;
-        border-radius: 50%;
-        width: 2px;
-        background-color: $color-black;
-      }
-
-      input {
+      .search__form__input {
         border: none;
         text-align: left;
         font-size: 3rem;
@@ -87,7 +52,8 @@
         outline: none;
         background: $color-white url("search.svg") no-repeat 0px center;
       }
-      button {
+
+      .search__form__reset {
         border: none;
         background-color: $color-white;
         cursor: pointer;
@@ -97,7 +63,7 @@
       }
     }
 
-    .recipe__box {
+    .recipes__container {
       &--scroll-wrapper {
         display: flex;
         align-items: flex-end;
@@ -106,18 +72,15 @@
         // transition: margin-left 0.3s ease;
       }
       &--no-result {
-        height: 27rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        span {
-          text-align: center;
-        }
+        text-align: center;
+        margin-top: 10rem;
+
         p {
           font-size: 2.4rem;
           margin-bottom: 2rem;
           color: $color-grey-dark;
         }
+
         a {
           font-size: 2.4rem;
           color: $color-black;
@@ -203,16 +166,35 @@
       }
     }
   }
-
-  .recipe-cards-enter, .recipe-cards-leave-to {
-    opacity: 0;
-    transform: translateY(40px) scale(.5);
-  }
 }
 
 @media screen and (max-width: $screen-s) {
-  .landing {
-    .section-search .recipe__box--no-result {
+  #home {
+    .headline {
+      justify-content: flex-end;
+      text-align: right;
+      margin-top: 0;
+
+      .headline__text {
+        font-size: 3.6rem;
+        line-height: 3.6rem;
+        border: none;
+      }
+    }
+
+    .search {
+      margin-top: 5rem;
+
+      .search__form {
+        width: 29rem;
+
+        .search__form__input {
+          font-size: 2.4rem;
+        }
+      }
+    }
+
+    .search .recipes__container--no-result {
       p {
         font-size: 2rem;
       }
@@ -221,41 +203,8 @@
       }
     }
 
-    .headline {
-      justify-content: flex-end;
-      text-align: right;
-      margin-top: 0;
-      &__main{
-        font-size: 3.6rem;
-        line-height: 3.6rem;
-        border: none;
-      }
-      &__sub {
-        font-size: 3.6rem;
-        line-height: 3.6rem;
-        border: none;
-      }
-    }
-
-    .section-search {
-      margin-top: 5rem;
-      .search {
-        width: 29rem;
-        &__text {
-          width: 100%;
-          h3 {
-            font-size: 2.4rem;
-          }
-        }
-
-        input {
-          font-size: 2.4rem;
-        }
-      }
-    }
-
-    .recipe__box--scroll-wrapper {
-      .recipe__box__card {
+    .recipes__container--scroll-wrapper {
+      .recipes__container__card {
         width: 23rem;
         h2 {
           font-size: 2.4rem;

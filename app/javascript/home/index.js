@@ -15,11 +15,6 @@ const vm = new Vue({
     windowWidth: 0,
     leftMargin: 0,
     recipesCount: 0,
-    show: true,
-    fadeInDuration: 1000,
-    fadeOutDuration: 1000,
-    maxFadeDuration: 1500,
-    screenHeight: 0,
   },
   watch: {
     query() {
@@ -40,12 +35,10 @@ const vm = new Vue({
   },
   mounted() {
     this.windowWidth = window.innerWidth;
-    this.screenHeight = screen.height;
     this.recipesCount = this.recipes.length;
     this.$nextTick(() => {
       window.addEventListener('resize', () => {
         this.windowWidth = window.innerWidth;
-        this.screenHeight = screen.height;
       });
     })
   },
