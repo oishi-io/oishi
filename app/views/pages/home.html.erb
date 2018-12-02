@@ -31,34 +31,36 @@
 
     <!-- RECIPE SEARCH RESULTS -->
     <div class="recipes__container">
-      <!-- No Results -->
+      <!-- No results -->
       <div
         v-if="recipesCount === 0 && !isLoading"
-        class="recipes__container--no-result"
+        class="recipes--no-result"
       >
         <p>Aucune recette trouvée</p>
-        <a href="/recipes">Voir toutes les recettes</a>
+        <a
+          class="link--after-anim"
+          href="/recipes">Voir toutes les recettes
+        </a>
       </div>
 
       <!-- Results -->
       <div
         v-else
-        name="recipe-cards"
-        class="recipes__container--scroll-wrapper"
+        class="recipes__scroll-wrapper"
         v-bind:style="{ marginLeft: leftMargin }"
       >
         <div
           v-for="recipe in recipes"
           v-bind:key="recipe.id"
-          class="recipes__container__card"
+          class="recipe__card"
         >
-          <a :href="recipeUrl(recipe.slug)" class="recipes__container__card__link">
-            <h2>{{ recipe.name }}</h2>
+          <a :href="recipeUrl(recipe.slug)" class="recipe__link">
+            <h1 class="recipe__title">{{ recipe.name }}</h1>
             <div
-              class="recipe-image"
+              class="recipe__image"
               :style='{ backgroundImage: `url("${recipe.image_url}")` }'
               >
-              <div class="recipe__card__info">
+              <div class="recipe__info">
                 <p>{{ recipe.preparation_time }}min</p>
               </div>
             </div>
