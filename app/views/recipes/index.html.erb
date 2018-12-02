@@ -1,57 +1,58 @@
 <% content_for :meta_title, "#{DEFAULT_META["meta_product_name"]} - Index des recettes" %>
 <% content_for :meta_description, "Parcourez nos recettes délicieuses." %>
 
-<div id="recipes-index" class="container" v-cloak>
-  <div class="row">
-    <div class="col-xs-12 col-md-8 col-md-offset-2">
-      <div class="row">
-        <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-          <section class="section-filter">
-            <ul class="recipes__types">
-              <li
-                v-for="filter in filters"
-                class="recipes__types__item"
-                v-on:click="toggleFilter(filter.name)"
-                v-bind:class=" filter.state ? 'active' : '' "
-              >
-                <button>{{ filter.name }}</button>
-              </li>
-            </ul>
-          </section>
-          <section class="section-list">
-            <ul class="letters">
-              <li class="letter__container" v-for="(recipes, letter, index) in displayedRecipes" :key="letter">
+<div
+  id="recipes-index"
+  v-cloak
+>
+  <section class="recipes__filters">
+    <ul class="filters__list">
+      <li
+        v-for="filter in filters"
+        class="filter"
+        v-on:click="toggleFilter(filter.name)"
+        v-bind:class=" filter.state ? 'active' : '' "
+      >
+        <button class="filter__name">{{ filter.name }}</button>
+      </li>
+    </ul>
+  </section>
 
-                <div v-if="index%2 === 0" class="letter letter--left">
-                  <div class="letter__box">
-                    <h1>{{ letter }}</h1>
-                  </div>
-                  <ul class="recipes__list">
-                    <li class="recipe" v-for="recipe in recipes" :key="recipe.slug">
-                      <a :href=`/recipes/${recipe.slug}`>{{ recipe.name }}</a>
-                    </li>
-                  </ul>
-                </div>
+  <section class="recipes__index">
+    <ul class="alphabet">
+      <li v-for="(recipes, letter, index) in displayedRecipes" :key="letter">
 
-                <div v-else class="letter letter--right">
-                  <ul class="recipes__list">
-                    <li class="recipe" v-for="recipe in recipes" :key="recipe.slug">
-                      <a :href=`/recipes/${recipe.slug}`>{{ recipe.name }}</a>
-                    </li>
-                  </ul>
-                  <div class="letter__box">
-                    <h1>{{ letter }}</h1>
-                  </div>
-                </div>
-                <div v-if="index + 1 !== lettersNumber()" class="short-line"></div>
-
-              </li>
-            </ul>
-          </section>
+        <div v-if="index%2 === 0" class="letter letter--left">
+            <h1 class="letter--big">{{ letter }}</h1>
+          <ul class="recipes__list">
+            <li
+              class="recipe"
+              v-for="recipe in recipes"
+              :key="recipe.slug">
+              <a
+                class="link--after-anim"
+                :href=`/recipes/${recipe.slug}`>{{ recipe.name }}</a>
+            </li>
+          </ul>
         </div>
-      </div>
-    </div>
-  </div>
+
+        <div v-else class="letter letter--right">
+          <ul class="recipes__list">
+            <li
+              class="recipe"
+              v-for="recipe in recipes"
+              :key="recipe.slug">
+              <a
+                class="link--after-anim"
+                :href=`/recipes/${recipe.slug}`>{{ recipe.name }}</a>
+            </li>
+          </ul>
+          <h1 class="letter--big">{{ letter }}</h1>
+        </div>
+        <div v-if="index + 1 !== lettersNumber()" class="short-line"></div>
+      </li>
+    </ul>
+  </section>
 </div>
 
 <% content_for :after_js do %>
