@@ -11,7 +11,7 @@ class PagesController < ApplicationController
 
       query = ActionController::Base.helpers.sanitize(params[:query])&.strip
     else
-      query = "Recettes du moment"
+      query = nil
       recipes = Recipe.visible.recommended.map(&:serialize)
     end
 

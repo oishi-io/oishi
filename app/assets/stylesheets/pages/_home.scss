@@ -38,24 +38,39 @@
       text-align: center;
       margin: auto;
       margin-bottom: 2rem;
-      width: 35rem;
-      height: 4.5rem;
+      min-width: 30rem;
+      width: 60%;
+      background-color: $color-black;
+      padding: 1rem 2rem;
 
       .search__form__input {
         border: none;
-        text-align: left;
-        font-size: 3rem;
-        line-height: 2.4rem;
-        padding: 0 10px 0 35px;
+        text-transform: uppercase;
+        font-size: 3.2rem;
+        font-family: $headers-font;
+        font-weight: 300;
+        padding: 0px 15px 0 45px;
+        color: $color-white;
         cursor: pointer;
         width: 100%;
         outline: none;
-        background: $color-white url("search.svg") no-repeat 0px center;
+        background: $color-black url("search-white.svg") no-repeat 0px center;
+
+        &::placeholder {
+          color: $color-grey-light-1;
+          font-size: 2.4rem;
+          font-weight: 600;
+          text-transform: none;
+        }
+
+        &:focus::placeholder {
+          color: transparent;
+        }
       }
 
       .search__form__reset {
         border: none;
-        background-color: $color-white;
+        background-color: $color-black;
         cursor: pointer;
         margin-bottom: -.3rem;
         width: 1.5rem;
@@ -167,10 +182,16 @@
       margin-top: 5rem;
 
       .search__form {
-        width: 29rem;
+        padding: .5rem 1rem;
 
         .search__form__input {
           font-size: 2.4rem;
+          background: $color-black url("search-white-small.svg") no-repeat 0px center;
+          padding: 0px 10px 0 35px;
+
+          &::placeholder {
+            font-size: 2rem;
+          }
         }
       }
 

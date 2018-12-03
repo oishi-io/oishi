@@ -18,14 +18,16 @@
         v-model="query"
         id="landing-search"
         class="search__form__input"
+        placeholder="Chercher : gyozas, thon, végétarienne..."
       >
       <button
         type="reset"
         title="Annuler"
         class="search__form__reset"
         v-on:click="clearQuery"
+        v-if="query"
       >
-        <%= svg 'delete' %>
+        <%= svg 'delete-white' %>
       </button>
     </form>
 
