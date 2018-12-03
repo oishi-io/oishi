@@ -4,7 +4,14 @@
   <% unless request.path == '/' %>
     <form novalidate="novalidate" onsubmit="return bottomSearchQuery()" class="searchbox_bottom">
       <div role="search" class="search">
-        <input type="search" name="query" required="required" class="search__input">
+        <input
+          type="search"
+          name="query"
+          required="required"
+          class="search__input"
+          autocomplete="off"
+          aria-label="Barre de recherche"
+        >
       </div>
     </form>
   <% end %>

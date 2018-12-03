@@ -4,7 +4,14 @@
   <% unless request.path == '/' %>
     <form novalidate="novalidate" onsubmit="return searchQuery()" class="searchbox_top agent-3">
       <div role="search" class="search">
-        <input type="search" name="query" required="required" class="search__input">
+        <input
+          type="search"
+          name="query"
+          required="required"
+          class="search__input"
+          autocomplete="off"
+          aria-label="Barre de recherche"
+        >
         <button type="reset" title="Annuler" class="button_svg button_svg__reset">
           <%= svg 'delete' %>
         </button>
