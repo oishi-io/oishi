@@ -10,15 +10,20 @@
 
   <section class="search">
     <!-- RECIPE SEARCH FORM -->
-    <form novalidate="novalidate" role="search" class="search__form">
+    <form
+      novalidate="novalidate"
+      role="search"
+      class="search__form"
+      v-on:submit.prevent="searchRecipes"
+    >
       <input
         v-on:input="query = $event.target.value"
+        placeholder="Chercher : gyozas, thon, végétarienne..."
         type="search"
         name="query"
         v-model="query"
         id="landing-search"
         class="search__form__input"
-        placeholder="Chercher : gyozas, thon, végétarienne..."
       >
       <button
         type="reset"

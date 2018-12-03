@@ -72,7 +72,7 @@
         cursor: pointer;
         width: 2.4rem;
         color: $color-white;
-        background: $color-black url("search-white.svg") no-repeat 0px center;
+        background: $color-black url("search-white-small.svg") no-repeat 0px center;
         &:focus {
           padding-left: 2.6rem;
           width: 14rem;
@@ -86,7 +86,7 @@
   }
 
   .bar__title {
-    #home_link {
+    #bottom_home_link {
       color: $color-white;
       &:hover, &:focus { text-decoration: none; }
     }
