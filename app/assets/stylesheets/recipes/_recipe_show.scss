@@ -97,7 +97,8 @@
 
       p {
         text-align: justify;
-        max-width: 350px;
+        hyphens: auto;
+        flex: 0 0 76%;
       }
 
       &--left {
@@ -123,7 +124,7 @@
 
   // Bootstrap 3
   @media screen and (max-width: $screen-m) {
-    .recipe__measures { position: inherit; margin-top: 2rem; }
+    .recipe__measures { position: inherit; margin-top: 5rem; }
   }
 
   @media screen and (max-width: $screen-s) {
@@ -169,7 +170,7 @@
           font-weight: 600;
           line-height: 6rem;
         }
-        p { max-width: none; }
+        p { flex: auto; }
       }
     }
 
