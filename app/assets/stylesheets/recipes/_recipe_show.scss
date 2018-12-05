@@ -41,6 +41,10 @@
   .recipe__description {
     margin-top: 2rem;
     margin-bottom: 2rem;
+    p {
+      text-align: justify;
+      hyphens: auto;
+    }
   }
 
   .recipe__image {
