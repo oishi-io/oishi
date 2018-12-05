@@ -7,14 +7,9 @@ const vm = new Vue({
     query: gon.query,
     queryCached: gon.query,
     typingTimer: 0,
-    resizingTimer: 0,
     typingInterval: 500,
-    resizingInterval: 200,
     isLoading: false,
-    firstRender: true,
-    windowWidth: 0,
-    leftMargin: 0,
-    recipesCount: 0,
+    recipesCount: gon.recipes.length,
   },
   watch: {
     query() {
@@ -23,24 +18,8 @@ const vm = new Vue({
         this.typingTimer = setTimeout(() => this.searchRecipes(), this.typingInterval);
       }
     },
-    windowWidth() {
-      if(this.firstRender){
-        this.getLeftMargin()
-        this.firstRender = false;
-      } else {
-        clearTimeout(this.resizingTimer);
-        this.resizingTimer = setTimeout(() => this.getLeftMargin(), this.resizingInterval);
-      }
-    },
   },
   mounted() {
-    this.windowWidth = window.innerWidth;
-    this.recipesCount = this.recipes.length;
-    this.$nextTick(() => {
-      window.addEventListener('resize', () => {
-        this.windowWidth = window.innerWidth;
-      });
-    })
   },
   components: {
   },
@@ -62,23 +41,14 @@ const vm = new Vue({
           recipeIds: recipeIds,
         },
         success(data) {
-          console.log(data)
           _this.isLoading = false;
           _this.recipesCount = data.recipes_count
           _this.recipes = data.recipes
           _this.queryCached = data.query
           _this.query = data.query
-          _this.getLeftMargin()
           window.history.pushState("object or string", "Title", `/?query=${_this.query}`)
         }
       })
-    },
-    getLeftMargin() {
-      const cardLength = (this.windowWidth > 480) ? 280 : 230
-      const scrollContainerWidth = (this.recipesCount * cardLength) + ((this.recipesCount - 1) * 10);
-      const margin = this.windowWidth - scrollContainerWidth;
-
-      this.leftMargin = margin > 0 ? `${(margin/2) - 5}px` : 0;
     },
     recipeUrl(slug) {
       return `/recipes/${slug}`

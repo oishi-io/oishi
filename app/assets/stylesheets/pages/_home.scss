@@ -17,7 +17,6 @@
       font-weight: 400;
       line-height: 4rem;
       padding: .5rem 1rem;
-      // border: 2px solid $color-black;
     }
 
     .headline__text--white {
@@ -35,7 +34,6 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      text-align: center;
       margin: auto;
       margin-bottom: 2rem;
       min-width: 30rem;
@@ -80,10 +78,14 @@
     }
 
     .recipes__container {
+      overflow-x: auto;
+
       .recipes--no-result {
-        height: 27rem;
         text-align: center;
         margin-top: 7rem;
+        width: fit-content;
+        margin: 0 auto;
+        padding-top: 7rem;
 
         p {
           font-size: 2.4rem;
@@ -94,10 +96,9 @@
 
       .recipes__scroll-wrapper {
         display: flex;
-        align-items: flex-end;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        // transition: margin-left 0.3s ease;
+        width: fit-content;
+        margin: auto;
+        transition: margin-left 0.3s ease;
       }
 
 
@@ -107,10 +108,10 @@
         height: 27rem;
         flex: 0 0 auto;
         cursor: pointer;
-        transition: all .4s ease;
         display: flex;
         align-items: flex-end;
         padding-bottom: .5rem;
+        transition: all .4s ease;
 
         .recipe__link {
           text-decoration: none;
