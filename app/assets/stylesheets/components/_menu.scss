@@ -21,11 +21,10 @@
 
     & li > a {
       transition: all .3s ease;
-      font-weight: lighter;
       color: $color-black;
       font-size: $default-font-size;
       line-height: 2.2rem;
-      padding: 1rem 2rem;
+      padding: 1rem 1.5rem;
 
       &:hover {
         background: transparent;
