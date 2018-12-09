@@ -1,31 +1,63 @@
-.link--after-anim {
+.link {
   font-size: 2.4rem;
-  color: $color-black;
   text-decoration: none;
+  display: inline-block;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
 
   &:after {
     content: '';
     display: block;
     height: 2px;
-    background: $color-black;
     width: 0;
   }
 
-  &:hover,
-  &:focus {
-    text-decoration: none;
-    color: $color-black;
-  }
-
-  &:hover:after,
-  &:focus:after {
+  &.active:after {
     width: 100%;
-    transform: scaleX(0);
-    transform-origin: right;
-    animation: grow-left cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s forwards;
   }
 
   @media screen and (max-width: $screen-s) {
     font-size: 2rem;
+  }
+}
+
+.link--black {
+  color: $color-black;
+
+  &:hover,
+  &:focus {
+    color: $color-black;
+  }
+
+  &:after {
+    background: $color-black;
+  }
+}
+
+.link--white {
+  color: $color-white;
+
+  &:hover,
+  &:focus {
+    color: $color-white;
+  }
+
+  &:after {
+    background: $color-white;
+  }
+}
+
+.link--after-anim {
+  @media screen and (min-width: $screen-m) {
+    &:hover:after,
+    &:focus:after {
+      width: 100%;
+      transform: scaleX(0);
+      transform-origin: right;
+      animation: grow-left cubic-bezier(0.785, 0.135, 0.15, 0.86) 0.3s forwards;
+    }
   }
 }

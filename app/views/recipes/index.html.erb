@@ -28,23 +28,31 @@
             <li
               class="recipe"
               v-for="recipe in recipes"
-              :key="recipe.slug">
+              :key="recipe.slug"
+            >
               <a
-                class="link--after-anim"
-                :href=`/recipes/${recipe.slug}`>{{ recipe.name }}</a>
+                class="link link--black link--after-anim"
+                :href=`/recipes/${recipe.slug}`
+              >
+                {{ recipe.name }}
+              </a>
             </li>
           </ul>
         </div>
 
         <div v-else class="letter letter--right">
-          <ul class="recipes__list">
+          <ul class="recipes__list recipes__list--right">
             <li
               class="recipe"
               v-for="recipe in recipes"
-              :key="recipe.slug">
+              :key="recipe.slug"
+            >
               <a
-                class="link--after-anim"
-                :href=`/recipes/${recipe.slug}`>{{ recipe.name }}</a>
+                class="link link--black link--after-anim"
+                :href=`/recipes/${recipe.slug}`
+              >
+                {{ recipe.name }}
+              </a>
             </li>
           </ul>
           <h1 class="letter--big">{{ letter }}</h1>

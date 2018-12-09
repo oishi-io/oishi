@@ -207,7 +207,7 @@ var vm = new Vue({
             method: 'DELETE',
             url: '/recipes/' + _this.recipe.slug + '/measures/' + measure.measure_id,
             success(data){
-              Vue.deconste(_this.measures, index);
+              Vue.delete(_this.measures, index);
               _this.successMessage()
             }
           })

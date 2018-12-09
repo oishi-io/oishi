@@ -74,13 +74,10 @@
     }
   }
 
-
-
   .letter {
     display: flex;
     align-items: center;
   }
-
 
   .letter--left {
     justify-content: flex-start;
@@ -108,6 +105,9 @@
       &:not(:last-child) {
         margin-bottom: 1rem;
       }
+    }
+    &--right {
+      text-align: right;
     }
   }
 
