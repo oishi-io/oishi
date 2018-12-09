@@ -67,12 +67,12 @@
               <% if index.even? %>
                 <li class="step step--left">
                   <h3><%= step.order %></h3>
-                  <p><%= step.text %></p>
+                  <p><%= raw step.text %></p>
                 </li>
               <% else %>
                 <li class="step step--right">
                   <p><%= step.text %></p>
-                  <h3><%= step.order %></h3>
+                  <h3><%= raw step.order %></h3>
                 </li>
               <% end %>
               <div class="short-line"></div>

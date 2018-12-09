@@ -50,6 +50,15 @@
   }
 }
 
+.link--embedded {
+  font-size: 1.8rem;
+  font-weight: 600;
+
+  @media screen and (max-width: $screen-s) {
+    font-size: 1.8rem;
+  }
+}
+
 .link--after-anim {
   @media screen and (min-width: $screen-m) {
     &:hover:after,
