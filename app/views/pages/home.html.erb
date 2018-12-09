@@ -14,8 +14,8 @@
       novalidate="novalidate"
       role="search"
       class="search__form"
-      v-on:submit.prevent="searchRecipes"
     >
+    <!-- v-on:submit.prevent="searchRecipes" -->
       <input
         v-on:input="query = $event.target.value"
         placeholder="Chercher : gyozas, thon, végétarienne..."

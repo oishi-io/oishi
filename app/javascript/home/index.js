@@ -13,17 +13,13 @@ const vm = new Vue({
   },
   watch: {
     query() {
-      if (this.query && this.query !== this.queryCached) {
+      if (this.query &&
+          this.query !== this.queryCached &&
+          window.innerWidth >= 768) {
         clearTimeout(this.typingTimer);
         this.typingTimer = setTimeout(() => this.searchRecipes(), this.typingInterval);
       }
     },
-  },
-  mounted() {
-  },
-  components: {
-  },
-  computed:{
   },
   methods: {
     searchRecipes() {
