@@ -27,6 +27,7 @@ class PagesController < ApplicationController
       format.html {
         gon.recipes = recipes
         gon.query = query
+        gon.tags = Tag.all.pluck(:name)
       }
     end
   end

@@ -18,7 +18,7 @@
     <!-- v-on:submit.prevent="searchRecipes" -->
       <input
         v-on:input="query = $event.target.value"
-        placeholder="Chercher : gyozas, thon, végétarienne..."
+        placeholder="Rechercher"
         type="search"
         name="query"
         v-model="query"
@@ -34,9 +34,21 @@
         v-on:click="clearQuery"
         v-if="query"
       >
-        <%= svg 'delete-white' %>
+        <%= svg 'delete' %>
       </button>
     </form>
+
+    <!-- SEARCH FILTERS -->
+    <div class="search__filters">
+      <button
+        v-for="filter in filters"
+        class="filter"
+        v-on:click="toggleFilter(filter.name)"
+        v-bind:class=" filter.state ? 'active' : '' "
+        >
+        {{ filter.name }}
+      </button>
+    </div>
 
     <!-- RECIPE SEARCH RESULTS -->
     <div class="recipes__container">
@@ -47,8 +59,10 @@
       >
         <p>Aucune recette trouvée</p>
         <a
-          class="link--after-anim"
-          href="/recipes">Voir toutes les recettes
+          class="link link--black link--after-anim"
+          href="/recipes"
+        >
+          Voir toutes les recettes
         </a>
       </div>
 

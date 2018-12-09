@@ -35,11 +35,12 @@
       align-items: center;
       justify-content: space-between;
       margin: auto;
-      margin-bottom: 2rem;
+      margin-bottom: 4rem;
       min-width: 30rem;
       width: 80%;
-      background-color: $color-black;
-      padding: 1rem 2rem;
+      max-width: 500px;
+      padding: .5rem 1rem;
+      border-bottom: 2px solid black;
 
       .search__form__input {
         border: none;
@@ -48,18 +49,19 @@
         font-family: $headers-font;
         font-weight: 300;
         padding: 0px 15px 0 45px;
-        color: $color-white;
+        color: $color-black;
         cursor: pointer;
         width: 100%;
         outline: none;
-        background: $color-black url("search-white.svg") no-repeat 0px center;
+        background: $color-white url("search.svg") no-repeat 0px center;
 
         &::placeholder {
-          color: $color-grey-light-1;
+          color: $color-grey-dark;
           font-style: oblique;
-          font-size: 2.8rem;
+          font-size: 2.4rem;
           font-weight: 400;
           text-transform: none;
+          padding-bottom: 5rem;
         }
 
         &:focus::placeholder {
@@ -69,11 +71,50 @@
 
       .search__form__reset {
         border: none;
-        background-color: $color-black;
+        background-color: $color-white;
         cursor: pointer;
         margin-bottom: -.3rem;
         width: 1.5rem;
         outline: none;
+      }
+    }
+
+    .search__filters {
+      margin: 0 auto;
+      max-width: 800px;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-bottom: 5rem;
+
+      .filter {
+        font-size: 2rem;
+        background-color: $color-white;
+        border: none;
+        flex-shrink: 0;
+        margin: .5rem 2rem;
+        color: $color-grey-dark;
+
+        &:focus {
+          outline: none;
+        }
+
+        &:after {
+          content: '';
+          display: block;
+          height: 2px;
+          background-color: $color-black;
+          width: 0;
+          transition: width .4s ease;
+        }
+
+        &.active {
+          color: $color-black;
+
+          &:after {
+            width: 100%;
+          }
+        }
       }
     }
 
@@ -189,11 +230,11 @@
       margin-top: 5rem;
 
       .search__form {
-        padding: .5rem 1rem;
+        padding: .5rem .5rem;
 
         .search__form__input {
           font-size: 2.4rem;
-          background: $color-black url("search-white-small.svg") no-repeat 0px center;
+          background: $color-white url("search.svg") no-repeat 0px center;
           padding: 0px 10px 0 35px;
 
           &::placeholder {

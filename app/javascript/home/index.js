@@ -4,12 +4,39 @@ const vm = new Vue({
   el: "#home",
   data: {
     recipes: gon.recipes,
-    query: gon.query,
-    queryCached: gon.query,
+    query: '',
+    queryCached: '',
     typingTimer: 0,
     typingInterval: 500,
     isLoading: false,
     recipesCount: gon.recipes.length,
+    tags: gon.tags,
+    filters: [
+      {
+        name: 'Recettes du moment',
+        state: true,
+      },
+      {
+        name: 'Végétariennes',
+        state: false,
+      },
+      {
+        name: 'Moins de 30min',
+        state: false,
+      },
+      {
+        name: 'Faciles',
+        state: false,
+      },
+    ],
+    fromFilter: false,
+    queryParams: '',
+  },
+  mounted() {
+    this.fromFilter = new URLSearchParams(window.location.search).get('filter') == 'true'
+    this.queryParams = new URLSearchParams(window.location.search).get('query')
+    this.setQueryOnLoad()
+    this.setFilterOnLoad()
   },
   watch: {
     query() {
@@ -27,14 +54,12 @@ const vm = new Vue({
       if(_this.query.length === 0) {
         return;
       }
-      const recipeIds = _this.recipes.map(x => x.id)
       _this.isLoading = true;
       $.ajax({
         method: 'GET',
         url: `/`,
         data: {
           query: _this.query,
-          recipeIds: recipeIds,
         },
         success(data) {
           _this.isLoading = false;
@@ -42,7 +67,40 @@ const vm = new Vue({
           _this.recipes = data.recipes
           _this.queryCached = data.query
           _this.query = data.query
-          window.history.pushState("object or string", "Title", `/?query=${_this.query}`)
+          _this.removeFilter()
+          window
+            .history
+            .pushState(
+              "object or string",
+              "Title",
+              `/?query=${_this.query}&filter=false`
+            )
+        }
+      })
+    },
+    searchRecipesFromFilter(filterName) {
+      const _this = this;
+      _this.isLoading = true;
+
+      $.ajax({
+        method: 'GET',
+        url: `/`,
+        data: {
+          query: filterName,
+        },
+        success(data) {
+          _this.isLoading = false;
+          _this.recipesCount = data.recipes_count
+          _this.recipes = data.recipes
+          _this.query = ''
+          _this.queryCached = ''
+          window
+            .history
+            .pushState(
+              "object or string",
+              "Title",
+              `/?query=${filterName}&filter=true`
+            )
         }
       })
     },
@@ -61,6 +119,36 @@ const vm = new Vue({
         _this.query = query
       }
     },
+    toggleFilter(filterName) {
+      this.filters.forEach(filter => {
+        if (filter.name === filterName){
+          filter.state = true
+          this.searchRecipesFromFilter(filterName)
+        } else {
+          filter.state = false
+        }
+      })
+    },
+    removeFilter() {
+      this.filters.forEach(filter => filter.state = false)
+    },
+    setQueryOnLoad() {
+      if (!this.fromFilter) {
+        this.query = gon.query
+        this.queryCached = gon.query
+      }
+    },
+    setFilterOnLoad() {
+      if (this.fromFilter) {
+        this.filters.forEach(filter => {
+          if (filter.name === this.queryParams){
+            filter.state = true
+          } else {
+            filter.state = false
+          }
+        })
+      }
+    }
   },
 });
 
