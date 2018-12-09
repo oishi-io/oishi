@@ -17,15 +17,15 @@ const vm = new Vue({
         state: true,
       },
       {
+        name: 'Faciles',
+        state: false,
+      },
+      {
         name: 'Végétariennes',
         state: false,
       },
       {
         name: 'Moins de 30min',
-        state: false,
-      },
-      {
-        name: 'Faciles',
         state: false,
       },
     ],
