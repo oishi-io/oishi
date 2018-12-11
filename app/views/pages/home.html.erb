@@ -42,7 +42,7 @@
     <div class="search__filters">
       <button
         v-for="filter in filters"
-        class="filter"
+        class="filter__button"
         v-on:click="toggleFilter(filter.name)"
         v-bind:class=" filter.state ? 'active' : '' "
         >
