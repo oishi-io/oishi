@@ -96,9 +96,7 @@
         margin: .5rem 1rem;
         color: $color-grey-dark;
 
-        &:focus {
-          outline: none;
-        }
+        &:focus { outline: none; }
 
         &:after {
           content: '';
@@ -114,9 +112,15 @@
         &.active {
           color: $color-black;
 
-          &:after {
-            width: 100%;
-          }
+          &:after { width: 100%; }
+        }
+
+      }
+      @media screen and (min-width: $screen-m) {
+        .filter__button:hover {
+          color: $color-black;
+
+          &:after { width: 100%; }
         }
       }
     }

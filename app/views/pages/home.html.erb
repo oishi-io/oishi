@@ -9,6 +9,19 @@
   </section>
 
   <section class="search">
+
+    <!-- SEARCH FILTERS -->
+    <div class="search__filters">
+      <button
+        v-for="filter in filters"
+        class="filter__button"
+        v-on:click="toggleFilter(filter.name)"
+        v-bind:class=" filter.state ? 'active' : '' "
+        >
+        {{ filter.name }}
+      </button>
+    </div>
+
     <!-- RECIPE SEARCH FORM -->
     <form
       novalidate="novalidate"
@@ -37,18 +50,6 @@
         <%= svg 'delete' %>
       </button>
     </form>
-
-    <!-- SEARCH FILTERS -->
-    <div class="search__filters">
-      <button
-        v-for="filter in filters"
-        class="filter__button"
-        v-on:click="toggleFilter(filter.name)"
-        v-bind:class=" filter.state ? 'active' : '' "
-        >
-        {{ filter.name }}
-      </button>
-    </div>
 
     <!-- RECIPE SEARCH RESULTS -->
     <div class="recipes__container">

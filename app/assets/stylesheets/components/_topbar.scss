@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: flex-end;
   width: 100%;
-  padding: 0 10%;
+  padding: 0 1% 0 10%;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -80,7 +80,7 @@
   }
 
   @media screen and (max-width: $screen-l) {
-    padding: 0 2%;
+    padding: 0 1% 0 3%;
   }
 }
 
